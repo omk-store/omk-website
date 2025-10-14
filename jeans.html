@@ -30,8 +30,9 @@
     .product-images {
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
       margin: 30px auto;
     }
 
@@ -42,12 +43,55 @@
 
     h1 {
       font-size: 24px;
-      margin: 16px 0 6px;
+      margin-top: 20px;
     }
 
     p {
-      font-weight: 700;
-      margin: 0 0 16px;
+      font-weight: 600;
+    }
+
+    footer {
+      background: black;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+      margin: 0 8px;
+      font-weight: 600;
+    }
+
+    /* WhatsApp floating button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      padding: 10px 14px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      z-index: 999;
+      animation: bounce 2s infinite;
+    }
+
+    .whatsapp-float img {
+      width: 28px;
+      height: 28px;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-6px); }
+      60% { transform: translateY(-3px); }
     }
   </style>
 </head>
@@ -55,27 +99,32 @@
 <body>
   <header>
     <a href="index.html">OMK</a>
-    <a href="#shop">Shop</a>
+    <a href="index.html#shop">Shop</a>
   </header>
 
-  <div class="product-images">
-    <!-- Front -->
-    <img src="5E3C1575-6B29-4829-B13B-421B2EEF630D.png" alt="OMK Jeans Front">
-    <!-- Back -->
-<img src="6ACD4CF2-97CE-4B75-B574-59AF5431A27C.png" alt="OMK Jeans Back">
-  </div>
+  <main>
+    <h1>OMK Jeans</h1>
+    <div class="product-images">
+      <img src="5E3C1575-6B29-4829-B13B-421B2EEF630D.png" alt="OMK Jeans Front">
+      <img src="6ACD4CF2-97CE-4B75-B574-59AF5431A27C.png" alt="OMK Jeans Back">
+    </div>
+    <p>₦80,000</p>
+  </main>
 
-  <h1>OMK Jeans</h1>
-  <p>₦80,000</p>
-
-  <footer style="background:black;color:white;padding:20px;">
+  <footer>
     <p>Connect with us:</p>
     <p>
-      <a href="https://instagram.com/iam_omotaker" style="color:white;">Instagram</a> |
-      <a href="https://tiktok.com/@iam.omotaker" style="color:white;">TikTok</a> |
-      <a href="https://wa.me/2347038112817" style="color:white;">WhatsApp</a>
+      <a href="https://instagram.com/iam_omotaker">Instagram</a> |
+      <a href="https://tiktok.com/@iam.omotaker">TikTok</a> |
+      <a href="https://wa.me/2347038112817">WhatsApp</a>
     </p>
-    <p style="opacity:.6;">© 2025 OMK — Only My Kind</p>
+    <p style="opacity:0.6;">© 2025 OMK — Only My Kind</p>
   </footer>
+
+  <a href="https://wa.me/2347038112817?text=Hello%20OMK%20Team%20I%27m%20interested%20in%20the%20jeans!" 
+     class="whatsapp-float" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    Chat with us
+  </a>
 </body>
 </html>
