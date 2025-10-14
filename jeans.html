@@ -11,6 +11,7 @@
       background: #fff;
       text-align: center;
     }
+
     header {
       background: black;
       color: white;
@@ -19,11 +20,13 @@
       justify-content: space-between;
       align-items: center;
     }
+
     header a {
       color: white;
       text-decoration: none;
       font-weight: 600;
     }
+
     .product-images {
       display: flex;
       justify-content: center;
@@ -31,39 +34,48 @@
       gap: 20px;
       margin: 30px auto;
     }
+
     .product-images img {
       width: 300px;
       border-radius: 10px;
     }
+
     h1 {
-      margin: 10px 0;
+      font-size: 24px;
+      margin: 16px 0 6px;
     }
+
     p {
-      font-size: 18px;
       font-weight: 700;
-      color: #000;
+      margin: 0 0 16px;
     }
   </style>
 </head>
+
 <body>
+  <header>
+    <a href="index.html">OMK</a>
+    <a href="#shop">Shop</a>
+  </header>
 
-<header>
-  <a href="index.html">OMK</a>
-  <a href="index.html">Shop</a>
-</header>
-
-<main>
-  <h1>OMK Jeans</h1>
   <div class="product-images">
-    <img src="5E3C1575-6B29-4829-B13B-421B2EEF630D.png" alt="OMK Jeans - Back">
-    <img src="46C82FB3-2BD3-42D7-B05E-35A244590913.jpeg" alt="OMK Jeans - Front">
+    <!-- Front -->
+    <img src="5E3C1575-6B29-4829-B13B-421B2EEF630D.png" alt="OMK Jeans Front">
+    <!-- Back -->
+    <img src="jeans-back.png" alt="OMK Jeans Back">
   </div>
+
+  <h1>OMK Jeans</h1>
   <p>₦80,000</p>
-</main>
 
-<footer style="background:#000;color:#fff;padding:16px;margin-top:40px;">
-  <p>© 2025 OMK — Only My Kind</p>
-</footer>
-
+  <footer style="background:black;color:white;padding:20px;">
+    <p>Connect with us:</p>
+    <p>
+      <a href="https://instagram.com/iam_omotaker" style="color:white;">Instagram</a> |
+      <a href="https://tiktok.com/@iam.omotaker" style="color:white;">TikTok</a> |
+      <a href="https://wa.me/2347038112817" style="color:white;">WhatsApp</a>
+    </p>
+    <p style="opacity:.6;">© 2025 OMK — Only My Kind</p>
+  </footer>
 </body>
 </html>
