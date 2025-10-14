@@ -30,20 +30,26 @@
     .product-images {
       display: flex;
       justify-content: center;
-      flex-direction: column;
       align-items: center;
-      gap: 30px;
-      margin: 30px auto;
+      gap: 40px;
+      margin: 40px auto;
+      flex-wrap: wrap;
     }
 
     .product-images img {
-      width: 300px;
+      width: 320px;
       border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .product-images img:hover {
+      transform: scale(1.03);
     }
 
     h1 {
-      font-size: 24px;
-      margin-top: 20px;
+      font-size: 26px;
+      margin-top: 10px;
+      letter-spacing: 1px;
     }
 
     p {
@@ -64,7 +70,6 @@
       font-weight: 600;
     }
 
-    /* WhatsApp floating button */
     .whatsapp-float {
       position: fixed;
       bottom: 20px;
@@ -105,8 +110,14 @@
   <main>
     <h1>OMK Jeans</h1>
     <div class="product-images">
-      <img src="5E3C1575-6B29-4829-B13B-421B2EEF630D.png" alt="OMK Jeans Front">
-      <img src="6ACD4CF2-97CE-4B75-B574-59AF5431A27C.png" alt="OMK Jeans Back">
+      <div>
+        <img src="5E3C1575-6B29-4829-B13B-421B2EEF630D.png" alt="OMK Jeans Front">
+        <p>Front</p>
+      </div>
+      <div>
+        <img src="6ACD4CF2-97CE-4B75-B574-59AF5431A27C.png" alt="OMK Jeans Back">
+        <p>Back</p>
+      </div>
     </div>
     <p>₦80,000</p>
   </main>
@@ -121,7 +132,7 @@
     <p style="opacity:0.6;">© 2025 OMK — Only My Kind</p>
   </footer>
 
-  <a href="https://wa.me/2347038112817?text=Hello%20OMK%20Team%20I%27m%20interested%20in%20the%20jeans!" 
+  <a href="https://wa.me/2347038112817?text=Hello%20OMK%20Team%20I%27m%20interested%20in%20the%20jeans!"
      class="whatsapp-float" target="_blank">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
     Chat with us
