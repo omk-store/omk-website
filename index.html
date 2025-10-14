@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OMK — Only My Kind</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo">OMK</div>
+        <div class="tag">Only My Kind</div>
+      </div>
+      <nav class="nav">
+        <a href="#drops">Drops</a>
+        <a href="#shop">Shop</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <h1>OMK — Bold. Clean. Premium.</h1>
+      <p>Street-ready tees, jeans, and jackets with the Wolf energy.</p>
+      <div class="hero-cta">
+        <a class="btn primary" href="#drops">Shop Latest Drop</a>
+        <a class="btn ghost" href="#contact">Talk to Us</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="drops" class="section">
+    <div class="container">
+      <h2>Latest Drop</h2>
+      <div class="grid" id="drop-grid">
+        <!-- Add your newest products here (duplicating the .card structure) -->
+        <article class="card">
+          <div class="card-img" style="background-image:url('assets/tee-black.jpg');"></div>
+          <div class="card-body">
+            <h3>OMK Wolf Tee — Black</h3>
+            <p class="price">₦18,000</p>
+            <p class="desc">Front: OMK logo • Back: “Only My Kind” + Wolf.</p>
+            <button class="btn primary" data-product="OMK Wolf Tee — Black" data-price="18000">Get It</button>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img" style="background-image:url('assets/jeans-blue.jpg');"></div>
+          <div class="card-body">
+            <h3>OMK Denim — Blue</h3>
+            <p class="price">₦32,000</p>
+            <p class="desc">Premium fit denim with OMK mark and Wolf emblem.</p>
+            <button class="btn primary" data-product="OMK Denim — Blue" data-price="32000">Get It</button>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img" style="background-image:url('assets/jacket-black.jpg');"></div>
+          <div class="card-body">
+            <h3>OMK Jacket — Midnight</h3>
+            <p class="price">₦45,000</p>
+            <p class="desc">Clean lines. Wolf at the back. Crown detail.</p>
+            <button class="btn primary" data-product="OMK Jacket — Midnight" data-price="45000">Get It</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="shop" class="section alt">
+    <div class="container">
+      <h2>Shop All</h2>
+      <div class="grid" id="shop-grid">
+        <!-- Duplicate cards below to add more products -->
+        <article class="card">
+          <div class="card-img" style="background-image:url('assets/shorts-black.jpg');"></div>
+          <div class="card-body">
+            <h3>OMK Shorts — Black</h3>
+            <p class="price">₦15,000</p>
+            <p class="desc">Lightweight, clean finish, OMK front mark.</p>
+            <button class="btn primary" data-product="OMK Shorts — Black" data-price="15000">Get It</button>
+          </div>
+        </article>
+        <article class="card">
+          <div class="card-img" style="background-image:url('assets/tee-white.jpg');"></div>
+          <div class="card-body">
+            <h3>OMK Wolf Tee — White</h3>
+            <p class="price">₦18,000</p>
+            <p class="desc">Minimal front OMK • Wolf back print.</p>
+            <button class="btn primary" data-product="OMK Wolf Tee — White" data-price="18000">Get It</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="container">
+      <h2>Contact</h2>
+      <p>Ready to cop or ask a question? Choose where to message us — we reply fast.</p>
+      <div class="contact-grid">
+        <a class="contact-card" id="ig-link" target="_blank" rel="noopener">Instagram</a>
+        <a class="contact-card" id="tiktok-link" target="_blank" rel="noopener">TikTok</a>
+        <a class="contact-card" id="snap-link" target="_blank" rel="noopener">Snapchat</a>
+        <a class="contact-card" id="wa-link" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+      <p class="muted small">Update your handles in <code>script.js</code> (look for <strong>SET YOUR HANDLES</strong>).</p>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> OMK — Only My Kind</p>
+      <a href="#top" class="to-top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <!-- Contact Drawer -->
+  <div class="drawer" id="drawer">
+    <div class="drawer-inner">
+      <button class="drawer-close" aria-label="Close">&times;</button>
+      <h3>Complete your order</h3>
+      <p id="drawer-product">Selected: —</p>
+      <div class="drawer-actions">
+        <a class="btn full" id="drawer-ig" target="_blank" rel="noopener">DM on Instagram</a>
+        <a class="btn full" id="drawer-tiktok" target="_blank" rel="noopener">Message on TikTok</a>
+        <a class="btn full" id="drawer-snap" target="_blank" rel="noopener">Message on Snapchat</a>
+        <a class="btn full" id="drawer-wa" target="_blank" rel="noopener">Chat on WhatsApp</a>
+      </div>
+      <p class="muted tiny">We’ll confirm size, color, and delivery after you message.</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
