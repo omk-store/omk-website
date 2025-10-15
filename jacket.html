@@ -3,61 +3,62 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>OMK Wolf Jacket | Only My Kind</title>
+<title>OMK Wolf Jacket – Black | OMK</title>
 <style>
-  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Arial,Helvetica,sans-serif;background:#fff;color:#111}
-  .container{max-width:1000px;margin:auto;padding:20px}
-  .product{display:flex;flex-direction:column;align-items:center;text-align:center}
-  .product img{width:100%;max-width:420px;border-radius:10px;border:1px solid #eee}
-  h1{font-size:1.8rem;margin:20px 0 10px;font-weight:900}
-  .price{font-size:1.4rem;font-weight:800;margin-bottom:20px}
-  .sizes{margin-bottom:20px}
-  .sizes span{display:inline-block;border:1px solid #111;padding:8px 14px;margin:4px;border-radius:4px;cursor:pointer;font-weight:700}
-  .sizes span:hover{background:#111;color:#fff}
-  .qty{display:flex;align-items:center;gap:10px;margin-bottom:20px;justify-content:center}
-  .qty button{border:none;background:#111;color:#fff;font-size:1.2rem;width:32px;height:32px;border-radius:4px;cursor:pointer}
-  .qty span{font-weight:800;font-size:1.2rem}
-  .actions button{display:block;width:260px;margin:8px auto;padding:14px;font-size:1rem;font-weight:800;cursor:pointer;border-radius:6px}
-  .add{background:#fff;color:#111;border:2px solid #111}
-  .buy{background:#111;color:#fff;border:none}
-  .add:hover{background:#111;color:#fff}
-  .buy:hover{opacity:.9}
-  .wa{position:fixed;right:16px;bottom:16px;display:flex;align-items:center;gap:8px;background:#fff;
-      border:1px solid #eee;border-radius:16px;padding:10px 14px;box-shadow:0 5px 20px rgba(0,0,0,.12);text-decoration:none;color:#111;font-weight:700}
-  .wa img{width:28px;height:28px}
-  .legal{text-align:center;margin-top:50px;font-weight:700}
+  body{font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;margin:0;padding:0;background:#fff;color:#111}
+  .nav{position:sticky;top:0;background:#fff;border-bottom:1px solid #eee;padding:14px 16px;font-weight:800}
+  .wrap{max-width:900px;margin:40px auto;padding:0 18px}
+  .product-img{width:100%;border:1px solid #eee;border-radius:10px;margin-bottom:20px}
+  h1{font-size:1.8rem;margin:8px 0}
+  .price{font-weight:800;margin:10px 0;font-size:1.3rem}
+  .sizes button{border:1px solid #111;background:#fff;padding:8px 16px;margin:4px;border-radius:4px;cursor:pointer;font-weight:700}
+  .qty{display:flex;align-items:center;margin:18px 0}
+  .qty button{width:36px;height:36px;font-size:1.2rem;border:none;background:#111;color:#fff;cursor:pointer}
+  .qty input{width:40px;text-align:center;font-size:1rem;border:none}
+  .btn{display:block;width:100%;padding:14px;margin-top:10px;border:none;border-radius:6px;font-weight:800;cursor:pointer}
+  .add{background:#111;color:#fff}
+  .buy{background:#fff;border:2px solid #111}
+  .wa-float{position:fixed;right:16px;bottom:16px;display:flex;align-items:center;gap:10px;background:#fff;color:#111;border-radius:14px;padding:10px 12px;box-shadow:0 10px 25px rgba(0,0,0,.12);text-decoration:none;font-weight:800;border:1px solid #eee}
+  .wa-float img{width:34px;height:34px}
 </style>
 </head>
 <body>
 
-<div class="container">
-  <div class="product">
-    <img src="jacket-black.jpg" alt="OMK Wolf Jacket">
-    <h1>OMK Wolf Jacket – Black</h1>
-    <div class="price">₦80,000</div>
+<header class="nav">OMK</header>
 
-    <div class="sizes">
-      <strong>Size:</strong><br>
-      <span>S</span><span>M</span><span>L</span><span>XL</span><span>2XL</span><span>3XL</span>
-    </div>
+<main class="wrap">
+  <img src="jacket-black.jpg" alt="OMK Wolf Jacket" class="product-img">
+  <h1>OMK Wolf Jacket – Black</h1>
+  <div class="price">₦80,000</div>
 
-    <div class="qty">
-      <button>-</button><span>1</span><button>+</button>
-    </div>
-
-    <div class="actions">
-      <button class="add">Add to Cart →</button>
-      <button class="buy" onclick="window.open('https://wa.me/2347038112817?text=Hi%20OMK%20—%20I%27d%20like%20to%20buy%20the%20OMK%20Wolf%20Jacket%20(Black)%20for%20₦80,000','_blank')">Buy It Now →</button>
-    </div>
+  <div><strong>Size:</strong></div>
+  <div class="sizes">
+    <button>S</button><button>M</button><button>L</button><button>XL</button><button>2XL</button><button>3XL</button>
   </div>
-</div>
 
-<a class="wa" href="https://wa.me/2347038112817?text=Hi%20OMK%20—%20I%27m%20interested%20in%20the%20Wolf%20Jacket" target="_blank">
+  <div class="qty">
+    <button onclick="changeQty(-1)">-</button>
+    <input id="qty" type="text" value="1" readonly>
+    <button onclick="changeQty(1)">+</button>
+  </div>
+
+  <button class="btn add">Add to Cart →</button>
+  <button class="btn buy" onclick="window.open('https://wa.me/2347038112817?text=Hi OMK — I want to buy the OMK Wolf Jacket (₦80,000)', '_blank')">Buy it Now →</button>
+</main>
+
+<a class="wa-float" href="https://wa.me/2347038112817?text=Hi OMK — I’m interested in the OMK Wolf Jacket" target="_blank">
+  <span>Chat with us</span>
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-  Chat with us
 </a>
 
-<div class="legal">© 2025, OMK.</div>
+<script>
+function changeQty(n){
+  let q = document.getElementById('qty');
+  let v = parseInt(q.value) + n;
+  if(v < 1) v = 1;
+  q.value = v;
+}
+</script>
 
 </body>
 </html>
