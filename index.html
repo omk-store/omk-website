@@ -4,14 +4,10 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>OMK | Only My Kind</title>
 <style>
-  :root{--fg:#111;--bg:#fff;--muted:#6b6b6b;--border:#eaeaea}
+  :root{--fg:#111;--bg:#fff;--muted:#8a8a8a;--border:#eaeaea}
   *{box-sizing:border-box} 
-  html,body{
-    margin:0;
-    background:var(--bg);
-    color:var(--fg);
-    font-family:system-ui,-apple-system,Segoe UI,Arial,Helvetica,sans-serif
-  }
+  html,body{margin:0;background:var(--bg);color:var(--fg);
+    font-family:system-ui,-apple-system,Segoe UI,Arial,Helvetica,sans-serif}
 
   /* HEADER */
   .nav{
@@ -20,98 +16,94 @@
     display:flex;align-items:center;justify-content:space-between;
     padding:14px 16px
   }
-  .brand{font-weight:800;letter-spacing:.2px}
+  .brand{font-weight:800;letter-spacing:.1px}
   .icons{display:flex;gap:16px;font-weight:700}
+
+  /* HERO (Top Image) */
+  .hero{
+    position:relative;
+    width:100%;
+    overflow:hidden;
+  }
+  .hero img{
+    width:100%;
+    height:auto;
+    display:block;
+    object-fit:cover;
+  }
+  .hero-text{
+    position:absolute;
+    bottom:20px;left:20px;
+    background:rgba(0,0,0,0.5);
+    color:#fff;
+    padding:8px 14px;
+    border-radius:6px;
+    font-weight:600;
+    font-size:0.95rem;
+  }
 
   /* LAYOUT */
   .wrap{max-width:1200px;margin:0 auto;padding:18px}
-  .grid{display:grid;gap:24px;grid-template-columns:repeat(2,1fr)}
+  .grid{display:grid;gap:18px;grid-template-columns:repeat(2,1fr)}
   @media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr)}}
   @media(min-width:1000px){.grid{grid-template-columns:repeat(4,1fr)}}
 
   /* PRODUCT CARD */
-  .card{display:block;text-decoration:none;color:inherit}
-  .imgwrap{background:#fff;border:1px solid var(--border);padding:8px}
-  .imgwrap img{width:100%;aspect-ratio:1/1;object-fit:contain;display:block}
+  .card{display:block;text-decoration:none;color:inherit;
+        transition:transform .12s ease, box-shadow .12s ease}
+  .imgwrap{background:#fff;border:1px solid #f0f0f0;
+            padding:6px;border-radius:12px}
+  .imgwrap img{width:100%;aspect-ratio:1/1;object-fit:cover;
+               border-radius:8px;display:block}
   .meta{padding:10px 2px}
-  .title{margin:0 0 6px;font-weight:800}
-  .price{margin:0;color:var(--muted);font-weight:800}
+  .title{font-size:.95rem;font-weight:700;letter-spacing:.1px;margin-bottom:4px}
+  .price{font-size:.9rem;color:var(--muted);font-weight:700}
+  @media(hover:hover){
+    .card:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.05)}
+  }
 
   /* FOOTER */
   footer{
     border-top:1px solid var(--border);
-    margin-top:30px;padding:18px;text-align:center;color:var(--muted)
+    margin-top:30px;padding:18px;text-align:center;color:#9a9a9a
   }
   footer a{color:#111;text-decoration:none;margin:0 8px}
-
-  /* --- OMK subtle/quiet style overrides --- */
-  :root { --muted:#8a8a8a; }
-  .nav{ border-bottom:1px solid #eee; }
-  .brand{ font-weight:700; letter-spacing:.1px; }
-  .grid{ gap:18px; }
-  .imgwrap{ padding:6px; border-color:#f0f0f0; border-radius:12px; }
-  .imgwrap img{ border-radius:8px; aspect-ratio:1/1; object-fit:cover; }
-  .title{
-    font-size:.95rem;
-    font-weight:700;
-    letter-spacing:.1px;
-    margin-bottom:4px;
-  }
-  .price{
-    font-size:.9rem;
-    color:var(--muted);
-    font-weight:700;
-  }
-  .card{ transition:transform .12s ease, box-shadow .12s ease; }
-  @media(hover:hover){
-    .card:hover{ transform:translateY(-2px); box-shadow:0 6px 16px rgba(0,0,0,.05); }
-  }
-  footer{ color:#9a9a9a; }
 </style>
 </head>
 <body>
-  <!-- Simple white header -->
+  <!-- Header -->
   <header class="nav">
     <div class="brand">OMK</div>
     <div class="icons">☰ 🔍 🛍️</div>
   </header>
 
+  <!-- Hero Image -->
+  <section class="hero">
+    <img src="hero.jpg" alt="OMK Collection">
+    <div class="hero-text">Discover the Collective</div>
+  </section>
+
+  <!-- Product Grid -->
   <main class="wrap">
     <section class="grid" aria-label="Products">
-      <!-- Jacket -->
       <a class="card" href="jacket.html">
         <div class="imgwrap"><img src="jacket-black.jpg" alt="OMK Wolf Jacket"></div>
-        <div class="meta">
-          <h3 class="title">OMK Wolf Jacket</h3>
-          <p class="price">₦80,000</p>
-        </div>
+        <div class="meta"><h3 class="title">OMK Wolf Jacket</h3><p class="price">₦80,000</p></div>
       </a>
 
-      <!-- Jeans -->
       <a class="card" href="jeans.html">
         <div class="imgwrap"><img src="jeans-blue.jpg" alt="OMK Black Jean"></div>
-        <div class="meta">
-          <h3 class="title">OMK Black Jean</h3>
-          <p class="price">₦80,000</p>
-        </div>
+        <div class="meta"><h3 class="title">OMK Black Jean</h3><p class="price">₦80,000</p></div>
       </a>
 
-      <!-- T-Shirt -->
       <a class="card" href="tshirt.html">
         <div class="imgwrap"><img src="tee-black.jpg" alt="OMK T-Shirt"></div>
-        <div class="meta">
-          <h3 class="title">OMK T-Shirt</h3>
-          <p class="price">₦50,000</p>
-        </div>
+        <div class="meta"><h3 class="title">OMK T-Shirt</h3><p class="price">₦50,000</p></div>
       </a>
 
-      <!-- Shorts -->
       <a class="card" href="shorts.html">
         <div class="imgwrap"><img src="shorts-black.jpg" alt="OMK Shorts"></div>
-        <div class="meta">
-          <h3 class="title">OMK Shorts</h3>
-          <p class="price">₦50,000</p>
-        </div>
+        <div class="meta"><h3 class="title">OMK Shorts</h3><p class="price">₦50,000</p></div>
       </a>
     </section>
 
