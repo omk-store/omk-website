@@ -5,42 +5,21 @@
 <title>OMK | Only My Kind</title>
 <style>
   :root{--fg:#111;--bg:#fff;--muted:#8a8a8a;--border:#eaeaea}
-  *{box-sizing:border-box} 
-  html,body{margin:0;background:var(--bg);color:var(--fg);
-    font-family:system-ui,-apple-system,Segoe UI,Arial,Helvetica,sans-serif}
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Arial,Helvetica,sans-serif}
 
   /* HEADER */
-  .nav{
-    position:sticky;top:0;z-index:5;background:#fff;
-    border-bottom:1px solid var(--border);
-    display:flex;align-items:center;justify-content:space-between;
-    padding:14px 16px
-  }
+  .nav{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--border);
+       display:flex;align-items:center;justify-content:space-between;padding:14px 16px}
   .brand{font-weight:800;letter-spacing:.1px}
   .icons{display:flex;gap:16px;font-weight:700}
 
-  /* HERO (Top Image) */
-  .hero{
-    position:relative;
-    width:100%;
-    overflow:hidden;
-  }
-  .hero img{
-    width:100%;
-    height:auto;
-    display:block;
-    object-fit:cover;
-  }
-  .hero-text{
-    position:absolute;
-    bottom:20px;left:20px;
-    background:rgba(0,0,0,0.5);
-    color:#fff;
-    padding:8px 14px;
-    border-radius:6px;
-    font-weight:600;
-    font-size:0.95rem;
-  }
+  /* HERO (text placeholder, no image) */
+  .hero{background:#0b0b0b;color:#fff;text-align:center;padding:56px 18px}
+  .hero h1{margin:0 0 10px;font-size:2.2rem;letter-spacing:.5px}
+  .hero p{margin:0 0 18px;color:#d8d8d8}
+  .btn{display:inline-block;background:#fff;color:#111;border-radius:10px;
+       padding:12px 18px;text-decoration:none;font-weight:800}
 
   /* LAYOUT */
   .wrap{max-width:1200px;margin:0 auto;padding:18px}
@@ -48,25 +27,17 @@
   @media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr)}}
   @media(min-width:1000px){.grid{grid-template-columns:repeat(4,1fr)}}
 
-  /* PRODUCT CARD */
-  .card{display:block;text-decoration:none;color:inherit;
-        transition:transform .12s ease, box-shadow .12s ease}
-  .imgwrap{background:#fff;border:1px solid #f0f0f0;
-            padding:6px;border-radius:12px}
-  .imgwrap img{width:100%;aspect-ratio:1/1;object-fit:cover;
-               border-radius:8px;display:block}
+  /* PRODUCT CARD (quiet/premium) */
+  .card{display:block;text-decoration:none;color:inherit;transition:transform .12s ease, box-shadow .12s ease}
+  .imgwrap{background:#fff;border:1px solid #f0f0f0;padding:6px;border-radius:12px}
+  .imgwrap img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:8px;display:block}
   .meta{padding:10px 2px}
-  .title{font-size:.95rem;font-weight:700;letter-spacing:.1px;margin-bottom:4px}
+  .title{font-size:.95rem;font-weight:700;letter-spacing:.1px;margin:0 0 4px}
   .price{font-size:.9rem;color:var(--muted);font-weight:700}
-  @media(hover:hover){
-    .card:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.05)}
-  }
+  @media(hover:hover){.card:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.05)}}
 
   /* FOOTER */
-  footer{
-    border-top:1px solid var(--border);
-    margin-top:30px;padding:18px;text-align:center;color:#9a9a9a
-  }
+  footer{border-top:1px solid var(--border);margin-top:30px;padding:18px;text-align:center;color:#9a9a9a}
   footer a{color:#111;text-decoration:none;margin:0 8px}
 </style>
 </head>
@@ -77,15 +48,16 @@
     <div class="icons">☰ 🔍 🛍️</div>
   </header>
 
-  <!-- Hero Image -->
+  <!-- Text Hero (no image) -->
   <section class="hero">
-    <img src="hero.jpg" alt="OMK Collection">
-    <div class="hero-text">Discover the Collective</div>
+    <h1>ONLY MY KIND</h1>
+    <p>Streetwear made for your vibe.</p>
+    <a class="btn" href="#shop">Shop Now</a>
   </section>
 
   <!-- Product Grid -->
   <main class="wrap">
-    <section class="grid" aria-label="Products">
+    <section id="shop" class="grid" aria-label="Products">
       <a class="card" href="jacket.html">
         <div class="imgwrap"><img src="jacket-black.jpg" alt="OMK Wolf Jacket"></div>
         <div class="meta"><h3 class="title">OMK Wolf Jacket</h3><p class="price">₦80,000</p></div>
