@@ -1,34 +1,94 @@
 <!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>OMK | Only My Kind</title>
 <style>
-  body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#fff;color:#111}
-  header{background:#000;color:#fff;padding:18px;font-weight:700}
-  main{max-width:720px;margin:28px auto;padding:0 16px}
-  h2{margin:0 0 16px}
-  ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px}
-  li a{display:block;padding:16px 18px;border:1px solid #e8e8e8;border-radius:12px;text-decoration:none;color:#000;font-weight:600}
-  .price{opacity:.7;font-weight:600}
-  footer{margin:36px 0 24px;text-align:center;color:#666}
+  :root{--bg:#fff;--fg:#111;--muted:#666;--card:#fafafa;--border:#e9e9e9}
+  *{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--fg)}
+  header{background:#000;color:#fff;padding:18px;text-align:center;font-weight:800;letter-spacing:.2px}
+  .wrap{max-width:1024px;margin:0 auto;padding:20px 14px}
+  .hero{background:#0b0b0b;color:#fff;border-radius:14px;padding:18px;margin:10px 0 20px}
+  .hero h2{margin:0 0 6px;font-size:1.25rem}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+  .card img{width:100%;display:block}
+  .card .info{padding:12px}
+  .title{margin:0 0 6px;font-size:1.02rem;font-weight:700}
+  .price{margin:0;color:var(--muted);font-weight:700}
+  .actions{padding:0 12px 14px}
+  .btn{display:block;text-align:center;text-decoration:none;border:1px solid #111;border-radius:10px;padding:10px 12px;color:#111;font-weight:700}
+  footer{margin:26px 0 18px;text-align:center;color:var(--muted)}
   footer a{color:#000;text-decoration:none;margin:0 6px}
+  @media (hover:hover){ .btn:hover{transform:translateY(-1px)} }
 </style>
 </head>
 <body>
-<header>OMK 🐺 | Only My Kind</header>
-<main>
-  <h2>Shop</h2>
-  <ul>
-    <li><a href="jacket.html">OMK Wolf Jacket — <span class="price">₦80,000</span></a></li>
-    <li><a href="jeans.html">OMK Jeans — <span class="price">₦80,000</span></a></li>
-    <li><a href="tshirt.html">OMK T-Shirt — <span class="price">₦50,000</span></a></li>
-    <li><a href="shorts.html">OMK Shorts — <span class="price">₦50,000</span></a></li>
-  </ul>
-  <footer>
-    Connect: <a href="https://www.instagram.com/iam_omotaker" target="_blank">Instagram</a> •
-    <a href="https://www.tiktok.com/@iam.omotaker" target="_blank">TikTok</a> •
-    <a href="https://wa.me/2340000000000" target="_blank">WhatsApp</a><br>
-    © 2025 OMK — Only My Kind
-  </footer>
-</main>
-</body></html>
+  <header>OMK 🐺 — Only My Kind</header>
+  <div class="wrap">
+    <section class="hero">
+      <h2>Latest Drop</h2>
+      <p style="margin:0">Premium streetwear by OMK. Click any product to view full details.</p>
+    </section>
+
+    <section aria-label="Products" class="grid">
+      <!-- Jacket -->
+      <article class="card">
+        <a href="jacket.html"><img src="jacket-black.jpg" alt="OMK Wolf Jacket back view"></a>
+        <div class="info">
+          <h3 class="title">OMK Wolf Jacket</h3>
+          <p class="price">₦80,000</p>
+        </div>
+        <div class="actions">
+          <a class="btn" href="jacket.html">View</a>
+        </div>
+      </article>
+
+      <!-- Jeans -->
+      <article class="card">
+        <a href="jeans.html"><img src="jeans-black.jpg" alt="OMK Black Jean"></a>
+        <div class="info">
+          <h3 class="title">OMK Black Jean</h3>
+          <p class="price">₦80,000</p>
+        </div>
+        <div class="actions">
+          <a class="btn" href="jeans.html">View</a>
+        </div>
+      </article>
+
+      <!-- T-Shirt -->
+      <article class="card">
+        <a href="tshirt.html"><img src="tshirt-black.jpg" alt="OMK T-Shirt black"></a>
+        <div class="info">
+          <h3 class="title">OMK T-Shirt</h3>
+          <p class="price">₦50,000</p>
+        </div>
+        <div class="actions">
+          <a class="btn" href="tshirt.html">View</a>
+        </div>
+      </article>
+
+      <!-- Shorts -->
+      <article class="card">
+        <a href="shorts.html"><img src="shorts-black.jpg" alt="OMK Shorts black"></a>
+        <div class="info">
+          <h3 class="title">OMK Shorts</h3>
+          <p class="price">₦50,000</p>
+        </div>
+        <div class="actions">
+          <a class="btn" href="shorts.html">View</a>
+        </div>
+      </article>
+    </section>
+
+    <footer>
+      Connect:
+      <a href="https://www.instagram.com/iam_omotaker" target="_blank">Instagram</a> •
+      <a href="https://www.tiktok.com/@iam.omotaker" target="_blank">TikTok</a> •
+      <a href="https://wa.me/2340000000000" target="_blank">WhatsApp</a><br>
+      © 2025 OMK — Only My Kind
+    </footer>
+  </div>
+</body>
+</html>
