@@ -25,21 +25,37 @@
   .hero a{background:#fff;color:#000;text-decoration:none;padding:12px 26px;border-radius:8px;font-weight:700;transition:.3s}
   .hero a:hover{background:#111;color:#fff}
 
-  /* GRID */
-  .wrap{max-width:1200px;margin:0 auto;padding:18px}
-  .grid{display:grid;gap:24px;grid-template-columns:repeat(2,1fr)}
-  @media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr)}}
-  @media(min-width:1000px){.grid{grid-template-columns:repeat(4,1fr)}}
-  .card{display:block;text-decoration:none;color:inherit;transition:.25s}
-  .card:hover{transform:translateY(-2px)}
-  .imgwrap{background:#fff;border:1px solid var(--border);padding:8px;border-radius:10px}
-  .imgwrap img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;border-radius:6px}
-  .meta{padding:10px 2px;text-align:center}
-  .title{margin:0 0 6px;font-weight:800;font-size:1rem}
-  .price{margin:0;color:var(--muted);font-weight:700}
+  /* LATEST DROP (slider) */
+  .ld{max-width:1200px;margin:0 auto;padding:14px 0 6px}
+  .ld-head{display:flex;align-items:center;justify-content:space-between;padding:0 18px 8px}
+  .ld-title{margin:0;font-weight:900;letter-spacing:.3px}
+  .ld-wrap{position:relative}
+  .ld-track{
+    display:grid;grid-auto-flow:column;grid-auto-columns:80%;
+    gap:16px;overflow:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    padding:4px 18px 18px;
+  }
+  .ld-card{scroll-snap-align:start;background:#fff;border:1px solid var(--border);
+           border-radius:12px;overflow:hidden}
+  .ld-img{width:100%;aspect-ratio:1/1;object-fit:cover;background:#fff;display:block}
+  .ld-body{padding:10px 12px;text-align:center}
+  .ld-name{margin:0 0 6px;font-weight:800}
+  .ld-price{margin:0;color:var(--muted);font-weight:800}
+  .ld-btn{
+    display:inline-block;margin:10px 0 6px;padding:10px 14px;border-radius:999px;
+    background:#111;color:#fff;text-decoration:none;font-weight:800
+  }
+  .ld-nav{
+    position:absolute;top:42%;translate:0 -50%;border:none;width:38px;height:38px;
+    border-radius:50%;background:#fff;box-shadow:0 8px 20px rgba(0,0,0,.12);
+    display:grid;place-items:center;cursor:pointer
+  }
+  .ld-prev{left:6px} .ld-next{right:6px}
+  @media(min-width:680px){.ld-track{grid-auto-columns:48%}}
+  @media(min-width:1024px){.ld-track{grid-auto-columns:24%}.ld-prev{left:-4px}.ld-next{right:-4px}}
 
   /* NEWSLETTER + SOCIAL */
-  .nl{max-width:1200px;margin:36px auto 0;padding:0 18px}
+  .nl{max-width:1200px;margin:22px auto 0;padding:0 18px}
   .nl h3{margin:0 0 6px;font-size:1.35rem;font-weight:900;letter-spacing:.2px}
   .nl p{margin:0 0 18px;font-weight:700;color:#111}
   .nl form{max-width:720px}
@@ -83,51 +99,66 @@
   <section class="hero">
     <h1>ONLY MY KIND</h1>
     <p>Streetwear made for your vibe.</p>
-    <a href="#shop">Shop Now</a>
+    <a href="#latest">Shop Now</a>
   </section>
 
-  <!-- Products -->
-  <main class="wrap" id="shop">
-    <section class="grid" aria-label="Products">
-      <!-- Wolf Jacket -->
-      <a class="card" href="jacket.html">
-        <div class="imgwrap">
-          <img src="jacket-black.jpg" alt="OMK Wolf Jacket">
-        </div>
-        <div class="meta">
-          <h3 class="title">OMK Wolf Jacket</h3>
-          <p class="price">₦80,000</p>
-        </div>
-      </a>
+  <!-- LATEST DROP (slider) -->
+  <section class="ld" id="latest" aria-label="Latest Drop">
+    <div class="ld-head">
+      <h2 class="ld-title">LATEST DROP</h2>
+    </div>
 
-      <!-- Wolf Jean -->
-      <a class="card" href="jeans.html">
-        <div class="imgwrap"><img src="jeans-black.jpg" alt="OMK Wolf Jean"></div>
-        <div class="meta">
-          <h3 class="title">OMK Wolf Jean</h3>
-          <p class="price">₦80,000</p>
-        </div>
-      </a>
+    <div class="ld-wrap">
+      <button class="ld-nav ld-prev" aria-label="Previous">❮</button>
 
-      <!-- Wolf Tee -->
-      <a class="card" href="tshirt.html">
-        <div class="imgwrap"><img src="tshirt.jpg" alt="OMK Wolf Tee"></div>
-        <div class="meta">
-          <h3 class="title">OMK Wolf Tee</h3>
-          <p class="price">₦50,000</p>
-        </div>
-      </a>
+      <div class="ld-track" id="ldTrack">
+        <!-- 1) Wolf Jacket (tries jacket-black.jpg, falls back to your long filename) -->
+        <article class="ld-card">
+          <img class="ld-img"
+               src="jacket-black.jpg"
+               onerror="this.onerror=null;this.src='F0DB3172-9958-46BD-8A47-33C57B98424F.jpeg';"
+               alt="OMK Wolf Jacket — Black">
+          <div class="ld-body">
+            <h3 class="ld-name">OMK Wolf Jacket</h3>
+            <p class="ld-price">₦80,000</p>
+            <a class="ld-btn" href="jacket.html">View</a>
+          </div>
+        </article>
 
-      <!-- Wolf Shorts -->
-      <a class="card" href="shorts.html">
-        <div class="imgwrap"><img src="shorts.jpg" alt="OMK Wolf Shorts"></div>
-        <div class="meta">
-          <h3 class="title">OMK Wolf Shorts</h3>
-          <p class="price">₦50,000</p>
-        </div>
-      </a>
-    </section>
-  </main>
+        <!-- 2) Wolf Jean -->
+        <article class="ld-card">
+          <img class="ld-img" src="jeans-black.jpg" alt="OMK Wolf Jean — Black">
+          <div class="ld-body">
+            <h3 class="ld-name">OMK Wolf Jean</h3>
+            <p class="ld-price">₦80,000</p>
+            <a class="ld-btn" href="jeans.html">View</a>
+          </div>
+        </article>
+
+        <!-- 3) Wolf Tee -->
+        <article class="ld-card">
+          <img class="ld-img" src="tee-black.jpg" alt="OMK Wolf Tee — Black">
+          <div class="ld-body">
+            <h3 class="ld-name">OMK Wolf Tee</h3>
+            <p class="ld-price">₦50,000</p>
+            <a class="ld-btn" href="tshirt.html">View</a>
+          </div>
+        </article>
+
+        <!-- 4) Wolf Shorts -->
+        <article class="ld-card">
+          <img class="ld-img" src="shorts-black.jpg" alt="OMK Wolf Shorts — Black">
+          <div class="ld-body">
+            <h3 class="ld-name">OMK Wolf Shorts</h3>
+            <p class="ld-price">₦50,000</p>
+            <a class="ld-btn" href="shorts.html">View</a>
+          </div>
+        </article>
+      </div>
+
+      <button class="ld-nav ld-next" aria-label="Next">❯</button>
+    </div>
+  </section>
 
   <!-- Newsletter + Social -->
   <section class="nl">
@@ -163,14 +194,17 @@
   </a>
 
   <script>
-    document.querySelectorAll('.card').forEach(card=>{
+    // Update WhatsApp message with product name on tap
+    document.querySelectorAll('.ld-card').forEach(card=>{
       card.addEventListener('click', ()=>{
-        const t = card.querySelector('.title')?.textContent?.trim() || 'a product';
+        const t = card.querySelector('.ld-name')?.textContent?.trim() || 'a product';
         const wa = document.querySelector('.wa-float');
         const base = 'https://wa.me/2347038112817?text=Hi%20OMK%20—%20I%27m%20interested%20in%20';
         wa.href = base + encodeURIComponent(t);
       });
     });
+
+    // Newsletter -> send email to your WhatsApp for now (no backend)
     document.getElementById('nl-form').addEventListener('submit', (e)=>{
       e.preventDefault();
       const email = document.getElementById('email').value.trim();
@@ -178,6 +212,31 @@
       const msg = 'Hi OMK — please add me to the community list. My email: ' + email;
       window.open('https://wa.me/2347038112817?text=' + encodeURIComponent(msg), '_blank');
     });
+
+    // Slider controls + auto-scroll
+    (function(){
+      const track = document.getElementById('ldTrack');
+      const prev  = document.querySelector('.ld-prev');
+      const next  = document.querySelector('.ld-next');
+
+      function colWidth(){
+        const first = track.querySelector('.ld-card');
+        const gap = parseFloat(getComputedStyle(track).gap) || 0;
+        return first.getBoundingClientRect().width + gap;
+      }
+      function go(dir){ track.scrollBy({left: dir*colWidth(), behavior:'smooth'}); }
+
+      prev.addEventListener('click', ()=>go(-1));
+      next.addEventListener('click', ()=>go(1));
+
+      // auto slide every 4s
+      let timer = setInterval(()=>go(1), 4000);
+      // pause on hover / focus
+      track.addEventListener('mouseenter', ()=>clearInterval(timer));
+      track.addEventListener('mouseleave', ()=>timer = setInterval(()=>go(1), 4000));
+      track.addEventListener('touchstart', ()=>clearInterval(timer), {passive:true});
+      track.addEventListener('touchend',   ()=>timer = setInterval(()=>go(1), 4000));
+    })();
   </script>
 
 </body>
