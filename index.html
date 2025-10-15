@@ -5,18 +5,30 @@
 <title>OMK | Only My Kind</title>
 <style>
   :root{--fg:#111;--bg:#fff;--muted:#6b6b6b;--border:#eaeaea}
-  *{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--fg);
-    font-family:system-ui,-apple-system,Segoe UI,Arial,Helvetica,sans-serif}
-  /* HEADER like zttw */
-  .nav{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--border);
-       display:flex;align-items:center;justify-content:space-between;padding:14px 16px}
+  *{box-sizing:border-box} 
+  html,body{
+    margin:0;
+    background:var(--bg);
+    color:var(--fg);
+    font-family:system-ui,-apple-system,Segoe UI,Arial,Helvetica,sans-serif
+  }
+
+  /* HEADER */
+  .nav{
+    position:sticky;top:0;z-index:5;background:#fff;
+    border-bottom:1px solid var(--border);
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 16px
+  }
   .brand{font-weight:800;letter-spacing:.2px}
   .icons{display:flex;gap:16px;font-weight:700}
+
   /* LAYOUT */
   .wrap{max-width:1200px;margin:0 auto;padding:18px}
   .grid{display:grid;gap:24px;grid-template-columns:repeat(2,1fr)}
   @media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr)}}
   @media(min-width:1000px){.grid{grid-template-columns:repeat(4,1fr)}}
+
   /* PRODUCT CARD */
   .card{display:block;text-decoration:none;color:inherit}
   .imgwrap{background:#fff;border:1px solid var(--border);padding:8px}
@@ -24,9 +36,37 @@
   .meta{padding:10px 2px}
   .title{margin:0 0 6px;font-weight:800}
   .price{margin:0;color:var(--muted);font-weight:800}
+
   /* FOOTER */
-  footer{border-top:1px solid var(--border);margin-top:30px;padding:18px;text-align:center;color:var(--muted)}
+  footer{
+    border-top:1px solid var(--border);
+    margin-top:30px;padding:18px;text-align:center;color:var(--muted)
+  }
   footer a{color:#111;text-decoration:none;margin:0 8px}
+
+  /* --- OMK subtle/quiet style overrides --- */
+  :root { --muted:#8a8a8a; }
+  .nav{ border-bottom:1px solid #eee; }
+  .brand{ font-weight:700; letter-spacing:.1px; }
+  .grid{ gap:18px; }
+  .imgwrap{ padding:6px; border-color:#f0f0f0; border-radius:12px; }
+  .imgwrap img{ border-radius:8px; aspect-ratio:1/1; object-fit:cover; }
+  .title{
+    font-size:.95rem;
+    font-weight:700;
+    letter-spacing:.1px;
+    margin-bottom:4px;
+  }
+  .price{
+    font-size:.9rem;
+    color:var(--muted);
+    font-weight:700;
+  }
+  .card{ transition:transform .12s ease, box-shadow .12s ease; }
+  @media(hover:hover){
+    .card:hover{ transform:translateY(-2px); box-shadow:0 6px 16px rgba(0,0,0,.05); }
+  }
+  footer{ color:#9a9a9a; }
 </style>
 </head>
 <body>
@@ -47,7 +87,7 @@
         </div>
       </a>
 
-      <!-- Jeans (shows now with your current file; swap to jeans-black.jpg later) -->
+      <!-- Jeans -->
       <a class="card" href="jeans.html">
         <div class="imgwrap"><img src="jeans-blue.jpg" alt="OMK Black Jean"></div>
         <div class="meta">
@@ -56,7 +96,7 @@
         </div>
       </a>
 
-      <!-- Tee -->
+      <!-- T-Shirt -->
       <a class="card" href="tshirt.html">
         <div class="imgwrap"><img src="tee-black.jpg" alt="OMK T-Shirt"></div>
         <div class="meta">
