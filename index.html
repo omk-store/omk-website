@@ -3,84 +3,36 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>OMK Clothing | Only My Kind</title>
-  <link href="styles.css" rel="stylesheet">
+  <title>OMK | Only My Kind</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #fff;
-      color: #111;
-      text-align: center;
-    }
-    header {
-      background: #000;
-      color: #fff;
-      padding: 18px;
-      font-size: 1.3rem;
-      font-weight: bold;
-    }
-    main {
-      padding: 30px 15px;
-    }
-    ul.products {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
-    ul.products li {
-      background: #fafafa;
-      padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      width: 90%;
-      max-width: 400px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    }
-    ul.products a {
-      text-decoration: none;
-      color: #000;
-      font-size: 1.05rem;
-      font-weight: 600;
-    }
-    footer {
-      margin-top: 40px;
-      padding: 20px;
-      background: #000;
-      color: #fff;
-    }
-    .socials a {
-      color: #fff;
-      margin: 0 8px;
-      text-decoration: none;
-    }
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#fff;color:#111}
+    header{background:#000;color:#fff;padding:18px;font-weight:700}
+    main{max-width:720px;margin:28px auto;padding:0 16px}
+    h2{margin:0 0 16px}
+    ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px}
+    li a{display:block;padding:16px 18px;border:1px solid #e8e8e8;border-radius:12px;text-decoration:none;color:#000;font-weight:600}
+    li a:active{transform:scale(.99)}
+    .price{opacity:.7;font-weight:600}
+    footer{margin:36px 0 24px;text-align:center;color:#666}
+    footer a{color:#000;text-decoration:none;margin:0 6px}
   </style>
 </head>
-
 <body>
-  <header>OMK CLOTHING 🐺 | Only My Kind</header>
-
+  <header>OMK 🐺 | Only My Kind</header>
   <main>
-    <h2>Shop the Collection</h2>
-    <ul class="products">
-      <li><a href="jacket.html">OMK Wolf Jacket — ₦80,000</a></li>
-      <li><a href="jeans.html">OMK Jeans — ₦80,000</a></li>
-      <li><a href="tshirt.html">OMK T-Shirt — ₦50,000</a></li>
-      <li><a href="shorts.html">OMK Shorts — ₦50,000</a></li>
+    <h2>Shop</h2>
+    <ul>
+      <li><a href="jacket.html">OMK Wolf Jacket — <span class="price">₦80,000</span></a></li>
+      <li><a href="jeans.html">OMK Jeans — <span class="price">₦80,000</span></a></li>
+      <li><a href="tshirt.html">OMK T-Shirt — <span class="price">₦50,000</span></a></li>
+      <li><a href="shorts.html">OMK Shorts — <span class="price">₦50,000</span></a></li>
     </ul>
+    <footer>
+      <div>Connect: <a href="https://www.instagram.com/iam_omotaker" target="_blank">Instagram</a> •
+      <a href="https://www.tiktok.com/@iam.omotaker" target="_blank">TikTok</a> •
+      <a href="https://wa.me/2340000000000" target="_blank">WhatsApp</a></div>
+      <div style="margin-top:8px;">© 2025 OMK — Only My Kind</div>
+    </footer>
   </main>
-
-  <footer>
-    <p>Connect with OMK</p>
-    <div class="socials">
-      <a href="https://www.instagram.com/iam_omotaker" target="_blank">Instagram</a> |
-      <a href="https://www.tiktok.com/@iam.omotaker" target="_blank">TikTok</a> |
-      <a href="https://wa.me/2340000000000" target="_blank">WhatsApp</a>
-    </div>
-    <p style="margin-top:10px;">© 2025 OMK — Only My Kind</p>
-  </footer>
 </body>
 </html>
