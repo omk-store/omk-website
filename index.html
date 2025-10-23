@@ -9,8 +9,12 @@
   :root{
     --fg:#111; --bg:#fff; --muted:#6b6b6b; --border:#eaeaea; --accent:#ff2d55;
   }
-  *{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--fg);
-    font-family:system-ui,-apple-system,Segoe UI,Arial,Helvetica,sans-serif;scroll-behavior:smooth}
+  *{box-sizing:border-box}
+  html,body{
+    margin:0;background:var(--bg);color:var(--fg);
+    font-family:system-ui,-apple-system,Segoe UI,Arial,Helvetica,sans-serif;
+    scroll-behavior:smooth;
+  }
 
   /* ===== HEADER ===== */
   .site-header{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid var(--border);
@@ -21,7 +25,6 @@
   #menuBtn{font:inherit;background:#000;color:#fff;border:0;border-radius:8px;padding:8px 12px;line-height:1;cursor:pointer}
   #cartBtn{background:#fff;border:1px solid var(--border);border-radius:8px;padding:8px 12px;margin-left:8px}
 
-  /* slide-in nav */
   #mobileNav{position:fixed;top:0;left:-280px;width:260px;height:100vh;background:#fff;border-right:1px solid var(--border);
     display:flex;flex-direction:column;gap:16px;padding:80px 18px 18px;transition:left .25s ease;z-index:70}
   #mobileNav a{color:#111;text-decoration:none;font-weight:700}
@@ -66,7 +69,6 @@
     color:#111;border-radius:14px;padding:10px 12px;box-shadow:0 10px 25px rgba(0,0,0,.12);text-decoration:none;font-weight:800;border:1px solid #eee}
   .wa-float .dot{width:10px;height:10px;background:var(--accent);border-radius:50%}
 
-  /* tap-friendly */
   *{-webkit-tap-highlight-color:transparent}
 </style>
 </head>
@@ -75,7 +77,6 @@
   <!-- ===== HEADER ===== -->
   <header class="site-header">
     <a href="/" class="brand">
-      <!-- Use local logo if you add omk-logo.png. If not present, text fallback shows -->
       <img src="omk-logo.png" alt="OMK logo" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';" />
       <span class="txt" style="display:none">OMK</span>
     </a>
@@ -90,6 +91,8 @@
       <a href="#shop">Shop</a>
       <a href="jacket.html">Jacket</a>
       <a href="jeans.html">Jeans</a>
+      <a href="tshirt.html">T-Shirt</a>
+      <a href="shorts.html">Shorts</a>
       <a href="https://wa.me/2347038112817" target="_blank" rel="noopener">WhatsApp</a>
     </nav>
     <div id="navOverlay"></div>
@@ -107,7 +110,6 @@
     <h2 class="section-title">Latest Drop 🔥</h2>
 
     <div class="grid">
-      <!-- Keep only items you actually have in the repo to avoid broken images -->
       <a class="card" href="jacket.html">
         <div class="imgwrap"><img src="jacket-black.jpg" alt="OMK Jacket - Black" /></div>
         <div class="meta"><div class="title">OMK Wolf Jacket</div><p class="price">₦80,000</p></div>
@@ -116,6 +118,16 @@
       <a class="card" href="jeans.html">
         <div class="imgwrap"><img src="jeans-blue.jpg" alt="OMK Jeans - Blue" /></div>
         <div class="meta"><div class="title">OMK Jeans</div><p class="price">₦70,000</p></div>
+      </a>
+
+      <a class="card" href="tshirt.html">
+        <div class="imgwrap"><img src="tee-white.jpg" alt="OMK Tee - White" /></div>
+        <div class="meta"><div class="title">OMK T-Shirt</div><p class="price">₦45,000</p></div>
+      </a>
+
+      <a class="card" href="shorts.html">
+        <div class="imgwrap"><img src="shorts-black.jpg" alt="OMK Shorts - Black" /></div>
+        <div class="meta"><div class="title">OMK Shorts</div><p class="price">₦50,000</p></div>
       </a>
     </div>
   </section>
@@ -148,9 +160,8 @@
     <span class="dot"></span> Chat with OMK
   </a>
 
-  <!-- ===== SCRIPTS ===== -->
+  <!-- ===== JS ===== -->
   <script>
-    // mobile menu open/close
     document.addEventListener('DOMContentLoaded', () => {
       const btn = document.getElementById('menuBtn');
       const nav = document.getElementById('mobileNav');
@@ -168,7 +179,6 @@
         });
       }
 
-      // when a product is tapped, prefill WhatsApp with the product name
       const waFab = document.getElementById('waFab');
       document.querySelectorAll('.card').forEach(card=>{
         card.addEventListener('click', ()=>{
@@ -177,7 +187,6 @@
         });
       });
 
-      // newsletter → send details to WhatsApp (simple MVP)
       const form = document.getElementById('nl-form');
       if(form){
         form.addEventListener('submit', e=>{
