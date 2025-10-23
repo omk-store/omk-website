@@ -22,9 +22,12 @@
   .brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.5px;font-size:1.05rem}
   .brand img{width:36px;height:36px;object-fit:contain}
   .brand .txt{display:inline-block}
-  #menuBtn{font:inherit;background:#000;color:#fff;border:0;border-radius:8px;padding:8px 12px;line-height:1;cursor:pointer}
-  #cartBtn{background:#fff;border:1px solid var(--border);border-radius:8px;padding:8px 12px;margin-left:8px}
 
+  .icon-btn{border:0;border-radius:10px;padding:8px 12px;line-height:1;cursor:pointer}
+  #menuBtn{background:#111;color:#fff;font-weight:800}
+  #cartBtn{background:#fff;border:1px solid var(--border);margin-left:8px}
+
+  /* slide-in nav */
   #mobileNav{position:fixed;top:0;left:-280px;width:260px;height:100vh;background:#fff;border-right:1px solid var(--border);
     display:flex;flex-direction:column;gap:16px;padding:80px 18px 18px;transition:left .25s ease;z-index:70}
   #mobileNav a{color:#111;text-decoration:none;font-weight:700}
@@ -36,19 +39,19 @@
   .hero{background:url('IMG_8959.png') center/cover no-repeat;color:#fff;text-align:center;padding:110px 20px 130px}
   .hero h1{font-size:2.6rem;margin:0 0 10px;letter-spacing:1px;text-transform:uppercase}
   .hero p{margin:0 0 20px;color:#eaeaea;font-weight:500;font-size:1.1rem}
-  .cta{background:var(--accent);color:#fff;text-decoration:none;padding:14px 28px;border-radius:8px;font-weight:800;display:inline-block}
+  .cta{background:var(--accent);color:#fff;text-decoration:none;padding:14px 28px;border-radius:12px;font-weight:800;display:inline-block}
   .cta:active{transform:scale(.98)}
 
   /* ===== PRODUCTS ===== */
   .wrap{max-width:1200px;margin:0 auto;padding:30px 18px}
   h2.section-title{text-align:center;margin:50px 0 22px;font-size:1.7rem;font-weight:900;letter-spacing:.4px}
   .grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
-  .card{display:block;text-decoration:none;color:inherit;border:1px solid var(--border);border-radius:10px;padding:10px;background:#fff;transition:.2s}
+  .card{display:block;text-decoration:none;color:inherit;border:1px solid var(--border);border-radius:12px;padding:10px;background:#fff;transition:.2s}
   .card:active{transform:scale(.99)}
-  .imgwrap{background:#fff;border:1px solid var(--border);padding:6px;border-radius:8px;overflow:hidden}
-  .imgwrap img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:6px;display:block}
+  .imgwrap{background:#fff;border:1px solid var(--border);padding:6px;border-radius:10px;overflow:hidden}
+  .imgwrap img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:8px;display:block}
   .meta{text-align:center;padding:10px 2px}
-  .title{margin:6px 0 4px;font-weight:800;font-size:1.02rem}
+  .title{margin:6px 0 4px;font-weight:800;font-size:1.04rem}
   .price{margin:0;color:var(--muted);font-weight:700}
 
   /* ===== NEWSLETTER/SOCIAL ===== */
@@ -56,8 +59,8 @@
   .nl h3{font-size:1.35rem;font-weight:900}
   .nl p{margin:0 0 16px;color:#333}
   .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-  .input{flex:1;min-width:240px;border:1px solid var(--border);border-radius:8px;padding:12px 14px;font-size:1rem}
-  .btn{border:none;background:var(--accent);color:#fff;padding:12px 18px;border-radius:8px;font-weight:800;cursor:pointer}
+  .input{flex:1;min-width:240px;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:1rem}
+  .btn{border:none;background:var(--accent);color:#fff;padding:12px 18px;border-radius:10px;font-weight:800;cursor:pointer}
   .icons-row{display:flex;justify-content:center;gap:16px;margin-top:16px}
   .icons-row a{font-weight:800;text-decoration:none;color:#111;border:1px solid var(--border);padding:8px 12px;border-radius:999px}
 
@@ -77,13 +80,14 @@
   <!-- ===== HEADER ===== -->
   <header class="site-header">
     <a href="/" class="brand">
-      <img src="omk-logo.png" alt="OMK logo" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';" />
+      <img src="omk-logo.png" alt="OMK logo"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';" />
       <span class="txt" style="display:none">OMK</span>
     </a>
 
     <div style="display:flex;align-items:center">
-      <button id="menuBtn" aria-label="Open menu">☰</button>
-      <button id="cartBtn" aria-label="Cart">🛍️</button>
+      <button id="menuBtn" class="icon-btn" aria-label="Open menu">☰</button>
+      <button id="cartBtn" class="icon-btn" aria-label="Cart" onclick="location.hash='#shop'">🛍️</button>
     </div>
 
     <nav id="mobileNav" aria-label="Mobile Navigation">
@@ -163,30 +167,27 @@
   <!-- ===== JS ===== -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // Mobile menu
       const btn = document.getElementById('menuBtn');
       const nav = document.getElementById('mobileNav');
       const overlay = document.getElementById('navOverlay');
-
-      function toggleNav(){
-        nav.classList.toggle('open');
-        overlay.classList.toggle('show');
-      }
+      function toggleNav(){ nav.classList.toggle('open'); overlay.classList.toggle('show'); }
       if(btn && nav && overlay){
         btn.addEventListener('click', toggleNav);
         overlay.addEventListener('click', toggleNav);
-        document.addEventListener('keydown', e => {
-          if(e.key === 'Escape' && nav.classList.contains('open')) toggleNav();
-        });
+        document.addEventListener('keydown', e => { if(e.key==='Escape' && nav.classList.contains('open')) toggleNav(); });
       }
 
+      // Prefill WhatsApp with product name on click
       const waFab = document.getElementById('waFab');
       document.querySelectorAll('.card').forEach(card=>{
         card.addEventListener('click', ()=>{
           const t = (card.querySelector('.title')?.textContent || 'a product').trim();
-          waFab.href = 'https://wa.me/2347038112817?text=' + encodeURIComponent('Hi OMK — I\'m interested in ' + t);
+          waFab.href = 'https://wa.me/2347038112817?text=' + encodeURIComponent("Hi OMK — I'm interested in " + t);
         });
       });
 
+      // Newsletter → WhatsApp message (MVP)
       const form = document.getElementById('nl-form');
       if(form){
         form.addEventListener('submit', e=>{
