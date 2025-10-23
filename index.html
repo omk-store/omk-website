@@ -5,69 +5,136 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>OMK | Only My Kind</title>
 <style>
-  :root{--fg:#111;--bg:#fff;--muted:#6b6b6b;--border:#eaeaea}
+  :root{
+    --fg:#111;
+    --bg:#fff;
+    --muted:#6b6b6b;
+    --border:#eaeaea;
+    --accent:#ff2d55;
+  }
   *{box-sizing:border-box}
-  html,body{margin:0;background:var(--bg);color:var(--fg);
-    font-family:system-ui,-apple-system,Segoe UI,Arial,Helvetica,sans-serif}
+  html,body{
+    margin:0;
+    background:var(--bg);
+    color:var(--fg);
+    font-family:system-ui,-apple-system,Segoe UI,Arial,Helvetica,sans-serif;
+    scroll-behavior:smooth;
+  }
 
   /* HEADER */
-  .nav{position:sticky;top:0;z-index:5;background:#fff;
-       border-bottom:1px solid var(--border);
-       display:flex;align-items:center;justify-content:space-between;
-       padding:14px 16px}
-  .brand{font-weight:800;letter-spacing:.2px}
-  .icons{display:flex;gap:16px;font-weight:700}
+  .nav{
+    position:sticky;top:0;z-index:5;
+    background:#fff;
+    border-bottom:1px solid var(--border);
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 16px;
+    box-shadow:0 2px 8px rgba(0,0,0,.04);
+  }
+  .brand{
+    display:flex;align-items:center;gap:10px;
+    font-weight:900;letter-spacing:.5px;font-size:1.1rem;
+  }
+  .brand img{
+    width:38px;height:38px;object-fit:contain;
+  }
+  .icons{display:flex;gap:16px;font-weight:700;font-size:1.2rem}
 
   /* HERO */
-  .hero{background:#000;color:#fff;text-align:center;padding:90px 20px 100px}
-  .hero h1{font-size:2.2rem;margin:0 0 10px}
-  .hero p{margin:0 0 22px;color:#ccc;font-weight:500}
-  .hero a{background:#fff;color:#000;text-decoration:none;padding:12px 26px;border-radius:8px;font-weight:700;transition:.3s}
-  .hero a:hover{background:#111;color:#fff}
+  .hero{
+    background:url('IMG_8959.png') center/cover no-repeat;
+    color:#fff;text-align:center;
+    padding:110px 20px 130px;
+    backdrop-filter:brightness(.6);
+  }
+  .hero h1{
+    font-size:3rem;margin:0 0 12px;
+    letter-spacing:1px;text-transform:uppercase;
+  }
+  .hero p{
+    margin:0 0 22px;
+    color:#eaeaea;font-weight:500;font-size:1.2rem;
+  }
+  .hero a{
+    background:var(--accent);
+    color:#fff;text-decoration:none;
+    padding:14px 32px;border-radius:8px;
+    font-weight:800;letter-spacing:.3px;
+    transition:.3s;
+  }
+  .hero a:hover{
+    background:#fff;color:#000;
+  }
 
   /* GRID */
-  .wrap{max-width:1200px;margin:0 auto;padding:18px}
-  .grid{display:grid;gap:24px;grid-template-columns:repeat(2,1fr)}
-  @media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr)}}
-  @media(min-width:1000px){.grid{grid-template-columns:repeat(4,1fr)}}
+  .wrap{max-width:1200px;margin:0 auto;padding:30px 18px}
+  .grid{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
   .card{display:block;text-decoration:none;color:inherit;transition:.25s}
-  .card:hover{transform:translateY(-2px)}
-  .imgwrap{background:#fff;border:1px solid var(--border);padding:8px;border-radius:10px}
-  .imgwrap img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;border-radius:6px}
-  .meta{padding:10px 2px;text-align:center}
-  .title{margin:0 0 6px;font-weight:800;font-size:1rem}
+  .card:hover{transform:translateY(-3px)}
+  .imgwrap{
+    background:#fff;border:1px solid var(--border);
+    padding:8px;border-radius:10px;overflow:hidden;
+  }
+  .imgwrap img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;border-radius:6px;transition:.3s}
+  .imgwrap img:hover{transform:scale(1.05)}
+  .meta{text-align:center;padding:10px 2px}
+  .title{margin:6px 0 4px;font-weight:800;font-size:1.05rem}
   .price{margin:0;color:var(--muted);font-weight:700}
 
+  /* SECTION TITLES */
+  h2.section-title{
+    text-align:center;
+    margin:60px 0 30px;
+    font-size:1.8rem;
+    font-weight:900;
+    letter-spacing:.5px;
+  }
+
   /* NEWSLETTER + SOCIAL */
-  .nl{max-width:1200px;margin:36px auto 0;padding:0 18px}
-  .nl h3{margin:0 0 6px;font-size:1.35rem;font-weight:900;letter-spacing:.2px}
-  .nl p{margin:0 0 18px;font-weight:700;color:#111}
-  .nl form{max-width:720px}
-  .row{display:flex;gap:12px;align-items:center}
-  .input{flex:1;border:none;border-bottom:3px solid #111;outline:none;
-         padding:14px 4px;font-size:1rem;background:transparent}
-  .btn{border:none;background:#111;color:#fff;padding:14px 20px;border-radius:2px;
-       font-weight:800;letter-spacing:.5px;cursor:pointer}
-  .btn:active{transform:translateY(1px)}
-  .follow{margin:28px 0 18px;font-weight:900;letter-spacing:.2px}
-  .icons-row{display:flex;gap:16px}
-  .iconlink img{width:34px;height:34px;transition:.2s}
-  .iconlink:hover img{transform:scale(1.1)}
-  .legal{max-width:1200px;margin:28px auto 90px;padding:0 18px;color:#111;font-weight:800}
+  .nl{max-width:1200px;margin:60px auto 0;padding:0 18px;text-align:center}
+  .nl h3{font-size:1.45rem;font-weight:900;letter-spacing:.3px}
+  .nl p{margin:0 0 20px;font-weight:600;color:#333}
+  .row{display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap}
+  .input{
+    flex:1;min-width:250px;
+    border:none;border-bottom:3px solid #000;
+    padding:14px 6px;font-size:1rem;outline:none;background:transparent;
+  }
+  .btn{
+    border:none;background:var(--accent);color:#fff;
+    padding:14px 24px;border-radius:4px;
+    font-weight:800;letter-spacing:.5px;cursor:pointer;transition:.2s;
+  }
+  .btn:hover{opacity:.85}
+
+  .icons-row{display:flex;justify-content:center;gap:18px;margin-top:22px}
+  .iconlink img{width:34px;height:34px;transition:.25s}
+  .iconlink:hover img{transform:scale(1.15)}
+
+  footer{
+    margin-top:70px;
+    background:#111;color:#fff;
+    text-align:center;
+    padding:22px;
+    font-size:.9rem;font-weight:600;
+  }
 
   /* WHATSAPP FLOAT */
   .wa-float{
-    position:fixed; right:16px; bottom:16px; z-index:9999;
-    display:flex; align-items:center; gap:10px;
-    background:#fff; color:#111; border-radius:14px;
-    padding:10px 12px; box-shadow:0 10px 25px rgba(0,0,0,.12);
-    text-decoration:none; font-weight:800; border:1px solid #eee;
+    position:fixed;right:18px;bottom:18px;z-index:9999;
+    display:flex;align-items:center;gap:10px;
+    background:#fff;color:#111;border-radius:14px;
+    padding:10px 12px;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+    text-decoration:none;font-weight:800;border:1px solid #eee;
+    animation:floatUp 3s ease-in-out infinite;
   }
+  @keyframes floatUp{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
   .wa-float img{width:34px;height:34px;display:block}
   .wa-float .badge{
-    position:absolute; top:-6px; right:-6px; background:#ff2d55; color:#fff;
-    width:18px; height:18px; border-radius:50%; display:flex; align-items:center; justify-content:center;
-    font-size:.7rem; font-weight:800;
+    position:absolute;top:-6px;right:-6px;background:var(--accent);
+    color:#fff;width:18px;height:18px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:.7rem;font-weight:800;
   }
 </style>
 </head>
@@ -75,96 +142,73 @@
 
   <!-- Header -->
   <header class="nav">
-    <div class="brand">OMK</div>
-    <div class="icons">☰ 🔍 🛍️</div>
+    <div class="brand">
+      <img src="https://i.ibb.co/fdqq9Jm/omk-logo.png" alt="OMK Logo">
+      <span>OMK</span>
+    </div>
+    <div class="icons">☰ 🛍️</div>
   </header>
 
   <!-- Hero -->
   <section class="hero">
-    <h1>ONLY MY KIND</h1>
-    <p>Streetwear made for your vibe.</p>
-    <a href="#shop">Shop Now</a>
+    <h1>Only My Kind</h1>
+    <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
+    <a href="#shop">Shop Collection</a>
   </section>
 
-  <!-- Products -->
-  <main class="wrap" id="shop">
-    <section class="grid" aria-label="Products">
-
-      <!-- OMK Jacket -->
+  <!-- Shop -->
+  <section id="shop" class="wrap">
+    <h2 class="section-title">Latest Drop 🔥</h2>
+    <div class="grid">
       <a class="card" href="jacket.html">
-        <div class="imgwrap">
-          <img src="jacket-black.jpg" alt="OMK Wolf Jacket Front">
-        </div>
-        <div class="meta">
-          <h3 class="title">OMK Wolf Jacket – Black</h3>
-          <p class="price">₦80,000</p>
-        </div>
+        <div class="imgwrap"><img src="jacket-black.jpg" alt="OMK Jacket"></div>
+        <div class="meta"><h3 class="title">OMK Wolf Jacket</h3><p class="price">₦80,000</p></div>
       </a>
-
-      <!-- OMK Jeans -->
       <a class="card" href="jeans.html">
-        <div class="imgwrap"><img src="jeans-black.jpg" alt="OMK Wolf Jean"></div>
-        <div class="meta">
-          <h3 class="title">OMK Wolf Jean</h3>
-          <p class="price">₦80,000</p>
-        </div>
+        <div class="imgwrap"><img src="jeans-blue.jpg" alt="OMK Jeans"></div>
+        <div class="meta"><h3 class="title">OMK Jeans</h3><p class="price">₦70,000</p></div>
       </a>
-
-      <!-- OMK Tee -->
       <a class="card" href="tshirt.html">
-        <div class="imgwrap"><img src="tshirt.jpg" alt="OMK Wolf Tee"></div>
-        <div class="meta">
-          <h3 class="title">OMK Wolf Tee</h3>
-          <p class="price">₦50,000</p>
-        </div>
+        <div class="imgwrap"><img src="tee-white.jpg" alt="OMK Tee"></div>
+        <div class="meta"><h3 class="title">OMK Tee</h3><p class="price">₦45,000</p></div>
       </a>
-
-      <!-- OMK Shorts -->
       <a class="card" href="shorts.html">
-        <div class="imgwrap"><img src="shorts.jpg" alt="OMK Wolf Shorts"></div>
-        <div class="meta">
-          <h3 class="title">OMK Wolf Shorts</h3>
-          <p class="price">₦50,000</p>
-        </div>
-      </a>
-
-    </section>
-  </main>
-
-  <!-- Newsletter + Social -->
-  <section class="nl">
-    <h3>JOIN THE COMMUNITY.</h3>
-    <p>You’ll receive all the information regarding the next drops.</p>
-    <form id="nl-form">
-      <div class="row" style="margin:12px 0 22px">
-        <input class="input" id="email" type="email" placeholder="Email Address" required>
-      </div>
-      <button class="btn" type="submit">SUBSCRIBE →</button>
-    </form>
-
-    <div class="follow">FOLLOW US</div>
-    <div class="icons-row">
-      <a class="iconlink" href="https://www.instagram.com/iam_omotaker" target="_blank" aria-label="Instagram">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
-      </a>
-      <a class="iconlink" href="https://wa.me/2347038112817" target="_blank" aria-label="WhatsApp">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        <div class="imgwrap"><img src="shorts-black.jpg" alt="OMK Shorts"></div>
+        <div class="meta"><h3 class="title">OMK Shorts</h3><p class="price">₦50,000</p></div>
       </a>
     </div>
   </section>
 
-  <div class="legal">© 2025, OMK.</div>
+  <!-- Newsletter -->
+  <section class="nl">
+    <h3>Join The OMK Pack 🐺</h3>
+    <p>Be first to know when new drops & music hit.</p>
+    <form id="nl-form">
+      <div class="row">
+        <input class="input" id="email" type="email" placeholder="Enter your email" required>
+        <button class="btn" type="submit">Subscribe</button>
+      </div>
+    </form>
+    <div class="icons-row">
+      <a class="iconlink" href="https://www.instagram.com/iam_omotaker" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"></a>
+      <a class="iconlink" href="https://www.tiktok.com/@iam.omotaker" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/en/0/0a/TikTok_logo.svg" alt="TikTok"></a>
+      <a class="iconlink" href="https://wa.me/2347038112817" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"></a>
+    </div>
+  </section>
+
+  <footer>© 2025 OMK – Only My Kind | All Rights Reserved</footer>
 
   <!-- Floating WhatsApp -->
   <a class="wa-float"
      href="https://wa.me/2347038112817?text=Hi%20OMK%20—%20I%27m%20interested%20in%20your%20latest%20drop."
      target="_blank" rel="noopener">
-    <span>Chat with us</span>
+    <span>Chat with OMK</span>
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
     <span class="badge">1</span>
   </a>
 
   <script>
+    // WhatsApp auto-fill on product click
     document.querySelectorAll('.card').forEach(card=>{
       card.addEventListener('click', ()=>{
         const t = card.querySelector('.title')?.textContent?.trim() || 'a product';
@@ -173,11 +217,12 @@
         wa.href = base + encodeURIComponent(t);
       });
     });
-    document.getElementById('nl-form').addEventListener('submit', (e)=>{
+    // Newsletter WhatsApp redirect
+    document.getElementById('nl-form').addEventListener('submit', e=>{
       e.preventDefault();
       const email = document.getElementById('email').value.trim();
       if(!email) return;
-      const msg = 'Hi OMK — please add me to the community list. My email: ' + email;
+      const msg = 'Hi OMK — please add me to the newsletter. My email: ' + email;
       window.open('https://wa.me/2347038112817?text=' + encodeURIComponent(msg), '_blank');
     });
   </script>
