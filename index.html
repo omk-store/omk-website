@@ -1,231 +1,194 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>OMK | Only My Kind</title>
+
 <style>
   :root{
-    --fg:#111;
-    --bg:#fff;
-    --muted:#6b6b6b;
-    --border:#eaeaea;
-    --accent:#ff2d55;
+    --fg:#111; --bg:#fff; --muted:#6b6b6b; --border:#eaeaea; --accent:#ff2d55;
   }
-  *{box-sizing:border-box}
-  html,body{
-    margin:0;
-    background:var(--bg);
-    color:var(--fg);
-    font-family:system-ui,-apple-system,Segoe UI,Arial,Helvetica,sans-serif;
-    scroll-behavior:smooth;
-  }
+  *{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--fg);
+    font-family:system-ui,-apple-system,Segoe UI,Arial,Helvetica,sans-serif;scroll-behavior:smooth}
 
-  /* HEADER */
-  .nav{
-    position:sticky;top:0;z-index:5;
-    background:#fff;
-    border-bottom:1px solid var(--border);
-    display:flex;align-items:center;justify-content:space-between;
-    padding:14px 16px;
-    box-shadow:0 2px 8px rgba(0,0,0,.04);
-  }
-  .brand{
-    display:flex;align-items:center;gap:10px;
-    font-weight:900;letter-spacing:.5px;font-size:1.1rem;
-  }
-  .brand img{
-    width:38px;height:38px;object-fit:contain;
-  }
-  .icons{display:flex;gap:16px;font-weight:700;font-size:1.2rem}
+  /* ===== HEADER ===== */
+  .site-header{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid var(--border);
+    display:flex;align-items:center;justify-content:space-between;padding:12px 16px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.5px;font-size:1.05rem}
+  .brand img{width:36px;height:36px;object-fit:contain}
+  .brand .txt{display:inline-block}
+  #menuBtn{font:inherit;background:#000;color:#fff;border:0;border-radius:8px;padding:8px 12px;line-height:1;cursor:pointer}
+  #cartBtn{background:#fff;border:1px solid var(--border);border-radius:8px;padding:8px 12px;margin-left:8px}
 
-  /* HERO */
-  .hero{
-    background:url('IMG_8959.png') center/cover no-repeat;
-    color:#fff;text-align:center;
-    padding:110px 20px 130px;
-    backdrop-filter:brightness(.6);
-  }
-  .hero h1{
-    font-size:3rem;margin:0 0 12px;
-    letter-spacing:1px;text-transform:uppercase;
-  }
-  .hero p{
-    margin:0 0 22px;
-    color:#eaeaea;font-weight:500;font-size:1.2rem;
-  }
-  .hero a{
-    background:var(--accent);
-    color:#fff;text-decoration:none;
-    padding:14px 32px;border-radius:8px;
-    font-weight:800;letter-spacing:.3px;
-    transition:.3s;
-  }
-  .hero a:hover{
-    background:#fff;color:#000;
-  }
+  /* slide-in nav */
+  #mobileNav{position:fixed;top:0;left:-280px;width:260px;height:100vh;background:#fff;border-right:1px solid var(--border);
+    display:flex;flex-direction:column;gap:16px;padding:80px 18px 18px;transition:left .25s ease;z-index:70}
+  #mobileNav a{color:#111;text-decoration:none;font-weight:700}
+  #mobileNav.open{left:0}
+  #navOverlay{position:fixed;inset:0;background:rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:65}
+  #navOverlay.show{opacity:1;pointer-events:auto}
 
-  /* GRID */
+  /* ===== HERO ===== */
+  .hero{background:url('IMG_8959.png') center/cover no-repeat;color:#fff;text-align:center;padding:110px 20px 130px}
+  .hero h1{font-size:2.6rem;margin:0 0 10px;letter-spacing:1px;text-transform:uppercase}
+  .hero p{margin:0 0 20px;color:#eaeaea;font-weight:500;font-size:1.1rem}
+  .cta{background:var(--accent);color:#fff;text-decoration:none;padding:14px 28px;border-radius:8px;font-weight:800;display:inline-block}
+  .cta:active{transform:scale(.98)}
+
+  /* ===== PRODUCTS ===== */
   .wrap{max-width:1200px;margin:0 auto;padding:30px 18px}
-  .grid{display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
-  .card{display:block;text-decoration:none;color:inherit;transition:.25s}
-  .card:hover{transform:translateY(-3px)}
-  .imgwrap{
-    background:#fff;border:1px solid var(--border);
-    padding:8px;border-radius:10px;overflow:hidden;
-  }
-  .imgwrap img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;border-radius:6px;transition:.3s}
-  .imgwrap img:hover{transform:scale(1.05)}
+  h2.section-title{text-align:center;margin:50px 0 22px;font-size:1.7rem;font-weight:900;letter-spacing:.4px}
+  .grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+  .card{display:block;text-decoration:none;color:inherit;border:1px solid var(--border);border-radius:10px;padding:10px;background:#fff;transition:.2s}
+  .card:active{transform:scale(.99)}
+  .imgwrap{background:#fff;border:1px solid var(--border);padding:6px;border-radius:8px;overflow:hidden}
+  .imgwrap img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:6px;display:block}
   .meta{text-align:center;padding:10px 2px}
-  .title{margin:6px 0 4px;font-weight:800;font-size:1.05rem}
+  .title{margin:6px 0 4px;font-weight:800;font-size:1.02rem}
   .price{margin:0;color:var(--muted);font-weight:700}
 
-  /* SECTION TITLES */
-  h2.section-title{
-    text-align:center;
-    margin:60px 0 30px;
-    font-size:1.8rem;
-    font-weight:900;
-    letter-spacing:.5px;
-  }
+  /* ===== NEWSLETTER/SOCIAL ===== */
+  .nl{max-width:900px;margin:50px auto 0;padding:0 18px;text-align:center}
+  .nl h3{font-size:1.35rem;font-weight:900}
+  .nl p{margin:0 0 16px;color:#333}
+  .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .input{flex:1;min-width:240px;border:1px solid var(--border);border-radius:8px;padding:12px 14px;font-size:1rem}
+  .btn{border:none;background:var(--accent);color:#fff;padding:12px 18px;border-radius:8px;font-weight:800;cursor:pointer}
+  .icons-row{display:flex;justify-content:center;gap:16px;margin-top:16px}
+  .icons-row a{font-weight:800;text-decoration:none;color:#111;border:1px solid var(--border);padding:8px 12px;border-radius:999px}
 
-  /* NEWSLETTER + SOCIAL */
-  .nl{max-width:1200px;margin:60px auto 0;padding:0 18px;text-align:center}
-  .nl h3{font-size:1.45rem;font-weight:900;letter-spacing:.3px}
-  .nl p{margin:0 0 20px;font-weight:600;color:#333}
-  .row{display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap}
-  .input{
-    flex:1;min-width:250px;
-    border:none;border-bottom:3px solid #000;
-    padding:14px 6px;font-size:1rem;outline:none;background:transparent;
-  }
-  .btn{
-    border:none;background:var(--accent);color:#fff;
-    padding:14px 24px;border-radius:4px;
-    font-weight:800;letter-spacing:.5px;cursor:pointer;transition:.2s;
-  }
-  .btn:hover{opacity:.85}
+  /* ===== FOOTER ===== */
+  footer{margin-top:60px;background:#111;color:#fff;text-align:center;padding:20px;font-size:.9rem;font-weight:600}
 
-  .icons-row{display:flex;justify-content:center;gap:18px;margin-top:22px}
-  .iconlink img{width:34px;height:34px;transition:.25s}
-  .iconlink:hover img{transform:scale(1.15)}
+  /* ===== WHATSAPP FLOAT ===== */
+  .wa-float{position:fixed;right:16px;bottom:16px;z-index:90;display:flex;align-items:center;gap:10px;background:#fff;
+    color:#111;border-radius:14px;padding:10px 12px;box-shadow:0 10px 25px rgba(0,0,0,.12);text-decoration:none;font-weight:800;border:1px solid #eee}
+  .wa-float .dot{width:10px;height:10px;background:var(--accent);border-radius:50%}
 
-  footer{
-    margin-top:70px;
-    background:#111;color:#fff;
-    text-align:center;
-    padding:22px;
-    font-size:.9rem;font-weight:600;
-  }
-
-  /* WHATSAPP FLOAT */
-  .wa-float{
-    position:fixed;right:18px;bottom:18px;z-index:9999;
-    display:flex;align-items:center;gap:10px;
-    background:#fff;color:#111;border-radius:14px;
-    padding:10px 12px;
-    box-shadow:0 10px 25px rgba(0,0,0,.12);
-    text-decoration:none;font-weight:800;border:1px solid #eee;
-    animation:floatUp 3s ease-in-out infinite;
-  }
-  @keyframes floatUp{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-  .wa-float img{width:34px;height:34px;display:block}
-  .wa-float .badge{
-    position:absolute;top:-6px;right:-6px;background:var(--accent);
-    color:#fff;width:18px;height:18px;border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    font-size:.7rem;font-weight:800;
-  }
+  /* tap-friendly */
+  *{-webkit-tap-highlight-color:transparent}
 </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header class="nav">
-    <div class="brand">
-      <img src="https://i.ibb.co/fdqq9Jm/omk-logo.png" alt="OMK Logo">
-      <span>OMK</span>
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <a href="/" class="brand">
+      <!-- Use local logo if you add omk-logo.png. If not present, text fallback shows -->
+      <img src="omk-logo.png" alt="OMK logo" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';" />
+      <span class="txt" style="display:none">OMK</span>
+    </a>
+
+    <div style="display:flex;align-items:center">
+      <button id="menuBtn" aria-label="Open menu">☰</button>
+      <button id="cartBtn" aria-label="Cart">🛍️</button>
     </div>
-    <div class="icons">☰ 🛍️</div>
+
+    <nav id="mobileNav" aria-label="Mobile Navigation">
+      <a href="index.html">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="jacket.html">Jacket</a>
+      <a href="jeans.html">Jeans</a>
+      <a href="https://wa.me/2347038112817" target="_blank" rel="noopener">WhatsApp</a>
+    </nav>
+    <div id="navOverlay"></div>
   </header>
 
-  <!-- Hero -->
+  <!-- ===== HERO ===== -->
   <section class="hero">
     <h1>Only My Kind</h1>
     <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
-    <a href="#shop">Shop Collection</a>
+    <a class="cta" href="#shop">Shop Collection</a>
   </section>
 
-  <!-- Shop -->
+  <!-- ===== PRODUCTS ===== -->
   <section id="shop" class="wrap">
     <h2 class="section-title">Latest Drop 🔥</h2>
+
     <div class="grid">
+      <!-- Keep only items you actually have in the repo to avoid broken images -->
       <a class="card" href="jacket.html">
-        <div class="imgwrap"><img src="jacket-black.jpg" alt="OMK Jacket"></div>
-        <div class="meta"><h3 class="title">OMK Wolf Jacket</h3><p class="price">₦80,000</p></div>
+        <div class="imgwrap"><img src="jacket-black.jpg" alt="OMK Jacket - Black" /></div>
+        <div class="meta"><div class="title">OMK Wolf Jacket</div><p class="price">₦80,000</p></div>
       </a>
+
       <a class="card" href="jeans.html">
-        <div class="imgwrap"><img src="jeans-blue.jpg" alt="OMK Jeans"></div>
-        <div class="meta"><h3 class="title">OMK Jeans</h3><p class="price">₦70,000</p></div>
-      </a>
-      <a class="card" href="tshirt.html">
-        <div class="imgwrap"><img src="tee-white.jpg" alt="OMK Tee"></div>
-        <div class="meta"><h3 class="title">OMK Tee</h3><p class="price">₦45,000</p></div>
-      </a>
-      <a class="card" href="shorts.html">
-        <div class="imgwrap"><img src="shorts-black.jpg" alt="OMK Shorts"></div>
-        <div class="meta"><h3 class="title">OMK Shorts</h3><p class="price">₦50,000</p></div>
+        <div class="imgwrap"><img src="jeans-blue.jpg" alt="OMK Jeans - Blue" /></div>
+        <div class="meta"><div class="title">OMK Jeans</div><p class="price">₦70,000</p></div>
       </a>
     </div>
   </section>
 
-  <!-- Newsletter -->
+  <!-- ===== NEWSLETTER ===== -->
   <section class="nl">
     <h3>Join The OMK Pack 🐺</h3>
     <p>Be first to know when new drops & music hit.</p>
+
     <form id="nl-form">
       <div class="row">
-        <input class="input" id="email" type="email" placeholder="Enter your email" required>
+        <input class="input" id="email" type="email" placeholder="Enter your email" required />
         <button class="btn" type="submit">Subscribe</button>
       </div>
     </form>
+
     <div class="icons-row">
-      <a class="iconlink" href="https://www.instagram.com/iam_omotaker" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"></a>
-      <a class="iconlink" href="https://www.tiktok.com/@iam.omotaker" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/en/0/0a/TikTok_logo.svg" alt="TikTok"></a>
-      <a class="iconlink" href="https://wa.me/2347038112817" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"></a>
+      <a href="https://www.instagram.com/iam_omotaker" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.tiktok.com/@iam.omotaker" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://wa.me/2347038112817" target="_blank" rel="noopener">WhatsApp</a>
     </div>
   </section>
 
   <footer>© 2025 OMK – Only My Kind | All Rights Reserved</footer>
 
-  <!-- Floating WhatsApp -->
-  <a class="wa-float"
+  <!-- ===== WHATSAPP FLOAT ===== -->
+  <a class="wa-float" id="waFab"
      href="https://wa.me/2347038112817?text=Hi%20OMK%20—%20I%27m%20interested%20in%20your%20latest%20drop."
-     target="_blank" rel="noopener">
-    <span>Chat with OMK</span>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-    <span class="badge">1</span>
+     target="_blank" rel="noopener" aria-label="Chat with OMK">
+    <span class="dot"></span> Chat with OMK
   </a>
 
+  <!-- ===== SCRIPTS ===== -->
   <script>
-    // WhatsApp auto-fill on product click
-    document.querySelectorAll('.card').forEach(card=>{
-      card.addEventListener('click', ()=>{
-        const t = card.querySelector('.title')?.textContent?.trim() || 'a product';
-        const wa = document.querySelector('.wa-float');
-        const base = 'https://wa.me/2347038112817?text=Hi%20OMK%20—%20I%27m%20interested%20in%20';
-        wa.href = base + encodeURIComponent(t);
+    // mobile menu open/close
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('menuBtn');
+      const nav = document.getElementById('mobileNav');
+      const overlay = document.getElementById('navOverlay');
+
+      function toggleNav(){
+        nav.classList.toggle('open');
+        overlay.classList.toggle('show');
+      }
+      if(btn && nav && overlay){
+        btn.addEventListener('click', toggleNav);
+        overlay.addEventListener('click', toggleNav);
+        document.addEventListener('keydown', e => {
+          if(e.key === 'Escape' && nav.classList.contains('open')) toggleNav();
+        });
+      }
+
+      // when a product is tapped, prefill WhatsApp with the product name
+      const waFab = document.getElementById('waFab');
+      document.querySelectorAll('.card').forEach(card=>{
+        card.addEventListener('click', ()=>{
+          const t = (card.querySelector('.title')?.textContent || 'a product').trim();
+          waFab.href = 'https://wa.me/2347038112817?text=' + encodeURIComponent('Hi OMK — I\'m interested in ' + t);
+        });
       });
-    });
-    // Newsletter WhatsApp redirect
-    document.getElementById('nl-form').addEventListener('submit', e=>{
-      e.preventDefault();
-      const email = document.getElementById('email').value.trim();
-      if(!email) return;
-      const msg = 'Hi OMK — please add me to the newsletter. My email: ' + email;
-      window.open('https://wa.me/2347038112817?text=' + encodeURIComponent(msg), '_blank');
+
+      // newsletter → send details to WhatsApp (simple MVP)
+      const form = document.getElementById('nl-form');
+      if(form){
+        form.addEventListener('submit', e=>{
+          e.preventDefault();
+          const email = document.getElementById('email').value.trim();
+          if(!email) return;
+          const msg = 'Hi OMK — please add me to the newsletter. My email: ' + email;
+          window.open('https://wa.me/2347038112817?text=' + encodeURIComponent(msg), '_blank');
+        });
+      }
     });
   </script>
-
 </body>
 </html>
