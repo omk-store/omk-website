@@ -29,14 +29,20 @@
 
   /* slide-in nav */
   #mobileNav{position:fixed;top:0;left:-280px;width:260px;height:100vh;background:#fff;border-right:1px solid var(--border);
-    display:flex;flex-direction:column;gap:16px;padding:80px 18px 18px;transition:left .25s ease;z-index:70}
-  #mobileNav a{color:#111;text-decoration:none;font-weight:700}
+    display:flex;flex-direction:column;gap:18px;padding:80px 18px 18px;transition:left .25s ease;z-index:70}
+  #mobileNav a{color:#111;text-decoration:none;font-weight:700;font-size:1.05rem}
   #mobileNav.open{left:0}
   #navOverlay{position:fixed;inset:0;background:rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:65}
   #navOverlay.show{opacity:1;pointer-events:auto}
 
   /* ===== HERO ===== */
-  .hero{background:url('IMG_8959.png') center/cover no-repeat;color:#fff;text-align:center;padding:110px 20px 130px}
+  .hero{
+    background:url('omk-wolf-bg.jpg') center/cover no-repeat;
+    color:#fff;text-align:center;
+    padding:140px 20px 160px;
+    background-attachment:fixed;
+    box-shadow:inset 0 0 0 1000px rgba(0,0,0,0.45);
+  }
   .hero h1{font-size:2.6rem;margin:0 0 10px;letter-spacing:1px;text-transform:uppercase}
   .hero p{margin:0 0 20px;color:#eaeaea;font-weight:500;font-size:1.1rem}
   .cta{background:var(--accent);color:#fff;text-decoration:none;padding:14px 28px;border-radius:12px;font-weight:800;display:inline-block}
@@ -47,22 +53,21 @@
   h2.section-title{text-align:center;margin:50px 0 22px;font-size:1.7rem;font-weight:900;letter-spacing:.4px}
   .grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
   .card{display:block;text-decoration:none;color:inherit;border:1px solid var(--border);border-radius:12px;padding:10px;background:#fff;transition:.2s}
-  .card:hover{transform:scale(1.02);box-shadow:0 5px 15px rgba(0,0,0,.08)}
+  .card:active{transform:scale(.99)}
   .imgwrap{background:#fff;border:1px solid var(--border);padding:6px;border-radius:10px;overflow:hidden}
   .imgwrap img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:8px;display:block}
   .meta{text-align:center;padding:10px 2px}
   .title{margin:6px 0 4px;font-weight:800;font-size:1.04rem}
   .price{margin:0;color:var(--muted);font-weight:700}
 
-  /* ===== NEWSLETTER/SOCIAL ===== */
-  .nl{max-width:900px;margin:50px auto 0;padding:0 18px;text-align:center}
-  .nl h3{font-size:1.35rem;font-weight:900}
-  .nl p{margin:0 0 16px;color:#333}
-  .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-  .input{flex:1;min-width:240px;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:1rem}
-  .btn{border:none;background:var(--accent);color:#fff;padding:12px 18px;border-radius:10px;font-weight:800;cursor:pointer}
-  .icons-row{display:flex;justify-content:center;gap:16px;margin-top:16px}
-  .icons-row a{font-weight:800;text-decoration:none;color:#111;border:1px solid var(--border);padding:8px 12px;border-radius:999px}
+  /* ===== SIGN-UP ===== */
+  .signup{max-width:900px;margin:60px auto;padding:40px 20px;background:#111;color:#fff;border-radius:16px;text-align:center}
+  .signup h3{font-size:1.7rem;font-weight:900;margin:0 0 10px}
+  .signup p{color:#ccc;font-size:1rem;margin-bottom:20px}
+  .signup form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .signup input{flex:1;min-width:240px;padding:12px 14px;border:none;border-radius:8px;font-size:1rem}
+  .signup button{background:var(--accent);color:#fff;border:none;padding:12px 20px;border-radius:10px;font-weight:800;cursor:pointer}
+  .signup button:hover{opacity:.9}
 
   /* ===== FOOTER ===== */
   footer{margin-top:60px;background:#111;color:#fff;text-align:center;padding:20px;font-size:.9rem;font-weight:600}
@@ -71,8 +76,6 @@
   .wa-float{position:fixed;right:16px;bottom:16px;z-index:90;display:flex;align-items:center;gap:10px;background:#fff;
     color:#111;border-radius:14px;padding:10px 12px;box-shadow:0 10px 25px rgba(0,0,0,.12);text-decoration:none;font-weight:800;border:1px solid #eee}
   .wa-float .dot{width:10px;height:10px;background:var(--accent);border-radius:50%}
-
-  *{-webkit-tap-highlight-color:transparent}
 </style>
 </head>
 <body>
@@ -97,6 +100,7 @@
       <a href="jeans.html">Jeans</a>
       <a href="tshirt.html">T-Shirt</a>
       <a href="shorts.html">Shorts</a>
+      <a href="#signup">Sign Up with OMK</a>
       <a href="https://wa.me/2347038112817" target="_blank" rel="noopener">WhatsApp</a>
     </nav>
     <div id="navOverlay"></div>
@@ -114,111 +118,64 @@
     <h2 class="section-title">Latest Drop 🔥</h2>
 
     <div class="grid">
-      <a class="card" href="jacket.html">
+      <a class="card" href="#">
         <div class="imgwrap"><img src="jacket-black.jpg" alt="OMK Jacket - Black" /></div>
         <div class="meta"><div class="title">OMK Wolf Jacket</div><p class="price">₦80,000</p></div>
       </a>
 
-      <a class="card" href="jeans.html">
+      <a class="card" href="#">
         <div class="imgwrap"><img src="jeans-blue.jpg" alt="OMK Jeans - Blue" /></div>
         <div class="meta"><div class="title">OMK Jeans</div><p class="price">₦70,000</p></div>
       </a>
 
-      <a class="card" href="tshirt.html">
+      <a class="card" href="#">
         <div class="imgwrap"><img src="tee-white.jpg" alt="OMK Tee - White" /></div>
         <div class="meta"><div class="title">OMK T-Shirt</div><p class="price">₦45,000</p></div>
       </a>
 
-      <a class="card" href="shorts.html">
+      <a class="card" href="#">
         <div class="imgwrap"><img src="shorts-black.jpg" alt="OMK Shorts - Black" /></div>
         <div class="meta"><div class="title">OMK Shorts</div><p class="price">₦50,000</p></div>
-      </a>
-
-      <!-- New OMK Sets -->
-      <a class="card" href="coolset.html">
-        <div class="imgwrap"><img src="omk-coolset.jpg" alt="OMK Cool Set" /></div>
-        <div class="meta"><div class="title">OMK Cool Set</div><p class="price">₦150,000</p></div>
-      </a>
-
-      <a class="card" href="modeset.html">
-        <div class="imgwrap"><img src="omk-modeset.jpg" alt="OMK Mode Set" /></div>
-        <div class="meta"><div class="title">OMK Mode Set</div><p class="price">₦150,000</p></div>
-      </a>
-
-      <a class="card" href="paradiseset.html">
-        <div class="imgwrap"><img src="omk-paradiseset.jpg" alt="OMK Paradise Set" /></div>
-        <div class="meta"><div class="title">OMK Paradise Set</div><p class="price">₦150,000</p></div>
-      </a>
-
-      <a class="card" href="redvest.html">
-        <div class="imgwrap"><img src="omk-redvest.jpg" alt="OMK Red Vest (Limited)" /></div>
-        <div class="meta"><div class="title">OMK Red Vest (Limited)</div><p class="price">₦80,000</p></div>
       </a>
     </div>
   </section>
 
-  <!-- ===== NEWSLETTER ===== -->
-  <section class="nl">
-    <h3>Join The OMK Pack 🐺</h3>
-    <p>Be first to know when new drops & music hit.</p>
-
-    <form id="nl-form">
-      <div class="row">
-        <input class="input" id="email" type="email" placeholder="Enter your email" required />
-        <button class="btn" type="submit">Subscribe</button>
-      </div>
+  <!-- ===== SIGNUP ===== -->
+  <section id="signup" class="signup">
+    <h3>Sign Up with OMK</h3>
+    <p>Create an account to access exclusive drops, early updates & loyalty rewards.</p>
+    <form id="signupForm">
+      <input type="email" id="signupEmail" placeholder="Enter your email" required />
+      <button type="submit">Join the Pack</button>
     </form>
-
-    <div class="icons-row">
-      <a href="https://www.instagram.com/iam_omotaker" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.tiktok.com/@iam.omotaker" target="_blank" rel="noopener">TikTok</a>
-      <a href="https://wa.me/2347038112817" target="_blank" rel="noopener">WhatsApp</a>
-    </div>
   </section>
 
   <footer>© 2025 OMK – Only My Kind | All Rights Reserved</footer>
 
   <!-- ===== WHATSAPP FLOAT ===== -->
   <a class="wa-float" id="waFab"
-     href="https://wa.me/2347038112817?text=Hi%20OMK%20—%20I%27m%20interested%20in%20your%20latest%20drop."
+     href="https://wa.me/2347038112817?text=Hi%20OMK%20—%20I%27m%20interested%20in%20signing%20up!"
      target="_blank" rel="noopener" aria-label="Chat with OMK">
     <span class="dot"></span> Chat with OMK
   </a>
 
-  <!-- ===== JS ===== -->
   <script>
+    // ===== MENU =====
     document.addEventListener('DOMContentLoaded', () => {
-      // Mobile menu
-      const btn = document.getElementById('menuBtn');
-      const nav = document.getElementById('mobileNav');
-      const overlay = document.getElementById('navOverlay');
-      function toggleNav(){ nav.classList.toggle('open'); overlay.classList.toggle('show'); }
-      if(btn && nav && overlay){
-        btn.addEventListener('click', toggleNav);
-        overlay.addEventListener('click', toggleNav);
-        document.addEventListener('keydown', e => { if(e.key==='Escape' && nav.classList.contains('open')) toggleNav(); });
-      }
+      const btn=document.getElementById('menuBtn');
+      const nav=document.getElementById('mobileNav');
+      const overlay=document.getElementById('navOverlay');
+      function toggleNav(){nav.classList.toggle('open');overlay.classList.toggle('show');}
+      if(btn&&nav&&overlay){btn.addEventListener('click',toggleNav);overlay.addEventListener('click',toggleNav);}
+    });
 
-      // Prefill WhatsApp with product name on click
-      const waFab = document.getElementById('waFab');
-      document.querySelectorAll('.card').forEach(card=>{
-        card.addEventListener('click', ()=>{
-          const t = (card.querySelector('.title')?.textContent || 'a product').trim();
-          waFab.href = 'https://wa.me/2347038112817?text=' + encodeURIComponent("Hi OMK — I'm interested in " + t);
-        });
-      });
-
-      // Newsletter → WhatsApp message (MVP)
-      const form = document.getElementById('nl-form');
-      if(form){
-        form.addEventListener('submit', e=>{
-          e.preventDefault();
-          const email = document.getElementById('email').value.trim();
-          if(!email) return;
-          const msg = 'Hi OMK — please add me to the newsletter. My email: ' + email;
-          window.open('https://wa.me/2347038112817?text=' + encodeURIComponent(msg), '_blank');
-        });
-      }
+    // ===== SIGNUP FORM =====
+    document.getElementById('signupForm').addEventListener('submit', e=>{
+      e.preventDefault();
+      const email=document.getElementById('signupEmail').value.trim();
+      if(!email) return alert("Please enter your email");
+      const msg="Hi OMK — I just signed up with my email: "+email;
+      window.open('https://wa.me/2347038112817?text='+encodeURIComponent(msg),'_blank');
     });
   </script>
 </body>
