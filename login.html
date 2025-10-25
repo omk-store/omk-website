@@ -44,7 +44,6 @@
   }
   footer a{color:#ff2d55;text-decoration:none;font-weight:800}
 
-  /* Pulse animation */
   .pulse{
     width:80px;height:80px;border-radius:50%;
     background:#ff2d55;margin:0 auto;animation:pulse 1.4s infinite ease-in-out;
@@ -86,7 +85,11 @@ document.getElementById('loginForm').addEventListener('submit',(e)=>{
   const saved=JSON.parse(localStorage.getItem('omk_user'));
 
   if(!saved){alert('No account found. Please register first.');return;}
+
   if(email===saved.email && pass===saved.pass){
+    // ✅ Mark user as logged in
+    localStorage.setItem('omk_logged_in', true);
+
     const popup=document.createElement('div');
     popup.style.position='fixed';
     popup.style.inset='0';
@@ -99,9 +102,10 @@ document.getElementById('loginForm').addEventListener('submit',(e)=>{
       <div style="text-align:center">
         <div class='pulse'></div>
         <h2 style="color:#ff2d55;margin-top:16px;">Login Successful 🐺</h2>
-        <p style="color:#ccc;">Welcome back to Only My Kind</p>
+        <p style="color:#ccc;">Welcome back, ${saved.name || 'OMK Member'}!</p>
       </div>`;
     document.body.appendChild(popup);
+
     setTimeout(()=>{ window.location.href='index.html'; },2200);
   } else {
     alert('Invalid email or password. Try again.');
