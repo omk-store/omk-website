@@ -1,3 +1,11 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>OMK | Only My Kind</title>
+
+<style>
 * { box-sizing: border-box; }
 html, body {
   margin: 0;
@@ -26,64 +34,41 @@ a { text-decoration: none; color: inherit; }
 .nav a { color: #444; margin-left: 18px; font-size: 14px; opacity: 0.9; }
 .nav a:hover { opacity: 1; }
 
-/* HERO SECTION */
+/* HERO */
 .hero {
-  background: radial-gradient(1200px 600px at 10% -20%, rgba(0,0,0,0.1), transparent 60%), radial-gradient(1200px 600px at 90% -20%, rgba(0,0,0,0.1), transparent 60%), #000;
+  background: linear-gradient(120deg,#000,#111);
   color: #fff;
   text-align: center;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 80px 20px;
 }
-.hero-inner { padding: 64px 0; }
-
 .hero h1 {
-  margin: 0 0 10px;
-  font-size: clamp(28px, 5vw, 44px);
+  font-size: clamp(32px,6vw,54px);
   text-transform: uppercase;
-  background: linear-gradient(90deg,#ffd87a,#ff6b6b,#ff2d55,#ffd87a);
+  background: linear-gradient(90deg,#ffd87a,#ff2d55,#ff6b6b);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-size: 400%;
-  animation: glowshift 6s ease-in-out infinite;
-  text-shadow: 0 0 10px rgba(255,255,255,0.3);
 }
-@keyframes glowshift {
-  0% { background-position: 0%; }
-  50% { background-position: 100%; }
-  100% { background-position: 0%; }
-}
-
-.hero p { margin: 0 0 24px; opacity: 0.85; }
-.hero-cta {
-  display: inline-flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.hero-cta .btn.primary {
-  background: linear-gradient(90deg, #ff2d55, #ff6b6b, #ffd87a);
+.hero p { opacity: .8; margin-top: 10px; }
+.hero a {
+  display: inline-block;
+  margin-top: 20px;
+  background: #ff2d55;
   color: #fff;
-  font-weight: 700;
-  border: none;
   padding: 14px 26px;
-  border-radius: 12px;
-  box-shadow: 0 0 16px rgba(255,45,85,0.6);
-  transition: all 0.3s ease;
-}
-.hero-cta .btn.primary:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 22px rgba(255,45,85,0.8);
+  border-radius: 10px;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(255,45,85,0.4);
 }
 
-/* SECTIONS */
-.section { padding: 40px 0; color: #111; }
-.section h2 { margin: 0 0 18px; font-size: 26px; text-align: center; }
-.section.alt { background: #fafafa; }
-
-/* GRID (ZTTW STYLE) */
+/* GRID */
+.section { padding: 50px 0; }
+.section h2 { text-align: center; font-size: 28px; margin-bottom: 30px; }
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 22px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+  width: min(1100px, 92%);
+  margin: 0 auto;
 }
 
 /* PRODUCT CARD */
@@ -92,84 +77,37 @@ a { text-decoration: none; color: inherit; }
   border: 1px solid #eaeaea;
   border-radius: 12px;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   transition: transform .2s ease, box-shadow .3s ease;
 }
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
 }
 
+/* Hover front/back images */
 .card-img {
-  background: #f5f5f5 center/contain no-repeat;
-  aspect-ratio: 1/1;
+  position: relative;
+  overflow: hidden;
+}
+.card-img img {
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.card-body {
-  padding: 16px;
-  text-align: center;
-}
-
-.card h3 {
-  margin: 0 0 6px;
-  font-size: 15px;
-  font-weight: 700;
-  color: #111;
-}
-
-.price {
-  font-weight: 600;
-  color: #444;
-  font-size: 14px;
-}
-
-/* BUTTONS */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 14px;
   border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: transparent;
-  color: #fff;
-  cursor: pointer;
-  font-weight: 600;
-  transition: transform .04s ease, background .18s ease;
+  transition: opacity .4s ease;
 }
-.btn:hover { transform: translateY(-1px); }
-.btn.full { width: 100%; margin-bottom: 10px; }
+.card-img img.back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.card:hover .card-img img.front { opacity: 0; }
+.card:hover .card-img img.back { opacity: 1; }
 
-.small { font-size: 12px; }
-.tiny { font-size: 11px; }
-.muted { color: #9aa1ac; }
-
-/* CONTACT GRID */
-.contact-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 12px;
-  margin-top: 14px;
-}
-.contact-card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-  border-radius: 10px;
-  background: #12141a;
-  border: 1px solid rgba(255,255,255,0.08);
-  color: #fff;
-  font-weight: 600;
-}
-.contact-card:hover { background: #171923; }
+.card-body { padding: 16px; }
+.card h3 { margin: 6px 0; font-size: 16px; font-weight: 700; }
+.price { font-weight: 600; color: #444; }
 
 /* FOOTER */
 .site-footer {
@@ -178,63 +116,79 @@ a { text-decoration: none; color: inherit; }
   color: #666;
   text-align: center;
 }
+</style>
+</head>
 
-/* DRAWER */
-.drawer { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: none; align-items: flex-end; }
-.drawer.active { display: flex; }
-.drawer-inner {
-  background: #fff;
-  width: 100%;
-  max-width: 520px;
-  margin-left: auto;
-  padding: 20px;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-  border: 1px solid #eaeaea;
-}
-.drawer-close {
-  background: transparent;
-  color: #111;
-  font-size: 28px;
-  border: none;
-  position: absolute;
-  right: 16px;
-  top: 10px;
-  cursor: pointer;
-}
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="brand"><span class="logo">OMK</span><span class="tag">Only My Kind</span></div>
+    <nav class="nav">
+      <a href="#shop">Shop</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
 
-@media (min-width: 720px) {
-  .drawer { align-items: center; justify-content: flex-end; }
-  .drawer-inner {
-    height: 100%;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    border-top-right-radius: 0;
-    max-width: 420px;
-  }
-}
+<section class="hero">
+  <h1>Only My Kind</h1>
+  <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
+  <a href="#shop">Shop Collection</a>
+</section>
 
-/* WHATSAPP FLOATING BUTTON */
-.whatsapp-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-  background: #25D366;
-  border-radius: 50%;
-  width: 56px;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  transition: transform .2s ease, box-shadow .3s ease;
-}
-.whatsapp-float:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
-}
-.whatsapp-float img {
-  width: 32px;
-  height: 32px;
-}
+<section id="shop" class="section">
+  <h2>Latest Drop 🔥</h2>
+  <div class="grid">
+
+    <a class="card" href="#">
+      <div class="card-img">
+        <img src="jeans-front.jpg" alt="OMK Jeans Front" class="front">
+        <img src="jeans-back.jpg" alt="OMK Jeans Back" class="back">
+      </div>
+      <div class="card-body">
+        <h3>OMK Jeans</h3>
+        <p class="price">₦70,000</p>
+      </div>
+    </a>
+
+    <a class="card" href="#">
+      <div class="card-img">
+        <img src="jacket-front.jpg" alt="OMK Jacket Front" class="front">
+        <img src="jacket-back.jpg" alt="OMK Jacket Back" class="back">
+      </div>
+      <div class="card-body">
+        <h3>OMK Jacket</h3>
+        <p class="price">₦80,000</p>
+      </div>
+    </a>
+
+    <a class="card" href="#">
+      <div class="card-img">
+        <img src="tee-front.jpg" alt="OMK Tee Front" class="front">
+        <img src="tee-back.jpg" alt="OMK Tee Back" class="back">
+      </div>
+      <div class="card-body">
+        <h3>OMK T-Shirt</h3>
+        <p class="price">₦45,000</p>
+      </div>
+    </a>
+
+    <a class="card" href="#">
+      <div class="card-img">
+        <img src="shorts-front.jpg" alt="OMK Shorts Front" class="front">
+        <img src="shorts-back.jpg" alt="OMK Shorts Back" class="back">
+      </div>
+      <div class="card-body">
+        <h3>OMK Shorts</h3>
+        <p class="price">₦50,000</p>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  © 2025 OMK – Only My Kind | All Rights Reserved
+</footer>
+</body>
+</html>
