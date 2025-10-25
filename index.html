@@ -16,7 +16,7 @@ body{
   font-family:'Poppins',system-ui,-apple-system,Segoe UI,Arial,Helvetica,sans-serif;
   color:var(--fg);background:var(--bg);
 }
-a{text-decoration:none;color:inherit}
+a{text-decoration:none;color:inherit;cursor:pointer}
 
 /* HEADER */
 header{
@@ -25,7 +25,7 @@ header{
   display:flex;justify-content:space-between;align-items:center;
   padding:14px 16px;
 }
-.brand{font-weight:900;letter-spacing:.5px;font-size:20px;cursor:pointer}
+.brand{font-weight:900;letter-spacing:.5px;font-size:20px}
 .icons{display:flex;align-items:center;gap:14px}
 .icons img{width:24px;height:24px;cursor:pointer;transition:.2s}
 .icons img:hover{opacity:.7}
@@ -55,9 +55,9 @@ h2{margin:32px 0 16px;text-align:left}
 .card{
   border:1px solid var(--border);border-radius:12px;
   padding:14px;text-align:center;background:#fff;
-  transition:transform .2s ease,box-shadow .2s ease;
+  transition:transform .2s ease;
 }
-.card:hover{transform:translateY(-4px);box-shadow:0 6px 20px rgba(0,0,0,0.06)}
+.card:hover{transform:translateY(-4px)}
 .card img{width:100%;border-radius:10px}
 .title{font-weight:800;margin:10px 0 4px}
 .price{margin:0 0 12px;font-weight:700;color:#000}
@@ -109,8 +109,7 @@ footer{
 
 /* CART */
 .cart-items{margin-top:20px;display:flex;flex-direction:column;gap:14px}
-.cart-item{display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border);padding-bottom:10px;animation:addItem .3s ease}
-@keyframes addItem{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.cart-item{display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border);padding-bottom:10px}
 .cart-item img{width:50px;height:50px;object-fit:cover;border-radius:8px}
 .cart-item-info{flex:1}
 .cart-item-info .name{font-weight:700}
@@ -133,7 +132,7 @@ footer{
 <body>
 
 <header>
-  <div class="brand" id="brandBtn">OMK</div>
+  <a class="brand" id="goHome">OMK</a>
   <div class="icons">
     <img id="menuBtn" src="https://cdn-icons-png.flaticon.com/512/56/56763.png" alt="menu">
     <img id="cartBtn" src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png" alt="bag">
@@ -231,13 +230,12 @@ const cartBtn=document.getElementById('cartBtn');
 const menuPanel=document.getElementById('menuPanel');
 const cartPanel=document.getElementById('cartPanel');
 const backdrop=document.getElementById('backdrop');
-const brandBtn=document.getElementById('brandBtn');
+const goHome=document.getElementById('goHome');
 
 menuBtn.addEventListener('click',()=>{menuPanel.classList.add('open');backdrop.classList.add('show')});
 cartBtn.addEventListener('click',()=>{cartPanel.classList.add('open');backdrop.classList.add('show')});
 backdrop.addEventListener('click',closePanels);
-brandBtn.addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'})});
-
+goHome.addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'})});
 function closePanels(){menuPanel.classList.remove('open');cartPanel.classList.remove('open');backdrop.classList.remove('show')}
 
 // CART LOGIC
@@ -258,10 +256,6 @@ buttons.forEach(btn=>{
     };
     cart.push(item);
     updateCart();
-    cartPanel.classList.add('open');
-    backdrop.classList.add('show');
-    btn.textContent="Added ✅";
-    setTimeout(()=>btn.textContent="Add to Cart",1500);
   });
 });
 
@@ -294,5 +288,6 @@ function updateCart(){
   checkoutBtn.href=`https://wa.me/2347038112817?text=${encodeURIComponent(message)}`;
 }
 </script>
+
 </body>
 </html>
