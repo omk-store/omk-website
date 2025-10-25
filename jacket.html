@@ -7,19 +7,12 @@
 <style>
   body {margin:0;font-family:system-ui,-apple-system,Segoe UI,Arial,Helvetica,sans-serif;background:#fff;color:#111}
   .container{max-width:900px;margin:0 auto;padding:20px}
-  .gallery{position:relative;width:100%;height:auto}
-  .gallery img{
-    width:100%;
-    border-radius:10px;
-    position:absolute;
-    top:0;left:0;
-    opacity:0;
-    transition:opacity .6s ease;
-  }
-  .gallery img.active{opacity:1;position:relative}
-  select{padding:10px;border:1px solid #ccc;border-radius:6px;font-weight:600;margin-bottom:20px}
   h1{font-size:1.8rem;font-weight:900;margin:10px 0}
   .price{font-weight:700;font-size:1.2rem;color:#ff2d55;margin-bottom:10px}
+  select{padding:10px;border:2px solid #6a0dad;border-radius:6px;font-weight:600;margin-bottom:20px;color:#6a0dad;background:#f8f4ff}
+  .gallery{display:flex;flex-direction:column;gap:16px}
+  .gallery img{width:100%;border-radius:10px;opacity:0;transition:opacity .6s ease}
+  .gallery img.active{opacity:1}
   .desc{font-size:1rem;line-height:1.6;font-weight:500;margin-bottom:20px}
   .btn{display:inline-block;background:#ff2d55;color:#fff;text-decoration:none;padding:14px 28px;border-radius:8px;font-weight:800;letter-spacing:.4px}
   .btn:hover{opacity:.9}
@@ -39,8 +32,13 @@
   </select>
 
   <div class="gallery">
-    <img id="black" src="jacket-black.jpg" alt="OMK Wolf Jacket - Black" class="active">
-    <img id="brown" src="jacket-brown-back.jpeg" alt="OMK Wolf Jacket - Brown">
+    <!-- Black Edition -->
+    <img id="black-front" src="jacket-black.jpg" alt="OMK Wolf Jacket - Black Front" class="active">
+    <img id="black-back" src="81BB2C98-5614-46C6-A620-22728817B41F.png" alt="OMK Wolf Jacket - Black Back" class="active">
+
+    <!-- Brown Edition -->
+    <img id="brown-front" src="IMG_9808.jpeg" alt="OMK Wolf Jacket - Brown Front">
+    <img id="brown-back" src="B5F27213-CEA6-4B2C-9B7A-5303BDD6BE6E.jpeg" alt="OMK Wolf Jacket - Brown Back">
   </div>
 
   <p class="desc" id="desc">Premium black jacket with OMK embroidery — designed for those who move with loyalty, truth, and wolf energy 🐺.</p>
@@ -52,21 +50,19 @@
 <script>
 function changeJacket(){
   const color = document.getElementById('color').value;
-  const black = document.getElementById('black');
-  const brown = document.getElementById('brown');
-  const desc = document.getElementById('desc');
-  const btn = document.getElementById('buyBtn');
+  const allImgs = document.querySelectorAll('.gallery img');
+  allImgs.forEach(img => img.classList.remove('active'));
 
   if(color === 'brown'){
-    black.classList.remove('active');
-    brown.classList.add('active');
-    desc.textContent = 'Premium brown jacket with bold OMK embroidery — made for those who walk with loyalty, truth, and legacy. 🐺';
-    btn.href = 'https://wa.me/2347038112817?text=Hi%20OMK%20—%20I%27m%20interested%20in%20the%20OMK%20Wolf%20Jacket%20(Brown%20Edition)';
+    document.getElementById('brown-front').classList.add('active');
+    document.getElementById('brown-back').classList.add('active');
+    document.getElementById('desc').textContent = 'Premium brown jacket with bold OMK embroidery — made for those who walk with loyalty, truth, and legacy 🐺.';
+    document.getElementById('buyBtn').href = 'https://wa.me/2347038112817?text=Hi%20OMK%20—%20I%27m%20interested%20in%20the%20OMK%20Wolf%20Jacket%20(Brown%20Edition)';
   } else {
-    brown.classList.remove('active');
-    black.classList.add('active');
-    desc.textContent = 'Premium black jacket with OMK embroidery — designed for those who move with loyalty, truth, and wolf energy 🐺.';
-    btn.href = 'https://wa.me/2347038112817?text=Hi%20OMK%20—%20I%27m%20interested%20in%20the%20OMK%20Wolf%20Jacket%20(Black%20Edition)';
+    document.getElementById('black-front').classList.add('active');
+    document.getElementById('black-back').classList.add('active');
+    document.getElementById('desc').textContent = 'Premium black jacket with OMK embroidery — designed for those who move with loyalty, truth, and wolf energy 🐺.';
+    document.getElementById('buyBtn').href = 'https://wa.me/2347038112817?text=Hi%20OMK%20—%20I%27m%20interested%20in%20the%20OMK%20Wolf%20Jacket%20(Black%20Edition)';
   }
 }
 </script>
