@@ -13,26 +13,33 @@ html, body {
   font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color: #0e0f11;
   background: #fff;
+  scroll-behavior: smooth;
 }
 a { text-decoration: none; color: inherit; }
 
-.container { width: min(1100px, 92%); margin: 0 auto; }
-
 /* HEADER */
-.site-header {
+header {
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 20;
   backdrop-filter: blur(8px);
   background: rgba(255,255,255,0.9);
   border-bottom: 1px solid #eaeaea;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 24px;
 }
-.header-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
-.brand { display: flex; align-items: baseline; gap: 10px; color: #111; }
-.logo { font-weight: 800; letter-spacing: 1px; font-size: 22px; }
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  color: #111;
+}
+.logo { font-weight: 900; letter-spacing: 1px; font-size: 22px; cursor: pointer; }
 .tag { font-weight: 300; opacity: 0.8; font-size: 12px; }
-.nav a { color: #444; margin-left: 18px; font-size: 14px; opacity: 0.9; }
-.nav a:hover { opacity: 1; }
+.nav a { color: #444; margin-left: 18px; font-size: 14px; opacity: 0.9; transition: .2s; }
+.nav a:hover { opacity: 1; color: #ff2d55; }
 
 /* HERO */
 .hero {
@@ -51,17 +58,19 @@ a { text-decoration: none; color: inherit; }
 .hero p { opacity: .8; margin-top: 10px; }
 .hero a {
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 24px;
   background: #ff2d55;
   color: #fff;
   padding: 14px 26px;
   border-radius: 10px;
   font-weight: 700;
   box-shadow: 0 4px 16px rgba(255,45,85,0.4);
+  transition: .25s;
 }
+.hero a:hover { background: #e5254a; }
 
 /* GRID */
-.section { padding: 50px 0; }
+.section { padding: 60px 0; }
 .section h2 { text-align: center; font-size: 28px; margin-bottom: 30px; }
 .grid {
   display: grid;
@@ -79,20 +88,20 @@ a { text-decoration: none; color: inherit; }
   overflow: hidden;
   text-align: center;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  transition: transform .2s ease, box-shadow .3s ease;
+  transition: transform .25s ease, box-shadow .25s ease;
 }
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
 }
-
-/* Hover front/back images */
 .card-img {
   position: relative;
   overflow: hidden;
 }
 .card-img img {
   width: 100%;
+  height: 320px;
+  object-fit: cover;
   border-radius: 10px;
   transition: opacity .4s ease;
 }
@@ -107,30 +116,42 @@ a { text-decoration: none; color: inherit; }
 
 .card-body { padding: 16px; }
 .card h3 { margin: 6px 0; font-size: 16px; font-weight: 700; }
-.price { font-weight: 600; color: #444; }
+.price { font-weight: 600; color: #444; margin-bottom: 10px; }
+.buy-btn {
+  display: inline-block;
+  background: #ff2d55;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  transition: .25s;
+}
+.buy-btn:hover { background: #e5254a; }
 
 /* FOOTER */
-.site-footer {
+footer {
   border-top: 1px solid #eaeaea;
-  padding: 20px 0;
+  padding: 24px 0;
   color: #666;
   text-align: center;
+  font-weight: 600;
 }
 </style>
 </head>
 
 <body>
-<header class="site-header">
-  <div class="container header-inner">
-    <div class="brand"><span class="logo">OMK</span><span class="tag">Only My Kind</span></div>
-    <nav class="nav">
-      <a href="#shop">Shop</a>
-      <a href="#contact">Contact</a>
-    </nav>
+<header>
+  <div class="brand">
+    <a href="#top" class="logo">OMK</a>
+    <span class="tag">Only My Kind</span>
   </div>
+  <nav class="nav">
+    <a href="#shop">Shop</a>
+    <a href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order" target="_blank">Contact</a>
+  </nav>
 </header>
 
-<section class="hero">
+<section class="hero" id="top">
   <h1>Only My Kind</h1>
   <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
   <a href="#shop">Shop Collection</a>
@@ -139,55 +160,57 @@ a { text-decoration: none; color: inherit; }
 <section id="shop" class="section">
   <h2>Latest Drop 🔥</h2>
   <div class="grid">
-
-    <a class="card" href="#">
+    <div class="card">
       <div class="card-img">
-        <img src="jeans-front.jpg" alt="OMK Jeans Front" class="front">
-        <img src="jeans-back.jpg" alt="OMK Jeans Back" class="back">
+        <img src="https://omkdrip.com/jeans-blue.jpg" alt="OMK Jeans Front" class="front">
+        <img src="https://omkdrip.com/jeans-back.jpg" alt="OMK Jeans Back" class="back">
       </div>
       <div class="card-body">
         <h3>OMK Jeans</h3>
         <p class="price">₦70,000</p>
+        <a href="https://wa.me/2347038112817?text=I%20want%20the%20OMK%20Jeans" class="buy-btn" target="_blank">Buy Now</a>
       </div>
-    </a>
+    </div>
 
-    <a class="card" href="#">
+    <div class="card">
       <div class="card-img">
-        <img src="jacket-front.jpg" alt="OMK Jacket Front" class="front">
-        <img src="jacket-back.jpg" alt="OMK Jacket Back" class="back">
+        <img src="https://omkdrip.com/omk-brown-front.png?v=2" alt="OMK Jacket Front" class="front">
+        <img src="https://omkdrip.com/omk-brown-back.png" alt="OMK Jacket Back" class="back">
       </div>
       <div class="card-body">
-        <h3>OMK Jacket</h3>
+        <h3>OMK Wolf Jacket</h3>
         <p class="price">₦80,000</p>
+        <a href="https://wa.me/2347038112817?text=I%20want%20the%20OMK%20Wolf%20Jacket" class="buy-btn" target="_blank">Buy Now</a>
       </div>
-    </a>
+    </div>
 
-    <a class="card" href="#">
+    <div class="card">
       <div class="card-img">
-        <img src="tee-front.jpg" alt="OMK Tee Front" class="front">
-        <img src="tee-back.jpg" alt="OMK Tee Back" class="back">
+        <img src="https://omkdrip.com/tee-white.jpg" alt="OMK Tee Front" class="front">
+        <img src="https://omkdrip.com/tee-back.jpg" alt="OMK Tee Back" class="back">
       </div>
       <div class="card-body">
         <h3>OMK T-Shirt</h3>
         <p class="price">₦45,000</p>
+        <a href="https://wa.me/2347038112817?text=I%20want%20the%20OMK%20T-Shirt" class="buy-btn" target="_blank">Buy Now</a>
       </div>
-    </a>
+    </div>
 
-    <a class="card" href="#">
+    <div class="card">
       <div class="card-img">
-        <img src="shorts-front.jpg" alt="OMK Shorts Front" class="front">
-        <img src="shorts-back.jpg" alt="OMK Shorts Back" class="back">
+        <img src="https://omkdrip.com/shorts.jpg" alt="OMK Shorts Front" class="front">
+        <img src="https://omkdrip.com/shorts-back.jpg" alt="OMK Shorts Back" class="back">
       </div>
       <div class="card-body">
         <h3>OMK Shorts</h3>
         <p class="price">₦50,000</p>
+        <a href="https://wa.me/2347038112817?text=I%20want%20the%20OMK%20Shorts" class="buy-btn" target="_blank">Buy Now</a>
       </div>
-    </a>
-
+    </div>
   </div>
 </section>
 
-<footer class="site-footer">
+<footer>
   © 2025 OMK – Only My Kind | All Rights Reserved
 </footer>
 </body>
