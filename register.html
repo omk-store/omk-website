@@ -4,60 +4,106 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Register | OMK</title>
-
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',system-ui,sans-serif}
-body{
-  height:100vh;display:flex;align-items:center;justify-content:center;
-  background:radial-gradient(circle at 50% 20%,#1a1a1a,#000);
-  color:#fff;overflow:hidden;
-}
-.container{
-  width:90%;max-width:400px;background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:16px;padding:30px 24px;text-align:center;
-  backdrop-filter:blur(10px);box-shadow:0 0 40px rgba(255,45,85,0.25);
-  animation:fadeIn .8s ease;
-}
-h1{
-  font-size:28px;margin-bottom:8px;
-  background:linear-gradient(90deg,#ffd87a,#ff2d55,#ff6b6b);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  text-transform:uppercase;font-weight:900;
-}
-p{color:#bbb;font-size:14px;margin-bottom:22px}
-input{
-  width:100%;margin-bottom:14px;padding:12px 14px;
-  border-radius:10px;border:1px solid rgba(255,255,255,0.2);
-  background:rgba(255,255,255,0.05);color:#fff;font-size:14px;
-}
-input::placeholder{color:#aaa}
-button{
-  width:100%;padding:12px;margin-top:4px;
-  background:#ff2d55;border:none;border-radius:10px;
-  color:#fff;font-weight:800;cursor:pointer;transition:.25s;
-}
-button:hover{background:#ff456b;transform:translateY(-1px)}
-a{color:#ff2d55;text-decoration:none;font-weight:600;font-size:14px}
-a:hover{opacity:.8}
-@keyframes fadeIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    height:100vh;display:flex;align-items:center;justify-content:center;
+    font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    background:radial-gradient(60% 60% at 50% 30%,#111 0%,#0b0b0b 100%);
+    color:#fff;overflow:hidden
+  }
+  .card{
+    width:min(92vw,430px);background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.12);border-radius:16px;
+    padding:28px 22px;backdrop-filter:blur(10px);
+    box-shadow:0 0 28px rgba(255,45,85,.12);
+  }
+  h1{font-size:32px;margin-bottom:6px;letter-spacing:1px}
+  p{color:#bbb;margin-bottom:18px}
+  input{
+    width:100%;padding:12px 14px;margin-bottom:14px;border-radius:10px;
+    border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);
+    color:#fff;font-size:15px;outline:none
+  }
+  input::placeholder{color:#9aa}
+  button{
+    width:100%;padding:12px;border:0;border-radius:10px;background:#ff2d55;
+    color:#fff;font-weight:900;cursor:pointer;transition:.2s
+  }
+  button:hover{transform:translateY(-1px)}
+  .links{margin-top:14px;text-align:center}
+  .links a{color:#ff2d55;text-decoration:none;font-weight:700}
+  .back{display:inline-block;margin-top:14px;color:#ff5a76;text-decoration:none}
+
+  /* Success overlay */
+  .ok{
+    position:fixed;inset:0;background:rgba(0,0,0,.55);
+    display:none;align-items:center;justify-content:center;z-index:10
+  }
+  .ok .box{
+    width:min(92vw,420px);background:#101013;border:1px solid #222;
+    border-radius:16px;padding:22px;text-align:center
+  }
+  .ok h3{margin-bottom:8px}
+  .ok p{color:#cfcfcf;margin-bottom:16px}
+  .ok a{display:inline-block;background:#ff2d55;color:#fff;padding:10px 16px;border-radius:10px;font-weight:900}
+  footer{position:fixed;bottom:14px;left:0;right:0;text-align:center;color:#9aa;font-size:13px}
+  footer a{color:#ff2d55;text-decoration:none;font-weight:800}
 </style>
 </head>
-
 <body>
-<div class="container">
+
+<div class="card">
   <h1>OMK</h1>
   <p>Join the Only My Kind pack 🐺</p>
 
-  <form action="mailto:omorogbeale69@gmail.com" method="post" enctype="text/plain">
-    <input type="text" name="Name" placeholder="Full Name" required>
-    <input type="email" name="Email" placeholder="Email Address" required>
-    <input type="password" name="Password" placeholder="Password" required>
+  <form id="regForm">
+    <input id="name"  type="text"     placeholder="Full Name"    required>
+    <input id="email" type="email"    placeholder="Email Address" required>
+    <input id="pass"  type="password" placeholder="Password"      required>
     <button type="submit">Register</button>
   </form>
 
-  <p style="margin-top:20px;">Already have an account? <a href="login.html">Login</a></p>
-  <p style="margin-top:10px;"><a href="index.html">← Back to Home</a></p>
+  <div class="links">
+    Already have an account? <a href="login.html">Login</a>
+  </div>
+  <a class="back" href="index.html">← Back to Home</a>
 </div>
+
+<!-- Success overlay -->
+<div id="ok" class="ok">
+  <div class="box">
+    <h3>Welcome to the Pack 🐺</h3>
+    <p>Registration successful. <br>Check your email for a welcome message from <b>omkdrip@gmail.com</b>.</p>
+    <a href="login.html">Go to Login</a>
+  </div>
+</div>
+
+<footer>
+  Problems? <a href="mailto:omkdrip@gmail.com?subject=OMK%20Support%20%2F%20Registration&body=Hi%20OMK%2C%20I%27m%20having%20trouble%20with%20registration.">Report a problem 💌</a>
+</footer>
+
+<script>
+  const f = document.getElementById('regForm');
+  const ok = document.getElementById('ok');
+
+  f.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    // Save “account” locally (no server)
+    const user = {
+      name:  document.getElementById('name').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      pass:  document.getElementById('pass').value
+    };
+    localStorage.setItem('omk_user', JSON.stringify(user));
+
+    // Fire a prefilled email in the background (optional)
+    const body = `Name=${encodeURIComponent(user.name)}%0AEmail=${encodeURIComponent(user.email)}%0APassword=${encodeURIComponent(user.pass)}`;
+    window.open(`mailto:omkdrip@gmail.com?subject=New%20OMK%20Registration&body=${body}`, '_self');
+
+    // Show on-site success
+    ok.style.display = 'flex';
+  });
+</script>
 </body>
 </html>
