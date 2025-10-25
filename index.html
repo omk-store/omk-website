@@ -58,6 +58,8 @@ header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid 
 
 /* FOOTER */
 footer{border-top:1px solid var(--border);padding:24px 0;text-align:center;font-weight:600;color:#666;}
+footer img{transition:transform .3s ease;}
+footer a:hover img{transform:scale(1.15)}
 
 /* PANELS */
 .panel{position:fixed;top:0;width:80%;max-width:340px;height:100%;background:#fff;
@@ -90,7 +92,6 @@ footer{border-top:1px solid var(--border);padding:24px 0;text-align:center;font-
     <span class="tag">Only My Kind</span>
   </div>
   <div class="icons">
-    <img id="menuBtn" src="https://cdn-icons-png.flaticon.com/512/56/56763.png">
     <img id="cartBtn" src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png">
   </div>
 </header>
@@ -156,7 +157,18 @@ footer{border-top:1px solid var(--border);padding:24px 0;text-align:center;font-
   </div>
 </section>
 
-<footer>© 2025 OMK – Only My Kind | All Rights Reserved</footer>
+<footer>
+  <p>© 2025 OMK – Only My Kind | All Rights Reserved</p>
+  <div style="margin-top:10px;">
+    <span style="font-weight:700;">Follow OMK:</span><br>
+    <a href="https://www.instagram.com/whosomotaker" target="_blank" style="margin:0 8px;">
+      <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" width="22" alt="Instagram">
+    </a>
+    <a href="https://www.tiktok.com/@omkdrip" target="_blank" style="margin:0 8px;">
+      <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" width="22" alt="TikTok">
+    </a>
+  </div>
+</footer>
 
 <div id="backdrop" class="backdrop"></div>
 
