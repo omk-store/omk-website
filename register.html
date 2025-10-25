@@ -29,6 +29,9 @@
     background:rgba(255,255,255,.06);color:#fff;font-size:15px;outline:none
   }
   input::placeholder{color:#9aa}
+  .check{
+    display:flex;align-items:center;gap:8px;margin-bottom:14px;font-size:14px;color:#aaa
+  }
   button{
     width:100%;padding:12px;border:0;border-radius:10px;
     background:#ff2d55;color:#fff;font-weight:900;cursor:pointer;transition:.2s
@@ -52,6 +55,12 @@
       <input id="name"  type="text" placeholder="Full Name" required>
       <input id="email" type="email" placeholder="Email Address" required>
       <input id="pass"  type="password" placeholder="Password" required>
+
+      <label class="check">
+        <input type="checkbox" id="updates" style="width:16px;height:16px">
+        Send me updates about new drops 💥
+      </label>
+
       <button type="submit">Register</button>
     </form>
 
@@ -71,9 +80,10 @@ document.getElementById('registerForm').addEventListener('submit', (e)=>{
   const name  = document.getElementById('name').value.trim();
   const email = document.getElementById('email').value.trim();
   const pass  = document.getElementById('pass').value;
+  const updates = document.getElementById('updates').checked;
 
   // Save details locally (mock backend)
-  localStorage.setItem('omk_user', JSON.stringify({ name, email, pass }));
+  localStorage.setItem('omk_user', JSON.stringify({ name, email, pass, updates }));
 
   // Create success popup
   const success = document.createElement('div');
@@ -89,6 +99,7 @@ document.getElementById('registerForm').addEventListener('submit', (e)=>{
       <h2 style="color:#ff2d55;margin-bottom:8px">Account Created 🐺</h2>
       <p style="color:#ccc">Welcome to the Only My Kind Pack!</p>
       <p style="color:#aaa;margin-top:6px">Check your email for a welcome message 💌</p>
+      ${updates ? '<p style="color:#ff2d55;margin-top:10px;">You’ll also get updates about new drops 🔥</p>' : ''}
     </div>`;
   document.body.appendChild(success);
 
