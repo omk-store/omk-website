@@ -25,7 +25,7 @@ header{
   display:flex;justify-content:space-between;align-items:center;
   padding:14px 16px;
 }
-.brand{font-weight:900;letter-spacing:.5px;font-size:20px}
+.brand{font-weight:900;letter-spacing:.5px;font-size:20px;cursor:pointer}
 .icons{display:flex;align-items:center;gap:14px}
 .icons img{width:24px;height:24px;cursor:pointer;transition:.2s}
 .icons img:hover{opacity:.7}
@@ -38,6 +38,8 @@ header{
 }
 .hero h1{margin:0 0 8px;font-size:2.2rem;color:#ffd87a}
 .hero p{margin:0 0 18px;color:#eaeaea}
+
+/* BUTTON */
 .btn{
   display:inline-block;background:var(--accent);color:#fff;
   padding:10px 16px;border-radius:10px;font-weight:700;
@@ -58,7 +60,12 @@ h2{margin:32px 0 16px;text-align:left}
   transition:transform .2s ease;
 }
 .card:hover{transform:translateY(-4px)}
-.card img{width:100%;border-radius:10px}
+.card img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+  border-radius:10px;
+}
 .title{font-weight:800;margin:10px 0 4px}
 .price{margin:0 0 12px;font-weight:700;color:#000}
 
@@ -68,7 +75,7 @@ footer{
   padding:16px;text-align:center;font-weight:600;
 }
 
-/* FLOATING CHAT BUTTON */
+/* CHAT BUTTON */
 .chat-btn{
   position:fixed;bottom:18px;right:18px;
   display:flex;align-items:center;gap:8px;
@@ -256,6 +263,9 @@ buttons.forEach(btn=>{
     };
     cart.push(item);
     updateCart();
+    // Auto-open the cart
+    cartPanel.classList.add('open');
+    backdrop.classList.add('show');
   });
 });
 
