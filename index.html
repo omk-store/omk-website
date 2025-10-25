@@ -13,20 +13,35 @@ a{text-decoration:none;color:inherit;cursor:pointer}
 
 /* HEADER */
 header{
-  position:sticky;top:0;z-index:30;background:#fff;border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;padding:12px 18px
+  position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;padding:14px 18px;
+  box-shadow:0 2px 8px rgba(0,0,0,.05);border-radius:0 0 14px 14px;
 }
 .brand{display:flex;align-items:baseline;gap:8px}
 .logo{font-weight:900;font-size:22px}
 .tag{font-weight:300;opacity:.8;font-size:12px}
-.nav{display:flex;align-items:center;gap:14px}
-.nav a{font-weight:700;color:#444}
+.nav{display:flex;align-items:center;gap:14px;position:relative;}
+.nav a{font-weight:700;color:#444;transition:.2s}
 .nav a:hover{color:var(--accent)}
 .icon-btn img{width:24px;height:24px;transition:.2s}
 .icon-btn img:hover{opacity:.75}
+.menu-btn{font-size:22px;font-weight:900;cursor:pointer;user-select:none}
+.menu-box{
+  position:absolute;top:42px;right:0;background:rgba(255,255,255,0.96);
+  border:1px solid var(--border);border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,.1);
+  display:none;flex-direction:column;overflow:hidden;min-width:120px;
+}
+.menu-box.show{display:flex;animation:fadeIn .25s ease}
+.menu-box a{
+  padding:10px 14px;font-weight:700;color:#333;border-bottom:1px solid var(--border);
+  background:#fff;transition:.2s;
+}
+.menu-box a:last-child{border-bottom:0}
+.menu-box a:hover{background:#f5f5f5;color:var(--accent)}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
 
 /* HERO */
-.hero{background:linear-gradient(120deg,#000,#111);color:#fff;text-align:center;padding:78px 20px}
+.hero{background:linear-gradient(120deg,#000,#111);color:#fff;text-align:center;padding:78px 20px;border-radius:12px;margin:20px auto;width:min(1100px,94%)}
 .hero h1{
   font-size:clamp(32px,6vw,54px);
   background:linear-gradient(90deg,#ffd87a,#ff2d55,#ff6b6b);
@@ -37,15 +52,14 @@ header{
 .hero .cta{display:inline-block;margin-top:20px;background:var(--accent);color:#fff;padding:12px 22px;border-radius:10px;font-weight:800}
 .hero .cta:hover{opacity:.9}
 
-/* SECTIONS & GRID */
-.section{padding:56px 0}
+/* SECTIONS */
+.section{padding:56px 0;width:min(1100px,94%);margin:auto}
 .section h2{text-align:center;font-size:28px;margin-bottom:26px}
+
+/* PRODUCT GRID */
 .grid{
-  width:min(1100px,92%);margin:0 auto;
   display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px
 }
-
-/* PRODUCT CARD */
 .card{
   border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#fff;text-align:center;
   box-shadow:0 4px 10px rgba(0,0,0,.05);transition:transform .25s,box-shadow .25s
@@ -62,10 +76,10 @@ header{
 .btn{display:inline-block;background:var(--accent);color:#fff;padding:10px 16px;border-radius:10px;font-weight:800}
 .btn:hover{opacity:.9}
 
-/* JOIN NEWSLETTER */
+/* JOIN BOX */
 .join{
-  width:min(900px,92%);margin:0 auto;background:#f9f9f9;border:1px solid var(--border);
-  border-radius:14px;padding:20px;text-align:center
+  width:100%;background:#f9f9f9;border:1px solid var(--border);
+  border-radius:14px;padding:28px;text-align:center;box-shadow:0 6px 16px rgba(0,0,0,.05)
 }
 .join h3{margin:0 0 10px}
 .join p{margin:0 0 14px;color:#555}
@@ -77,31 +91,11 @@ header{
 
 /* FOOTER */
 footer{
-  border-top:1px solid var(--border);padding:22px 0;text-align:center;color:#666;font-weight:600
+  border-top:1px solid var(--border);padding:22px 0;text-align:center;color:#666;font-weight:600;
+  width:min(1100px,94%);margin:auto;margin-top:40px
 }
 footer img{transition:transform .25s}
 footer a:hover img{transform:scale(1.12)}
-
-/* CART PANEL & BACKDROP */
-.panel{
-  position:fixed;top:0;right:0;width:80%;max-width:340px;height:100%;background:#fff;
-  box-shadow:0 0 22px rgba(0,0,0,.15);transform:translateX(100%);transition:transform .3s ease;
-  z-index:60;padding:22px;overflow-y:auto
-}
-.panel.open{transform:translateX(0)}
-.close-btn{position:absolute;top:12px;right:12px;border:1px solid var(--border);background:#fff;border-radius:10px;padding:6px 10px;font-weight:800;cursor:pointer}
-.cart-items{margin-top:18px;display:flex;flex-direction:column;gap:12px}
-.cart-item{display:flex;gap:10px;align-items:center;border-bottom:1px solid var(--border);padding-bottom:10px;animation:slideIn .3s ease}
-.cart-item img{width:50px;height:50px;border-radius:8px;object-fit:cover}
-.cart-item-info{flex:1}
-.cart-item-info .name{font-weight:800}
-.cart-item-info .price{color:#444}
-.total{margin-top:16px;text-align:right;font-weight:900}
-.checkout-btn{display:block;margin-top:14px;background:var(--accent);color:#fff;padding:12px;border-radius:10px;text-align:center;font-weight:800}
-.empty{text-align:center;color:#777;margin-top:40px}
-.backdrop{position:fixed;inset:0;background:rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:.25s;z-index:50}
-.backdrop.show{opacity:1;pointer-events:auto}
-@keyframes slideIn {from{transform:translateX(24px);opacity:0}to{transform:translateX(0);opacity:1}}
 .chat-btn{position:fixed;right:18px;bottom:18px;z-index:70;background:#fff;border:1px solid var(--border);
   border-radius:40px;padding:10px 16px;font-weight:900;display:flex;align-items:center;gap:8px;
   box-shadow:0 8px 20px rgba(0,0,0,.12);transition:.25s}
@@ -119,9 +113,13 @@ footer a:hover img{transform:scale(1.12)}
   </div>
   <nav class="nav" id="navLinks">
     <a href="#shop">Shop</a>
-    <a href="register.html">Register</a>
+    <a href="register.html" id="regLink">Register</a>
     <a href="login.html" id="loginLink">Login</a>
-    <a id="logoutLink" href="#" style="display:none;color:#ff2d55;font-weight:800">Logout</a>
+    <span id="userName" style="display:none;font-weight:800;">User 🐺</span>
+    <span class="menu-btn" id="menuBtn" style="display:none;">⋮</span>
+    <div class="menu-box" id="menuBox">
+      <a href="#" id="logoutBtn">Logout</a>
+    </div>
     <a class="icon-btn" id="cartBtn" title="Open Bag">
       <img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png" alt="bag">
     </a>
@@ -139,12 +137,25 @@ footer a:hover img{transform:scale(1.12)}
 <section id="shop" class="section">
   <h2>Latest Drop 🔥</h2>
   <div class="grid">
-    <!-- Products (unchanged)... -->
-    <!-- same as your version -->
+
+    <div class="card" data-name="OMK Wolf Jacket" data-price="80000" data-img="https://omkdrip.com/images/omk-jacket-front.png">
+      <div class="card-img">
+        <a href="jacket.html">
+          <img class="front" src="https://omkdrip.com/images/omk-jacket-front.png" alt="OMK Wolf Jacket Front">
+          <img class="back" src="https://omkdrip.com/images/omk-jacket-back.png" alt="OMK Wolf Jacket Back">
+        </a>
+      </div>
+      <div class="card-body">
+        <h3>OMK Wolf Jacket</h3>
+        <p class="price">₦80,000</p>
+        <button class="btn add-cart">Add to Cart</button>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- JOIN PACK -->
+<!-- JOIN -->
 <section class="section">
   <div class="join">
     <h3>Join the OMK Pack 🐺</h3>
@@ -169,58 +180,32 @@ footer a:hover img{transform:scale(1.12)}
   <span class="chat-dot"></span> Chat with OMK
 </a>
 
-<div id="backdrop" class="backdrop"></div>
-<div id="cartPanel" class="panel">
-  <button class="close-btn" onclick="closeCart()">✕</button>
-  <h3>Your Bag</h3>
-  <div id="cartContent" class="cart-items"></div>
-  <div id="cartTotal" class="total"></div>
-  <a id="checkoutBtn" class="checkout-btn" href="#" target="_blank" style="display:none">Checkout on WhatsApp</a>
-  <div id="emptyMsg" class="empty">Your bag is empty 🛍️</div>
-</div>
-
 <script>
-// CART
-const cartBtn=document.getElementById('cartBtn');
-const cartPanel=document.getElementById('cartPanel');
-const backdrop=document.getElementById('backdrop');
-cartBtn.addEventListener('click',()=>{cartPanel.classList.add('open');backdrop.classList.add('show')});
-backdrop.addEventListener('click',closeCart);
-function closeCart(){cartPanel.classList.remove('open');backdrop.classList.remove('show');}
-
-let cart=[];const cartContent=document.getElementById('cartContent');const cartTotal=document.getElementById('cartTotal');
-const checkoutBtn=document.getElementById('checkoutBtn');const emptyMsg=document.getElementById('emptyMsg');
-function updateCart(){
-  cartContent.innerHTML='';let total=0;
-  if(cart.length===0){emptyMsg.style.display='block';cartTotal.textContent='';checkoutBtn.style.display='none';return;}
-  emptyMsg.style.display='none';
-  cart.forEach(item=>{total+=item.price;const row=document.createElement('div');row.className='cart-item';
-    row.innerHTML=`<img src="${item.img}" alt=""><div class='cart-item-info'><div class='name'>${item.name}</div><div class='price'>₦${item.price.toLocaleString()}</div></div>`;
-    cartContent.appendChild(row)});
-  cartTotal.textContent=`Total: ₦${total.toLocaleString()}`;
-  checkoutBtn.style.display='block';
-  const message="Hi OMK, here’s my order:\n\n"+cart.map(i=>`• ${i.name} - ₦${i.price.toLocaleString()}`).join('\n')+`\n\nTotal: ₦${total.toLocaleString()}`;
-  checkoutBtn.href=`https://wa.me/2347038112817?text=${encodeURIComponent(message)}`;
-}
-document.querySelectorAll('.add-cart').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    const c=btn.closest('.card');const i={name:c.dataset.name,price:parseInt(c.dataset.price),img:c.dataset.img};
-    cart.push(i);updateCart();cartPanel.classList.add('open');backdrop.classList.add('show');
-  });
-});
-
-// LOGIN DETECTION
-const user=JSON.parse(localStorage.getItem('omk_user'));
+const user = JSON.parse(localStorage.getItem('omk_user'));
+const regLink=document.getElementById('regLink');
 const loginLink=document.getElementById('loginLink');
-const logoutLink=document.getElementById('logoutLink');
-if(user && user.name){
-  loginLink.textContent=`${user.name} 🐺`;
-  loginLink.href="#";
-  logoutLink.style.display="inline";
+const userName=document.getElementById('userName');
+const menuBtn=document.getElementById('menuBtn');
+const menuBox=document.getElementById('menuBox');
+const logoutBtn=document.getElementById('logoutBtn');
+
+if(user){
+  regLink.style.display='none';
+  loginLink.style.display='none';
+  userName.style.display='inline';
+  userName.textContent=user.name + ' 🐺';
+  menuBtn.style.display='inline';
 }
-logoutLink.addEventListener('click',()=>{
+
+menuBtn.addEventListener('click',()=>menuBox.classList.toggle('show'));
+logoutBtn.addEventListener('click',()=>{
   localStorage.removeItem('omk_user');
   window.location.href='login.html';
+});
+window.addEventListener('click',e=>{
+  if(!menuBox.contains(e.target)&&e.target!==menuBtn){
+    menuBox.classList.remove('show');
+  }
 });
 </script>
 </body>
