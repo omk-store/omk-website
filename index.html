@@ -20,14 +20,15 @@
 
   /* HEADER */
   header{
-    position:sticky;top:0;z-index:20;
+    position:sticky;top:0;z-index:30;
     background:#fff;border-bottom:1px solid var(--border);
     display:flex;justify-content:space-between;align-items:center;
     padding:14px 16px;
   }
   .brand{font-weight:900;letter-spacing:.5px;font-size:20px}
   .icons{display:flex;align-items:center;gap:14px}
-  .icons img{width:24px;height:24px;cursor:pointer}
+  .icons img{width:24px;height:24px;cursor:pointer;transition:.2s}
+  .icons img:hover{opacity:.7}
 
   /* HERO */
   .wrap{max-width:1100px;margin:0 auto;padding:28px 16px}
@@ -73,6 +74,37 @@
   }
   .chat-btn:hover{transform:translateY(-2px);box-shadow:0 6px 22px rgba(0,0,0,0.15)}
   .chat-dot{width:10px;height:10px;background:var(--accent);border-radius:50%}
+
+  /* SIDE PANELS */
+  .panel{
+    position:fixed;top:0;width:70%;max-width:300px;height:100%;
+    background:#fff;box-shadow:0 0 20px rgba(0,0,0,0.15);
+    padding:24px;z-index:60;transition:transform .3s ease;
+  }
+  .menu-panel{left:0;transform:translateX(-100%)}
+  .cart-panel{right:0;transform:translateX(100%)}
+  .panel.open{transform:translateX(0)}
+  .panel h3{margin-top:0;font-weight:800}
+  .panel a{display:block;margin:18px 0;font-weight:700}
+  .close-btn{
+    position:absolute;top:14px;right:14px;
+    background:none;border:0;font-size:22px;cursor:pointer;
+  }
+  .cart-empty{
+    margin-top:60px;text-align:center;color:#666;
+  }
+  .cart-empty p{margin-bottom:14px}
+  .continue-btn{
+    display:inline-block;background:var(--accent);color:#fff;
+    padding:10px 16px;border-radius:10px;font-weight:700;
+  }
+
+  /* BACKDROP */
+  .backdrop{
+    position:fixed;inset:0;background:rgba(0,0,0,0.35);
+    opacity:0;pointer-events:none;transition:.3s;z-index:50;
+  }
+  .backdrop.show{opacity:1;pointer-events:auto}
 </style>
 </head>
 <body>
@@ -80,8 +112,8 @@
 <header>
   <div class="brand">OMK</div>
   <div class="icons">
-    <img src="https://cdn-icons-png.flaticon.com/512/56/56763.png" alt="menu">
-    <img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png" alt="bag">
+    <img id="menuBtn" src="https://cdn-icons-png.flaticon.com/512/56/56763.png" alt="menu">
+    <img id="cartBtn" src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png" alt="bag">
   </div>
 </header>
 
@@ -148,6 +180,53 @@
   <span class="chat-dot"></span>
   Chat with OMK
 </a>
+
+<!-- Backdrop -->
+<div id="backdrop" class="backdrop"></div>
+
+<!-- Menu Panel -->
+<div id="menuPanel" class="panel menu-panel">
+  <button class="close-btn" onclick="closePanels()">✕</button>
+  <h3>Menu</h3>
+  <a href="#">Home</a>
+  <a href="#shop">Shop</a>
+  <a href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20tell%20me%20about%20your%20brand">About</a>
+  <a href="https://wa.me/2347038112817">Contact</a>
+</div>
+
+<!-- Cart Panel -->
+<div id="cartPanel" class="panel cart-panel">
+  <button class="close-btn" onclick="closePanels()">✕</button>
+  <h3>Your Bag</h3>
+  <div class="cart-empty">
+    <p>Your bag is empty 🛍️</p>
+    <a class="continue-btn" href="#shop" onclick="closePanels()">Continue Shopping</a>
+  </div>
+</div>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const cartBtn = document.getElementById('cartBtn');
+  const menuPanel = document.getElementById('menuPanel');
+  const cartPanel = document.getElementById('cartPanel');
+  const backdrop = document.getElementById('backdrop');
+
+  menuBtn.addEventListener('click', () => {
+    menuPanel.classList.add('open');
+    backdrop.classList.add('show');
+  });
+  cartBtn.addEventListener('click', () => {
+    cartPanel.classList.add('open');
+    backdrop.classList.add('show');
+  });
+  backdrop.addEventListener('click', closePanels);
+
+  function closePanels() {
+    menuPanel.classList.remove('open');
+    cartPanel.classList.remove('open');
+    backdrop.classList.remove('show');
+  }
+</script>
 
 </body>
 </html>
