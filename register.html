@@ -82,10 +82,10 @@ document.getElementById('registerForm').addEventListener('submit', (e)=>{
   const pass  = document.getElementById('pass').value;
   const updates = document.getElementById('updates').checked;
 
-  // Save details locally (mock backend)
+  // Save details locally
   localStorage.setItem('omk_user', JSON.stringify({ name, email, pass, updates }));
 
-  // Create success popup
+  // Success message
   const success = document.createElement('div');
   success.style.position='fixed';
   success.style.inset='0';
@@ -98,13 +98,13 @@ document.getElementById('registerForm').addEventListener('submit', (e)=>{
     <div style="background:#111;border:1px solid #333;padding:28px 22px;border-radius:14px;text-align:center;box-shadow:0 0 25px rgba(255,45,85,.3)">
       <h2 style="color:#ff2d55;margin-bottom:8px">Account Created 🐺</h2>
       <p style="color:#ccc">Welcome to the Only My Kind Pack!</p>
-      <p style="color:#aaa;margin-top:6px">Check your email for a welcome message 💌</p>
+      <p style="color:#aaa;margin-top:6px">You’ll be redirected to the home page...</p>
       ${updates ? '<p style="color:#ff2d55;margin-top:10px;">You’ll also get updates about new drops 🔥</p>' : ''}
     </div>`;
   document.body.appendChild(success);
 
-  // Redirect to login after 2 seconds
-  setTimeout(()=>{ window.location.href = 'login.html'; },2000);
+  // Redirect to home after 2 seconds
+  setTimeout(()=>{ window.location.href = 'index.html'; },2000);
 });
 </script>
 </body>
