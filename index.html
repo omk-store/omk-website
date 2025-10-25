@@ -4,178 +4,134 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>OMK | Only My Kind</title>
-
 <style>
-  :root{
-    --fg:#111; --bg:#fff; --muted:#6b6b6b; --border:#eaeaea; --accent:#ff2d55;
-  }
-  *{box-sizing:border-box}
-  html,body{
-    margin:0;background:var(--bg);color:var(--fg);
-    font-family:system-ui,-apple-system,Segoe UI,Arial,Helvetica,sans-serif;
-    scroll-behavior:smooth;
-  }
+  :root{--fg:#111;--bg:#fff;--muted:#6b6b6b;--border:#eaeaea;--accent:#ff2d55}
+  *{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Arial,Helvetica,sans-serif}
+  a{text-decoration:none;color:inherit}
 
-  /* ===== HEADER ===== */
-  .site-header{position:sticky;top:0;z-index:60;background:#fff;border-bottom:1px solid var(--border);
-    display:flex;align-items:center;justify-content:space-between;padding:12px 16px;box-shadow:0 2px 8px rgba(0,0,0,.04)}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.5px;font-size:1.05rem}
-  .icon-btn{border:0;border-radius:10px;padding:8px 12px;line-height:1;cursor:pointer}
-  #menuBtn{background:#111;color:#fff;font-weight:800}
-  #cartBtn{background:#fff;border:1px solid var(--border);margin-left:8px}
-  #mobileNav{position:fixed;top:0;left:-280px;width:260px;height:100vh;background:#fff;border-right:1px solid var(--border);
-    display:flex;flex-direction:column;gap:18px;padding:80px 18px 18px;transition:left .25s ease;z-index:70}
-  #mobileNav a{color:#111;text-decoration:none;font-weight:700;font-size:1.05rem}
-  #mobileNav.open{left:0}
-  #navOverlay{position:fixed;inset:0;background:rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:65}
-  #navOverlay.show{opacity:1;pointer-events:auto}
+  /* HEADER */
+  header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--border);
+    display:flex;justify-content:space-between;align-items:center;padding:12px 16px}
+  .brand{font-weight:900;letter-spacing:.5px}
+  .btn{display:inline-block;background:var(--accent);color:#fff;padding:12px 18px;border-radius:10px;font-weight:800}
+  .btn-outline{display:inline-block;border:1px solid var(--border);padding:10px 14px;border-radius:10px;font-weight:700}
 
-  /* ===== HERO ===== */
-  .hero{
-    background:url('5CB390F1-C296-439F-A95B-32679E9FE8BA.png') center/cover no-repeat;
-    color:#fff;text-align:center;
-    padding:140px 20px 160px;
-    background-attachment:fixed;
-    box-shadow:inset 0 0 0 1000px rgba(0,0,0,0.55);
-    animation:fadeIn 2s ease;
-  }
-  @keyframes fadeIn {from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-  .hero h1{font-size:2.8rem;margin:0 0 10px;letter-spacing:1.5px;text-transform:uppercase;color:#ffd87a}
-  .hero p{margin:0 0 20px;color:#eaeaea;font-weight:500;font-size:1.1rem}
-  .cta{background:var(--accent);color:#fff;text-decoration:none;padding:14px 28px;border-radius:12px;font-weight:800;display:inline-block;
-    box-shadow:0 0 12px rgba(255,45,85,0.6);transition:all .3s ease;}
-  .cta:hover{transform:scale(1.05);box-shadow:0 0 18px rgba(255,45,85,0.9);}
-  .cta:active{transform:scale(.98)}
+  /* HERO */
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 16px}
+  .hero{background:#111;color:#fff;border-radius:14px;padding:48px 20px;text-align:center}
+  .hero h1{margin:0 0 6px;font-size:2.2rem;color:#ffd87a}
+  .hero p{margin:0 0 18px;color:#eaeaea}
 
-  /* ===== PRODUCTS ===== */
-  .wrap{max-width:1250px;margin:0 auto;padding:40px 18px}
-  h2.section-title{text-align:center;margin:50px 0 25px;font-size:1.9rem;font-weight:900;letter-spacing:.4px;text-transform:uppercase}
-  
-  .grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
-    gap:40px 30px;
-    justify-items:center;
-    align-items:start;
-  }
-  .card{
-    width:100%;
-    text-decoration:none;
-    color:inherit;
-    border:none;
-    border-radius:12px;
-    background:#fff;
-    text-align:center;
-    transition:all .3s ease;
-    box-shadow:0 5px 18px rgba(0,0,0,0.08);
-  }
-  .card:hover{transform:translateY(-8px);box-shadow:0 10px 25px rgba(0,0,0,0.15);}
-  .imgwrap img{
-    width:100%;
-    height:auto;
-    border-radius:12px;
-    object-fit:cover;
-  }
-  .meta{margin-top:10px}
-  .title{font-weight:800;font-size:1.05rem;margin:6px 0 4px;text-transform:uppercase;letter-spacing:.4px}
-  .price{margin:0;color:#000;font-weight:700;font-size:1rem}
+  /* GRID */
+  h2{margin:32px 0 16px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+  .card{border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;background:#fff}
+  .card img{width:100%;border-radius:10px}
+  .title{font-weight:800;margin:10px 0 4px}
+  .price{margin:0 0 12px;color:#000;font-weight:700}
 
-  /* ===== SIGN-UP ===== */
-  .signup{max-width:900px;margin:60px auto;padding:40px 20px;background:#111;color:#fff;border-radius:16px;text-align:center}
-  .signup h3{font-size:1.7rem;font-weight:900;margin:0 0 10px}
-  .signup p{color:#ccc;font-size:1rem;margin-bottom:20px}
-  .signup form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-  .signup input{flex:1;min-width:240px;padding:12px 14px;border:none;border-radius:8px;font-size:1rem}
-  .signup button{background:var(--accent);color:#fff;border:none;padding:12px 20px;border-radius:10px;font-weight:800;cursor:pointer}
-  .signup button:hover{opacity:.9}
+  footer{margin-top:34px;border-top:1px solid var(--border);padding:16px;text-align:center;font-weight:600}
 
-  footer{margin-top:60px;background:#111;color:#fff;text-align:center;padding:20px;font-size:.9rem;font-weight:600}
+  /* CONTACT SHEET */
+  .sheet-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:.2s;z-index:60}
+  .sheet{position:fixed;left:50%;bottom:-420px;transform:translateX(-50%);width:min(520px,92%);
+    background:#fff;border-radius:16px 16px 12px 12px;box-shadow:0 20px 60px rgba(0,0,0,.25);padding:18px;transition:.25s;z-index:61}
+  .sheet.open{bottom:18px}
+  .sheet-backdrop.show{opacity:1;pointer-events:auto}
+  .sheet h3{margin:6px 0 14px;text-align:center}
+  .opt{display:flex;gap:12px;align-items:center;border:1px solid var(--border);border-radius:12px;padding:12px}
+  .opt strong{flex:1}
+  .opt .go{font-weight:800;background:#111;color:#fff;border-radius:10px;padding:8px 12px}
+  .row{display:grid;grid-template-columns:1fr;gap:12px}
+  .x{position:absolute;right:10px;top:8px;border:0;background:#fff;border:1px solid var(--border);border-radius:8px;padding:6px 9px;cursor:pointer}
 
-  .social-float{position:fixed;right:16px;bottom:16px;z-index:90;display:flex;align-items:center;gap:10px;background:#fff;
-    color:#111;border-radius:14px;padding:10px 12px;box-shadow:0 10px 25px rgba(0,0,0,.12);text-decoration:none;font-weight:800;border:1px solid #eee}
-  .social-float .dot{width:10px;height:10px;background:var(--accent);border-radius:50%}
+  /* FLOAT */
+  .float{position:fixed;right:16px;bottom:16px;z-index:50;background:#fff;border:1px solid var(--border);
+    border-radius:14px;padding:10px 12px;font-weight:800;box-shadow:0 10px 22px rgba(0,0,0,.12)}
 </style>
 </head>
 <body>
 
-<header class="site-header">
-  <a href="/" class="brand"><span class="txt">OMK</span></a>
-  <div style="display:flex;align-items:center">
-    <button id="menuBtn" class="icon-btn">☰</button>
-    <button id="cartBtn" class="icon-btn" onclick="location.hash='#shop'">🛍️</button>
-  </div>
-  <nav id="mobileNav">
-    <a href="index.html">Home</a>
-    <a href="#shop">Shop</a>
-    <a href="#signup">Sign Up</a>
-    <a href="https://www.instagram.com/whosomotaker?igsh=MTEwM2RiOHV1ZjJzdQ%3D%3D&utm_source=qr" target="_blank">Instagram</a>
-    <a href="https://www.tiktok.com/@omkdrip?_t=ZS-90pxbBAGnBQ&_r=1" target="_blank">TikTok</a>
+<header>
+  <div class="brand">OMK</div>
+  <nav style="display:flex;gap:10px;align-items:center">
+    <a class="btn-outline" href="#shop">Shop</a>
+    <a id="buyTop" class="btn" href="#">Buy / Message</a>
   </nav>
-  <div id="navOverlay"></div>
 </header>
 
-<section class="hero">
-  <h1>Only My Kind</h1>
-  <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
-  <a class="cta" href="#shop">Shop Collection</a>
-</section>
+<main class="wrap">
+  <section class="hero">
+    <h1>Only My Kind</h1>
+    <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
+    <a id="heroBuy" class="btn" href="#">Buy / Message</a>
+  </section>
 
-<section id="shop" class="wrap">
-  <h2 class="section-title">Latest Drop 🔥</h2>
-  <div class="grid">
-
-    <!-- Featured Jacket (Brown Edition) -->
-    <a class="card" href="https://www.tiktok.com/@omkdrip?_t=ZS-90pxbBAGnBQ&_r=1" target="_blank">
-      <div class="imgwrap">
-        <img src="https://omkdrip.com/omk-brown-front.png?v=2" alt="OMK Wolf Jacket — Brown Edition" />
-      </div>
-      <div class="meta">
-        <div class="title">OMK Wolf Jacket — Brown Edition</div>
+  <section id="shop" class="wrap" style="padding-left:0;padding-right:0">
+    <h2>Latest Drop</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://omkdrip.com/omk-brown-front.png?v=2" alt="OMK Wolf Jacket — Brown">
+        <div class="title">OMK Wolf Jacket — Brown</div>
         <p class="price">₦80,000</p>
+        <a class="btn" href="#" onclick="openSheet();return false;">Buy / Message</a>
       </div>
-    </a>
+      <div class="card">
+        <img src="https://omkdrip.com/jeans-blue.jpg" alt="OMK Jeans">
+        <div class="title">OMK Jeans</div>
+        <p class="price">₦70,000</p>
+        <a class="btn" href="#" onclick="openSheet();return false;">Buy / Message</a>
+      </div>
+      <div class="card">
+        <img src="https://omkdrip.com/tee-white.jpg" alt="OMK T-Shirt">
+        <div class="title">OMK T-Shirt</div>
+        <p class="price">₦45,000</p>
+        <a class="btn" href="#" onclick="openSheet();return false;">Buy / Message</a>
+      </div>
+    </div>
+  </section>
+</main>
 
-    <a class="card" href="https://www.tiktok.com/@omkdrip?_t=ZS-90pxbBAGnBQ&_r=1" target="_blank">
-      <div class="imgwrap"><img src="https://omkdrip.com/jeans-blue.jpg" alt="OMK Jeans" /></div>
-      <div class="meta"><div class="title">OMK Jeans</div><p class="price">₦70,000</p></div>
-    </a>
+<footer>© 2025 OMK – Only My Kind</footer>
 
-    <a class="card" href="https://www.tiktok.com/@omkdrip?_t=ZS-90pxbBAGnBQ&_r=1" target="_blank">
-      <div class="imgwrap"><img src="https://omkdrip.com/tee-white.jpg" alt="OMK T-Shirt" /></div>
-      <div class="meta"><div class="title">OMK T-Shirt</div><p class="price">₦45,000</p></div>
-    </a>
+<!-- Floating quick access -->
+<a class="float" href="#" onclick="openSheet();return false;">Message OMK</a>
 
-    <a class="card" href="https://www.tiktok.com/@omkdrip?_t=ZS-90pxbBAGnBQ&_r=1" target="_blank">
-      <div class="imgwrap"><img src="https://omkdrip.com/shorts-black.jpg" alt="OMK Shorts" /></div>
-      <div class="meta"><div class="title">OMK Shorts</div><p class="price">₦50,000</p></div>
+<!-- Contact chooser -->
+<div id="sheetBg" class="sheet-backdrop"></div>
+<div id="sheet" class="sheet" role="dialog" aria-modal="true" aria-label="Contact OMK">
+  <button class="x" onclick="closeSheet()">✕</button>
+  <h3>Pick where to message</h3>
+  <div class="row">
+    <a class="opt" href="https://www.instagram.com/whosomotaker?igsh=MTEwM2RiOHV1ZjJzdQ%3D%3D&utm_source=qr" target="_blank" rel="noopener">
+      <img alt="" src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" style="width:28px;height:28px;border-radius:6px">
+      <strong>Instagram (label)</strong>
+      <span class="go">Open</span>
     </a>
-
+    <a class="opt" href="https://www.tiktok.com/@omkdrip?_t=ZS-90pxbBAGnBQ&_r=1" target="_blank" rel="noopener">
+      <img alt="" src="https://upload.wikimedia.org/wikipedia/commons/0/08/TikTok_logo.svg" style="width:28px;height:28px">
+      <strong>TikTok (@omkdrip)</strong>
+      <span class="go">Open</span>
+    </a>
+    <a class="opt" href="https://wa.me/2348118618722?text=Hi%20OMK%2C%20I%20want%20to%20order%20from%20the%20site" target="_blank" rel="noopener">
+      <img alt="" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:28px;height:28px">
+      <strong>WhatsApp (temporary)</strong>
+      <span class="go">Open</span>
+    </a>
   </div>
-</section>
-
-<section id="signup" class="signup">
-  <h3>Join the OMK Family</h3>
-  <p>Follow OMK on TikTok & Instagram to stay updated on new drops and exclusive content.</p>
-  <a class="cta" href="https://www.tiktok.com/@omkdrip?_t=ZS-90pxbBAGnBQ&_r=1" target="_blank">Follow on TikTok</a>
-  <br><br>
-  <a class="cta" href="https://www.instagram.com/whosomotaker?igsh=MTEwM2RiOHV1ZjJzdQ%3D%3D&utm_source=qr" target="_blank">Connect on Instagram</a>
-</section>
-
-<footer>© 2025 OMK – Only My Kind | All Rights Reserved</footer>
-
-<a class="social-float" id="socialFab" href="https://www.instagram.com/whosomotaker?igsh=MTEwM2RiOHV1ZjJzdQ%3D%3D&utm_source=qr" target="_blank">
-  <span class="dot"></span> Chat on Instagram
-</a>
+  <p style="margin:12px 4px 0;color:#666;font-size:.9rem;text-align:center">
+    Prefer DM? Use Instagram. Prefer quick buy? Use TikTok. WhatsApp is temporary until OMK Business line launches.
+  </p>
+</div>
 
 <script>
-document.addEventListener('DOMContentLoaded',()=>{
-  const btn=document.getElementById('menuBtn');
-  const nav=document.getElementById('mobileNav');
-  const overlay=document.getElementById('navOverlay');
-  function toggleNav(){nav.classList.toggle('open');overlay.classList.toggle('show');}
-  btn.addEventListener('click',toggleNav);
-  overlay.addEventListener('click',toggleNav);
-});
+  const bg=document.getElementById('sheetBg');
+  const sheet=document.getElementById('sheet');
+  function openSheet(){bg.classList.add('show');sheet.classList.add('open')}
+  function closeSheet(){bg.classList.remove('show');sheet.classList.remove('open')}
+  bg.addEventListener('click',closeSheet);
+  document.getElementById('buyTop').addEventListener('click',e=>{e.preventDefault();openSheet()});
+  document.getElementById('heroBuy').addEventListener('click',e=>{e.preventDefault();openSheet()});
 </script>
 </body>
 </html>
