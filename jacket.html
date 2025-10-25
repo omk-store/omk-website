@@ -11,6 +11,7 @@
   --bg1:#f9f9f9;
   --bg2:#ffffff;
   --text:#111;
+  --border:#eaeaea;
 }
 body{
   margin:0;
@@ -20,21 +21,31 @@ body{
   overflow-x:hidden;
 }
 
-/* HEADER */
+/* APPLE-STYLE HEADER */
 header{
   position:sticky;top:0;z-index:50;
-  backdrop-filter:blur(10px);
-  background:rgba(255,255,255,0.9);
-  border-bottom:1px solid rgba(0,0,0,0.05);
+  background:#fff;
+  border-bottom:1px solid var(--border);
   display:flex;justify-content:space-between;align-items:center;
-  padding:14px 20px;
-  box-shadow:0 2px 12px rgba(0,0,0,0.05);
+  padding:12px 22px;
+  box-shadow:0 1px 8px rgba(0,0,0,.05);
+  backdrop-filter:blur(8px);
 }
-.brand{font-weight:900;letter-spacing:1px;font-size:1.1rem;}
-nav a{text-decoration:none;color:#111;margin-left:20px;font-weight:600;transition:.2s;}
+.brand{
+  display:flex;align-items:baseline;gap:6px;
+  font-weight:900;letter-spacing:1px;font-size:1.2rem;
+}
+.brand span{font-weight:300;font-size:12px;opacity:.7}
+nav{display:flex;align-items:center;gap:20px;}
+nav a{
+  text-decoration:none;color:#222;font-weight:600;
+  transition:.2s ease;color:#111;
+}
 nav a:hover{color:var(--accent);}
+.icon-btn img{width:24px;height:24px;transition:.25s;}
+.icon-btn img:hover{opacity:.75}
 
-/* MAIN */
+/* MAIN CONTENT */
 .container{max-width:950px;margin:auto;padding:40px 18px;text-align:center;}
 h1{
   font-size:2.4rem;font-weight:900;letter-spacing:1px;
@@ -44,7 +55,9 @@ h1{
 }
 @keyframes glow{0%{background-position:0%}50%{background-position:100%}100%{background-position:0%}}
 
-.gallery{display:flex;flex-direction:column;gap:18px;align-items:center;margin-top:20px;}
+.gallery{
+  display:flex;flex-direction:column;gap:18px;align-items:center;margin-top:20px;
+}
 .gallery img{
   width:100%;max-width:480px;border-radius:16px;
   box-shadow:0 12px 30px rgba(0,0,0,0.08);
@@ -52,7 +65,10 @@ h1{
 }
 .gallery img.hide{opacity:0;pointer-events:none;position:absolute;}
 
-.price{font-weight:800;font-size:1.6rem;color:var(--accent);margin:24px 0 10px;}
+.price{
+  font-weight:800;font-size:1.6rem;color:var(--accent);
+  margin:24px 0 10px;
+}
 
 .selectors{
   background:#fff;border:1px solid #eee;border-radius:16px;
@@ -83,25 +99,50 @@ select{
 }
 .cta:hover{transform:scale(1.05);box-shadow:0 8px 26px rgba(255,45,85,0.6);}
 
-/* FOOTER */
+/* APPLE-STYLE FOOTER */
 footer{
-  margin-top:70px;padding:25px;
-  background:#111;color:#fff;font-weight:600;
-  border-top:2px solid var(--accent);
+  margin-top:70px;padding:25px 16px;
+  background:#fff;color:#444;font-weight:600;
+  border-top:1px solid var(--border);
+  text-align:center;font-size:14px;
 }
+footer .links{margin-top:8px;}
+footer a{color:#111;text-decoration:none;margin:0 8px;font-weight:700;transition:.25s;}
+footer a:hover{color:var(--accent);}
+footer small{display:block;color:#777;margin-top:6px;font-weight:400}
+
+/* CHAT BUTTON */
+.chat-btn{
+  position:fixed;right:18px;bottom:18px;z-index:70;
+  background:#fff;border:1px solid var(--border);
+  border-radius:40px;padding:10px 16px;font-weight:900;
+  display:flex;align-items:center;gap:8px;
+  box-shadow:0 8px 20px rgba(0,0,0,.12);transition:.25s;
+  color:#111;
+}
+.chat-btn:hover{transform:translateY(-2px)}
+.chat-dot{width:10px;height:10px;background:var(--accent);border-radius:50%}
 </style>
 </head>
 
 <body>
+<!-- HEADER -->
 <header>
-  <div class="brand">OMK</div>
+  <div class="brand">
+    <a href="index.html" style="text-decoration:none;color:#111;">OMK</a>
+    <span>Only My Kind</span>
+  </div>
   <nav>
     <a href="index.html">Shop</a>
     <a href="register.html">Register</a>
-    <a href="https://wa.me/2347038112817?text=I'm%20interested%20in%20the%20OMK%20Wolf%20Jacket" target="_blank">Buy</a>
+    <a href="login.html">Login</a>
+    <a class="icon-btn" href="#cart" title="Bag">
+      <img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png" alt="bag">
+    </a>
   </nav>
 </header>
 
+<!-- MAIN -->
 <main class="container">
   <h1>OMK Wolf Jacket 🐺</h1>
 
@@ -136,9 +177,21 @@ footer{
   </a>
 </main>
 
+<!-- FOOTER -->
 <footer>
-  © 2025 OMK – Only My Kind | Loyalty • Truth • Legacy
+  <div>© 2025 OMK – Only My Kind</div>
+  <div class="links">
+    <a href="index.html">Home</a> |
+    <a href="register.html">Register</a> |
+    <a href="login.html">Login</a>
+  </div>
+  <small>Loyalty • Truth • Legacy 🐺</small>
 </footer>
+
+<!-- CHAT BUTTON -->
+<a class="chat-btn" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20some%20clothes" target="_blank">
+  <span class="chat-dot"></span> Chat with OMK
+</a>
 
 <script>
 let currentColor = 'brown';
@@ -176,6 +229,5 @@ function updateBuyLink(){
   buy.href=`https://wa.me/2347038112817?text=I'm%20interested%20in%20the%20OMK%20Wolf%20Jacket%20-%20${colorText}%20Edition%20(${sizeText})`;
 }
 </script>
-
 </body>
 </html>
