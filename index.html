@@ -8,104 +8,88 @@
   :root {
     --fg:#111;
     --bg:#fff;
-    --muted:#6b6b6b;
     --border:#eaeaea;
     --accent:#ff2d55;
   }
-  *{box-sizing:border-box}
-  html,body{
-    margin:0;
-    background:var(--bg);
-    color:var(--fg);
-    font-family:system-ui,-apple-system,Segoe UI,Arial,Helvetica,sans-serif;
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Poppins',system-ui,-apple-system,Segoe UI,Arial,Helvetica,sans-serif;
+    color:var(--fg);background:var(--bg);
   }
   a{text-decoration:none;color:inherit}
 
   /* HEADER */
   header{
-    position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--border);
-    display:flex;justify-content:space-between;align-items:center;padding:12px 16px;
+    position:sticky;top:0;z-index:20;
+    background:#fff;border-bottom:1px solid var(--border);
+    display:flex;justify-content:space-between;align-items:center;
+    padding:14px 16px;
   }
-  .brand{font-weight:900;letter-spacing:.5px;color:#4b0082;text-decoration:underline}
-  .btn{
-    display:inline-block;background:var(--accent);color:#fff;padding:12px 18px;
-    border-radius:10px;font-weight:800;
-  }
-  .btn-outline{
-    display:inline-block;border:1px solid var(--border);padding:10px 14px;
-    border-radius:10px;font-weight:700;
-  }
+  .brand{font-weight:900;letter-spacing:.5px;font-size:20px}
+  .icons{display:flex;align-items:center;gap:14px}
+  .icons img{width:24px;height:24px;cursor:pointer}
 
   /* HERO */
   .wrap{max-width:1100px;margin:0 auto;padding:28px 16px}
   .hero{
-    background:#111;color:#fff;border-radius:14px;padding:48px 20px;text-align:center;
+    background:#111;color:#fff;border-radius:14px;
+    padding:48px 20px;text-align:center;
   }
-  .hero h1{margin:0 0 6px;font-size:2.2rem;color:#ffd87a}
+  .hero h1{margin:0 0 8px;font-size:2.2rem;color:#ffd87a}
   .hero p{margin:0 0 18px;color:#eaeaea}
+  .btn{
+    display:inline-block;background:var(--accent);color:#fff;
+    padding:12px 18px;border-radius:10px;font-weight:800;
+  }
 
   /* GRID */
-  h2{margin:32px 0 16px}
+  h2{margin:32px 0 16px;text-align:left}
   .grid{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:18px;
   }
   .card{
-    border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;background:#fff;
+    border:1px solid var(--border);border-radius:12px;
+    padding:14px;text-align:center;background:#fff;
   }
   .card img{width:100%;border-radius:10px}
   .title{font-weight:800;margin:10px 0 4px}
-  .price{margin:0 0 12px;color:#000;font-weight:700}
-
+  .price{margin:0 0 12px;font-weight:700}
   footer{
     margin-top:34px;border-top:1px solid var(--border);
     padding:16px;text-align:center;font-weight:600;
   }
 
   /* FLOATING CHAT BUTTON */
-  .chat-btn {
-    position: fixed;
-    bottom: 18px;
-    right: 18px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: #fff;
-    border: 1px solid #eaeaea;
-    border-radius: 40px;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.1);
-    padding: 10px 18px;
-    font-weight: 800;
-    color: #000;
-    z-index: 100;
-    transition: all 0.25s ease;
+  .chat-btn{
+    position:fixed;bottom:18px;right:18px;
+    display:flex;align-items:center;gap:8px;
+    background:#fff;border:1px solid var(--border);
+    border-radius:40px;padding:10px 18px;
+    font-weight:800;color:#000;
+    box-shadow:0 4px 18px rgba(0,0,0,0.1);
+    z-index:100;transition:all .25s ease;
   }
-  .chat-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 22px rgba(0,0,0,0.15);
-  }
-  .chat-dot {
-    width: 10px;
-    height: 10px;
-    background: #ff2d55;
-    border-radius: 50%;
-  }
+  .chat-btn:hover{transform:translateY(-2px);box-shadow:0 6px 22px rgba(0,0,0,0.15)}
+  .chat-dot{width:10px;height:10px;background:var(--accent);border-radius:50%}
 </style>
 </head>
 <body>
 
 <header>
   <div class="brand">OMK</div>
-  <nav style="display:flex;gap:10px;align-items:center">
-    <a class="btn-outline" href="#shop">Shop</a>
-    <a id="buyTop" class="btn" href="#">Buy / Message</a>
-  </nav>
+  <div class="icons">
+    <img src="https://cdn-icons-png.flaticon.com/512/56/56763.png" alt="menu">
+    <img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png" alt="bag">
+  </div>
 </header>
 
 <main class="wrap">
   <section class="hero">
     <h1>Only My Kind</h1>
     <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
-    <a id="heroBuy" class="btn" href="#">Buy / Message</a>
+    <a class="btn" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20some%20clothes">Buy / Message</a>
   </section>
 
   <section id="shop" class="wrap" style="padding-left:0;padding-right:0">
@@ -115,19 +99,43 @@
         <img src="https://omkdrip.com/omk-brown-front.png?v=2" alt="OMK Wolf Jacket — Brown">
         <div class="title">OMK Wolf Jacket — Brown</div>
         <p class="price">₦80,000</p>
-        <a class="btn" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20the%20Brown%20Wolf%20Jacket">Buy / Message</a>
+        <a class="btn" href="https://wa.me/2347038112817?text=I%20want%20the%20OMK%20Wolf%20Jacket">Buy</a>
       </div>
       <div class="card">
         <img src="https://omkdrip.com/jeans-blue.jpg" alt="OMK Jeans">
         <div class="title">OMK Jeans</div>
         <p class="price">₦70,000</p>
-        <a class="btn" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20the%20OMK%20Jeans">Buy / Message</a>
+        <a class="btn" href="https://wa.me/2347038112817?text=I%20want%20the%20OMK%20Jeans">Buy</a>
       </div>
       <div class="card">
         <img src="https://omkdrip.com/tee-white.jpg" alt="OMK T-Shirt">
         <div class="title">OMK T-Shirt</div>
         <p class="price">₦45,000</p>
-        <a class="btn" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20the%20OMK%20T-Shirt">Buy / Message</a>
+        <a class="btn" href="https://wa.me/2347038112817?text=I%20want%20the%20OMK%20T-Shirt">Buy</a>
+      </div>
+      <div class="card">
+        <img src="https://omkdrip.com/shorts.jpg" alt="OMK Shorts">
+        <div class="title">OMK Shorts</div>
+        <p class="price">₦50,000</p>
+        <a class="btn" href="https://wa.me/2347038112817?text=I%20want%20the%20OMK%20Shorts">Buy</a>
+      </div>
+      <div class="card">
+        <img src="https://omkdrip.com/hoodie.jpg" alt="OMK Hoodie">
+        <div class="title">OMK Hoodie</div>
+        <p class="price">₦65,000</p>
+        <a class="btn" href="https://wa.me/2347038112817?text=I%20want%20the%20OMK%20Hoodie">Buy</a>
+      </div>
+      <div class="card">
+        <img src="https://omkdrip.com/updown.jpg" alt="OMK Up & Down Set">
+        <div class="title">OMK Up & Down Set</div>
+        <p class="price">₦120,000</p>
+        <a class="btn" href="https://wa.me/2347038112817?text=I%20want%20the%20OMK%20Up%20and%20Down%20Set">Buy</a>
+      </div>
+      <div class="card">
+        <img src="https://omkdrip.com/wolf-exclusive.jpg" alt="Wolf Set Exclusive">
+        <div class="title">Wolf Set Exclusive</div>
+        <p class="price">₦150,000</p>
+        <a class="btn" href="https://wa.me/2347038112817?text=I%20want%20the%20Wolf%20Set%20Exclusive">Buy</a>
       </div>
     </div>
   </section>
@@ -140,10 +148,6 @@
   <span class="chat-dot"></span>
   Chat with OMK
 </a>
-
-<script>
-  // Optional scroll effect for chat button if you want later
-</script>
 
 </body>
 </html>
