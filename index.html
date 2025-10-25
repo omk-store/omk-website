@@ -50,16 +50,37 @@
   .cta:active{transform:scale(.98)}
 
   /* ===== PRODUCTS ===== */
-  .wrap{max-width:1200px;margin:0 auto;padding:30px 18px}
-  h2.section-title{text-align:center;margin:50px 0 22px;font-size:1.7rem;font-weight:900;letter-spacing:.4px}
-  .grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));justify-items:center;align-items:start}
-  .card{display:block;text-decoration:none;color:inherit;border:1px solid var(--border);border-radius:12px;padding:10px;background:#fff;transition:.25s ease;cursor:pointer}
-  .card:hover{transform:translateY(-6px);box-shadow:0 6px 20px rgba(0,0,0,.1);}
-  .imgwrap{background:#fff;border:1px solid var(--border);padding:6px;border-radius:10px;overflow:hidden}
-  .imgwrap img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:8px;display:block}
-  .meta{text-align:center;padding:10px 2px}
-  .title{margin:6px 0 4px;font-weight:800;font-size:1.04rem}
-  .price{margin:0;color:var(--muted);font-weight:700}
+  .wrap{max-width:1250px;margin:0 auto;padding:40px 18px}
+  h2.section-title{text-align:center;margin:50px 0 25px;font-size:1.9rem;font-weight:900;letter-spacing:.4px;text-transform:uppercase}
+  
+  /* Updated grid layout to match zttw style */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+    gap:40px 30px;
+    justify-items:center;
+    align-items:start;
+  }
+  .card{
+    width:100%;
+    text-decoration:none;
+    color:inherit;
+    border:none;
+    border-radius:0;
+    background:#fff;
+    text-align:center;
+    transition:all .3s ease;
+  }
+  .card:hover{transform:translateY(-8px);}
+  .imgwrap img{
+    width:100%;
+    height:auto;
+    border-radius:12px;
+    object-fit:cover;
+  }
+  .meta{margin-top:10px}
+  .title{font-weight:800;font-size:1.05rem;margin:6px 0 4px;text-transform:uppercase;letter-spacing:.4px}
+  .price{margin:0;color:#000;font-weight:700;font-size:1rem}
 
   /* ===== SIGN-UP ===== */
   .signup{max-width:900px;margin:60px auto;padding:40px 20px;background:#111;color:#fff;border-radius:16px;text-align:center}
@@ -109,8 +130,6 @@
     <a class="card" href="#"><div class="imgwrap"><img src="shorts-black.jpg" alt="OMK Shorts" /></div><div class="meta"><div class="title">OMK Shorts</div><p class="price">₦50,000</p></div></a>
     <a class="card" href="#"><div class="imgwrap"><img src="jacket-black.jpg" alt="OMK Cool Set" /></div><div class="meta"><div class="title">OMK Cool Set</div><p class="price">₦150,000</p></div></a>
     <a class="card" href="#"><div class="imgwrap"><img src="jacket-black.jpg" alt="OMK Mode Set" /></div><div class="meta"><div class="title">OMK Mode Set</div><p class="price">₦150,000</p></div></a>
-    <a class="card" href="#"><div class="imgwrap"><img src="jacket-black.jpg" alt="OMK Paradise Set" /></div><div class="meta"><div class="title">OMK Paradise Set</div><p class="price">₦150,000</p></div></a>
-    <a class="card" href="#"><div class="imgwrap"><img src="jacket-black.jpg" alt="OMK Red Vest (Limited)" /></div><div class="meta"><div class="title">OMK Red Vest (Limited)</div><p class="price">₦80,000</p></div></a>
   </div>
 </section>
 
