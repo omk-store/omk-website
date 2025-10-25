@@ -6,122 +6,151 @@
 <title>OMK | Only My Kind</title>
 
 <style>
-:root {
-  --fg:#111;--bg:#fff;--border:#eaeaea;--accent:#ff2d55;
-}
+:root { --fg:#111; --bg:#fff; --border:#eaeaea; --accent:#ff2d55; }
 *{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
-body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  color:var(--fg);background:var(--bg);}
+body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--fg);background:var(--bg)}
 a{text-decoration:none;color:inherit;cursor:pointer}
 
 /* HEADER */
-header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--border);
-  display:flex;justify-content:space-between;align-items:center;padding:14px 18px;}
-.brand{display:flex;align-items:baseline;gap:8px;}
-.logo{font-weight:900;font-size:22px;cursor:pointer;}
-.tag{font-weight:300;opacity:.8;font-size:12px;}
-.icons{display:flex;align-items:center;gap:12px;}
-.icons img{width:24px;height:24px;cursor:pointer;transition:.2s;}
-.icons img:hover{opacity:.7}
+header{
+  position:sticky;top:0;z-index:30;background:#fff;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;padding:12px 18px
+}
+.brand{display:flex;align-items:baseline;gap:8px}
+.logo{font-weight:900;font-size:22px}
+.tag{font-weight:300;opacity:.8;font-size:12px}
+.nav{display:flex;align-items:center;gap:14px}
+.nav a{font-weight:700;color:#444}
+.nav a:hover{color:var(--accent)}
+.icon-btn{display:inline-flex}
+.icon-btn img{width:24px;height:24px;transition:.2s}
+.icon-btn img:hover{opacity:.75}
 
 /* HERO */
-.hero{background:linear-gradient(120deg,#000,#111);color:#fff;text-align:center;
-  padding:80px 20px;}
-.hero h1{font-size:clamp(32px,6vw,54px);background:linear-gradient(90deg,#ffd87a,#ff2d55,#ff6b6b);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;text-transform:uppercase;}
-.hero p{opacity:.85;margin-top:8px;}
-.hero a{display:inline-block;margin-top:22px;background:var(--accent);color:#fff;
-  padding:12px 24px;border-radius:10px;font-weight:700;transition:.25s;}
-.hero a:hover{opacity:.85}
+.hero{background:linear-gradient(120deg,#000,#111);color:#fff;text-align:center;padding:78px 20px}
+.hero h1{
+  font-size:clamp(32px,6vw,54px);
+  background:linear-gradient(90deg,#ffd87a,#ff2d55,#ff6b6b);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  text-transform:uppercase
+}
+.hero p{opacity:.85;margin-top:8px}
+.hero .cta{display:inline-block;margin-top:20px;background:var(--accent);color:#fff;padding:12px 22px;border-radius:10px;font-weight:800}
+.hero .cta:hover{opacity:.9}
 
-/* GRID */
-.section{padding:60px 0;}
-.section h2{text-align:center;font-size:28px;margin-bottom:30px;}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;
-  width:min(1100px,92%);margin:0 auto;}
+/* SECTIONS & GRID */
+.section{padding:56px 0}
+.section h2{text-align:center;font-size:28px;margin-bottom:26px}
+.grid{
+  width:min(1100px,92%);margin:0 auto;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px
+}
 
-/* CARD */
-.card{border:1px solid var(--border);border-radius:12px;overflow:hidden;text-align:center;
-  box-shadow:0 4px 10px rgba(0,0,0,0.05);transition:transform .25s,box-shadow .25s;}
-.card:hover{transform:translateY(-5px);box-shadow:0 6px 18px rgba(0,0,0,0.1);}
-.card-img{position:relative;overflow:hidden;}
-.card-img img{width:100%;height:300px;object-fit:cover;transition:opacity .4s ease;}
-.card-img img.back{position:absolute;top:0;left:0;opacity:0;}
-.card:hover .card-img img.front{opacity:0;}
-.card:hover .card-img img.back{opacity:1;}
-.card-body{padding:16px;}
-.card h3{margin:6px 0;font-size:16px;font-weight:700;}
-.price{font-weight:600;color:#444;margin-bottom:10px;}
-.btn{display:inline-block;background:var(--accent);color:#fff;padding:10px 18px;
-  border-radius:8px;font-weight:700;transition:.25s;}
-.btn:hover{background:#e5254a;}
+/* PRODUCT CARD */
+.card{
+  border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#fff;text-align:center;
+  box-shadow:0 4px 10px rgba(0,0,0,.05);transition:transform .25s,box-shadow .25s
+}
+.card:hover{transform:translateY(-4px);box-shadow:0 8px 22px rgba(0,0,0,.08)}
+.card-img{position:relative;overflow:hidden}
+.card-img img{width:100%;height:300px;object-fit:cover;border-radius:10px;transition:opacity .35s ease}
+.card-img img.back{position:absolute;inset:0;opacity:0}
+.card:hover .card-img img.front{opacity:0}
+.card:hover .card-img img.back{opacity:1}
+.card-body{padding:14px}
+.card h3{margin:6px 0 2px;font-size:16px;font-weight:800}
+.price{color:#444;font-weight:700;margin-bottom:10px}
+.btn{display:inline-block;background:var(--accent);color:#fff;padding:10px 16px;border-radius:10px;font-weight:800}
+.btn:hover{opacity:.9}
+
+/* JOIN NEWSLETTER */
+.join{
+  width:min(900px,92%);margin:0 auto;background:#f9f9f9;border:1px solid var(--border);
+  border-radius:14px;padding:20px;text-align:center
+}
+.join h3{margin:0 0 10px}
+.join p{margin:0 0 14px;color:#555}
+.join .row{display:flex;gap:10px;justify-content:center}
+.join input{
+  width:min(520px,80%);padding:12px 14px;border:1px solid var(--border);border-radius:10px;font-size:14px
+}
+.join button{padding:12px 16px;border-radius:10px;background:#111;color:#fff;font-weight:800;border:0}
 
 /* FOOTER */
-footer{border-top:1px solid var(--border);padding:24px 0;text-align:center;font-weight:600;color:#666;}
-footer img{transition:transform .3s ease;}
-footer a:hover img{transform:scale(1.15)}
-
-/* CART + BACKDROP */
-.panel{position:fixed;top:0;width:80%;max-width:340px;height:100%;background:#fff;
-  box-shadow:0 0 20px rgba(0,0,0,0.15);padding:24px;z-index:60;transition:transform .3s ease;
-  overflow-y:auto;}
-.cart-panel{right:0;transform:translateX(100%);}
-.panel.open{transform:translateX(0);}
-.close-btn{position:absolute;top:14px;right:14px;background:none;border:0;font-size:22px;cursor:pointer;}
-.cart-items{margin-top:20px;display:flex;flex-direction:column;gap:14px;}
-.cart-item{display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border);padding-bottom:10px;}
-.cart-item img{width:50px;height:50px;object-fit:cover;border-radius:8px;}
-.cart-item-info{flex:1;}
-.cart-item-info .name{font-weight:700;}
-.cart-item-info .price{color:#444;}
-.total{margin-top:20px;font-weight:800;font-size:16px;text-align:right;}
-.checkout-btn{display:block;width:100%;text-align:center;margin-top:18px;background:var(--accent);
-  color:#fff;padding:12px;border-radius:10px;font-weight:700;}
-.empty{text-align:center;color:#777;margin-top:40px;}
-.backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.35);opacity:0;pointer-events:none;
-  transition:.3s;z-index:50;}
-.backdrop.show{opacity:1;pointer-events:auto;}
-
-/* FLOATING CHAT BUTTON */
-.chat-btn{
-  position:fixed;bottom:20px;right:20px;
-  display:flex;align-items:center;gap:8px;
-  background:#fff;border:1px solid var(--border);
-  border-radius:40px;padding:10px 18px;
-  font-weight:800;color:#000;
-  box-shadow:0 4px 18px rgba(0,0,0,0.1);
-  z-index:100;transition:all .25s ease;
+footer{
+  border-top:1px solid var(--border);padding:22px 0;text-align:center;color:#666;font-weight:600
 }
-.chat-btn:hover{transform:translateY(-2px);box-shadow:0 6px 22px rgba(0,0,0,0.15);}
-.chat-dot{width:10px;height:10px;background:var(--accent);border-radius:50%;}
+footer img{transition:transform .25s}
+footer a:hover img{transform:scale(1.12)}
+
+/* CART PANEL & BACKDROP */
+.panel{
+  position:fixed;top:0;right:0;width:80%;max-width:340px;height:100%;background:#fff;
+  box-shadow:0 0 22px rgba(0,0,0,.15);transform:translateX(100%);transition:transform .3s ease;
+  z-index:60;padding:22px;overflow-y:auto
+}
+.panel.open{transform:translateX(0)}
+.close-btn{position:absolute;top:12px;right:12px;border:1px solid var(--border);background:#fff;border-radius:10px;padding:6px 10px;font-weight:800;cursor:pointer}
+.cart-items{margin-top:18px;display:flex;flex-direction:column;gap:12px}
+.cart-item{display:flex;gap:10px;align-items:center;border-bottom:1px solid var(--border);padding-bottom:10px;animation:slideIn .3s ease}
+.cart-item img{width:50px;height:50px;border-radius:8px;object-fit:cover}
+.cart-item-info{flex:1}
+.cart-item-info .name{font-weight:800}
+.cart-item-info .price{color:#444}
+.total{margin-top:16px;text-align:right;font-weight:900}
+.checkout-btn{display:block;margin-top:14px;background:var(--accent);color:#fff;padding:12px;border-radius:10px;text-align:center;font-weight:800}
+.empty{text-align:center;color:#777;margin-top:40px}
+.backdrop{position:fixed;inset:0;background:rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:.25s;z-index:50}
+.backdrop.show{opacity:1;pointer-events:auto}
+
+/* CART ITEM ANIMATION */
+@keyframes slideIn { from { transform: translateX(24px); opacity:0 } to { transform: translateX(0); opacity:1 } }
+
+/* FLOATING CHAT */
+.chat-btn{
+  position:fixed;right:18px;bottom:18px;z-index:70;background:#fff;border:1px solid var(--border);
+  border-radius:40px;padding:10px 16px;font-weight:900;display:flex;align-items:center;gap:8px;
+  box-shadow:0 8px 20px rgba(0,0,0,.12);transition:.25s
+}
+.chat-btn:hover{transform:translateY(-2px)}
+.chat-dot{width:10px;height:10px;background:var(--accent);border-radius:50%}
 </style>
 </head>
 
 <body>
+<!-- HEADER -->
 <header>
   <div class="brand">
-    <a href="#top" class="logo" id="goHome">OMK</a>
+    <a href="#top" class="logo">OMK</a>
     <span class="tag">Only My Kind</span>
   </div>
-  <div class="icons">
-    <img id="cartBtn" src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png">
-  </div>
+  <nav class="nav">
+    <a href="#shop">Shop</a>
+    <a href="register.html">Register</a>
+    <a href="login.html">Login</a>
+    <a class="icon-btn" id="cartBtn" title="Open Bag">
+      <img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png" alt="bag">
+    </a>
+  </nav>
 </header>
 
+<!-- HERO -->
 <section class="hero" id="top">
   <h1>Only My Kind</h1>
   <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
-  <a href="#shop">Shop Collection</a>
+  <a class="cta" href="#shop">Shop Collection</a>
 </section>
 
+<!-- SHOP -->
 <section id="shop" class="section">
   <h2>Latest Drop 🔥</h2>
   <div class="grid" id="productGrid">
 
+    <!-- 1 Jeans -->
     <div class="card" data-name="OMK Jeans" data-price="70000" data-img="https://omkdrip.com/jeans-blue.jpg">
       <div class="card-img">
-        <img src="https://omkdrip.com/jeans-blue.jpg" class="front" alt="">
-        <img src="https://omkdrip.com/jeans-back.jpg" class="back" alt="">
+        <img class="front" src="https://omkdrip.com/jeans-blue.jpg" alt="OMK Jeans Front">
+        <img class="back"  src="https://omkdrip.com/jeans-back.jpg" alt="OMK Jeans Back">
       </div>
       <div class="card-body">
         <h3>OMK Jeans</h3>
@@ -130,10 +159,11 @@ footer a:hover img{transform:scale(1.15)}
       </div>
     </div>
 
+    <!-- 2 Wolf Jacket -->
     <div class="card" data-name="OMK Wolf Jacket" data-price="80000" data-img="https://omkdrip.com/omk-brown-front.png?v=2">
       <div class="card-img">
-        <img src="https://omkdrip.com/omk-brown-front.png?v=2" class="front" alt="">
-        <img src="https://omkdrip.com/omk-brown-back.png" class="back" alt="">
+        <img class="front" src="https://omkdrip.com/omk-brown-front.png?v=2" alt="OMK Wolf Jacket Front">
+        <img class="back"  src="https://omkdrip.com/omk-brown-back.png" alt="OMK Wolf Jacket Back">
       </div>
       <div class="card-body">
         <h3>OMK Wolf Jacket</h3>
@@ -142,10 +172,11 @@ footer a:hover img{transform:scale(1.15)}
       </div>
     </div>
 
+    <!-- 3 T-Shirt -->
     <div class="card" data-name="OMK T-Shirt" data-price="45000" data-img="https://omkdrip.com/tee-white.jpg">
       <div class="card-img">
-        <img src="https://omkdrip.com/tee-white.jpg" class="front" alt="">
-        <img src="https://omkdrip.com/tee-back.jpg" class="back" alt="">
+        <img class="front" src="https://omkdrip.com/tee-white.jpg" alt="OMK Tee Front">
+        <img class="back"  src="https://omkdrip.com/tee-back.jpg"   alt="OMK Tee Back">
       </div>
       <div class="card-body">
         <h3>OMK T-Shirt</h3>
@@ -154,10 +185,11 @@ footer a:hover img{transform:scale(1.15)}
       </div>
     </div>
 
+    <!-- 4 Shorts -->
     <div class="card" data-name="OMK Shorts" data-price="50000" data-img="https://omkdrip.com/shorts.jpg">
       <div class="card-img">
-        <img src="https://omkdrip.com/shorts.jpg" class="front" alt="">
-        <img src="https://omkdrip.com/shorts-back.jpg" class="back" alt="">
+        <img class="front" src="https://omkdrip.com/shorts.jpg" alt="OMK Shorts Front">
+        <img class="back"  src="https://omkdrip.com/shorts-back.jpg" alt="OMK Shorts Back">
       </div>
       <div class="card-body">
         <h3>OMK Shorts</h3>
@@ -166,9 +198,62 @@ footer a:hover img{transform:scale(1.15)}
       </div>
     </div>
 
+    <!-- 5 Hoodie -->
+    <div class="card" data-name="OMK Hoodie" data-price="65000" data-img="https://omkdrip.com/hoodie.jpg">
+      <div class="card-img">
+        <img class="front" src="https://omkdrip.com/hoodie.jpg" alt="OMK Hoodie Front">
+        <!-- If no back image yet, use the same for back to avoid broken image -->
+        <img class="back"  src="https://omkdrip.com/hoodie.jpg" alt="OMK Hoodie Back">
+      </div>
+      <div class="card-body">
+        <h3>OMK Hoodie</h3>
+        <p class="price">₦65,000</p>
+        <button class="btn add-cart">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- 6 Up & Down Set -->
+    <div class="card" data-name="OMK Up & Down Set" data-price="120000" data-img="https://omkdrip.com/updown.jpg">
+      <div class="card-img">
+        <img class="front" src="https://omkdrip.com/updown.jpg" alt="OMK Up & Down Front">
+        <img class="back"  src="https://omkdrip.com/updown.jpg" alt="OMK Up & Down Back">
+      </div>
+      <div class="card-body">
+        <h3>OMK Up & Down Set</h3>
+        <p class="price">₦120,000</p>
+        <button class="btn add-cart">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- 7 Wolf Set Exclusive -->
+    <div class="card" data-name="Wolf Set Exclusive" data-price="150000" data-img="https://omkdrip.com/wolf-exclusive.jpg">
+      <div class="card-img">
+        <img class="front" src="https://omkdrip.com/wolf-exclusive.jpg" alt="Wolf Set Exclusive Front">
+        <img class="back"  src="https://omkdrip.com/wolf-exclusive.jpg" alt="Wolf Set Exclusive Back">
+      </div>
+      <div class="card-body">
+        <h3>Wolf Set Exclusive</h3>
+        <p class="price">₦150,000</p>
+        <button class="btn add-cart">Add to Cart</button>
+      </div>
+    </div>
+
   </div>
 </section>
 
+<!-- JOIN THE OMK PACK -->
+<section class="section">
+  <div class="join">
+    <h3>Join the OMK Pack 🐺</h3>
+    <p>Be the first to know about drops, restocks & exclusive offers.</p>
+    <div class="row">
+      <input id="emailInput" type="email" placeholder="Enter your email" aria-label="Email">
+      <button id="joinBtn">Join</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
   <p>© 2025 OMK – Only My Kind | All Rights Reserved</p>
   <div style="margin-top:10px;">
@@ -183,15 +268,16 @@ footer a:hover img{transform:scale(1.15)}
 </footer>
 
 <!-- Floating Chat Button -->
-<a class="chat-btn" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20some%20clothes%20from%20the%20store" target="_blank">
+<a class="chat-btn" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20some%20clothes%20from%20the%20store" target="_blank" rel="noopener">
   <span class="chat-dot"></span> Chat with OMK
 </a>
 
+<!-- Backdrop -->
 <div id="backdrop" class="backdrop"></div>
 
 <!-- Cart Panel -->
-<div id="cartPanel" class="panel cart-panel">
-  <button class="close-btn" onclick="closePanels()">✕</button>
+<div id="cartPanel" class="panel">
+  <button class="close-btn" onclick="closeCart()">✕</button>
   <h3>Your Bag</h3>
   <div id="cartContent" class="cart-items"></div>
   <div id="cartTotal" class="total"></div>
@@ -200,24 +286,30 @@ footer a:hover img{transform:scale(1.15)}
 </div>
 
 <script>
-const cartBtn=document.getElementById('cartBtn');
-const cartPanel=document.getElementById('cartPanel');
-const backdrop=document.getElementById('backdrop');
-cartBtn.addEventListener('click',()=>{cartPanel.classList.add('open');backdrop.classList.add('show')});
-backdrop.addEventListener('click',closePanels);
-function closePanels(){cartPanel.classList.remove('open');backdrop.classList.remove('show')}
+/* Open/close cart */
+const cartBtn = document.getElementById('cartBtn');
+const cartPanel = document.getElementById('cartPanel');
+const backdrop = document.getElementById('backdrop');
+cartBtn.addEventListener('click', ()=>{ cartPanel.classList.add('open'); backdrop.classList.add('show'); });
+backdrop.addEventListener('click', closeCart);
+function closeCart(){ cartPanel.classList.remove('open'); backdrop.classList.remove('show'); }
 
+/* Cart logic */
 let cart=[];
-const buttons=document.querySelectorAll('.add-cart');
-const cartContent=document.getElementById('cartContent');
-const cartTotal=document.getElementById('cartTotal');
-const checkoutBtn=document.getElementById('checkoutBtn');
-const emptyMsg=document.getElementById('emptyMsg');
+const addButtons = document.querySelectorAll('.add-cart');
+const cartContent = document.getElementById('cartContent');
+const cartTotal = document.getElementById('cartTotal');
+const checkoutBtn = document.getElementById('checkoutBtn');
+const emptyMsg = document.getElementById('emptyMsg');
 
-buttons.forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    const card=btn.closest('.card');
-    const item={name:card.dataset.name,price:parseInt(card.dataset.price),img:card.dataset.img};
+addButtons.forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const card = btn.closest('.card');
+    const item = {
+      name: card.dataset.name,
+      price: parseInt(card.dataset.price),
+      img: card.dataset.img
+    };
     cart.push(item);
     updateCart();
     cartPanel.classList.add('open');
@@ -226,21 +318,49 @@ buttons.forEach(btn=>{
 });
 
 function updateCart(){
-  cartContent.innerHTML='';let total=0;
-  if(cart.length===0){emptyMsg.style.display='block';cartTotal.innerHTML='';checkoutBtn.style.display='none';return;}
+  cartContent.innerHTML='';
+  let total=0;
+
+  if(cart.length===0){
+    emptyMsg.style.display='block';
+    cartTotal.textContent='';
+    checkoutBtn.style.display='none';
+    return;
+  }
+
   emptyMsg.style.display='none';
+
   cart.forEach(item=>{
     total+=item.price;
-    const div=document.createElement('div');
-    div.className='cart-item';
-    div.innerHTML=`<img src="${item.img}"><div class="cart-item-info"><div class="name">${item.name}</div><div class="price">₦${item.price.toLocaleString()}</div></div>`;
-    cartContent.appendChild(div);
+    const row=document.createElement('div');
+    row.className='cart-item';
+    row.innerHTML = `
+      <img src="${item.img}" alt="">
+      <div class="cart-item-info">
+        <div class="name">${item.name}</div>
+        <div class="price">₦${item.price.toLocaleString()}</div>
+      </div>
+    `;
+    cartContent.appendChild(row);
   });
-  cartTotal.innerHTML=`Total: ₦${total.toLocaleString()}`;
+
+  cartTotal.textContent = `Total: ₦${total.toLocaleString()}`;
   checkoutBtn.style.display='block';
-  const message="Hi OMK, here’s my order:\n\n"+cart.map(i=>`• ${i.name} - ₦${i.price.toLocaleString()}`).join('\n')+`\n\nTotal: ₦${total.toLocaleString()}`;
-  checkoutBtn.href=`https://wa.me/2347038112817?text=${encodeURIComponent(message)}`;
+
+  const message = "Hi OMK, here’s my order:\n\n" +
+    cart.map(i=>`• ${i.name} - ₦${i.price.toLocaleString()}`).join('\n') +
+    `\n\nTotal: ₦${total.toLocaleString()}`;
+  checkoutBtn.href = `https://wa.me/2347038112817?text=${encodeURIComponent(message)}`;
 }
+
+/* Join the OMK Pack -> send to WhatsApp with email */
+document.getElementById('joinBtn').addEventListener('click', ()=>{
+  const email = (document.getElementById('emailInput').value || '').trim();
+  const text = email
+    ? `Hi OMK, add me to the mailing list. My email: ${email}`
+    : `Hi OMK, add me to the mailing list.`;
+  window.open(`https://wa.me/2347038112817?text=${encodeURIComponent(text)}`, '_blank');
+});
 </script>
 
 </body>
