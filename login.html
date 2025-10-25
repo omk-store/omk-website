@@ -13,11 +13,11 @@
     color:#fff;overflow:hidden
   }
   .card{
-    width:min(92vw,430px);
+    width:min(92vw,420px);
     background:rgba(255,255,255,.06);
     border:1px solid rgba(255,255,255,.12);
     border-radius:16px;
-    padding:28px 22px;
+    padding:30px 22px;
     backdrop-filter:blur(10px);
     box-shadow:0 0 28px rgba(255,45,85,.12);
   }
@@ -45,8 +45,8 @@
 </head>
 <body>
   <div class="card">
-    <h1>Welcome back</h1>
-    <p>Log in to shop the latest drops.</p>
+    <h1>Welcome Back 🐺</h1>
+    <p>Login to continue your OMK journey</p>
 
     <form id="loginForm">
       <input id="email" type="email" placeholder="Email Address" required>
@@ -55,46 +55,40 @@
     </form>
 
     <div class="links">
-      No account? <a href="register.html">Create one</a><br>
+      Don’t have an account? <a href="register.html">Register</a><br>
       <a href="index.html" style="display:inline-block;margin-top:10px">← Back to Home</a>
     </div>
   </div>
 
   <footer>
-    Problems? <a href="mailto:omkdrip@gmail.com?subject=OMK%20Support%20Login%20Issue&body=Hi%20OMK%2C%20I%20can%27t%20log%20in.%20Please%20help.">Report a problem 💌</a>
+    Problems? <a href="mailto:omkdrip@gmail.com?subject=OMK%20Login%20Issue&body=Hi%20OMK%2C%20I%20need%20help%20logging%20in.">Report a problem 💌</a>
   </footer>
 
 <script>
-document.getElementById('loginForm').addEventListener('submit', (e)=>{
+document.getElementById('loginForm').addEventListener('submit',(e)=>{
   e.preventDefault();
-  const saved = JSON.parse(localStorage.getItem('omk_user')||'{}');
-  const email = document.getElementById('email').value.trim();
-  const pass  = document.getElementById('pass').value;
+  const email=document.getElementById('email').value.trim();
+  const pass=document.getElementById('pass').value;
+  const saved=JSON.parse(localStorage.getItem('omk_user'));
 
-  if(saved.email === email && saved.pass === pass){
-    localStorage.setItem('omk_logged_in','1');
-    
-    // Create success popup
-    const success = document.createElement('div');
-    success.style.position='fixed';
-    success.style.inset='0';
-    success.style.display='flex';
-    success.style.alignItems='center';
-    success.style.justifyContent='center';
-    success.style.background='rgba(0,0,0,.6)';
-    success.style.zIndex='99';
-    success.innerHTML=`
+  if(!saved){alert('No account found. Please register first.');return;}
+  if(email===saved.email && pass===saved.pass){
+    const popup=document.createElement('div');
+    popup.style.position='fixed';
+    popup.style.inset='0';
+    popup.style.display='flex';
+    popup.style.alignItems='center';
+    popup.style.justifyContent='center';
+    popup.style.background='rgba(0,0,0,.6)';
+    popup.innerHTML=`
       <div style="background:#111;border:1px solid #333;padding:28px 22px;border-radius:14px;text-align:center;box-shadow:0 0 25px rgba(255,45,85,.3)">
-        <h2 style="color:#ff2d55;margin-bottom:8px">Login Successful 🐺</h2>
-        <p style="color:#ccc">Welcome back to the Pack!</p>
+        <h2 style="color:#ff2d55;margin-bottom:8px;">Login Successful 🐺</h2>
+        <p style="color:#ccc;">Welcome back to Only My Kind!</p>
       </div>`;
-    document.body.appendChild(success);
-    
-    // Redirect to shop after 2 seconds
-    setTimeout(()=>{ window.location.href = 'index.html#shop'; },2000);
-
-  }else{
-    alert('Incorrect email or password. Try again.');
+    document.body.appendChild(popup);
+    setTimeout(()=>{ window.location.href='index.html'; },2000);
+  } else {
+    alert('Invalid email or password. Try again.');
   }
 });
 </script>
