@@ -5,121 +5,128 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>OMK | Only My Kind</title>
 <style>
-  :root {
-    --fg:#111;
-    --bg:#fff;
-    --border:#eaeaea;
-    --accent:#ff2d55;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
-  body{
-    font-family:'Poppins',system-ui,-apple-system,Segoe UI,Arial,Helvetica,sans-serif;
-    color:var(--fg);background:var(--bg);
-  }
-  a{text-decoration:none;color:inherit}
+:root {
+  --fg:#111;
+  --bg:#fff;
+  --border:#eaeaea;
+  --accent:#ff2d55;
+}
+*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
+body{
+  font-family:'Poppins',system-ui,-apple-system,Segoe UI,Arial,Helvetica,sans-serif;
+  color:var(--fg);background:var(--bg);
+}
+a{text-decoration:none;color:inherit}
 
-  /* HEADER */
-  header{
-    position:sticky;top:0;z-index:30;
-    background:#fff;border-bottom:1px solid var(--border);
-    display:flex;justify-content:space-between;align-items:center;
-    padding:14px 16px;
-  }
-  .brand{font-weight:900;letter-spacing:.5px;font-size:20px}
-  .icons{display:flex;align-items:center;gap:14px}
-  .icons img{width:24px;height:24px;cursor:pointer;transition:.2s}
-  .icons img:hover{opacity:.7}
+/* HEADER */
+header{
+  position:sticky;top:0;z-index:30;
+  background:#fff;border-bottom:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;
+  padding:14px 16px;
+}
+.brand{font-weight:900;letter-spacing:.5px;font-size:20px}
+.icons{display:flex;align-items:center;gap:14px}
+.icons img{width:24px;height:24px;cursor:pointer;transition:.2s}
+.icons img:hover{opacity:.7}
 
-  /* HERO */
-  .wrap{max-width:1100px;margin:0 auto;padding:28px 16px}
-  .hero{
-    background:#111;color:#fff;border-radius:14px;
-    padding:48px 20px;text-align:center;
-  }
-  .hero h1{margin:0 0 8px;font-size:2.2rem;color:#ffd87a}
-  .hero p{margin:0 0 18px;color:#eaeaea}
-  .btn{
-    display:inline-block;background:var(--accent);color:#fff;
-    padding:12px 18px;border-radius:10px;font-weight:800;
-  }
+/* HERO */
+.wrap{max-width:1100px;margin:0 auto;padding:28px 16px}
+.hero{
+  background:#111;color:#fff;border-radius:14px;
+  padding:48px 20px;text-align:center;
+}
+.hero h1{margin:0 0 8px;font-size:2.2rem;color:#ffd87a}
+.hero p{margin:0 0 18px;color:#eaeaea}
+.btn{
+  display:inline-block;background:var(--accent);color:#fff;
+  padding:10px 16px;border-radius:10px;font-weight:700;
+  transition:.2s;
+}
+.btn:hover{opacity:.85}
 
-  /* GRID */
-  h2{margin:32px 0 16px;text-align:left}
-  .grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:18px;
-  }
-  .card{
-    border:1px solid var(--border);border-radius:12px;
-    padding:14px;text-align:center;background:#fff;
-  }
-  .card img{width:100%;border-radius:10px}
-  .title{font-weight:800;margin:10px 0 4px}
-  .price{margin:0 0 12px;font-weight:700}
-  footer{
-    margin-top:34px;border-top:1px solid var(--border);
-    padding:16px;text-align:center;font-weight:600;
-  }
+/* GRID */
+h2{margin:32px 0 16px;text-align:left}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:18px;
+}
+.card{
+  border:1px solid var(--border);border-radius:12px;
+  padding:14px;text-align:center;background:#fff;
+  transition:transform .2s ease;
+}
+.card:hover{transform:translateY(-4px)}
+.card img{width:100%;border-radius:10px}
+.title{font-weight:800;margin:10px 0 4px}
+.price{margin:0 0 12px;font-weight:700;color:#000}
 
-  /* FLOATING CHAT BUTTON */
-  .chat-btn{
-    position:fixed;bottom:18px;right:18px;
-    display:flex;align-items:center;gap:8px;
-    background:#fff;border:1px solid var(--border);
-    border-radius:40px;padding:10px 18px;
-    font-weight:800;color:#000;
-    box-shadow:0 4px 18px rgba(0,0,0,0.1);
-    z-index:100;transition:all .25s ease;
-  }
-  .chat-btn:hover{transform:translateY(-2px);box-shadow:0 6px 22px rgba(0,0,0,0.15)}
-  .chat-dot{width:10px;height:10px;background:var(--accent);border-radius:50%}
+/* FOOTER */
+footer{
+  margin-top:34px;border-top:1px solid var(--border);
+  padding:16px;text-align:center;font-weight:600;
+}
 
-  /* SIDE PANELS */
-  .panel{
-    position:fixed;top:0;width:70%;max-width:300px;height:100%;
-    background:#fff;box-shadow:0 0 20px rgba(0,0,0,0.15);
-    padding:24px;z-index:60;transition:transform .3s ease;
-  }
-  .menu-panel{left:0;transform:translateX(-100%)}
-  .cart-panel{right:0;transform:translateX(100%)}
-  .panel.open{transform:translateX(0)}
-  .panel h3{margin-top:0;font-weight:800}
-  .panel a{display:block;margin:18px 0;font-weight:700}
-  .close-btn{
-    position:absolute;top:14px;right:14px;
-    background:none;border:0;font-size:22px;cursor:pointer;
-  }
+/* FLOATING CHAT BUTTON */
+.chat-btn{
+  position:fixed;bottom:18px;right:18px;
+  display:flex;align-items:center;gap:8px;
+  background:#fff;border:1px solid var(--border);
+  border-radius:40px;padding:10px 18px;
+  font-weight:800;color:#000;
+  box-shadow:0 4px 18px rgba(0,0,0,0.1);
+  z-index:100;transition:all .25s ease;
+}
+.chat-btn:hover{transform:translateY(-2px);box-shadow:0 6px 22px rgba(0,0,0,0.15)}
+.chat-dot{width:10px;height:10px;background:var(--accent);border-radius:50%}
 
-  /* MENU LOGO HEADER */
-  .menu-logo{
-    text-align:center;
-    background:#000;
-    color:#fff;
-    font-weight:900;
-    font-size:22px;
-    letter-spacing:1px;
-    border-radius:10px;
-    padding:12px 0;
-    margin-bottom:20px;
-    display:block;
-  }
+/* PANELS */
+.panel{
+  position:fixed;top:0;width:80%;max-width:340px;height:100%;
+  background:#fff;box-shadow:0 0 20px rgba(0,0,0,0.15);
+  padding:24px;z-index:60;transition:transform .3s ease;
+  overflow-y:auto;
+}
+.menu-panel{left:0;transform:translateX(-100%)}
+.cart-panel{right:0;transform:translateX(100%)}
+.panel.open{transform:translateX(0)}
+.panel h3{margin-top:0;font-weight:800}
+.panel a{display:block;margin:18px 0;font-weight:700}
+.close-btn{
+  position:absolute;top:14px;right:14px;
+  background:none;border:0;font-size:22px;cursor:pointer;
+}
 
-  .cart-empty{
-    margin-top:60px;text-align:center;color:#666;
-  }
-  .cart-empty p{margin-bottom:14px}
-  .continue-btn{
-    display:inline-block;background:var(--accent);color:#fff;
-    padding:10px 16px;border-radius:10px;font-weight:700;
-  }
+/* MENU LOGO */
+.menu-logo{
+  text-align:center;
+  background:#000;color:#fff;
+  font-weight:900;font-size:22px;
+  border-radius:10px;padding:12px 0;
+  margin-bottom:20px;display:block;
+}
 
-  /* BACKDROP */
-  .backdrop{
-    position:fixed;inset:0;background:rgba(0,0,0,0.35);
-    opacity:0;pointer-events:none;transition:.3s;z-index:50;
-  }
-  .backdrop.show{opacity:1;pointer-events:auto}
+/* CART */
+.cart-items{margin-top:20px;display:flex;flex-direction:column;gap:14px}
+.cart-item{display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border);padding-bottom:10px}
+.cart-item img{width:50px;height:50px;object-fit:cover;border-radius:8px}
+.cart-item-info{flex:1}
+.cart-item-info .name{font-weight:700}
+.cart-item-info .price{color:#444}
+.total{margin-top:20px;font-weight:800;font-size:16px;text-align:right}
+.checkout-btn{
+  display:block;width:100%;text-align:center;margin-top:18px;
+  background:var(--accent);color:#fff;padding:12px;border-radius:10px;font-weight:700;
+}
+.empty{text-align:center;color:#777;margin-top:40px}
+
+/* BACKDROP */
+.backdrop{
+  position:fixed;inset:0;background:rgba(0,0,0,0.35);
+  opacity:0;pointer-events:none;transition:.3s;z-index:50;
+}
+.backdrop.show{opacity:1;pointer-events:auto}
 </style>
 </head>
 <body>
@@ -136,53 +143,52 @@
   <section class="hero" id="top">
     <h1>Only My Kind</h1>
     <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
-    <a class="btn" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20some%20clothes">Buy / Message</a>
   </section>
 
   <section id="shop" class="wrap" style="padding-left:0;padding-right:0">
     <h2>Latest Drop</h2>
-    <div class="grid">
-      <div class="card">
-        <img src="https://omkdrip.com/omk-brown-front.png?v=2" alt="OMK Wolf Jacket — Brown">
+    <div class="grid" id="productGrid">
+      <div class="card" data-name="OMK Wolf Jacket — Brown" data-price="80000" data-img="https://omkdrip.com/omk-brown-front.png?v=2">
+        <img src="https://omkdrip.com/omk-brown-front.png?v=2" alt="">
         <div class="title">OMK Wolf Jacket — Brown</div>
         <p class="price">₦80,000</p>
-        <a class="btn" href="https://wa.me/2347038112817?text=I%20want%20the%20OMK%20Wolf%20Jacket">Buy</a>
+        <button class="btn add-cart">Add to Cart</button>
       </div>
-      <div class="card">
-        <img src="https://omkdrip.com/jeans-blue.jpg" alt="OMK Jeans">
+      <div class="card" data-name="OMK Jeans" data-price="70000" data-img="https://omkdrip.com/jeans-blue.jpg">
+        <img src="https://omkdrip.com/jeans-blue.jpg" alt="">
         <div class="title">OMK Jeans</div>
         <p class="price">₦70,000</p>
-        <a class="btn" href="https://wa.me/2347038112817?text=I%20want%20the%20OMK%20Jeans">Buy</a>
+        <button class="btn add-cart">Add to Cart</button>
       </div>
-      <div class="card">
-        <img src="https://omkdrip.com/tee-white.jpg" alt="OMK T-Shirt">
+      <div class="card" data-name="OMK T-Shirt" data-price="45000" data-img="https://omkdrip.com/tee-white.jpg">
+        <img src="https://omkdrip.com/tee-white.jpg" alt="">
         <div class="title">OMK T-Shirt</div>
         <p class="price">₦45,000</p>
-        <a class="btn" href="https://wa.me/2347038112817?text=I%20want%20the%20OMK%20T-Shirt">Buy</a>
+        <button class="btn add-cart">Add to Cart</button>
       </div>
-      <div class="card">
-        <img src="https://omkdrip.com/shorts.jpg" alt="OMK Shorts">
+      <div class="card" data-name="OMK Shorts" data-price="50000" data-img="https://omkdrip.com/shorts.jpg">
+        <img src="https://omkdrip.com/shorts.jpg" alt="">
         <div class="title">OMK Shorts</div>
         <p class="price">₦50,000</p>
-        <a class="btn" href="https://wa.me/2347038112817?text=I%20want%20the%20OMK%20Shorts">Buy</a>
+        <button class="btn add-cart">Add to Cart</button>
       </div>
-      <div class="card">
-        <img src="https://omkdrip.com/hoodie.jpg" alt="OMK Hoodie">
+      <div class="card" data-name="OMK Hoodie" data-price="65000" data-img="https://omkdrip.com/hoodie.jpg">
+        <img src="https://omkdrip.com/hoodie.jpg" alt="">
         <div class="title">OMK Hoodie</div>
         <p class="price">₦65,000</p>
-        <a class="btn" href="https://wa.me/2347038112817?text=I%20want%20the%20OMK%20Hoodie">Buy</a>
+        <button class="btn add-cart">Add to Cart</button>
       </div>
-      <div class="card">
-        <img src="https://omkdrip.com/updown.jpg" alt="OMK Up & Down Set">
+      <div class="card" data-name="OMK Up & Down Set" data-price="120000" data-img="https://omkdrip.com/updown.jpg">
+        <img src="https://omkdrip.com/updown.jpg" alt="">
         <div class="title">OMK Up & Down Set</div>
         <p class="price">₦120,000</p>
-        <a class="btn" href="https://wa.me/2347038112817?text=I%20want%20the%20OMK%20Up%20and%20Down%20Set">Buy</a>
+        <button class="btn add-cart">Add to Cart</button>
       </div>
-      <div class="card">
-        <img src="https://omkdrip.com/wolf-exclusive.jpg" alt="Wolf Set Exclusive">
+      <div class="card" data-name="Wolf Set Exclusive" data-price="150000" data-img="https://omkdrip.com/wolf-exclusive.jpg">
+        <img src="https://omkdrip.com/wolf-exclusive.jpg" alt="">
         <div class="title">Wolf Set Exclusive</div>
         <p class="price">₦150,000</p>
-        <a class="btn" href="https://wa.me/2347038112817?text=I%20want%20the%20Wolf%20Set%20Exclusive">Buy</a>
+        <button class="btn add-cart">Add to Cart</button>
       </div>
     </div>
   </section>
@@ -190,13 +196,11 @@
 
 <footer>© 2025 OMK – Only My Kind</footer>
 
-<!-- Floating "Chat with OMK" button -->
 <a class="chat-btn" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20chat%20about%20your%20clothing%20line" target="_blank" rel="noopener">
   <span class="chat-dot"></span>
   Chat with OMK
 </a>
 
-<!-- Backdrop -->
 <div id="backdrop" class="backdrop"></div>
 
 <!-- Menu Panel -->
@@ -214,28 +218,73 @@
 <div id="cartPanel" class="panel cart-panel">
   <button class="close-btn" onclick="closePanels()">✕</button>
   <h3>Your Bag</h3>
-  <div class="cart-empty">
-    <p>Your bag is empty 🛍️</p>
-    <a class="continue-btn" href="#shop" onclick="closePanels()">Continue Shopping</a>
-  </div>
+  <div id="cartContent" class="cart-items"></div>
+  <div id="cartTotal" class="total"></div>
+  <a id="checkoutBtn" class="checkout-btn" href="#" target="_blank" style="display:none">Checkout on WhatsApp</a>
+  <div id="emptyMsg" class="empty">Your bag is empty 🛍️</div>
 </div>
 
 <script>
-  const menuBtn=document.getElementById('menuBtn');
-  const cartBtn=document.getElementById('cartBtn');
-  const menuPanel=document.getElementById('menuPanel');
-  const cartPanel=document.getElementById('cartPanel');
-  const backdrop=document.getElementById('backdrop');
+const menuBtn=document.getElementById('menuBtn');
+const cartBtn=document.getElementById('cartBtn');
+const menuPanel=document.getElementById('menuPanel');
+const cartPanel=document.getElementById('cartPanel');
+const backdrop=document.getElementById('backdrop');
 
-  menuBtn.addEventListener('click',()=>{menuPanel.classList.add('open');backdrop.classList.add('show')});
-  cartBtn.addEventListener('click',()=>{cartPanel.classList.add('open');backdrop.classList.add('show')});
-  backdrop.addEventListener('click',closePanels);
+menuBtn.addEventListener('click',()=>{menuPanel.classList.add('open');backdrop.classList.add('show')});
+cartBtn.addEventListener('click',()=>{cartPanel.classList.add('open');backdrop.classList.add('show')});
+backdrop.addEventListener('click',closePanels);
+function closePanels(){menuPanel.classList.remove('open');cartPanel.classList.remove('open');backdrop.classList.remove('show')}
 
-  function closePanels(){
-    menuPanel.classList.remove('open');
-    cartPanel.classList.remove('open');
-    backdrop.classList.remove('show');
+// CART LOGIC
+let cart=[];
+const buttons=document.querySelectorAll('.add-cart');
+const cartContent=document.getElementById('cartContent');
+const cartTotal=document.getElementById('cartTotal');
+const checkoutBtn=document.getElementById('checkoutBtn');
+const emptyMsg=document.getElementById('emptyMsg');
+
+buttons.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const card=btn.closest('.card');
+    const item={
+      name:card.dataset.name,
+      price:parseInt(card.dataset.price),
+      img:card.dataset.img
+    };
+    cart.push(item);
+    updateCart();
+  });
+});
+
+function updateCart(){
+  cartContent.innerHTML='';
+  let total=0;
+  if(cart.length===0){
+    emptyMsg.style.display='block';
+    cartTotal.innerHTML='';
+    checkoutBtn.style.display='none';
+    return;
   }
+  emptyMsg.style.display='none';
+  cart.forEach(item=>{
+    total+=item.price;
+    const div=document.createElement('div');
+    div.className='cart-item';
+    div.innerHTML=`
+      <img src="${item.img}">
+      <div class="cart-item-info">
+        <div class="name">${item.name}</div>
+        <div class="price">₦${item.price.toLocaleString()}</div>
+      </div>`;
+    cartContent.appendChild(div);
+  });
+  cartTotal.innerHTML=`Total: ₦${total.toLocaleString()}`;
+  checkoutBtn.style.display='block';
+  const message="Hi OMK, here’s my order:\n\n"+cart.map(i=>`• ${i.name} - ₦${i.price.toLocaleString()}`).join('\n')+
+                 `\n\nTotal: ₦${total.toLocaleString()}`;
+  checkoutBtn.href=`https://wa.me/2347038112817?text=${encodeURIComponent(message)}`;
+}
 </script>
 
 </body>
