@@ -5,58 +5,57 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Login | OMK</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
-body{
-  height:100vh;display:flex;align-items:center;justify-content:center;
-  background:radial-gradient(circle at 50% 30%,#111 0%,#000 100%);
-  color:#fff;overflow:hidden
-}
-.container{
-  width:90%;max-width:400px;background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:16px;padding:30px 24px;text-align:center;
-  backdrop-filter:blur(10px);box-shadow:0 0 25px rgba(255,45,85,0.2);
-  animation:fadeIn .8s ease
-}
-h1{
-  font-size:28px;margin-bottom:8px;
-  background:linear-gradient(90deg,#ff2d55,#ff6b6b);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  text-transform:uppercase;font-weight:900
-}
-p{color:#bbb;font-size:14px;margin-bottom:22px}
-input{
-  width:100%;margin-bottom:14px;padding:12px 14px;border-radius:10px;
-  border:1px solid rgba(255,255,255,0.15);
-  background:rgba(255,255,255,0.05);color:#fff;font-size:14px
-}
-input::placeholder{color:#aaa}
-button{
-  width:100%;padding:12px;margin-top:4px;background:#ff2d55;border:none;
-  border-radius:10px;color:#fff;font-weight:800;cursor:pointer;transition:.25s
-}
-button:hover{background:#ff456b;transform:translateY(-2px)}
-a{color:#ff2d55;text-decoration:none;font-weight:600}
-a:hover{opacity:.8}
-@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    height:100vh;display:flex;align-items:center;justify-content:center;
+    font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    background:radial-gradient(60% 60% at 50% 30%,#111 0%,#0b0b0b 100%);color:#fff
+  }
+  .card{width:min(92vw,430px);background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:28px 22px}
+  h1{font-size:30px;margin-bottom:8px}
+  p{color:#bbb;margin-bottom:16px}
+  input{width:100%;padding:12px 14px;margin-bottom:14px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fff}
+  button{width:100%;padding:12px;border:0;border-radius:10px;background:#ff2d55;color:#fff;font-weight:900;cursor:pointer}
+  .links{margin-top:14px;text-align:center}
+  .links a{color:#ff2d55;text-decoration:none;font-weight:800}
+  footer{position:fixed;bottom:14px;left:0;right:0;text-align:center;color:#9aa;font-size:13px}
+  footer a{color:#ff2d55;text-decoration:none;font-weight:800}
 </style>
 </head>
-
 <body>
-<div class="container">
-  <h1>OMK</h1>
-  <p>Welcome back to the Only My Kind pack 🐺</p>
-
-  <form action="mailto:omorogbeale69@gmail.com" method="post" enctype="text/plain">
-    <input type="email" name="Email" placeholder="Email Address" required>
-    <input type="password" name="Password" placeholder="Password" required>
-    <button type="submit">Login</button>
-  </form>
-
-  <div style="margin-top:20px">
-    <a href="register.html">Don’t have an account? Register</a><br><br>
-    <a href="index.html">← Back to Home</a>
+  <div class="card">
+    <h1>Welcome back</h1>
+    <p>Log in to shop the latest drops.</p>
+    <form id="loginForm">
+      <input id="email" type="email" placeholder="Email Address" required>
+      <input id="pass"  type="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+    <div class="links">No account? <a href="register.html">Create one</a></div>
+    <div class="links" style="margin-top:8px;"><a href="index.html">← Back to Home</a></div>
   </div>
-</div>
+
+  <footer>
+    Problems? <a href="mailto:omkdrip@gmail.com?subject=OMK%20Support%20%2F%20Login&body=Hi%20OMK%2C%20I%20can%27t%20log%20in.">Report a problem 💌</a>
+  </footer>
+
+<script>
+  document.getElementById('loginForm').addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const saved = JSON.parse(localStorage.getItem('omk_user')||'{}');
+    const email = document.getElementById('email').value.trim();
+    const pass  = document.getElementById('pass').value;
+
+    // Very simple check against the saved registration (client-side only)
+    if(saved.email === email && saved.pass === pass){
+      localStorage.setItem('omk_logged_in','1');
+      // Back to the shop
+      window.location.href = 'index.html#shop';
+    }else{
+      alert('Incorrect email or password. If you just registered on this device, try again.');
+    }
+  });
+</script>
 </body>
 </html>
