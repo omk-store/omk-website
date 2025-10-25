@@ -13,16 +13,18 @@
     color:#fff;overflow:hidden
   }
   .card{
-    width:min(92vw,420px);
+    width:min(92vw,430px);
     background:rgba(255,255,255,.06);
     border:1px solid rgba(255,255,255,.12);
     border-radius:16px;
-    padding:30px 22px;
+    padding:30px 24px;
     backdrop-filter:blur(10px);
     box-shadow:0 0 28px rgba(255,45,85,.12);
+    animation:fadeIn 1s ease;
   }
-  h1{font-size:30px;margin-bottom:8px}
-  p{color:#bbb;margin-bottom:16px}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  h1{font-size:30px;margin-bottom:8px;text-align:center}
+  p{color:#bbb;margin-bottom:16px;text-align:center}
   input{
     width:100%;padding:12px 14px;margin-bottom:14px;
     border-radius:10px;border:1px solid rgba(255,255,255,.12);
@@ -41,6 +43,18 @@
     text-align:center;color:#9aa;font-size:13px
   }
   footer a{color:#ff2d55;text-decoration:none;font-weight:800}
+
+  /* Pulse animation */
+  .pulse{
+    width:80px;height:80px;border-radius:50%;
+    background:#ff2d55;margin:0 auto;animation:pulse 1.4s infinite ease-in-out;
+    box-shadow:0 0 30px rgba(255,45,85,.4);
+  }
+  @keyframes pulse{
+    0%{transform:scale(1);opacity:1}
+    50%{transform:scale(1.4);opacity:.6}
+    100%{transform:scale(1);opacity:1}
+  }
 </style>
 </head>
 <body>
@@ -79,14 +93,16 @@ document.getElementById('loginForm').addEventListener('submit',(e)=>{
     popup.style.display='flex';
     popup.style.alignItems='center';
     popup.style.justifyContent='center';
-    popup.style.background='rgba(0,0,0,.6)';
+    popup.style.background='rgba(0,0,0,.7)';
+    popup.style.zIndex='99';
     popup.innerHTML=`
-      <div style="background:#111;border:1px solid #333;padding:28px 22px;border-radius:14px;text-align:center;box-shadow:0 0 25px rgba(255,45,85,.3)">
-        <h2 style="color:#ff2d55;margin-bottom:8px;">Login Successful 🐺</h2>
-        <p style="color:#ccc;">Welcome back to Only My Kind!</p>
+      <div style="text-align:center">
+        <div class='pulse'></div>
+        <h2 style="color:#ff2d55;margin-top:16px;">Login Successful 🐺</h2>
+        <p style="color:#ccc;">Welcome back to Only My Kind</p>
       </div>`;
     document.body.appendChild(popup);
-    setTimeout(()=>{ window.location.href='index.html'; },2000);
+    setTimeout(()=>{ window.location.href='index.html'; },2200);
   } else {
     alert('Invalid email or password. Try again.');
   }
