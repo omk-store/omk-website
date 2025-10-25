@@ -26,7 +26,7 @@
     position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--border);
     display:flex;justify-content:space-between;align-items:center;padding:12px 16px;
   }
-  .brand{font-weight:900;letter-spacing:.5px}
+  .brand{font-weight:900;letter-spacing:.5px;color:#4b0082;text-decoration:underline}
   .btn{
     display:inline-block;background:var(--accent);color:#fff;padding:12px 18px;
     border-radius:10px;font-weight:800;
@@ -61,39 +61,33 @@
     padding:16px;text-align:center;font-weight:600;
   }
 
-  /* CONTACT SHEET */
-  .sheet-backdrop{
-    position:fixed;inset:0;background:rgba(0,0,0,.45);
-    opacity:0;pointer-events:none;transition:.2s;z-index:60;
+  /* FLOATING CHAT BUTTON */
+  .chat-btn {
+    position: fixed;
+    bottom: 18px;
+    right: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 40px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+    padding: 10px 18px;
+    font-weight: 800;
+    color: #000;
+    z-index: 100;
+    transition: all 0.25s ease;
   }
-  .sheet{
-    position:fixed;left:50%;bottom:-420px;transform:translateX(-50%);
-    width:min(520px,92%);background:#fff;border-radius:16px 16px 12px 12px;
-    box-shadow:0 20px 60px rgba(0,0,0,.25);padding:18px;transition:.25s;z-index:61;
+  .chat-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 22px rgba(0,0,0,0.15);
   }
-  .sheet.open{bottom:18px}
-  .sheet-backdrop.show{opacity:1;pointer-events:auto}
-  .sheet h3{margin:6px 0 14px;text-align:center}
-  .opt{
-    display:flex;gap:12px;align-items:center;border:1px solid var(--border);
-    border-radius:12px;padding:12px;
-  }
-  .opt strong{flex:1}
-  .opt .go{
-    font-weight:800;background:#111;color:#fff;
-    border-radius:10px;padding:8px 12px;
-  }
-  .row{display:grid;grid-template-columns:1fr;gap:12px}
-  .x{
-    position:absolute;right:10px;top:8px;border:0;background:#fff;
-    border:1px solid var(--border);border-radius:8px;padding:6px 9px;cursor:pointer;
-  }
-
-  /* FLOAT */
-  .float{
-    position:fixed;right:16px;bottom:16px;z-index:50;background:#fff;
-    border:1px solid var(--border);border-radius:14px;
-    padding:10px 12px;font-weight:800;box-shadow:0 10px 22px rgba(0,0,0,.12);
+  .chat-dot {
+    width: 10px;
+    height: 10px;
+    background: #ff2d55;
+    border-radius: 50%;
   }
 </style>
 </head>
@@ -121,19 +115,19 @@
         <img src="https://omkdrip.com/omk-brown-front.png?v=2" alt="OMK Wolf Jacket — Brown">
         <div class="title">OMK Wolf Jacket — Brown</div>
         <p class="price">₦80,000</p>
-        <a class="btn" href="#" onclick="openSheet();return false;">Buy / Message</a>
+        <a class="btn" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20the%20Brown%20Wolf%20Jacket">Buy / Message</a>
       </div>
       <div class="card">
         <img src="https://omkdrip.com/jeans-blue.jpg" alt="OMK Jeans">
         <div class="title">OMK Jeans</div>
         <p class="price">₦70,000</p>
-        <a class="btn" href="#" onclick="openSheet();return false;">Buy / Message</a>
+        <a class="btn" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20the%20OMK%20Jeans">Buy / Message</a>
       </div>
       <div class="card">
         <img src="https://omkdrip.com/tee-white.jpg" alt="OMK T-Shirt">
         <div class="title">OMK T-Shirt</div>
         <p class="price">₦45,000</p>
-        <a class="btn" href="#" onclick="openSheet();return false;">Buy / Message</a>
+        <a class="btn" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20the%20OMK%20T-Shirt">Buy / Message</a>
       </div>
     </div>
   </section>
@@ -141,44 +135,14 @@
 
 <footer>© 2025 OMK – Only My Kind</footer>
 
-<!-- Floating quick access -->
-<a class="float" href="#" onclick="openSheet();return false;">Message OMK</a>
-
-<!-- Contact chooser -->
-<div id="sheetBg" class="sheet-backdrop"></div>
-<div id="sheet" class="sheet" role="dialog" aria-modal="true" aria-label="Contact OMK">
-  <button class="x" onclick="closeSheet()">✕</button>
-  <h3>Pick where to message</h3>
-  <div class="row">
-    <a class="opt" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20from%20the%20site" target="_blank" rel="noopener">
-      <img alt="" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:28px;height:28px">
-      <strong>WhatsApp (07038112817)</strong>
-      <span class="go">Chat</span>
-    </a>
-    <a class="opt" href="https://www.instagram.com/whosomotaker?igsh=MTEwM2RiOHV1ZjJzdQ%3D%3D&utm_source=qr" target="_blank" rel="noopener">
-      <img alt="" src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" style="width:28px;height:28px;border-radius:6px">
-      <strong>Instagram (label)</strong>
-      <span class="go">Open</span>
-    </a>
-    <a class="opt" href="https://www.tiktok.com/@omkdrip?_t=ZS-90pxbBAGnBQ&_r=1" target="_blank" rel="noopener">
-      <img alt="" src="https://upload.wikimedia.org/wikipedia/commons/0/08/TikTok_logo.svg" style="width:28px;height:28px">
-      <strong>TikTok (@omkdrip)</strong>
-      <span class="go">Open</span>
-    </a>
-  </div>
-  <p style="margin:12px 4px 0;color:#666;font-size:.9rem;text-align:center">
-    Prefer quick chat? Use WhatsApp. For promo or collab, use Instagram or TikTok.
-  </p>
-</div>
+<!-- Floating "Chat with OMK" button -->
+<a class="chat-btn" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20chat%20about%20your%20clothing%20line" target="_blank" rel="noopener">
+  <span class="chat-dot"></span>
+  Chat with OMK
+</a>
 
 <script>
-  const bg=document.getElementById('sheetBg');
-  const sheet=document.getElementById('sheet');
-  function openSheet(){bg.classList.add('show');sheet.classList.add('open')}
-  function closeSheet(){bg.classList.remove('show');sheet.classList.remove('open')}
-  bg.addEventListener('click',closeSheet);
-  document.getElementById('buyTop').addEventListener('click',e=>{e.preventDefault();openSheet()});
-  document.getElementById('heroBuy').addEventListener('click',e=>{e.preventDefault();openSheet()});
+  // Optional scroll effect for chat button if you want later
 </script>
 
 </body>
