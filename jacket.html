@@ -3,123 +3,71 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>OMK Wolf Jacket 🐺</title>
+<title>OMK Wolf Jacket 🐺 | Only My Kind</title>
+
 <style>
-  :root{
-    --fg:#111;--bg:#fff;--muted:#6b6b6b;--accent:#7a33ff;--accent2:#ff2d55;
-    --chip:#f4ecff;--chip-border:#d7c7ff;
-  }
-  *{box-sizing:border-box}
-  html,body{margin:0;background:var(--bg);color:var(--fg);
-    font-family:system-ui,-apple-system,Segoe UI,Arial,Helvetica,sans-serif}
-  .wrap{max-width:980px;margin:0 auto;padding:22px 16px 40px}
-
-  /* header (same on every page) */
-  .site-header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid #eee;
-    display:flex;align-items:center;justify-content:space-between;padding:12px 16px}
-  .brand{font-weight:900;font-size:22px;color:#6320ee;text-decoration:none;border-bottom:3px solid #6320ee}
-  .actions{display:flex;gap:10px}
-  .icon{border:1px solid #eee;border-radius:14px;padding:10px 12px}
-
-  h1{font-size:clamp(24px,4.8vw,38px);margin:12px 0 6px;font-weight:900}
-  .price{color:#ff2d55;font-weight:900;font-size:1.6rem;margin:6px 0 12px}
-
-  /* selector – “2030” chip look */
-  .picker{display:flex;align-items:center;gap:10px;margin:10px 0 18px}
-  .picker label{font-weight:700}
-  .select{
-    position:relative;
-    display:inline-flex;align-items:center;gap:10px;
-    padding:10px 14px;border-radius:999px;background:var(--chip);
-    border:1px solid var(--chip-border);font-weight:800;
-  }
-  .select select{
-    appearance:none;background:transparent;border:0;outline:0;font:inherit;cursor:pointer;
-  }
-  .select:after{content:"▾";font-size:12px;opacity:.8}
-
-  /* gallery */
-  .gallery{display:grid;gap:14px}
-  .card{
-    background:#0f1115;color:#ddd;border-radius:16px;border:1px solid #20232b;
-    display:flex;align-items:center;justify-content:center;min-height:260px;
-  }
-  .card img{width:100%;height:auto;border-radius:12px;display:block}
-  .desc{margin-top:8px;font-weight:600;opacity:.8}
-
-  .cta{display:inline-block;margin-top:18px;background:var(--accent2);color:#fff;
-    padding:14px 24px;border-radius:12px;font-weight:900;text-decoration:none}
-  .backlink{display:inline-block;margin-top:22px;font-weight:800;text-decoration:none;color:#111}
-  @media(min-width:720px){.gallery{grid-template-columns:1fr 1fr}}
+  body{font-family:'Poppins',system-ui,sans-serif;margin:0;padding:0;background:#fff;color:#111;text-align:center;}
+  .container{max-width:900px;margin:auto;padding:30px 16px;}
+  h1{font-size:1.9rem;font-weight:900;margin:10px 0;}
+  .price{font-size:1.5rem;color:#ff2d55;font-weight:700;margin:5px 0 20px;}
+  select{padding:10px 14px;font-size:1rem;border-radius:8px;border:1px solid #ccc;cursor:pointer;}
+  .imgwrap img{width:100%;border-radius:12px;margin:14px 0;object-fit:cover;}
+  .sizes{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:18px 0;}
+  .sizes button{padding:10px 16px;border:1px solid #111;background:#fff;font-weight:700;border-radius:8px;cursor:pointer;transition:.2s;}
+  .sizes button:hover{background:#111;color:#fff;}
+  .cta{display:inline-block;background:#ff2d55;color:#fff;font-weight:800;padding:14px 26px;border-radius:10px;text-decoration:none;box-shadow:0 4px 14px rgba(255,45,85,.4);transition:.3s;}
+  .cta:hover{transform:scale(1.05);}
+  footer{margin-top:40px;font-size:.85rem;color:#666;}
 </style>
 </head>
 <body>
 
-<header class="site-header">
-  <a class="brand" href="index.html">OMK</a>
-  <div class="actions">
-    <div class="icon">☰</div>
-    <div class="icon">🛍️</div>
-  </div>
-</header>
-
-<main class="wrap">
+<div class="container">
   <h1>OMK Wolf Jacket 🐺</h1>
-  <div class="price">₦80,000</div>
+  <p class="price">₦80,000</p>
 
-  <div class="picker">
-    <label for="color">Choose color:</label>
-    <div class="select">
-      <select id="color">
-        <option value="brown" selected>Brown Edition</option>
-        <option value="black">Black Edition</option>
-      </select>
-    </div>
+  <div class="imgwrap">
+    <img id="frontImg" src="IMG_9808.jpeg" alt="OMK Wolf Jacket - Front">
+    <img id="backImg" src="B5F27213-CEA6-4B2C-9B7A-5303BDD6BE67.png" alt="OMK Wolf Jacket - Back">
   </div>
 
-  <!-- Two images shown at once (front + back) -->
-  <section class="gallery">
-    <div class="card">
-      <img id="imgFront" src="omk-brown-front.png?v=2" alt="OMK Wolf Jacket - Front">
-    </div>
-    <div class="card">
-      <img id="imgBack" src="omk-brown-back.png?v=2" alt="OMK Wolf Jacket - Back">
-    </div>
-  </section>
+  <div>
+    <label for="color">Choose color:</label>
+    <select id="color" onchange="changeColor(this.value)">
+      <option value="brown" selected>Brown Edition</option>
+      <option value="black">Black Edition</option>
+    </select>
+  </div>
 
-  <p class="desc">
-    Premium jacket with bold OMK embroidery — made for those who walk with loyalty, truth, and wolf energy. 🐺
-  </p>
+  <div class="sizes">
+    <button>S</button>
+    <button>M</button>
+    <button>L</button>
+    <button>XL</button>
+    <button>2XL</button>
+    <button>3XL</button>
+  </div>
 
-  <a class="cta" id="buyBtn" target="_blank"
-     href="https://wa.me/2347038112817?text=Hi%20OMK%20—%20I%27m%20interested%20in%20the%20OMK%20Wolf%20Jacket%20(Brown%20Edition).">
-     Buy Now on WhatsApp
-  </a><br>
-  <a class="backlink" href="index.html">← Back to Store</a>
-</main>
+  <a class="cta" id="buyNow" href="https://wa.me/2347038112817?text=I'm%20interested%20in%20the%20OMK%20Wolf%20Jacket%20-%20Brown%20Edition" target="_blank">Buy Now on WhatsApp</a>
+
+  <footer>Premium jacket with OMK embroidery — made for those who walk with loyalty, truth & wolf energy 🐺</footer>
+</div>
 
 <script>
-  // swap images + button text when color changes
-  const colorSel = document.getElementById('color');
-  const imgFront = document.getElementById('imgFront');
-  const imgBack  = document.getElementById('imgBack');
-  const buyBtn   = document.getElementById('buyBtn');
-
-  function setColor(c){
-    if(c==='black'){
-      imgFront.src = 'omk-black-front.png?v=2';
-      imgBack.src  = 'omk-black-back.png?v=2';
-      buyBtn.href  = 'https://wa.me/2347038112817?text='+
-        encodeURIComponent("Hi OMK — I'm interested in the OMK Wolf Jacket (Black Edition).");
-    }else{
-      imgFront.src = 'omk-brown-front.png?v=2';
-      imgBack.src  = 'omk-brown-back.png?v=2';
-      buyBtn.href  = 'https://wa.me/2347038112817?text='+
-        encodeURIComponent("Hi OMK — I'm interested in the OMK Wolf Jacket (Brown Edition).");
-    }
+function changeColor(value){
+  const front=document.getElementById('frontImg');
+  const back=document.getElementById('backImg');
+  const buy=document.getElementById('buyNow');
+  if(value==='black'){
+    front.src='A75E8E23-8F17-4FDC-901D-08CA00F9F066.png';
+    back.src='81BB2C98-5614-46C6-A620-22728817B41F.png';
+    buy.href='https://wa.me/2347038112817?text=I%27m%20interested%20in%20the%20OMK%20Wolf%20Jacket%20-%20Black%20Edition';
+  }else{
+    front.src='IMG_9808.jpeg';
+    back.src='B5F27213-CEA6-4B2C-9B7A-5303BDD6BE67.png';
+    buy.href='https://wa.me/2347038112817?text=I%27m%20interested%20in%20the%20OMK%20Wolf%20Jacket%20-%20Brown%20Edition';
   }
-  colorSel.addEventListener('change', e=> setColor(e.target.value));
-  setColor(colorSel.value); // set default on load
+}
 </script>
 </body>
 </html>
