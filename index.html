@@ -11,7 +11,7 @@
     --border:#eaeaea;
     --accent:#ff2d55;
   }
-  *{box-sizing:border-box;margin:0;padding:0}
+  *{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
   body{
     font-family:'Poppins',system-ui,-apple-system,Segoe UI,Arial,Helvetica,sans-serif;
     color:var(--fg);background:var(--bg);
@@ -90,6 +90,21 @@
     position:absolute;top:14px;right:14px;
     background:none;border:0;font-size:22px;cursor:pointer;
   }
+
+  /* MENU LOGO HEADER */
+  .menu-logo{
+    text-align:center;
+    background:#000;
+    color:#fff;
+    font-weight:900;
+    font-size:22px;
+    letter-spacing:1px;
+    border-radius:10px;
+    padding:12px 0;
+    margin-bottom:20px;
+    display:block;
+  }
+
   .cart-empty{
     margin-top:60px;text-align:center;color:#666;
   }
@@ -118,7 +133,7 @@
 </header>
 
 <main class="wrap">
-  <section class="hero">
+  <section class="hero" id="top">
     <h1>Only My Kind</h1>
     <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
     <a class="btn" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20some%20clothes">Buy / Message</a>
@@ -187,11 +202,12 @@
 <!-- Menu Panel -->
 <div id="menuPanel" class="panel menu-panel">
   <button class="close-btn" onclick="closePanels()">✕</button>
+  <a href="#top" class="menu-logo" onclick="closePanels()">OMK</a>
   <h3>Menu</h3>
-  <a href="#">Home</a>
-  <a href="#shop">Shop</a>
-  <a href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20tell%20me%20about%20your%20brand">About</a>
-  <a href="https://wa.me/2347038112817">Contact</a>
+  <a href="#top" onclick="closePanels()">Home</a>
+  <a href="#shop" onclick="closePanels()">Shop</a>
+  <a href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20tell%20me%20about%20your%20brand" target="_blank" rel="noopener">About</a>
+  <a href="https://wa.me/2347038112817" target="_blank" rel="noopener">Contact</a>
 </div>
 
 <!-- Cart Panel -->
@@ -205,23 +221,17 @@
 </div>
 
 <script>
-  const menuBtn = document.getElementById('menuBtn');
-  const cartBtn = document.getElementById('cartBtn');
-  const menuPanel = document.getElementById('menuPanel');
-  const cartPanel = document.getElementById('cartPanel');
-  const backdrop = document.getElementById('backdrop');
+  const menuBtn=document.getElementById('menuBtn');
+  const cartBtn=document.getElementById('cartBtn');
+  const menuPanel=document.getElementById('menuPanel');
+  const cartPanel=document.getElementById('cartPanel');
+  const backdrop=document.getElementById('backdrop');
 
-  menuBtn.addEventListener('click', () => {
-    menuPanel.classList.add('open');
-    backdrop.classList.add('show');
-  });
-  cartBtn.addEventListener('click', () => {
-    cartPanel.classList.add('open');
-    backdrop.classList.add('show');
-  });
-  backdrop.addEventListener('click', closePanels);
+  menuBtn.addEventListener('click',()=>{menuPanel.classList.add('open');backdrop.classList.add('show')});
+  cartBtn.addEventListener('click',()=>{cartPanel.classList.add('open');backdrop.classList.add('show')});
+  backdrop.addEventListener('click',closePanels);
 
-  function closePanels() {
+  function closePanels(){
     menuPanel.classList.remove('open');
     cartPanel.classList.remove('open');
     backdrop.classList.remove('show');
