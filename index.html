@@ -223,25 +223,45 @@ cartBtn.addEventListener('click',()=>{cartPanel.classList.add('open');backdrop.c
 backdrop.addEventListener('click',closeCart);
 function closeCart(){cartPanel.classList.remove('open');backdrop.classList.remove('show');}
 
-let cart=[];const cartContent=document.getElementById('cartContent');const cartTotal=document.getElementById('cartTotal');
-const checkoutBtn=document.getElementById('checkoutBtn');const emptyMsg=document.getElementById('emptyMsg');
+let cart=[];
+const cartContent=document.getElementById('cartContent');
+const cartTotal=document.getElementById('cartTotal');
+const checkoutBtn=document.getElementById('checkoutBtn');
+const emptyMsg=document.getElementById('emptyMsg');
+
 function updateCart(){
-  cartContent.innerHTML='';let total=0;
-  if(cart.length===0){emptyMsg.style.display='block';cartTotal.textContent='';checkoutBtn.style.display='none';return;}
+  cartContent.innerHTML='';
+  let total=0;
+  if(cart.length===0){
+    emptyMsg.style.display='block';
+    cartTotal.textContent='';
+    checkoutBtn.style.display='none';
+    return;
+  }
   emptyMsg.style.display='none';
-  cart.forEach(item=>{total+=item.price;const row=document.createElement('div');row.className='cart-item';
+  cart.forEach(item=>{
+    total+=item.price;
+    const row=document.createElement('div');
+    row.className='cart-item';
     row.innerHTML=`<img src="${item.img}" alt=""><div class='cart-item-info'><div class='name'>${item.name}</div><div class='price'>₦${item.price.toLocaleString()}</div></div>`;
-    cartContent.appendChild(row)});
+    cartContent.appendChild(row);
+  });
   cartTotal.textContent=`Total: ₦${total.toLocaleString()}`;
   checkoutBtn.style.display='block';
-  const message="Hi OMK, here’s my order:\n\n"+cart.map(i=>`• ${i.name} - ₦${i.price.toLocaleString()}`).join('\n')+`\n\nTotal: ₦${total.toLocaleString()}`;
+  const message="Hi OMK, here’s my order:\n\n"+
+    cart.map(i=>`• ${i.name} - ₦${i.price.toLocaleString()}`).join('\n')+
+    `\n\nTotal: ₦${total.toLocaleString()}`;
   checkoutBtn.href=`https://wa.me/2347038112817?text=${encodeURIComponent(message)}`;
 }
+
 document.querySelectorAll('.add-cart').forEach(btn=>{
   btn.addEventListener('click',()=>{
     const c=btn.closest('.card');
     const i={name:c.dataset.name,price:parseInt(c.dataset.price),img:c.dataset.img};
-    cart.push(i);updateCart();cartPanel.classList.add('open');backdrop.classList.add('show');
+    cart.push(i);
+    updateCart();
+    cartPanel.classList.add('open');
+    backdrop.classList.add('show');
   });
 });
 
@@ -250,13 +270,10 @@ const registerLink=document.getElementById('registerLink');
 const loginLink=document.getElementById('loginLink');
 const userName=document.getElementById('userName');
 const logoutLink=document.getElementById('logoutLink');
+
 if(user && user.name){
   registerLink.style.display='none';
   loginLink.style.display='none';
   userName.style.display='inline';
   userName.textContent=user.name + ' 🐺';
-  logoutLink.style.display='inline';
-}
-logoutLink.addEventListener('click',()=>{
-  localStorage.removeItem('omk_user');
-  window.location
+  logoutLink.style.display
