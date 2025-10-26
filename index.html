@@ -67,7 +67,7 @@ header{
 .card h3{margin:6px 0 2px;font-size:16px;font-weight:800}
 .price{color:#444;font-weight:700;margin-bottom:10px}
 
-/* ADD TO CART BUTTON (2030 STYLE) */
+/* ADD TO CART (NEON STYLE) */
 .btn{
   display:inline-block;
   background:#000;
@@ -77,13 +77,13 @@ header{
   font-weight:800;
   font-size:14px;
   letter-spacing:.5px;
-  box-shadow:0 4px 10px rgba(0,0,0,.2);
+  box-shadow:0 0 8px rgba(255,45,85,.25);
   transition:all .3s ease;
 }
 .btn:hover{
   transform:translateY(-2px) scale(1.03);
   background:#111;
-  box-shadow:0 6px 18px rgba(0,0,0,.3);
+  box-shadow:0 0 14px rgba(255,45,85,.6), 0 6px 18px rgba(0,0,0,.3);
 }
 
 /* ABOUT */
@@ -250,7 +250,7 @@ function toggleMenu(){
 }
 document.getElementById('menuBtn').addEventListener('click',toggleMenu);
 
-// 🐺 Show logged-in name + change menu
+// 🐺 Logged-in menu swap
 window.addEventListener('DOMContentLoaded', ()=>{
   const user = JSON.parse(localStorage.getItem('omk_user'));
   const loggedIn = localStorage.getItem('omk_logged_in');
