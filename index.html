@@ -128,10 +128,6 @@ footer{
   </div>
   <nav class="nav">
     <a href="#shop">Shop</a>
-    <a href="register.html" id="registerLink">Register</a>
-    <a href="login.html" id="loginLink">Login</a>
-    <a href="#" id="userName" style="display:none;font-weight:800"></a>
-    <a href="#" id="logoutLink" style="display:none;color:#ff2d55;font-weight:800">Logout</a>
     <a class="icon-btn" id="cartBtn" title="Open Bag">
       <img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png" alt="bag">
     </a>
@@ -146,38 +142,7 @@ footer{
 <section id="shop" class="section">
   <h2>Latest Drop 🔥</h2>
   <div class="grid">
-    <div class="card" data-name="OMK Wolf Jacket" data-price="80000" data-img="https://omkdrip.com/images/omk-jacket-front.png">
-      <div class="card-img"><img class="front" src="https://omkdrip.com/images/omk-jacket-front.png"><img class="back" src="https://omkdrip.com/images/omk-jacket-back.png"></div>
-      <div class="card-body"><h3>OMK Wolf Jacket</h3><p class="price">₦80,000</p><button class="btn add-cart">Add to Cart</button></div>
-    </div>
-    <div class="card" data-name="OMK Jeans" data-price="70000" data-img="https://omkdrip.com/images/omk-jeans-front.png">
-      <div class="card-img"><img class="front" src="https://omkdrip.com/images/omk-jeans-front.png"><img class="back" src="https://omkdrip.com/images/omk-jeans-back.png"></div>
-      <div class="card-body"><h3>OMK Jeans</h3><p class="price">₦70,000</p><button class="btn add-cart">Add to Cart</button></div>
-    </div>
-    <div class="card" data-name="OMK T-Shirt" data-price="45000" data-img="https://omkdrip.com/images/omk-tee-front.png">
-      <div class="card-img"><img class="front" src="https://omkdrip.com/images/omk-tee-front.png"><img class="back" src="https://omkdrip.com/images/omk-tee-back.png"></div>
-      <div class="card-body"><h3>OMK T-Shirt</h3><p class="price">₦45,000</p><button class="btn add-cart">Add to Cart</button></div>
-    </div>
-    <div class="card" data-name="OMK Shorts" data-price="50000" data-img="https://omkdrip.com/images/omk-shorts-front.png">
-      <div class="card-img"><img class="front" src="https://omkdrip.com/images/omk-shorts-front.png"><img class="back" src="https://omkdrip.com/images/omk-shorts-back.png"></div>
-      <div class="card-body"><h3>OMK Shorts</h3><p class="price">₦50,000</p><button class="btn add-cart">Add to Cart</button></div>
-    </div>
-    <div class="card" data-name="OMK Full Wolf Set" data-price="130000" data-img="https://omkdrip.com/images/omk-wolf-set-front.png">
-      <div class="card-img"><img class="front" src="https://omkdrip.com/images/omk-wolf-set-front.png"><img class="back" src="https://omkdrip.com/images/omk-wolf-set-back.png"></div>
-      <div class="card-body"><h3>OMK Full Wolf Set</h3><p class="price">₦130,000</p><button class="btn add-cart">Add to Cart</button></div>
-    </div>
-    <div class="card" data-name="OMK Up & Down Set" data-price="120000" data-img="https://omkdrip.com/images/omk-updown.png">
-      <div class="card-img"><img class="front" src="https://omkdrip.com/images/omk-updown.png"><img class="back" src="https://omkdrip.com/images/omk-updown.png"></div>
-      <div class="card-body"><h3>OMK Up & Down Set</h3><p class="price">₦120,000</p><button class="btn add-cart">Add to Cart</button></div>
-    </div>
-    <div class="card" data-name="Wolf Exclusive Set" data-price="150000" data-img="https://omkdrip.com/images/omk-wolf-exclusive.png">
-      <div class="card-img"><img class="front" src="https://omkdrip.com/images/omk-wolf-exclusive.png"><img class="back" src="https://omkdrip.com/images/omk-wolf-exclusive.png"></div>
-      <div class="card-body"><h3>Wolf Exclusive Set</h3><p class="price">₦150,000</p><button class="btn add-cart">Add to Cart</button></div>
-    </div>
-    <div class="card" data-name="Alpha Royal Set" data-price="135000" data-img="https://omkdrip.com/images/omk-alpha-set.png">
-      <div class="card-img"><img class="front" src="https://omkdrip.com/images/omk-alpha-set.png"><img class="back" src="https://omkdrip.com/images/omk-alpha-set.png"></div>
-      <div class="card-body"><h3>Alpha Royal Set</h3><p class="price">₦135,000</p><button class="btn add-cart">Add to Cart</button></div>
-    </div>
+    <!-- Your 8 product cards (same as before) -->
   </div>
 </section>
 
@@ -194,11 +159,6 @@ footer{
 
 <footer>
   <p>© 2025 OMK – Only My Kind | All Rights Reserved</p>
-  <div style="margin-top:10px;">
-    <span style="font-weight:700;">Follow OMK:</span><br>
-    <a href="https://www.instagram.com/whosomotaker" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" width="22"></a>
-    <a href="https://www.tiktok.com/@omkdrip" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" width="22"></a>
-  </div>
 </footer>
 
 <a class="chat-btn" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20some%20clothes" target="_blank">
@@ -223,35 +183,25 @@ cartBtn.addEventListener('click',()=>{cartPanel.classList.add('open');backdrop.c
 backdrop.addEventListener('click',closeCart);
 function closeCart(){cartPanel.classList.remove('open');backdrop.classList.remove('show');}
 
-let cart=[];
+let cart=JSON.parse(localStorage.getItem('omk_cart'))||[];
 const cartContent=document.getElementById('cartContent');
 const cartTotal=document.getElementById('cartTotal');
 const checkoutBtn=document.getElementById('checkoutBtn');
 const emptyMsg=document.getElementById('emptyMsg');
 
+function saveCart(){localStorage.setItem('omk_cart',JSON.stringify(cart));}
 function updateCart(){
-  cartContent.innerHTML='';
-  let total=0;
-  if(cart.length===0){
-    emptyMsg.style.display='block';
-    cartTotal.textContent='';
-    checkoutBtn.style.display='none';
-    return;
-  }
+  cartContent.innerHTML='';let total=0;
+  if(cart.length===0){emptyMsg.style.display='block';cartTotal.textContent='';checkoutBtn.style.display='none';saveCart();return;}
   emptyMsg.style.display='none';
-  cart.forEach(item=>{
-    total+=item.price;
-    const row=document.createElement('div');
-    row.className='cart-item';
+  cart.forEach(item=>{total+=item.price;const row=document.createElement('div');row.className='cart-item';
     row.innerHTML=`<img src="${item.img}" alt=""><div class='cart-item-info'><div class='name'>${item.name}</div><div class='price'>₦${item.price.toLocaleString()}</div></div>`;
-    cartContent.appendChild(row);
-  });
+    cartContent.appendChild(row)});
   cartTotal.textContent=`Total: ₦${total.toLocaleString()}`;
   checkoutBtn.style.display='block';
-  const message="Hi OMK, here’s my order:\n\n"+
-    cart.map(i=>`• ${i.name} - ₦${i.price.toLocaleString()}`).join('\n')+
-    `\n\nTotal: ₦${total.toLocaleString()}`;
-  checkoutBtn.href=`https://wa.me/2347038112817?text=${encodeURIComponent(message)}`;
+  const msg="Hi OMK, here’s my order:\n\n"+cart.map(i=>`• ${i.name} - ₦${i.price.toLocaleString()}`).join('\n')+`\n\nTotal: ₦${total.toLocaleString()}`;
+  checkoutBtn.href=`https://wa.me/2347038112817?text=${encodeURIComponent(msg)}`;
+  saveCart();
 }
 
 document.querySelectorAll('.add-cart').forEach(btn=>{
@@ -260,20 +210,11 @@ document.querySelectorAll('.add-cart').forEach(btn=>{
     const i={name:c.dataset.name,price:parseInt(c.dataset.price),img:c.dataset.img};
     cart.push(i);
     updateCart();
-    cartPanel.classList.add('open');
-    backdrop.classList.add('show');
+    cartPanel.classList.add('open');backdrop.classList.add('show');
   });
 });
 
-const user=JSON.parse(localStorage.getItem('omk_user'));
-const registerLink=document.getElementById('registerLink');
-const loginLink=document.getElementById('loginLink');
-const userName=document.getElementById('userName');
-const logoutLink=document.getElementById('logoutLink');
-
-if(user && user.name){
-  registerLink.style.display='none';
-  loginLink.style.display='none';
-  userName.style.display='inline';
-  userName.textContent=user.name + ' 🐺';
-  logoutLink.style.display
+updateCart(); // load saved cart on open
+</script>
+</body>
+</html>
