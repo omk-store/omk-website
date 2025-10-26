@@ -29,23 +29,10 @@ header{
 .hero{
   background:url('5CB390F1-C296-439F-A95B-32679E9FE8BA.png') center/cover no-repeat;
   color:#fff;text-align:center;
-  padding:120px 20px;
+  padding:200px 20px;
   position:relative;
 }
 .hero *{position:relative;z-index:2}
-.hero h1{
-  font-size:clamp(32px,6vw,54px);
-  background:linear-gradient(90deg,#ffd87a,#ff2d55,#ff6b6b);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  text-transform:uppercase;margin-bottom:20px;
-}
-.hero p{opacity:.9;margin-top:10px;font-size:17px}
-.hero .cta{
-  display:inline-block;margin-top:25px;background:var(--accent);
-  color:#fff;padding:12px 28px;border-radius:10px;
-  font-weight:800;font-size:15px;box-shadow:0 4px 12px rgba(0,0,0,.3);
-}
-.hero .cta:hover{opacity:.9}
 
 /* SECTIONS & GRID */
 .section{padding:56px 0}
@@ -138,11 +125,7 @@ footer a:hover img{transform:scale(1.12)}
   </nav>
 </header>
 
-<section class="hero" id="top">
-  <h1>ONLY MY KIND</h1>
-  <a class="cta" href="#shop">Shop Collection</a>
-  <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
-</section>
+<section class="hero" id="top"></section>
 
 <section id="shop" class="section">
   <h2>Latest Drop 🔥</h2>
@@ -217,44 +200,3 @@ footer a:hover img{transform:scale(1.12)}
   <a id="checkoutBtn" class="checkout-btn" href="#" target="_blank" style="display:none">Checkout on WhatsApp</a>
   <div id="emptyMsg" class="empty">Your bag is empty 🛍️</div>
 </div>
-
-<script>
-const cartBtn=document.getElementById('cartBtn');
-const cartPanel=document.getElementById('cartPanel');
-const backdrop=document.getElementById('backdrop');
-cartBtn.addEventListener('click',()=>{cartPanel.classList.add('open');backdrop.classList.add('show')});
-backdrop.addEventListener('click',()=>{cartPanel.classList.remove('open');backdrop.classList.remove('show')});
-let cart=[];const cartContent=document.getElementById('cartContent');const cartTotal=document.getElementById('cartTotal');
-const checkoutBtn=document.getElementById('checkoutBtn');const emptyMsg=document.getElementById('emptyMsg');
-function updateCart(){
-  cartContent.innerHTML='';let total=0;
-  if(cart.length===0){emptyMsg.style.display='block';cartTotal.textContent='';checkoutBtn.style.display='none';return;}
-  emptyMsg.style.display='none';
-  cart.forEach(item=>{total+=item.price;const row=document.createElement('div');row.className='cart-item';
-    row.innerHTML=`<img src="${item.img}" alt=""><div class='cart-item-info'><div class='name'>${item.name}</div><div class='price'>₦${item.price.toLocaleString()}</div></div>`;
-    cartContent.appendChild(row)});
-  cartTotal.textContent=`Total: ₦${total.toLocaleString()}`;
-  checkoutBtn.style.display='block';
-  const msg="Hi OMK, here’s my order:\n\n"+cart.map(i=>`• ${i.name} - ₦${i.price.toLocaleString()}`).join('\n')+`\n\nTotal: ₦${total.toLocaleString()}`;
-  checkoutBtn.href=`https://wa.me/2347038112817?text=${encodeURIComponent(msg)}`;
-}
-document.querySelectorAll('.add-cart').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    const c=btn.closest('.card');
-    const i={name:c.dataset.name,price:parseInt(c.dataset.price),img:c.dataset.img};
-    cart.push(i);updateCart();cartPanel.classList.add('open');backdrop.classList.add('show');
-  });
-});
-
-// LOGIN DISPLAY
-const user=JSON.parse(localStorage.getItem('omk_user'));
-const registerLink=document.getElementById('registerLink');
-const loginLink=document.getElementById('loginLink');
-const userName=document.getElementById('userName');
-const logoutLink=document.getElementById('logoutLink');
-if(user && user.name){
-  registerLink.style.display='none';
-  loginLink.style.display='none';
-  userName.style.display='inline';
-  userName.textContent=user.name + ' 🐺';
-  logoutLink.style.display='inline';
