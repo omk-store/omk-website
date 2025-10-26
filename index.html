@@ -73,6 +73,44 @@ header{
 .btn{display:inline-block;background:#000;color:#fff;padding:10px 20px;border-radius:12px;font-weight:800;transition:.3s}
 .btn:hover{background:#111;transform:translateY(-2px)}
 
+/* JOIN SECTION */
+.join{
+  width:min(900px,92%);
+  margin:60px auto;
+  background:#f9f9f9;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:40px 20px;
+  text-align:center;
+}
+.join h3{font-size:22px;font-weight:800;margin-bottom:10px;}
+.join p{margin-bottom:14px;color:#555;font-size:15px;}
+.join input{
+  width:min(520px,80%);
+  padding:12px 14px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  font-size:14px;
+}
+.join button{
+  padding:12px 16px;
+  border-radius:10px;
+  background:#000;
+  color:#fff;
+  font-weight:800;
+  border:0;
+  cursor:pointer;
+  margin-left:8px;
+}
+.join button:hover{background:#111}
+.social-links{margin-top:30px;}
+.social-links a{font-size:26px;margin:0 10px;text-decoration:none;}
+
+/* ABOUT */
+#about{background:#111;color:#fff;text-align:center;padding:80px 20px;margin-top:40px}
+#about h2{font-size:30px;margin-bottom:14px}
+#about p{max-width:700px;margin:0 auto;font-size:16px;line-height:1.6;color:#ddd}
+
 /* FOOTER */
 footer{border-top:1px solid var(--border);padding:22px 0;text-align:center;color:#666;font-weight:600}
 footer .contact{margin-top:8px;font-size:14px;color:#555}
@@ -125,6 +163,20 @@ footer .contact{margin-top:8px;font-size:14px;color:#555}
 <section id="shop" class="section">
   <h2>Latest Drop 🔥</h2>
   <div class="grid" id="productGrid"></div>
+</section>
+
+<!-- JOIN SECTION -->
+<section class="join" id="join">
+  <h3>Join the OMK Pack 🐺</h3>
+  <p>Be the first to know about drops, restocks & exclusive offers.</p>
+  <input type="email" placeholder="Enter your email" required>
+  <button>Subscribe →</button>
+
+  <div class="social-links">
+    <h4>Follow Us</h4>
+    <a href="https://www.instagram.com/whosomotaker" target="_blank">📸</a>
+    <a href="https://wa.me/2347038112817" target="_blank">💬</a>
+  </div>
 </section>
 
 <section id="about">
