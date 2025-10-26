@@ -174,6 +174,7 @@ footer{border-top:1px solid #eaeaea;padding:24px 0;color:#666;text-align:center;
 <div id="cartPanel" class="panel">
   <button class="close-btn" onclick="closeCart()">✕</button>
   <h3>Your Bag</h3>
+  <p style="color:#777;font-size:13px;margin-top:4px;">Click ✕ to remove an item instantly.</p>
   <div id="cartContent" class="cart-items"></div>
   <div id="cartTotal" class="total"></div>
   <a id="checkoutBtn" class="checkout-btn" href="#" target="_blank" style="display:none">Checkout on WhatsApp</a>
