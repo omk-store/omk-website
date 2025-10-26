@@ -43,7 +43,6 @@
     text-align:center;color:#9aa;font-size:13px
   }
   footer a{color:#ff2d55;text-decoration:none;font-weight:800}
-
   .pulse{
     width:80px;height:80px;border-radius:50%;
     background:#ff2d55;margin:0 auto;animation:pulse 1.4s infinite ease-in-out;
@@ -87,8 +86,8 @@ document.getElementById('loginForm').addEventListener('submit',(e)=>{
   if(!saved){alert('No account found. Please register first.');return;}
 
   if(email===saved.email && pass===saved.pass){
-    // ✅ Mark user as logged in
-    localStorage.setItem('omk_logged_in', true);
+    // ✅ Store the logged-in user info
+    localStorage.setItem('omk_logged_in', JSON.stringify(saved));
 
     const popup=document.createElement('div');
     popup.style.position='fixed';
