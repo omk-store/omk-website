@@ -25,36 +25,36 @@ header{
 .icon-btn img{width:24px;height:24px;transition:.2s}
 .icon-btn img:hover{opacity:.75}
 
-/* HERO - Clean Wolf */
+/* HERO (simple clean top) */
 .hero{
-  background:url('5CB390F1-C296-439F-A95B-32679E9FE8BA.png') center top/contain no-repeat;
-  height:100vh;
-  width:100%;
-  display:flex;
-  justify-content:center;
-  align-items:flex-end;
-  padding-bottom:60px;
-  background-color:#000;
+  color:#111;text-align:center;padding:80px 20px 40px;
 }
+.hero h1{
+  font-size:clamp(32px,6vw,54px);
+  background:linear-gradient(90deg,#ff2d55,#ff6b6b);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  text-transform:uppercase;margin-bottom:12px;
+}
+.hero p{opacity:.8;font-size:17px;margin-bottom:24px}
+.hero .cta{
+  display:inline-block;background:var(--accent);color:#fff;
+  padding:12px 28px;border-radius:10px;font-weight:800;font-size:15px;
+  box-shadow:0 4px 12px rgba(0,0,0,.2);
+}
+.hero .cta:hover{opacity:.9}
 
-/* SECTION & PRODUCT GRID */
+/* GRID SECTION */
 .section{padding:56px 0}
 .section h2{text-align:center;font-size:28px;margin-bottom:26px}
 .grid{
-  width:min(1100px,92%);
-  margin:0 auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:22px;
+  width:min(1100px,92%);margin:0 auto;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px
 }
+
+/* PRODUCT CARD */
 .card{
-  border:1px solid var(--border);
-  border-radius:12px;
-  overflow:hidden;
-  background:#fff;
-  text-align:center;
-  box-shadow:0 4px 10px rgba(0,0,0,.05);
-  transition:transform .25s,box-shadow .25s
+  border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#fff;text-align:center;
+  box-shadow:0 4px 10px rgba(0,0,0,.05);transition:transform .25s,box-shadow .25s
 }
 .card:hover{transform:translateY(-4px);box-shadow:0 8px 22px rgba(0,0,0,.08)}
 .card-img{position:relative;overflow:hidden}
@@ -70,11 +70,7 @@ header{
 
 /* FOOTER */
 footer{
-  border-top:1px solid var(--border);
-  padding:22px 0;
-  text-align:center;
-  color:#666;
-  font-weight:600;
+  border-top:1px solid var(--border);padding:22px 0;text-align:center;color:#666;font-weight:600
 }
 footer img{transition:transform .25s}
 footer a:hover img{transform:scale(1.12)}
@@ -89,65 +85,41 @@ footer a:hover img{transform:scale(1.12)}
   </div>
   <nav class="nav">
     <a href="#shop">Shop</a>
-    <a href="register.html">Register</a>
-    <a href="login.html">Login</a>
-    <a class="icon-btn" id="cartBtn" title="Open Bag">
-      <img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png" alt="bag">
-    </a>
+    <a href="https://www.instagram.com/whosomotaker" target="_blank">Instagram</a>
+    <a href="https://www.tiktok.com/@omkdrip" target="_blank">TikTok</a>
+    <a href="https://wa.me/2347038112817" target="_blank">WhatsApp</a>
   </nav>
 </header>
 
-<section class="hero" id="top"></section>
+<section class="hero" id="top">
+  <h1>Only My Kind</h1>
+  <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
+  <a class="cta" href="#shop">Shop Collection</a>
+</section>
 
 <section id="shop" class="section">
   <h2>Latest Drop 🔥</h2>
   <div class="grid">
-    <div class="card" data-name="OMK Wolf Jacket" data-price="80000" data-img="https://omkdrip.com/images/omk-jacket-front.png">
-      <div class="card-img">
-        <a href="jacket.html"><img class="front" src="https://omkdrip.com/images/omk-jacket-front.png"><img class="back" src="https://omkdrip.com/images/omk-jacket-back.png"></a>
-      </div>
-      <div class="card-body"><h3>OMK Wolf Jacket</h3><p class="price">₦80,000</p><button class="btn add-cart">Add to Cart</button></div>
-    </div>
 
-    <div class="card" data-name="OMK Jeans" data-price="70000" data-img="https://omkdrip.com/images/omk-jeans-front.png">
-      <div class="card-img"><img class="front" src="https://omkdrip.com/images/omk-jeans-front.png"><img class="back" src="https://omkdrip.com/images/omk-jeans-back.png"></div>
-      <div class="card-body"><h3>OMK Jeans</h3><p class="price">₦70,000</p><button class="btn add-cart">Add to Cart</button></div>
-    </div>
+    <div class="card"><div class="card-img"><img class="front" src="https://omkdrip.com/images/omk-jacket-front.png"><img class="back" src="https://omkdrip.com/images/omk-jacket-back.png"></div><div class="card-body"><h3>OMK Wolf Jacket</h3><p class="price">₦80,000</p><a class="btn" href="https://wa.me/2347038112817?text=I%20want%20OMK%20Wolf%20Jacket" target="_blank">Buy Now</a></div></div>
 
-    <div class="card" data-name="OMK T-Shirt" data-price="45000" data-img="https://omkdrip.com/images/omk-tee-front.png">
-      <div class="card-img"><img class="front" src="https://omkdrip.com/images/omk-tee-front.png"><img class="back" src="https://omkdrip.com/images/omk-tee-back.png"></div>
-      <div class="card-body"><h3>OMK T-Shirt</h3><p class="price">₦45,000</p><button class="btn add-cart">Add to Cart</button></div>
-    </div>
+    <div class="card"><div class="card-img"><img class="front" src="https://omkdrip.com/images/omk-jeans-front.png"><img class="back" src="https://omkdrip.com/images/omk-jeans-back.png"></div><div class="card-body"><h3>OMK Jeans</h3><p class="price">₦70,000</p><a class="btn" href="https://wa.me/2347038112817?text=I%20want%20OMK%20Jeans" target="_blank">Buy Now</a></div></div>
 
-    <div class="card" data-name="OMK Shorts" data-price="50000" data-img="https://omkdrip.com/images/omk-shorts-front.png">
-      <div class="card-img"><img class="front" src="https://omkdrip.com/images/omk-shorts-front.png"><img class="back" src="https://omkdrip.com/images/omk-shorts-back.png"></div>
-      <div class="card-body"><h3>OMK Shorts</h3><p class="price">₦50,000</p><button class="btn add-cart">Add to Cart</button></div>
-    </div>
+    <div class="card"><div class="card-img"><img class="front" src="https://omkdrip.com/images/omk-tee-front.png"><img class="back" src="https://omkdrip.com/images/omk-tee-back.png"></div><div class="card-body"><h3>OMK T-Shirt</h3><p class="price">₦45,000</p><a class="btn" href="https://wa.me/2347038112817?text=I%20want%20OMK%20T-Shirt" target="_blank">Buy Now</a></div></div>
 
-    <div class="card" data-name="OMK Hoodie" data-price="65000" data-img="https://omkdrip.com/images/omk-hoodie-front.png">
-      <div class="card-img"><img class="front" src="https://omkdrip.com/images/omk-hoodie-front.png"><img class="back" src="https://omkdrip.com/images/omk-hoodie-back.png"></div>
-      <div class="card-body"><h3>OMK Hoodie</h3><p class="price">₦65,000</p><button class="btn add-cart">Add to Cart</button></div>
-    </div>
+    <div class="card"><div class="card-img"><img class="front" src="https://omkdrip.com/images/omk-shorts-front.png"><img class="back" src="https://omkdrip.com/images/omk-shorts-back.png"></div><div class="card-body"><h3>OMK Shorts</h3><p class="price">₦50,000</p><a class="btn" href="https://wa.me/2347038112817?text=I%20want%20OMK%20Shorts" target="_blank">Buy Now</a></div></div>
 
-    <div class="card" data-name="OMK Up & Down Set" data-price="120000" data-img="https://omkdrip.com/images/omk-updown.png">
-      <div class="card-img"><img class="front" src="https://omkdrip.com/images/omk-updown.png"><img class="back" src="https://omkdrip.com/images/omk-updown.png"></div>
-      <div class="card-body"><h3>OMK Up & Down Set</h3><p class="price">₦120,000</p><button class="btn add-cart">Add to Cart</button></div>
-    </div>
+    <div class="card"><div class="card-img"><img class="front" src="https://omkdrip.com/images/omk-hoodie-front.png"><img class="back" src="https://omkdrip.com/images/omk-hoodie-back.png"></div><div class="card-body"><h3>OMK Hoodie</h3><p class="price">₦65,000</p><a class="btn" href="https://wa.me/2347038112817?text=I%20want%20OMK%20Hoodie" target="_blank">Buy Now</a></div></div>
 
-    <div class="card" data-name="Wolf Exclusive Set" data-price="150000" data-img="https://omkdrip.com/images/omk-wolf-exclusive.png">
-      <div class="card-img"><img class="front" src="https://omkdrip.com/images/omk-wolf-exclusive.png"><img class="back" src="https://omkdrip.com/images/omk-wolf-exclusive.png"></div>
-      <div class="card-body"><h3>Wolf Exclusive Set</h3><p class="price">₦150,000</p><button class="btn add-cart">Add to Cart</button></div>
-    </div>
+    <div class="card"><div class="card-img"><img class="front" src="https://omkdrip.com/images/omk-updown.png"><img class="back" src="https://omkdrip.com/images/omk-updown.png"></div><div class="card-body"><h3>OMK Up & Down Set</h3><p class="price">₦120,000</p><a class="btn" href="https://wa.me/2347038112817?text=I%20want%20OMK%20Up%20and%20Down%20Set" target="_blank">Buy Now</a></div></div>
+
+    <div class="card"><div class="card-img"><img class="front" src="https://omkdrip.com/images/omk-wolf-exclusive.png"><img class="back" src="https://omkdrip.com/images/omk-wolf-exclusive.png"></div><div class="card-body"><h3>Wolf Exclusive Set</h3><p class="price">₦150,000</p><a class="btn" href="https://wa.me/2347038112817?text=I%20want%20Wolf%20Exclusive%20Set" target="_blank">Buy Now</a></div></div>
+
   </div>
 </section>
 
 <footer>
   <p>© 2025 OMK – Only My Kind | All Rights Reserved</p>
-  <div style="margin-top:10px;">
-    <span style="font-weight:700;">Follow OMK:</span><br>
-    <a href="https://www.instagram.com/whosomotaker" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" width="22"></a>
-    <a href="https://www.tiktok.com/@omkdrip" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" width="22"></a>
-  </div>
 </footer>
 </body>
 </html>
