@@ -64,8 +64,7 @@ header{
   opacity:1;
   transition:opacity .5s ease;
 }
-.product-gallery img.fade{ opacity:0; }
-
+.product-gallery img.fade{opacity:0;}
 .product-details h1{font-size:26px;font-weight:900;margin-bottom:10px;}
 .product-details p{font-size:15px;color:#555;line-height:1.6;margin-bottom:14px;}
 .product-details .price{font-size:18px;font-weight:800;color:#111;margin-bottom:20px;}
@@ -130,7 +129,7 @@ footer .contact{margin-top:8px;font-size:14px;color:#555}
 <section class="product-section">
   <div class="product-gallery">
     <img id="jacketFront" src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0140.jpeg" alt="OMK Wolf Jacket Front">
-    <img id="jacketBack"  src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0141.jpeg" alt="OMK Wolf Jacket Back">
+    <img id="jacketBack" src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0141.jpeg" alt="OMK Wolf Jacket Back">
   </div>
 
   <div class="product-details">
@@ -176,8 +175,8 @@ footer .contact{margin-top:8px;font-size:14px;color:#555}
 // Toggle cart
 function toggleCart(){ document.getElementById('cartPanel').classList.toggle('open'); }
 
-// Fade transition
-function fadeImage(img, newSrc){
+// Smooth fade when switching images
+function fadeImage(img,newSrc){
   img.classList.add('fade');
   setTimeout(()=>{
     img.src=newSrc;
@@ -185,7 +184,7 @@ function fadeImage(img, newSrc){
   },300);
 }
 
-// Image color switch (updated black BACK to IMG_0143.jpeg)
+// Color switch
 function switchColor(color){
   const front=document.getElementById('jacketFront');
   const back=document.getElementById('jacketBack');
@@ -194,22 +193,22 @@ function switchColor(color){
 
   if(color==='brown'){
     fadeImage(front,"https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0140.jpeg");
-    fadeImage(back ,"https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0141.jpeg");
+    fadeImage(back,"https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0141.jpeg");
   }else{
-    fadeImage(front,"https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_8959.png");
-    fadeImage(back ,"https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0143.jpeg");
+    fadeImage(front,"https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0142.jpeg");
+    fadeImage(back,"https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0143.jpeg");
   }
 
   document.getElementById('buyBtn').href=`https://wa.me/2347038112817?text=I'm%20interested%20in%20the%20OMK%20Wolf%20Jacket%20-%20${color.charAt(0).toUpperCase()+color.slice(1)}%20Edition`;
 }
 
-// Size selector
+// Size selection
 function selectSize(el){
   document.querySelectorAll('.size-btn').forEach(btn=>btn.classList.remove('active'));
   el.classList.add('active');
 }
 
-// Cart system
+// Cart logic
 let cart=JSON.parse(localStorage.getItem('omkCart')||'[]');
 updateCart();
 
