@@ -129,8 +129,8 @@ footer small{display:block;color:#777;margin-top:6px;font-weight:400}
   <h1>OMK Jeans 👖</h1>
 
   <div class="gallery" id="gallery">
-    <img id="frontImg" src="OMK-JEANS-FRONT.png" alt="OMK Jeans Front">
-    <img id="backImg" src="OMK-JEANS-BACK.png" alt="OMK Jeans Back">
+    <img id="frontImg" src="jeans-black.jpg" alt="OMK Jeans Front">
+    <img id="backImg" src="jeans-back.png" alt="OMK Jeans Back">
   </div>
 
   <div class="price">₦80,000</div>
@@ -139,8 +139,7 @@ footer small{display:block;color:#777;margin-top:6px;font-weight:400}
     <div>
       <label for="color"><strong>Color:</strong></label><br>
       <select id="color" onchange="changeColor(this.value)">
-        <option value="blue" selected>Royal Blue</option>
-        <option value="black">Midnight Black</option>
+        <option value="black" selected>Midnight Black</option>
       </select>
     </div>
 
@@ -154,7 +153,7 @@ footer small{display:block;color:#777;margin-top:6px;font-weight:400}
     </div>
   </div>
 
-  <a id="buy" class="cta" href="https://wa.me/2347038112817?text=I'm%20interested%20in%20the%20OMK%20Jeans%20-%20Royal%20Blue%20(Size%20not%20selected)" target="_blank">
+  <a id="buy" class="cta" href="https://wa.me/2347038112817?text=I'm%20interested%20in%20the%20OMK%20Jeans%20-%20Midnight%20Black%20(Size%20not%20selected)" target="_blank">
     Buy Now on WhatsApp
   </a>
 </main>
@@ -174,23 +173,8 @@ footer small{display:block;color:#777;margin-top:6px;font-weight:400}
 </a>
 
 <script>
-let currentColor='blue';
+let currentColor='black';
 let currentSize='';
-
-function changeColor(value){
-  const front=document.getElementById('frontImg');
-  const back=document.getElementById('backImg');
-  currentColor=value;
-
-  if(value==='black'){
-    front.src='OMK-JEANS-BLACK-FRONT.png';
-    back.src='OMK-JEANS-BLACK-BACK.png';
-  }else{
-    front.src='OMK-JEANS-FRONT.png';
-    back.src='OMK-JEANS-BACK.png';
-  }
-  updateBuyLink();
-}
 
 function selectSize(btn){
   document.querySelectorAll('.sizes button').forEach(b=>b.classList.remove('active'));
