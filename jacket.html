@@ -60,6 +60,7 @@ header{
   width:100%;
   border-radius:12px;
   box-shadow:0 6px 20px rgba(0,0,0,.08);
+  object-fit:cover;
 }
 .product-details h1{font-size:26px;font-weight:900;margin-bottom:10px;}
 .product-details p{font-size:15px;color:#555;line-height:1.6;margin-bottom:14px;}
@@ -124,8 +125,8 @@ footer .contact{margin-top:8px;font-size:14px;color:#555}
 
 <section class="product-section">
   <div class="product-gallery">
-    <img id="jacketFront" src="./jacket-brown-front.jpg" alt="OMK Wolf Jacket Front">
-    <img id="jacketBack" src="./jacket-brown-back.jpg" alt="OMK Wolf Jacket Back">
+    <img id="jacketFront" src="jacket-brown-front.jpg" alt="OMK Wolf Jacket Front">
+    <img id="jacketBack" src="jacket-brown-back.jpg" alt="OMK Wolf Jacket Back">
   </div>
 
   <div class="product-details">
@@ -153,7 +154,7 @@ footer .contact{margin-top:8px;font-size:14px;color:#555}
 
     <div class="product-btns">
       <button onclick="addToCart()">Add to Cart</button>
-      <a href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I'm%20interested%20in%20the%20OMK%20Wolf%20Jacket" target="_blank">Buy on WhatsApp</a>
+      <a id="buyBtn" href="https://wa.me/2347038112817?text=I'm%20interested%20in%20the%20OMK%20Wolf%20Jacket%20-%20Brown%20Edition" target="_blank">Buy on WhatsApp</a>
     </div>
   </div>
 </section>
@@ -177,8 +178,9 @@ function switchColor(color){
   const back=document.getElementById('jacketBack');
   document.querySelectorAll('.color-btn').forEach(btn=>btn.classList.remove('active'));
   document.getElementById(color).classList.add('active');
-  front.src=`./jacket-${color}-front.jpg`;
-  back.src=`./jacket-${color}-back.jpg`;
+  front.src=`jacket-${color}-front.jpg`;
+  back.src=`jacket-${color}-back.jpg`;
+  document.getElementById('buyBtn').href=`https://wa.me/2347038112817?text=I'm%20interested%20in%20the%20OMK%20Wolf%20Jacket%20-%20${color.charAt(0).toUpperCase()+color.slice(1)}%20Edition`;
 }
 
 // Size selector
@@ -187,7 +189,7 @@ function selectSize(el){
   el.classList.add('active');
 }
 
-// Cart system (shared)
+// Cart system
 let cart=JSON.parse(localStorage.getItem('omkCart')||'[]');
 updateCart();
 
