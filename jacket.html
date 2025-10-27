@@ -61,6 +61,11 @@ header{
   border-radius:12px;
   box-shadow:0 6px 20px rgba(0,0,0,.08);
   object-fit:cover;
+  opacity:1;
+  transition:opacity .5s ease;
+}
+.product-gallery img.fade{
+  opacity:0;
 }
 .product-details h1{font-size:26px;font-weight:900;margin-bottom:10px;}
 .product-details p{font-size:15px;color:#555;line-height:1.6;margin-bottom:14px;}
@@ -172,6 +177,15 @@ footer .contact{margin-top:8px;font-size:14px;color:#555}
 // Toggle cart
 function toggleCart(){ document.getElementById('cartPanel').classList.toggle('open'); }
 
+// Fade transition
+function fadeImage(img, newSrc){
+  img.classList.add('fade');
+  setTimeout(()=>{
+    img.src=newSrc;
+    img.onload=()=>img.classList.remove('fade');
+  },300);
+}
+
 // Image color switch
 function switchColor(color){
   const front=document.getElementById('jacketFront');
@@ -180,11 +194,11 @@ function switchColor(color){
   document.getElementById(color).classList.add('active');
 
   if(color==='brown'){
-    front.src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0140.jpeg";
-    back.src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0141.jpeg";
+    fadeImage(front,"https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0140.jpeg");
+    fadeImage(back,"https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0141.jpeg");
   }else{
-    front.src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/jacket-black-front.jpg";
-    back.src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/jacket-black-back.jpg";
+    fadeImage(front,"https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_8959.png");
+    fadeImage(back,"https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0142.jpeg");
   }
 
   document.getElementById('buyBtn').href=`https://wa.me/2347038112817?text=I'm%20interested%20in%20the%20OMK%20Wolf%20Jacket%20-%20${color.charAt(0).toUpperCase()+color.slice(1)}%20Edition`;
