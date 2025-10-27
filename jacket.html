@@ -22,22 +22,37 @@ header{
 .header-icons{display:flex;align-items:center;gap:14px}
 .icon-btn img{width:26px;height:26px;cursor:pointer;transition:.2s}
 .icon-btn img:hover{opacity:.75}
-.icon-btn.glow img{animation:cartGlow 1.2s infinite alternate}
-@keyframes cartGlow{0%{filter:drop-shadow(0 0 0 #ff2d55);}100%{filter:drop-shadow(0 0 6px #ff2d55);}}
 
 /* PRODUCT PAGE */
 .product-section{width:min(1000px,92%);margin:60px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px;align-items:center;}
-.product-img img{width:100%;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,.1)}
+.product-gallery{display:flex;flex-direction:column;gap:16px;}
+.product-gallery img{width:100%;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,.1);transition:opacity .3s ease;}
 .product-details h1{font-size:26px;font-weight:900;margin-bottom:10px;}
 .product-details p{font-size:15px;color:#555;line-height:1.6;margin-bottom:14px;}
 .product-details .price{font-size:18px;font-weight:800;color:#111;margin-bottom:20px;}
-.product-btns{display:flex;gap:10px;flex-wrap:wrap;}
+
+/* Selectors */
+.selector{margin-bottom:20px;}
+.selector label{font-weight:700;margin-right:8px;}
+.color-options button{
+  width:28px;height:28px;border-radius:50%;border:2px solid #ccc;cursor:pointer;margin-right:8px;
+}
+.color-options button.active{border:3px solid var(--accent);}
+#colorBrown{background:#6b4a2b;}
+#colorBlack{background:#000;}
+.size-options button{
+  padding:8px 14px;border:1px solid var(--border);border-radius:8px;background:#fff;cursor:pointer;font-weight:700;margin-right:6px;
+}
+.size-options button.active{background:#000;color:#fff;border-color:#000;}
+
+/* Buttons */
+.product-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;}
 .product-btns a, .product-btns button{
   background:#000;color:#fff;padding:12px 18px;border-radius:10px;font-weight:800;border:none;cursor:pointer;text-transform:uppercase;
 }
 .product-btns a:hover, .product-btns button:hover{background:#111;}
 
-/* FOOTER + OTHER SECTIONS */
+/* FOOTER + CHAT */
 footer{border-top:1px solid var(--border);padding:22px 0;text-align:center;color:#666;font-weight:600;margin-top:60px;}
 footer .contact{margin-top:8px;font-size:14px;color:#555}
 .chat-btn{position:fixed;right:18px;bottom:18px;z-index:70;background:#fff;border:1px solid var(--border);
@@ -58,15 +73,37 @@ footer .contact{margin-top:8px;font-size:14px;color:#555}
 </header>
 
 <section class="product-section">
-  <div class="product-img">
-    <img src="./jacket-black.jpg" alt="OMK Wolf Jacket">
+  <div class="product-gallery">
+    <img id="mainImage" src="./jacket-brown-front.jpg" alt="OMK Wolf Jacket Front">
+    <img id="backImage" src="./jacket-brown-back.jpg" alt="OMK Wolf Jacket Back">
   </div>
 
   <div class="product-details">
     <h1>OMK Wolf Jacket 🐺</h1>
-    <p>Premium streetwear jacket designed with the <strong>Only My Kind</strong> energy — a mix of loyalty, truth, and wolf power. Crafted with high-quality fabric for a bold lifestyle statement.</p>
+    <p>Premium streetwear jacket in brown and black — crafted for loyalty, power, and the Only My Kind spirit. Quality fabric, detailed design, and bold street statement.</p>
     <p class="price">₦80,000</p>
 
+    <!-- Color -->
+    <div class="selector">
+      <label>Color:</label>
+      <div class="color-options">
+        <button id="colorBrown" class="active" onclick="changeColor('brown')"></button>
+        <button id="colorBlack" onclick="changeColor('black')"></button>
+      </div>
+    </div>
+
+    <!-- Size -->
+    <div class="selector">
+      <label>Size:</label>
+      <div class="size-options">
+        <button onclick="selectSize(this)">S</button>
+        <button onclick="selectSize(this)">M</button>
+        <button onclick="selectSize(this)">L</button>
+        <button onclick="selectSize(this)">XL</button>
+      </div>
+    </div>
+
+    <!-- Buttons -->
     <div class="product-btns">
       <button onclick="addToCart()">Add to Cart</button>
       <a href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%27m%20interested%20in%20the%20OMK%20Wolf%20Jacket%20(₦80,000)" target="_blank">Buy on WhatsApp</a>
@@ -84,6 +121,27 @@ footer .contact{margin-top:8px;font-size:14px;color:#555}
 </a>
 
 <script>
+function changeColor(color){
+  const main=document.getElementById('mainImage');
+  const back=document.getElementById('backImage');
+  document.getElementById('colorBrown').classList.remove('active');
+  document.getElementById('colorBlack').classList.remove('active');
+  if(color==='brown'){
+    main.src='./jacket-brown-front.jpg';
+    back.src='./jacket-brown-back.jpg';
+    document.getElementById('colorBrown').classList.add('active');
+  }else{
+    main.src='./jacket-black-front.jpg';
+    back.src='./jacket-black-back.jpg';
+    document.getElementById('colorBlack').classList.add('active');
+  }
+}
+
+function selectSize(btn){
+  document.querySelectorAll('.size-options button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
 function addToCart(){
   alert('✅ Added "OMK Wolf Jacket" to cart!');
 }
