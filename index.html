@@ -192,17 +192,17 @@ const products=[
 /* SHOW PRODUCTS */
 const grid=document.getElementById('productGrid');
 products.forEach((p,i)=>{
- grid.innerHTML+=`
- <a href="${p.link}" style="text-decoration:none;color:inherit;">
-   <div class="card">
-     <div class="card-img"><img src="${p.img}" alt="${p.name}"></div>
-     <div class="card-body">
-       <h3>${p.name}</h3>
-       <p class="price">₦${p.price.toLocaleString()}</p>
-       <button class="btn" onclick="addToCart(${i})">Add to Cart</button>
-     </div>
-   </div>
- </a>`;
+  grid.innerHTML+=`
+  <div class="card">
+    <a href="${p.link}" style="text-decoration:none;color:inherit;display:block;">
+      <div class="card-img"><img src="${p.img}" alt="${p.name}"></div>
+      <div class="card-body">
+        <h3>${p.name}</h3>
+        <p class="price">₦${p.price.toLocaleString()}</p>
+      </div>
+    </a>
+    <button class="btn" onclick="addToCart(${i})">Add to Cart</button>
+  </div>`;
 });
 
 let cart=[];
