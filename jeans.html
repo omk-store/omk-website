@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>OMK Wolf Jean 👖 | Only My Kind</title>
+<title>OMK Wolf Jeans 🖤 | Only My Kind</title>
 
 <style>
 :root{
@@ -28,17 +28,10 @@ a{color:inherit;text-decoration:none}
 .brand{font-weight:900;font-size:20px;letter-spacing:.5px}
 .h-icons{display:flex;gap:14px;align-items:center}
 .h-icons img{width:24px;height:24px}
-.icon-cart{position:relative}
-.icon-cart .badge{
-  position:absolute;top:-6px;right:-8px;background:#ff2d55;color:#fff;font-size:10px;
-  padding:2px 5px;border-radius:999px;font-weight:700;
-}
 
 /* DRAWER */
 .drawer{position:fixed;inset:0;z-index:60;pointer-events:none}
-.drawer .mask{
-  position:absolute;inset:0;background:rgba(0,0,0,.35);opacity:0;transition:.25s;
-}
+.drawer .mask{position:absolute;inset:0;background:rgba(0,0,0,.35);opacity:0;transition:.25s}
 .drawer .panel{
   position:absolute;right:0;top:0;height:100%;width:min(320px,84%);
   background:#fff;border-left:1px solid var(--border);transform:translateX(100%);
@@ -51,31 +44,23 @@ a{color:inherit;text-decoration:none}
 .menu a{display:block;padding:12px 6px;border-radius:8px;font-weight:700}
 .menu a:hover{background:#f7f7f7}
 
-/* CART */
-.cart{
-  position:fixed;bottom:0;right:16px;left:16px;background:#fff;border:1px solid var(--border);
-  border-radius:14px 14px 0 0;box-shadow:0 -8px 20px rgba(0,0,0,.1);
-  max-width:420px;margin:0 auto;transform:translateY(100%);transition:.35s;padding:18px;z-index:80;
-}
-.cart.open{transform:translateY(0)}
-.cart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.cart-item{display:flex;justify-content:space-between;margin:6px 0}
-.cart-total{text-align:right;font-weight:900;margin-top:12px}
-.cart button{background:none;border:none;font-weight:900;color:#ff2d55;font-size:16px;cursor:pointer}
-
-/* PAGE */
+/* PAGE LAYOUT */
 .wrap{max-width:1100px;margin:32px auto;padding:0 16px}
 .grid{
   display:grid;gap:34px;
   grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
   align-items:start;
 }
+
+/* GALLERY */
 .card{background:#fff;border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);padding:14px}
 .gallery{display:flex;flex-direction:column;gap:16px}
 .gallery img{
   display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--border);
   background:#fff;object-fit:contain;
 }
+
+/* DETAILS */
 .title{font-size:28px;font-weight:900;margin:6px 0 10px}
 .desc{color:var(--muted);line-height:1.7;margin-bottom:14px}
 .price{font-weight:900;font-size:20px;margin:6px 0 18px}
@@ -95,9 +80,9 @@ a{color:inherit;text-decoration:none}
 footer{margin:60px 0 90px;text-align:center;color:var(--muted);font-weight:600}
 footer a{font-weight:800}
 
-/* WHATSAPP */
+/* WHATSAPP BUBBLE */
 .wa{
-  position:fixed;right:16px;bottom:16px;z-index:90;background:#fff;border:1px solid var(--border);
+  position:fixed;right:16px;bottom:16px;z-index:70;background:#fff;border:1px solid var(--border);
   border-radius:999px;padding:10px 14px;display:flex;align-items:center;gap:8px;box-shadow:var(--shadow);
   font-weight:900
 }
@@ -105,72 +90,63 @@ footer a{font-weight:800}
 .dot{width:8px;height:8px;background:#ff375f;border-radius:50%}
 </style>
 </head>
-
 <body>
+
+<!-- HEADER -->
 <header class="header">
   <div class="brand"><a href="index.html">OMK</a></div>
   <div class="h-icons">
-    <a href="javascript:void(0)" class="icon-cart" id="openCart">
-      <img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png" alt="cart">
-      <span class="badge" id="cartCount" style="display:none">0</span>
-    </a>
-    <a href="javascript:void(0)" id="openMenu"><img src="https://cdn-icons-png.flaticon.com/512/56/56763.png" alt="menu"></a>
+    <a href="index.html" title="Shop"><img src="https://cdn-icons-png.flaticon.com/512/711/711191.png" alt="home"></a>
+    <a id="openMenu" href="javascript:void(0)" title="Menu"><img src="https://cdn-icons-png.flaticon.com/512/56/56763.png" alt="menu"></a>
   </div>
 </header>
 
-<!-- MENU -->
-<div id="drawer" class="drawer">
+<!-- DRAWER -->
+<div id="drawer" class="drawer" aria-hidden="true">
   <div id="mask" class="mask"></div>
   <aside class="panel">
     <div class="menu-title">Menu</div>
     <nav class="menu">
       <a href="index.html">Shop</a>
-      <a href="tshirt.html">T-Shirts</a>
-      <a href="jeans.html">Jeans</a>
       <a href="jacket.html">Jackets</a>
+      <a href="jeans.html">Jeans</a>
+      <a href="shorts.html">Shorts</a>
       <a href="about.html">About</a>
       <a href="mailto:omkdrip@gmail.com">Contact</a>
     </nav>
   </aside>
 </div>
 
-<!-- CART -->
-<div id="cartBox" class="cart">
-  <div class="cart-header">
-    <strong>Your Cart</strong>
-    <button onclick="toggleCart()">✕</button>
-  </div>
-  <div id="cartItems"></div>
-  <div class="cart-total" id="cartTotal">Total: ₦0</div>
-  <a href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order" target="_blank" class="btn primary" style="width:100%;text-align:center;margin-top:12px;">Chat with us to order</a>
-</div>
-
 <!-- CONTENT -->
 <main class="wrap">
   <section class="grid">
+    <!-- GALLERY -->
     <div class="card">
       <div class="gallery">
-        <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/5E3C1575-6B29-4829-B13B-421B2EEF630D.png" alt="OMK Jean Front">
-        <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/6ACD4CF2-97CE-4B75-B574-59AF5431A27C.png" alt="OMK Jean Back">
+        <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/5E3C1575-6B29-4829-B13B-421B2EEF630D.png" alt="OMK Jeans — Front">
+        <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/6ACD4CF2-97CE-4B75-B574-59AF5431A27C.png" alt="OMK Jeans — Back">
       </div>
     </div>
 
+    <!-- DETAILS -->
     <div class="card">
-      <div class="title">OMK Wolf Jean 👖</div>
-      <div class="desc">Premium streetwear jean — designed for loyalty, power, and legacy. Bold fit. Only My Kind crafted denim.</div>
+      <div class="title">OMK Black Wolf Jeans 🐺</div>
+      <div class="desc">
+        Premium black denim — bold, fitted, and made for the Only My Kind lifestyle. Perfect streetwear energy with a fearless edge. Designed for loyalty and legacy.
+      </div>
       <div class="price">₦80,000</div>
 
       <div class="subtle">Size</div>
-      <div class="sizes">
-        <button class="size">30</button>
-        <button class="size active">32</button>
-        <button class="size">34</button>
-        <button class="size">36</button>
+      <div class="sizes" id="sizes">
+        <button class="size">S</button>
+        <button class="size active">M</button>
+        <button class="size">L</button>
+        <button class="size">XL</button>
       </div>
 
       <div class="btns">
-        <button class="btn primary" onclick="addToCart()">Add to Cart</button>
-        <a href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20the%20Wolf%20Jean%20(size%2032)" class="btn">Buy Now</a>
+        <a class="btn primary" href="checkout.html">Buy Now</a>
+        <a class="btn" href="index.html">Add to Cart</a>
       </div>
 
       <p class="subtle" style="margin-top:14px">Loyalty • Truth • Legacy</p>
@@ -183,47 +159,18 @@ footer a{font-weight:800}
   <span>Contact / Report: <a href="mailto:omkdrip@gmail.com">omkdrip@gmail.com</a></span>
 </footer>
 
-<!-- WHATSAPP BUBBLE -->
+<!-- CHAT WITH US (WhatsApp) -->
 <a class="wa" target="_blank"
-   href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20some%20clothes">
+   href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20the%20OMK%20Black%20Wolf%20Jeans.">
   <span class="dot"></span>
   <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="">
   <span>Chat with us</span>
 </a>
 
 <script>
-let cart = JSON.parse(localStorage.getItem('omkCart') || '[]');
-
-function toggleCart(){ document.getElementById('cartBox').classList.toggle('open'); }
-document.getElementById('openCart').onclick = toggleCart;
-
-function updateCart(){
-  const items = document.getElementById('cartItems');
-  const total = document.getElementById('cartTotal');
-  const badge = document.getElementById('cartCount');
-  let sum = 0;
-  items.innerHTML = '';
-  cart.forEach((p,i)=>{
-    sum += p.price;
-    items.innerHTML += `<div class='cart-item'><span>${p.name}</span><span>₦${p.price.toLocaleString()}</span><button onclick='removeItem(${i})'>✕</button></div>`;
-  });
-  total.innerText = "Total: ₦" + sum.toLocaleString();
-  localStorage.setItem('omkCart',JSON.stringify(cart));
-  badge.style.display = cart.length ? 'inline-block':'none';
-  badge.textContent = cart.length;
-}
-function removeItem(i){cart.splice(i,1);updateCart();}
-function addToCart(){
-  cart.push({name:'OMK Wolf Jean (32)',price:80000});
-  updateCart();
-  toggleCart();
-}
-updateCart();
-
-/* menu */
-const drawer = document.getElementById('drawer');
-document.getElementById('openMenu').onclick = ()=>drawer.classList.add('open');
-document.getElementById('mask').onclick = ()=>drawer.classList.remove('open');
+const drawer=document.getElementById('drawer');
+document.getElementById('openMenu').onclick=()=>drawer.classList.add('open');
+document.getElementById('mask').onclick=()=>drawer.classList.remove('open');
 </script>
 
 </body>
