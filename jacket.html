@@ -14,7 +14,6 @@
   --accent:#111111;
   --shadow:0 10px 30px rgba(0,0,0,.06);
 }
-
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
 a{color:inherit;text-decoration:none}
@@ -27,13 +26,12 @@ a{color:inherit;text-decoration:none}
 }
 .brand{font-weight:900;font-size:20px;letter-spacing:.5px}
 .h-icons{display:flex;gap:14px;align-items:center}
-.h-icons img{width:24px;height:24px}
+.h-icons img{width:24px;height:24px;cursor:pointer;transition:.2s}
+.h-icons img:hover{opacity:.75}
 
-/* DRAWER (side menu) */
+/* DRAWER */
 .drawer{position:fixed;inset:0;z-index:60;pointer-events:none}
-.drawer .mask{
-  position:absolute;inset:0;background:rgba(0,0,0,.35);opacity:0;transition:.25s;
-}
+.drawer .mask{position:absolute;inset:0;background:rgba(0,0,0,.35);opacity:0;transition:.25s;}
 .drawer .panel{
   position:absolute;right:0;top:0;height:100%;width:min(320px,84%);
   background:#fff;border-left:1px solid var(--border);transform:translateX(100%);
@@ -46,23 +44,15 @@ a{color:inherit;text-decoration:none}
 .menu a{display:block;padding:12px 6px;border-radius:8px;font-weight:700}
 .menu a:hover{background:#f7f7f7}
 
-/* PAGE LAYOUT */
+/* PAGE */
 .wrap{max-width:1100px;margin:32px auto;padding:0 16px}
-.grid{
-  display:grid;gap:34px;
-  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  align-items:start;
-}
+.grid{display:grid;gap:34px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));align-items:start}
 
-/* GALLERY */
+/* PRODUCT */
 .card{background:#fff;border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);padding:14px}
 .gallery{display:flex;flex-direction:column;gap:16px}
-.gallery img{
-  display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--border);
-  background:#fff;object-fit:contain;
-}
+.gallery img{width:100%;border-radius:14px;border:1px solid var(--border);background:#fff;object-fit:contain}
 
-/* DETAILS */
 .title{font-size:28px;font-weight:900;margin:6px 0 10px}
 .desc{color:var(--muted);line-height:1.7;margin-bottom:14px}
 .price{font-weight:900;font-size:20px;margin:6px 0 18px}
@@ -82,28 +72,21 @@ a{color:inherit;text-decoration:none}
 footer{margin:60px 0 90px;text-align:center;color:var(--muted);font-weight:600}
 footer a{font-weight:800}
 
-/* WHATSAPP BUBBLE */
-.wa{
-  position:fixed;right:16px;bottom:16px;z-index:70;background:#fff;border:1px solid var(--border);
-  border-radius:999px;padding:10px 14px;display:flex;align-items:center;gap:8px;box-shadow:var(--shadow);
-  font-weight:900
-}
+/* WHATSAPP */
+.wa{position:fixed;right:16px;bottom:16px;z-index:70;background:#fff;border:1px solid var(--border);
+border-radius:999px;padding:10px 14px;display:flex;align-items:center;gap:8px;box-shadow:var(--shadow);font-weight:900}
 .wa img{width:18px;height:18px}
 .dot{width:8px;height:8px;background:#ff375f;border-radius:50%}
-
-/* small tweaks */
-@media (max-width:420px){
-  .title{font-size:24px}
-}
+@media (max-width:420px){.title{font-size:24px}}
 </style>
 </head>
-<body>
 
+<body>
 <!-- HEADER -->
 <header class="header">
   <div class="brand"><a href="index.html">OMK</a></div>
   <div class="h-icons">
-    <a href="index.html" title="Shop"><img src="https://cdn-icons-png.flaticon.com/512/711/711191.png" alt="home"></a>
+    <a href="checkout.html" title="Cart"><img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png" alt="cart"></a>
     <a id="openMenu" href="javascript:void(0)" title="Menu"><img src="https://cdn-icons-png.flaticon.com/512/56/56763.png" alt="menu"></a>
   </div>
 </header>
@@ -115,13 +98,9 @@ footer a{font-weight:800}
     <div class="menu-title">Menu</div>
     <nav class="menu">
       <a href="index.html">Shop</a>
-      <a href="tshirt.html">T-Shirts</a>
-      <a href="jeans.html">Jeans</a>
-      <a href="shorts.html">Shorts</a>
       <a href="about.html">About</a>
       <a href="mailto:omkdrip@gmail.com">Contact</a>
-      <a href="login.html">Login</a>
-      <a href="register.html">Create account</a>
+      <a href="checkout.html">Checkout</a>
     </nav>
   </aside>
 </div>
@@ -129,7 +108,6 @@ footer a{font-weight:800}
 <!-- CONTENT -->
 <main class="wrap">
   <section class="grid">
-    <!-- GALLERY -->
     <div class="card">
       <div class="gallery">
         <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0140.jpeg" alt="OMK Wolf Jacket — Front">
@@ -137,13 +115,9 @@ footer a{font-weight:800}
       </div>
     </div>
 
-    <!-- DETAILS -->
     <div class="card">
       <div class="title">OMK Wolf Jacket 🐺</div>
-      <div class="desc">
-        Premium streetwear jacket in brown — crafted for loyalty, power, and the Only My Kind spirit.
-        Quality fabric, detailed design, bold street statement.
-      </div>
+      <div class="desc">Premium streetwear jacket in brown — crafted for loyalty, power, and the Only My Kind spirit. Quality fabric, detailed design, bold street statement.</div>
       <div class="price">₦80,000</div>
 
       <div class="subtle">Size</div>
@@ -155,8 +129,8 @@ footer a{font-weight:800}
       </div>
 
       <div class="btns">
-        <a class="btn primary" href="https://omk-store.github.io/omk-website/checkout.html">Buy Now</a>
-        <a class="btn" href="index.html">Continue shopping</a>
+        <a id="buyBtn" class="btn primary" target="_blank" href="https://wa.me/2347038112817?text=I'm%20interested%20in%20the%20OMK%20Wolf%20Jacket%20(Brown)%20-%20Size%20M">Buy on WhatsApp</a>
+        <a class="btn" href="checkout.html">Add to Cart</a>
       </div>
 
       <p class="subtle" style="margin-top:14px">Loyalty • Truth • Legacy</p>
@@ -169,20 +143,33 @@ footer a{font-weight:800}
   <span>Contact / Report: <a href="mailto:omkdrip@gmail.com">omkdrip@gmail.com</a></span>
 </footer>
 
-<!-- CHAT WITH US (WhatsApp) -->
-<a class="wa" target="_blank"
-   href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20some%20clothes">
+<!-- CHAT -->
+<a class="wa" target="_blank" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20some%20clothes.">
   <span class="dot"></span>
   <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="">
   <span>Chat with us</span>
 </a>
 
 <script>
-/* side menu */
-const drawer = document.getElementById('drawer');
-document.getElementById('openMenu').onclick = () => drawer.classList.add('open');
-document.getElementById('mask').onclick = () => drawer.classList.remove('open');
-</script>
+const drawer=document.getElementById('drawer');
+document.getElementById('openMenu').onclick=()=>drawer.classList.add('open');
+document.getElementById('mask').onclick=()=>drawer.classList.remove('open');
 
+const sizeButtons=[...document.querySelectorAll('.size')];
+const buyBtn=document.getElementById('buyBtn');
+function updateLink(){
+  const active=document.querySelector('.size.active')?.textContent||'M';
+  const msg=`I'm interested in the OMK Wolf Jacket (Brown) - Size ${active}`;
+  buyBtn.href=`https://wa.me/2347038112817?text=${encodeURIComponent(msg)}`;
+}
+sizeButtons.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    sizeButtons.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    updateLink();
+  });
+});
+updateLink();
+</script>
 </body>
 </html>
