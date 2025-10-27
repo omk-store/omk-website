@@ -6,184 +6,205 @@
 <title>OMK Wolf Jacket 🐺 | Only My Kind</title>
 
 <style>
-:root { --border:#eaeaea; --accent:#ff2d55; --dark:#000; }
-*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
-body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#111;background:#fff}
-a{text-decoration:none;color:inherit;cursor:pointer}
+:root{
+  --bg:#ffffff;
+  --text:#101010;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+  --accent:#111111;
+  --shadow:0 10px 30px rgba(0,0,0,.06);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+a{color:inherit;text-decoration:none}
 
 /* HEADER */
-header{
-  position:sticky;top:0;z-index:30;background:rgba(255,255,255,.95);
-  backdrop-filter:blur(10px);border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;padding:12px 20px;flex-wrap:wrap;
+.header{
+  position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;padding:12px 16px;
+  backdrop-filter:blur(8px);
 }
-.brand{display:flex;align-items:baseline;gap:8px}
-.logo{font-weight:900;font-size:22px}
-.header-icons{display:flex;align-items:center;gap:14px}
-.icon-btn img{width:26px;height:26px;cursor:pointer;transition:.2s}
-.icon-btn img:hover{opacity:.75}
-.icon-btn.glow img{animation:cartGlow 1.2s infinite alternate}
-@keyframes cartGlow{0%{filter:drop-shadow(0 0 0 #ff2d55);}100%{filter:drop-shadow(0 0 6px #ff2d55);}}
+.brand{font-weight:900;font-size:20px;letter-spacing:.5px}
+.h-icons{display:flex;gap:14px;align-items:center}
+.h-icons img{width:24px;height:24px}
 
-/* CART PANEL */
-.cart-panel{
-  position:fixed;top:0;right:0;height:100%;width:320px;background:#fff;
-  border-left:1px solid var(--border);box-shadow:-4px 0 12px rgba(0,0,0,.15);
-  transform:translateX(100%);transition:transform .35s ease;z-index:90;padding:20px;overflow-y:auto;
+/* DRAWER (side menu) */
+.drawer{position:fixed;inset:0;z-index:60;pointer-events:none}
+.drawer .mask{
+  position:absolute;inset:0;background:rgba(0,0,0,.35);opacity:0;transition:.25s;
 }
-.cart-panel.open{transform:translateX(0)}
-.cart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.cart-header h3{font-size:18px;font-weight:800}
-.close-cart{background:none;border:none;font-size:20px;font-weight:900;cursor:pointer;color:#333}
-.cart-item{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;border-bottom:1px solid #eee;padding-bottom:8px;font-weight:600}
-.cart-item button{background:none;border:none;color:#ff2d55;font-size:18px;cursor:pointer;font-weight:900}
-.cart-total{font-weight:800;margin-top:14px;font-size:16px;text-align:right}
-.checkout-btn{display:block;margin-top:16px;background:#ff2d55;color:#fff;text-align:center;
-  padding:10px 0;border-radius:10px;font-weight:800;text-transform:uppercase;box-shadow:0 4px 10px rgba(255,45,85,.3);}
-.checkout-btn:hover{opacity:.9}
+.drawer .panel{
+  position:absolute;right:0;top:0;height:100%;width:min(320px,84%);
+  background:#fff;border-left:1px solid var(--border);transform:translateX(100%);
+  transition:.3s;box-shadow:-6px 0 24px rgba(0,0,0,.08);padding:18px;
+}
+.drawer.open{pointer-events:auto}
+.drawer.open .mask{opacity:1}
+.drawer.open .panel{transform:translateX(0)}
+.menu-title{font-weight:800;margin:6px 0 14px 2px}
+.menu a{display:block;padding:12px 6px;border-radius:8px;font-weight:700}
+.menu a:hover{background:#f7f7f7}
 
-/* PRODUCT PAGE */
-.product-section{
-  width:min(1000px,92%);
-  margin:60px auto;
-  display:grid;
+/* PAGE LAYOUT */
+.wrap{max-width:1100px;margin:32px auto;padding:0 16px}
+.grid{
+  display:grid;gap:34px;
   grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  gap:40px;
   align-items:start;
 }
-.product-gallery{
-  display:flex;
-  flex-direction:column;
-  gap:20px;
+
+/* GALLERY */
+.card{background:#fff;border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);padding:14px}
+.gallery{display:flex;flex-direction:column;gap:16px}
+.gallery img{
+  display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--border);
+  background:#fff;object-fit:contain;
 }
-.product-gallery img{
-  width:100%;
-  border-radius:12px;
-  box-shadow:0 6px 20px rgba(0,0,0,.08);
-  object-fit:cover;
+
+/* DETAILS */
+.title{font-size:28px;font-weight:900;margin:6px 0 10px}
+.desc{color:var(--muted);line-height:1.7;margin-bottom:14px}
+.price{font-weight:900;font-size:20px;margin:6px 0 18px}
+.subtle{font-size:13px;color:var(--muted)}
+.sizes{display:flex;gap:10px;margin:10px 0 4px}
+.size{padding:10px 16px;border:1px solid var(--border);border-radius:10px;font-weight:800;cursor:pointer;background:#fff}
+.size.active{background:#111;color:#fff;border-color:#111}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:14px 18px;border-radius:12px;border:1px solid var(--border);font-weight:900;cursor:pointer;background:#fff;
 }
-.product-details h1{font-size:26px;font-weight:900;margin-bottom:10px;}
-.product-details p{font-size:15px;color:#555;line-height:1.6;margin-bottom:14px;}
-.product-details .price{font-size:18px;font-weight:800;color:#111;margin-bottom:20px;}
-.sizes{display:flex;gap:10px;}
-.size-btn{
-  padding:8px 14px;
-  border:1px solid #ccc;
-  border-radius:6px;
-  cursor:pointer;
-  font-weight:700;
-  background:#fff;
-}
-.size-btn.active{background:#000;color:#fff;border-color:#000;}
-.product-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
-.product-btns button, .product-btns a{
-  background:#000;color:#fff;padding:12px 18px;border-radius:10px;font-weight:800;border:none;cursor:pointer;text-transform:uppercase;
-}
-.product-btns a:hover, .product-btns button:hover{background:#111;}
+.btn.primary{background:#111;color:#fff;border-color:#111}
+.btn:active{transform:translateY(1px)}
 
 /* FOOTER */
-footer{border-top:1px solid var(--border);padding:22px 0;text-align:center;color:#666;font-weight:600;margin-top:60px;}
-footer .contact{margin-top:8px;font-size:14px;color:#555}
+footer{margin:60px 0 90px;text-align:center;color:var(--muted);font-weight:600}
+footer a{font-weight:800}
 
-/* CHAT BUTTON */
-.chat-btn{position:fixed;right:18px;bottom:18px;z-index:70;background:#fff;border:1px solid var(--border);
-  border-radius:40px;padding:10px 16px;font-weight:900;display:flex;align-items:center;gap:8px;
-  box-shadow:0 8px 20px rgba(0,0,0,.12);transition:.25s}
-.chat-btn:hover{transform:translateY(-2px)}
-.chat-dot{width:10px;height:10px;background:var(--accent);border-radius:50%}
+/* WHATSAPP BUBBLE */
+.wa{
+  position:fixed;right:16px;bottom:16px;z-index:70;background:#fff;border:1px solid var(--border);
+  border-radius:999px;padding:10px 14px;display:flex;align-items:center;gap:8px;box-shadow:var(--shadow);
+  font-weight:900
+}
+.wa img{width:18px;height:18px}
+.dot{width:8px;height:8px;background:#ff375f;border-radius:50%}
+
+/* small tweaks */
+@media (max-width:420px){
+  .title{font-size:24px}
+}
 </style>
 </head>
-
 <body>
-<header>
-  <div class="brand"><a href="index.html" class="logo">OMK</a></div>
-  <div class="header-icons">
-    <a class="icon-btn glow" id="cartBtn"><img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png" alt="cart"></a>
-    <a class="icon-btn" id="menuBtn"><img src="https://cdn-icons-png.flaticon.com/512/56/56763.png" alt="menu"></a>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="brand"><a href="index.html">OMK</a></div>
+  <div class="h-icons">
+    <a href="index.html" title="Shop"><img src="https://cdn-icons-png.flaticon.com/512/711/711191.png" alt="home"></a>
+    <a id="openMenu" href="javascript:void(0)" title="Menu"><img src="https://cdn-icons-png.flaticon.com/512/56/56763.png" alt="menu"></a>
   </div>
 </header>
 
-<!-- CART PANEL -->
-<div id="cartPanel" class="cart-panel">
-  <div class="cart-header">
-    <h3>🛍️ Your Cart</h3>
-    <button class="close-cart" onclick="toggleCart()">✕</button>
-  </div>
-  <div id="cartItems"></div>
-  <div class="cart-total" id="cartTotal">Total: ₦0</div>
-  <a id="checkoutBtn" href="#" target="_blank" class="checkout-btn">Checkout on WhatsApp</a>
+<!-- DRAWER -->
+<div id="drawer" class="drawer" aria-hidden="true">
+  <div id="mask" class="mask"></div>
+  <aside class="panel">
+    <div class="menu-title">Menu</div>
+    <nav class="menu">
+      <a href="index.html">Shop</a>
+      <a href="tshirt.html">T-Shirts</a>
+      <a href="jeans.html">Jeans</a>
+      <a href="shorts.html">Shorts</a>
+      <a href="about.html">About</a>
+      <a href="mailto:omkdrip@gmail.com">Contact</a>
+      <a href="login.html">Login</a>
+      <a href="register.html">Create account</a>
+    </nav>
+  </aside>
 </div>
 
-<section class="product-section">
-  <div class="product-gallery">
-    <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0140.jpeg" alt="OMK Wolf Jacket Front">
-    <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0141.jpeg" alt="OMK Wolf Jacket Back">
-  </div>
-
-  <div class="product-details">
-    <h1>OMK Wolf Jacket 🐺</h1>
-    <p>Premium streetwear jacket in brown — crafted for loyalty, power, and the Only My Kind spirit. Quality fabric, detailed design, and bold street statement.</p>
-    <p class="price">₦80,000</p>
-
-    <div class="option-group">
-      <label>Size:</label>
-      <div class="sizes">
-        <div class="size-btn" onclick="selectSize(this)">S</div>
-        <div class="size-btn" onclick="selectSize(this)">M</div>
-        <div class="size-btn" onclick="selectSize(this)">L</div>
-        <div class="size-btn" onclick="selectSize(this)">XL</div>
+<!-- CONTENT -->
+<main class="wrap">
+  <section class="grid">
+    <!-- GALLERY -->
+    <div class="card">
+      <div class="gallery">
+        <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0140.jpeg" alt="OMK Wolf Jacket — Front">
+        <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0141.jpeg" alt="OMK Wolf Jacket — Back">
       </div>
     </div>
 
-    <div class="product-btns">
-      <button onclick="addToCart()">Add to Cart</button>
-      <a id="buyBtn" href="https://wa.me/2347038112817?text=I'm%20interested%20in%20the%20OMK%20Wolf%20Jacket%20-%20Brown%20Edition" target="_blank">Buy on WhatsApp</a>
+    <!-- DETAILS -->
+    <div class="card">
+      <div class="title">OMK Wolf Jacket 🐺</div>
+      <div class="desc">
+        Premium streetwear jacket in brown — crafted for loyalty, power, and the Only My Kind spirit.
+        Quality fabric, detailed design, bold street statement.
+      </div>
+      <div class="price">₦80,000</div>
+
+      <div class="subtle">Size</div>
+      <div class="sizes" id="sizes">
+        <button class="size">S</button>
+        <button class="size active">M</button>
+        <button class="size">L</button>
+        <button class="size">XL</button>
+      </div>
+
+      <div class="btns">
+        <a id="buyBtn" class="btn primary" target="_blank"
+           href="https://wa.me/2347038112817?text=I'm%20interested%20in%20the%20OMK%20Wolf%20Jacket%20(Brown)%20-%20Size%20M">
+          Buy on WhatsApp
+        </a>
+        <a class="btn" href="index.html">Continue shopping</a>
+      </div>
+
+      <p class="subtle" style="margin-top:14px">Loyalty • Truth • Legacy</p>
     </div>
-  </div>
-</section>
+  </section>
+</main>
 
 <footer>
-  <p>© 2025 OMK – Only My Kind | All Rights Reserved</p>
-  <p class="contact">Contact / Report: <a href="mailto:omkdrip@gmail.com">omkdrip@gmail.com</a></p>
+  © 2025 <strong>OMK – Only My Kind</strong> · All Rights Reserved<br>
+  <span>Contact / Report: <a href="mailto:omkdrip@gmail.com">omkdrip@gmail.com</a></span>
 </footer>
 
-<a class="chat-btn" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20some%20clothes" target="_blank">
-  <span class="chat-dot"></span> Chat with OMK
+<!-- CHAT WITH US (WhatsApp) -->
+<a class="wa" target="_blank"
+   href="https://wa.me/2347038112817?text=Hi%20there%2C%20I%20want%20to%20order%20the%20OMK%20Wolf%20Jacket.">
+  <span class="dot"></span>
+  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="">
+  <span>Chat with us</span>
 </a>
 
 <script>
-function toggleCart(){ document.getElementById('cartPanel').classList.toggle('open'); }
-function selectSize(el){
-  document.querySelectorAll('.size-btn').forEach(btn=>btn.classList.remove('active'));
-  el.classList.add('active');
+/* side menu */
+const drawer = document.getElementById('drawer');
+document.getElementById('openMenu').onclick = () => drawer.classList.add('open');
+document.getElementById('mask').onclick = () => drawer.classList.remove('open');
+
+/* size selection -> updates WA link text with picked size */
+const sizeButtons = [...document.querySelectorAll('.size')];
+const buyBtn = document.getElementById('buyBtn');
+
+function updateLink(){
+  const active = document.querySelector('.size.active')?.textContent || 'M';
+  const msg = `I'm interested in the OMK Wolf Jacket (Brown) - Size ${active}`;
+  buyBtn.href = `https://wa.me/2347038112817?text=${encodeURIComponent(msg)}`;
 }
-let cart=JSON.parse(localStorage.getItem('omkCart')||'[]');
-updateCart();
-function addToCart(){
-  const size=document.querySelector('.size-btn.active')?.textContent||'M';
-  cart.push({name:`OMK Wolf Jacket (BROWN / ${size})`,price:80000});
-  updateCart();toggleCart();
-}
-function removeFromCart(index){cart.splice(index,1);updateCart();}
-function updateCart(){
-  const cartItems=document.getElementById('cartItems');
-  const cartTotal=document.getElementById('cartTotal');
-  let total=0;cartItems.innerHTML='';
-  cart.forEach((item,index)=>{
-    total+=item.price;
-    cartItems.innerHTML+=`
-    <div class="cart-item">
-      <span>${item.name}</span>
-      <span>₦${item.price.toLocaleString()}</span>
-      <button onclick="removeFromCart(${index})">✕</button>
-    </div>`;
+
+sizeButtons.forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    sizeButtons.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    updateLink();
   });
-  cartTotal.innerText='Total: ₦'+total.toLocaleString();
-  localStorage.setItem('omkCart',JSON.stringify(cart));
-  const msg=encodeURIComponent(cart.map(i=>i.name+' - ₦'+i.price.toLocaleString()).join('%0A')+'%0A%0ATotal: ₦'+total.toLocaleString());
-  document.getElementById('checkoutBtn').href=`https://wa.me/2347038112817?text=${msg}`;
-}
-document.getElementById('cartBtn').addEventListener('click',toggleCart);
+});
+
+updateLink();
 </script>
 </body>
 </html>
