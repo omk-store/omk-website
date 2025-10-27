@@ -133,6 +133,16 @@ footer .contact{margin-top:8px;font-size:14px;color:#555}
   </div>
 </header>
 
+<!-- 🧥 HERO SHOWCASE: Jacket shows first -->
+<section style="text-align:center;padding:30px 16px;background:#fff">
+  <img src="jacket-black.jpg" alt="OMK Wolf Jacket" style="width:100%;max-width:600px;border-radius:10px;">
+  <h2 style="margin-top:15px;">OMK Wolf Jacket 🐺</h2>
+  <p style="font-size:16px;color:#555;">Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
+  <a href="jacket.html">
+    <button style="background:#ff2d55;color:#fff;border:none;padding:12px 28px;border-radius:6px;margin-top:10px;font-size:16px;">Shop Now</button>
+  </a>
+</section>
+
 <!-- CART PANEL -->
 <div id="cartPanel" class="cart-panel">
   <div class="cart-header">
@@ -154,11 +164,6 @@ footer .contact{margin-top:8px;font-size:14px;color:#555}
   </div>
 </div>
 <div id="backdrop" class="backdrop" onclick="toggleMenu()"></div>
-
-<section class="hero" id="top">
-  <img src="5CB390F1-C296-439F-A95B-32679E9FE8BA.png" alt="OMK Wolf">
-  <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
-</section>
 
 <section id="shop" class="section">
   <h2>Latest Drop 🔥</h2>
@@ -208,62 +213,26 @@ function toggleCart(){
 }
 
 const products=[
- {name:'OMK Wolf Jacket',price:80000,img:'https://omkdrip.com/images/omk-jacket-front.png'},
- {name:'OMK Jeans',price:80000,img:'https://omkdrip.com/images/omk-jeans-front.png'},
- {name:'OMK T-Shirt',price:45000,img:'https://omkdrip.com/images/omk-tee-front.png'},
- {name:'OMK Shorts',price:50000,img:'https://omkdrip.com/images/omk-shorts-front.png'},
- {name:'OMK Full Wolf Set',price:150000,img:'https://omkdrip.com/images/omk-wolf-set-front.png'},
- {name:'OMK Up & Down Set',price:150000,img:'https://omkdrip.com/images/omk-updown.png'},
- {name:'Alpha Royal Set',price:150000,img:'https://omkdrip.com/images/omk-alpha-set.png'}
+ {name:'OMK Wolf Jacket',price:80000,img:'jacket-black.jpg',link:'jacket.html'},
+ {name:'OMK Jeans',price:80000,img:'jeans-blue.jpg',link:'jeans.html'},
+ {name:'OMK T-Shirt',price:45000,img:'tee-white.jpg',link:'tshirt.html'},
+ {name:'OMK Shorts',price:50000,img:'shorts-black.jpg',link:'shorts.html'}
 ];
 
 const grid=document.getElementById('productGrid');
 products.forEach((p,i)=>{
  grid.innerHTML+=`
- <div class="card">
-   <div class="card-img"><img src="${p.img}" alt="${p.name}"></div>
-   <div class="card-body">
-     <h3>${p.name}</h3>
-     <p class="price">₦${p.price.toLocaleString()}</p>
-     <button class="btn" onclick="addToCart(${i})">Add to Cart</button>
+ <a href="${p.link}" style="text-decoration:none;color:inherit">
+   <div class="card">
+     <div class="card-img"><img src="${p.img}" alt="${p.name}"></div>
+     <div class="card-body">
+       <h3>${p.name}</h3>
+       <p class="price">₦${p.price.toLocaleString()}</p>
+       <button class="btn">View</button>
+     </div>
    </div>
- </div>`;
+ </a>`;
 });
-
-let cart=[];
-
-function addToCart(i){
- cart.push(products[i]);
- updateCart();
- document.getElementById('cartPanel').classList.add('open');
-}
-
-function removeFromCart(index){
- cart.splice(index,1);
- updateCart();
-}
-
-function updateCart(){
- const cartItems=document.getElementById('cartItems');
- const cartTotal=document.getElementById('cartTotal');
- let total=0;
- cartItems.innerHTML='';
- cart.forEach((item,index)=>{
-   total+=item.price;
-   cartItems.innerHTML+=`
-     <div class="cart-item">
-       <span>${item.name}</span>
-       <span>₦${item.price.toLocaleString()}</span>
-       <button onclick="removeFromCart(${index})">✕</button>
-     </div>`;
- });
- cartTotal.innerText='Total: ₦'+total.toLocaleString();
- const msg = encodeURIComponent(cart.map(i=>i.name+' - ₦'+i.price.toLocaleString()).join('%0A') + '%0A%0ATotal: ₦'+total.toLocaleString());
- document.getElementById('checkoutBtn').href=`https://wa.me/2347038112817?text=${msg}`;
-}
-
-document.getElementById('cartBtn').addEventListener('click',toggleCart);
-document.getElementById('menuBtn').addEventListener('click',toggleMenu);
 </script>
 </body>
 </html>
