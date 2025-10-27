@@ -155,10 +155,7 @@ footer a{font-weight:800}
       </div>
 
       <div class="btns">
-        <a id="buyBtn" class="btn primary" target="_blank"
-           href="https://wa.me/2347038112817?text=I'm%20interested%20in%20the%20OMK%20Wolf%20Jacket%20(Brown)%20-%20Size%20M">
-          Buy on WhatsApp
-        </a>
+        <a class="btn primary" href="https://omk-store.github.io/omk-website/checkout.html">Buy Now</a>
         <a class="btn" href="index.html">Continue shopping</a>
       </div>
 
@@ -174,7 +171,7 @@ footer a{font-weight:800}
 
 <!-- CHAT WITH US (WhatsApp) -->
 <a class="wa" target="_blank"
-   href="https://wa.me/2347038112817?text=Hi%20there%2C%20I%20want%20to%20order%20the%20OMK%20Wolf%20Jacket.">
+   href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20some%20clothes">
   <span class="dot"></span>
   <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="">
   <span>Chat with us</span>
@@ -185,26 +182,7 @@ footer a{font-weight:800}
 const drawer = document.getElementById('drawer');
 document.getElementById('openMenu').onclick = () => drawer.classList.add('open');
 document.getElementById('mask').onclick = () => drawer.classList.remove('open');
-
-/* size selection -> updates WA link text with picked size */
-const sizeButtons = [...document.querySelectorAll('.size')];
-const buyBtn = document.getElementById('buyBtn');
-
-function updateLink(){
-  const active = document.querySelector('.size.active')?.textContent || 'M';
-  const msg = `I'm interested in the OMK Wolf Jacket (Brown) - Size ${active}`;
-  buyBtn.href = `https://wa.me/2347038112817?text=${encodeURIComponent(msg)}`;
-}
-
-sizeButtons.forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    sizeButtons.forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    updateLink();
-  });
-});
-
-updateLink();
 </script>
+
 </body>
 </html>
