@@ -61,22 +61,10 @@ header{
   border-radius:12px;
   box-shadow:0 6px 20px rgba(0,0,0,.08);
   object-fit:cover;
-  opacity:1;
-  transition:opacity .5s ease;
 }
-.product-gallery img.fade{opacity:0;}
 .product-details h1{font-size:26px;font-weight:900;margin-bottom:10px;}
 .product-details p{font-size:15px;color:#555;line-height:1.6;margin-bottom:14px;}
 .product-details .price{font-size:18px;font-weight:800;color:#111;margin-bottom:20px;}
-.option-group{margin-bottom:18px;}
-.option-group label{font-weight:800;font-size:15px;display:block;margin-bottom:6px;}
-.colors{display:flex;gap:10px;}
-.color-btn{
-  width:26px;height:26px;border-radius:50%;border:2px solid #ccc;cursor:pointer;
-}
-.color-btn.active{border:3px solid var(--accent);}
-#brown{background:#6b3e2e;}
-#black{background:#000;}
 .sizes{display:flex;gap:10px;}
 .size-btn{
   padding:8px 14px;
@@ -128,22 +116,14 @@ footer .contact{margin-top:8px;font-size:14px;color:#555}
 
 <section class="product-section">
   <div class="product-gallery">
-    <img id="jacketFront" src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0140.jpeg" alt="OMK Wolf Jacket Front">
-    <img id="jacketBack" src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0141.jpeg" alt="OMK Wolf Jacket Back">
+    <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0140.jpeg" alt="OMK Wolf Jacket Front">
+    <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0141.jpeg" alt="OMK Wolf Jacket Back">
   </div>
 
   <div class="product-details">
     <h1>OMK Wolf Jacket 🐺</h1>
-    <p>Premium streetwear jacket in brown and black — crafted for loyalty, power, and the Only My Kind spirit. Quality fabric, detailed design, and bold street statement.</p>
+    <p>Premium streetwear jacket in brown — crafted for loyalty, power, and the Only My Kind spirit. Quality fabric, detailed design, and bold street statement.</p>
     <p class="price">₦80,000</p>
-
-    <div class="option-group">
-      <label>Color:</label>
-      <div class="colors">
-        <div id="brown" class="color-btn active" onclick="switchColor('brown')"></div>
-        <div id="black" class="color-btn" onclick="switchColor('black')"></div>
-      </div>
-    </div>
 
     <div class="option-group">
       <label>Size:</label>
@@ -172,79 +152,37 @@ footer .contact{margin-top:8px;font-size:14px;color:#555}
 </a>
 
 <script>
-// Toggle cart
 function toggleCart(){ document.getElementById('cartPanel').classList.toggle('open'); }
-
-// Smooth fade when switching images
-function fadeImage(img,newSrc){
-  img.classList.add('fade');
-  setTimeout(()=>{
-    img.src=newSrc;
-    img.onload=()=>img.classList.remove('fade');
-  },300);
-}
-
-// Color switch
-function switchColor(color){
-  const front=document.getElementById('jacketFront');
-  const back=document.getElementById('jacketBack');
-  document.querySelectorAll('.color-btn').forEach(btn=>btn.classList.remove('active'));
-  document.getElementById(color).classList.add('active');
-
-  if(color==='brown'){
-    fadeImage(front,"https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0140.jpeg");
-    fadeImage(back,"https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0141.jpeg");
-  }else{
-    fadeImage(front,"https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0142.jpeg");
-    fadeImage(back,"https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0143.jpeg");
-  }
-
-  document.getElementById('buyBtn').href=`https://wa.me/2347038112817?text=I'm%20interested%20in%20the%20OMK%20Wolf%20Jacket%20-%20${color.charAt(0).toUpperCase()+color.slice(1)}%20Edition`;
-}
-
-// Size selection
 function selectSize(el){
   document.querySelectorAll('.size-btn').forEach(btn=>btn.classList.remove('active'));
   el.classList.add('active');
 }
-
-// Cart logic
 let cart=JSON.parse(localStorage.getItem('omkCart')||'[]');
 updateCart();
-
 function addToCart(){
   const size=document.querySelector('.size-btn.active')?.textContent||'M';
-  const color=document.querySelector('.color-btn.active')?.id||'brown';
-  cart.push({name:`OMK Wolf Jacket (${color.toUpperCase()} / ${size})`,price:80000});
-  updateCart();
-  toggleCart();
+  cart.push({name:`OMK Wolf Jacket (BROWN / ${size})`,price:80000});
+  updateCart();toggleCart();
 }
-
-function removeFromCart(index){
-  cart.splice(index,1);
-  updateCart();
-}
-
+function removeFromCart(index){cart.splice(index,1);updateCart();}
 function updateCart(){
   const cartItems=document.getElementById('cartItems');
   const cartTotal=document.getElementById('cartTotal');
-  let total=0;
-  cartItems.innerHTML='';
+  let total=0;cartItems.innerHTML='';
   cart.forEach((item,index)=>{
     total+=item.price;
     cartItems.innerHTML+=`
-      <div class="cart-item">
-        <span>${item.name}</span>
-        <span>₦${item.price.toLocaleString()}</span>
-        <button onclick="removeFromCart(${index})">✕</button>
-      </div>`;
+    <div class="cart-item">
+      <span>${item.name}</span>
+      <span>₦${item.price.toLocaleString()}</span>
+      <button onclick="removeFromCart(${index})">✕</button>
+    </div>`;
   });
   cartTotal.innerText='Total: ₦'+total.toLocaleString();
   localStorage.setItem('omkCart',JSON.stringify(cart));
-  const msg = encodeURIComponent(cart.map(i=>i.name+' - ₦'+i.price.toLocaleString()).join('%0A') + '%0A%0ATotal: ₦'+total.toLocaleString());
+  const msg=encodeURIComponent(cart.map(i=>i.name+' - ₦'+i.price.toLocaleString()).join('%0A')+'%0A%0ATotal: ₦'+total.toLocaleString());
   document.getElementById('checkoutBtn').href=`https://wa.me/2347038112817?text=${msg}`;
 }
-
 document.getElementById('cartBtn').addEventListener('click',toggleCart);
 </script>
 </body>
