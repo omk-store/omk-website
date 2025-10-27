@@ -1,194 +1,161 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>OMK Jeans 👖 | Only My Kind</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>OMK Wolf Jean 👖 | Only My Kind</title>
 
 <style>
 :root{
-  --accent:#ff2d55;
-  --bg1:#f9f9f9;
-  --bg2:#ffffff;
-  --text:#111;
-  --border:#eaeaea;
+  --bg:#ffffff;
+  --text:#101010;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+  --accent:#111111;
+  --shadow:0 10px 30px rgba(0,0,0,.06);
 }
-body{
-  margin:0;
-  font-family:'Poppins',system-ui,-apple-system,sans-serif;
-  background:linear-gradient(180deg,var(--bg1),var(--bg2));
-  color:var(--text);
-  overflow-x:hidden;
-}
+
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+a{color:inherit;text-decoration:none}
 
 /* HEADER */
-header{
-  position:sticky;top:0;z-index:50;
-  background:#fff;border-bottom:1px solid var(--border);
-  display:flex;justify-content:space-between;align-items:center;
-  padding:12px 22px;box-shadow:0 1px 8px rgba(0,0,0,.05);
+.header{
+  position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;padding:12px 16px;
   backdrop-filter:blur(8px);
 }
-.brand{display:flex;align-items:baseline;gap:6px;font-weight:900;letter-spacing:1px;font-size:1.2rem;}
-.brand span{font-weight:300;font-size:12px;opacity:.7}
-nav{display:flex;align-items:center;gap:20px;}
-nav a{text-decoration:none;color:#111;font-weight:600;transition:.2s;}
-nav a:hover{color:var(--accent);}
-.icon-btn img{width:24px;height:24px;transition:.25s;}
-.icon-btn img:hover{opacity:.75}
+.brand{font-weight:900;font-size:20px;letter-spacing:.5px}
+.h-icons{display:flex;gap:14px;align-items:center}
+.h-icons img{width:24px;height:24px}
 
-/* MAIN */
-.container{max-width:950px;margin:auto;padding:40px 18px;text-align:center;}
-h1{
-  font-size:2.4rem;font-weight:900;letter-spacing:1px;
-  background:linear-gradient(90deg,#ffd87a,#ff2d55,#ff6b6b,#ffd87a);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  animation:glow 6s ease-in-out infinite;
+/* DRAWER */
+.drawer{position:fixed;inset:0;z-index:60;pointer-events:none}
+.drawer .mask{
+  position:absolute;inset:0;background:rgba(0,0,0,.35);opacity:0;transition:.25s;
 }
-@keyframes glow{0%{background-position:0%}50%{background-position:100%}100%{background-position:0%}}
+.drawer .panel{
+  position:absolute;right:0;top:0;height:100%;width:min(320px,84%);
+  background:#fff;border-left:1px solid var(--border);transform:translateX(100%);
+  transition:.3s;box-shadow:-6px 0 24px rgba(0,0,0,.08);padding:18px;
+}
+.drawer.open{pointer-events:auto}
+.drawer.open .mask{opacity:1}
+.drawer.open .panel{transform:translateX(0)}
+.menu-title{font-weight:800;margin:6px 0 14px 2px}
+.menu a{display:block;padding:12px 6px;border-radius:8px;font-weight:700}
+.menu a:hover{background:#f7f7f7}
 
-.gallery{
-  display:flex;flex-direction:column;gap:18px;align-items:center;margin-top:20px;
-}
-.gallery img{
-  width:100%;max-width:480px;border-radius:16px;
-  box-shadow:0 12px 30px rgba(0,0,0,0.08);
-  transition:opacity .4s ease, transform .3s ease;
-}
-.gallery img.hide{opacity:0;pointer-events:none;position:absolute;}
+/* LAYOUT */
+.wrap{max-width:1100px;margin:32px auto;padding:0 16px}
+.grid{display:grid;gap:34px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));align-items:start}
 
-.price{font-weight:800;font-size:1.6rem;color:var(--accent);margin:24px 0 10px;}
+/* GALLERY */
+.card{background:#fff;border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);padding:14px}
+.gallery{display:flex;flex-direction:column;gap:16px}
+.gallery img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--border);object-fit:contain}
 
-.selectors{
-  background:#fff;border:1px solid #eee;border-radius:16px;
-  padding:22px;margin-top:20px;
-  box-shadow:0 6px 20px rgba(0,0,0,0.05);
-}
-select{
-  padding:12px 16px;border-radius:10px;border:1px solid #ccc;
-  font-weight:600;margin-bottom:20px;width:60%;max-width:280px;
-}
-
-/* SIZES */
-.sizes{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;}
-.sizes button{
-  padding:10px 18px;border-radius:10px;border:1px solid #111;
-  background:#fff;font-weight:700;cursor:pointer;transition:all .2s ease;
-}
-.sizes button:hover{background:#111;color:#fff;}
-.sizes button.active{background:#111;color:#fff;border-color:#111;}
-
-/* CTA */
-.cta{
-  display:inline-block;background:var(--accent);color:#fff;
-  font-weight:800;padding:16px 34px;border-radius:12px;
-  margin-top:28px;text-decoration:none;
-  box-shadow:0 6px 22px rgba(255,45,85,0.4);transition:.3s ease;
-}
-.cta:hover{transform:scale(1.05);box-shadow:0 8px 26px rgba(255,45,85,0.6);}
+/* DETAILS */
+.title{font-size:28px;font-weight:900;margin:6px 0 10px}
+.desc{color:var(--muted);line-height:1.7;margin-bottom:14px}
+.price{font-weight:900;font-size:20px;margin:6px 0 18px}
+.subtle{font-size:13px;color:var(--muted)}
+.sizes{display:flex;gap:10px;margin:10px 0 4px}
+.size{padding:10px 16px;border:1px solid var(--border);border-radius:10px;font-weight:800;cursor:pointer;background:#fff}
+.size.active{background:#111;color:#fff;border-color:#111}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 18px;border-radius:12px;border:1px solid var(--border);font-weight:900;cursor:pointer;background:#fff}
+.btn.primary{background:#111;color:#fff;border-color:#111}
+.btn:active{transform:translateY(1px)}
 
 /* FOOTER */
-footer{
-  margin-top:70px;padding:25px 16px;background:#fff;
-  color:#444;font-weight:600;border-top:1px solid var(--border);
-  text-align:center;font-size:14px;
-}
-footer .links{margin-top:8px;}
-footer a{color:#111;text-decoration:none;margin:0 8px;font-weight:700;transition:.25s;}
-footer a:hover{color:var(--accent);}
-footer small{display:block;color:#777;margin-top:6px;font-weight:400}
+footer{margin:60px 0 90px;text-align:center;color:var(--muted);font-weight:600}
+footer a{font-weight:800}
 
-/* CHAT BUTTON */
-.chat-btn{
-  position:fixed;right:18px;bottom:18px;z-index:70;background:#fff;border:1px solid var(--border);
-  border-radius:40px;padding:10px 16px;font-weight:900;display:flex;align-items:center;gap:8px;
-  box-shadow:0 8px 20px rgba(0,0,0,.12);transition:.25s;color:#111;
+/* CHAT */
+.wa{
+  position:fixed;right:16px;bottom:16px;z-index:70;background:#fff;border:1px solid var(--border);
+  border-radius:999px;padding:10px 14px;display:flex;align-items:center;gap:8px;box-shadow:var(--shadow);
+  font-weight:900
 }
-.chat-btn:hover{transform:translateY(-2px)}
-.chat-dot{width:10px;height:10px;background:var(--accent);border-radius:50%}
+.wa img{width:18px;height:18px}
+.dot{width:8px;height:8px;background:#ff375f;border-radius:50%}
+@media (max-width:420px){.title{font-size:24px}}
 </style>
 </head>
-
 <body>
-<header>
-  <div class="brand">
-    <a href="index.html" style="text-decoration:none;color:#111;">OMK</a>
-    <span>Only My Kind</span>
+
+<header class="header">
+  <div class="brand"><a href="index.html">OMK</a></div>
+  <div class="h-icons">
+    <a href="index.html"><img src="https://cdn-icons-png.flaticon.com/512/711/711191.png"></a>
+    <a id="openMenu" href="javascript:void(0)"><img src="https://cdn-icons-png.flaticon.com/512/56/56763.png"></a>
   </div>
-  <nav>
-    <a href="index.html">Shop</a>
-    <a href="register.html">Register</a>
-    <a href="login.html">Login</a>
-    <a class="icon-btn" href="#cart" title="Bag">
-      <img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png" alt="bag">
-    </a>
-  </nav>
 </header>
 
-<main class="container">
-  <h1>OMK Jeans 👖</h1>
+<div id="drawer" class="drawer">
+  <div id="mask" class="mask"></div>
+  <aside class="panel">
+    <div class="menu-title">Menu</div>
+    <nav class="menu">
+      <a href="index.html">Shop</a>
+      <a href="tshirt.html">T-Shirts</a>
+      <a href="jeans.html">Jeans</a>
+      <a href="shorts.html">Shorts</a>
+      <a href="about.html">About</a>
+      <a href="mailto:omkdrip@gmail.com">Contact</a>
+    </nav>
+  </aside>
+</div>
 
-  <div class="gallery" id="gallery">
-    <img id="frontImg" src="jeans-black.jpg" alt="OMK Jeans Front">
-    <img id="backImg" src="jeans-back.png" alt="OMK Jeans Back">
-  </div>
-
-  <div class="price">₦80,000</div>
-
-  <div class="selectors">
-    <div>
-      <label for="color"><strong>Color:</strong></label><br>
-      <select id="color" onchange="changeColor(this.value)">
-        <option value="black" selected>Midnight Black</option>
-      </select>
+<main class="wrap">
+  <section class="grid">
+    <div class="card">
+      <div class="gallery">
+        <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_jean_front.jpeg" alt="OMK Wolf Jean — Front">
+        <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_jean_back.jpeg" alt="OMK Wolf Jean — Back">
+      </div>
     </div>
 
-    <div class="sizes">
-      <button onclick="selectSize(this)">28</button>
-      <button onclick="selectSize(this)">30</button>
-      <button onclick="selectSize(this)">32</button>
-      <button onclick="selectSize(this)">34</button>
-      <button onclick="selectSize(this)">36</button>
-      <button onclick="selectSize(this)">38</button>
-    </div>
-  </div>
+    <div class="card">
+      <div class="title">OMK Wolf Jean 🐺</div>
+      <div class="desc">Premium streetwear jean — designed for legacy, strength & Only My Kind loyalty. Crafted with top-tier denim and bold wolf detail.</div>
+      <div class="price">₦80,000</div>
 
-  <a id="buy" class="cta" href="https://wa.me/2347038112817?text=I'm%20interested%20in%20the%20OMK%20Jeans%20-%20Midnight%20Black%20(Size%20not%20selected)" target="_blank">
-    Buy Now on WhatsApp
-  </a>
+      <div class="subtle">Size</div>
+      <div class="sizes">
+        <button class="size">30</button>
+        <button class="size active">32</button>
+        <button class="size">34</button>
+        <button class="size">36</button>
+      </div>
+
+      <div class="btns">
+        <a class="btn primary" href="https://omk-store.github.io/omk-website/checkout.html">Buy Now</a>
+        <a class="btn" href="index.html">Add to Cart</a>
+      </div>
+
+      <p class="subtle" style="margin-top:14px">Loyalty • Legacy • Strength</p>
+    </div>
+  </section>
 </main>
 
 <footer>
-  <div>© 2025 OMK – Only My Kind</div>
-  <div class="links">
-    <a href="index.html">Home</a> |
-    <a href="register.html">Register</a> |
-    <a href="login.html">Login</a>
-  </div>
-  <small>Loyalty • Truth • Legacy 🐺</small>
+  © 2025 <strong>OMK – Only My Kind</strong> · All Rights Reserved<br>
+  <span>Contact / Report: <a href="mailto:omkdrip@gmail.com">omkdrip@gmail.com</a></span>
 </footer>
 
-<a class="chat-btn" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20some%20clothes" target="_blank">
-  <span class="chat-dot"></span> Chat with OMK
+<a class="wa" target="_blank" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20the%20Wolf%20Jean">
+  <span class="dot"></span>
+  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="">
+  <span>Chat with us</span>
 </a>
 
 <script>
-let currentColor='black';
-let currentSize='';
-
-function selectSize(btn){
-  document.querySelectorAll('.sizes button').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  currentSize=btn.textContent;
-  updateBuyLink();
-}
-
-function updateBuyLink(){
-  const buy=document.getElementById('buy');
-  const colorText=currentColor.charAt(0).toUpperCase()+currentColor.slice(1);
-  const sizeText=currentSize ? `Size ${currentSize}` : 'Size not selected';
-  buy.href=`https://wa.me/2347038112817?text=I'm%20interested%20in%20the%20OMK%20Jeans%20-%20${colorText}%20Edition%20(${sizeText})`;
-}
+const drawer=document.getElementById('drawer');
+document.getElementById('openMenu').onclick=()=>drawer.classList.add('open');
+document.getElementById('mask').onclick=()=>drawer.classList.remove('open');
 </script>
+
 </body>
 </html>
