@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Checkout 🛍️ | OMK – Only My Kind</title>
+
+<style>
+:root {
+  --accent:#ff2d55;
+  --dark:#111;
+  --border:#eaeaea;
+}
+body {
+  font-family:'Poppins',system-ui,-apple-system,sans-serif;
+  margin:0;
+  background:#fff;
+  color:var(--dark);
+}
+header {
+  text-align:center;
+  padding:20px 0;
+  border-bottom:1px solid var(--border);
+}
+header h1 {
+  font-weight:900;
+  font-size:24px;
+  color:var(--dark);
+}
+main {
+  max-width:480px;
+  margin:40px auto;
+  padding:0 20px;
+}
+section {
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:14px;
+  box-shadow:0 8px 24px rgba(0,0,0,.05);
+  padding:24px;
+}
+label {
+  font-weight:700;
+  display:block;
+  margin-bottom:6px;
+  margin-top:12px;
+}
+input, textarea {
+  width:100%;
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:8px;
+  font-size:15px;
+  font-family:inherit;
+}
+textarea {resize:none;}
+.payment-box {
+  background:#fafafa;
+  border:1px dashed var(--accent);
+  border-radius:10px;
+  padding:16px;
+  margin-top:20px;
+  text-align:center;
+}
+.payment-box strong {
+  font-size:18px;
+  color:var(--accent);
+}
+.btn {
+  display:block;
+  width:100%;
+  text-align:center;
+  padding:14px;
+  border-radius:10px;
+  margin-top:18px;
+  font-weight:800;
+  font-size:16px;
+  cursor:pointer;
+  text-transform:uppercase;
+  transition:.25s;
+}
+.pay {
+  background:var(--accent);
+  color:#fff;
+  border:none;
+}
+.pay:hover {opacity:.9;}
+.whatsapp {
+  background:#25D366;
+  color:#fff;
+  text-decoration:none;
+  border:none;
+}
+.whatsapp:hover {opacity:.9;}
+footer {
+  text-align:center;
+  font-size:13px;
+  color:#666;
+  margin:50px 0 20px;
+}
+</style>
+</head>
+
+<body>
+<header>
+  <h1>OMK Checkout 🐺</h1>
+  <p style="font-weight:600;color:#666">Complete your delivery and payment below</p>
+</header>
+
+<main>
+<section>
+  <form id="checkoutForm">
+    <label>Full Name</label>
+    <input type="text" id="name" placeholder="Enter your full name" required>
+
+    <label>Delivery Address</label>
+    <textarea id="address" rows="3" placeholder="Enter full delivery address" required></textarea>
+
+    <label>Phone Number</label>
+    <input type="tel" id="phone" placeholder="Enter your phone number" required>
+
+    <div class="payment-box">
+      <p><strong>Pay to Opay:</strong><br>
+      Ale Omorogbe Kelvin<br>
+      <b>8118618722</b><br>
+      <span style="font-size:13px;color:#555">After payment, take a screenshot 📸</span></p>
+    </div>
+
+    <button type="button" class="btn pay" onclick="copyAccount()">💸 Copy Account Number</button>
+    <a id="sendBtn" class="btn whatsapp" target="_blank">📩 Send Screenshot on WhatsApp</a>
+  </form>
+</section>
+</main>
+
+<footer>© 2025 OMK – Only My Kind. Loyalty • Truth • Legacy 🐺</footer>
+
+<script>
+function copyAccount(){
+  navigator.clipboard.writeText("8118618722").then(()=>{
+    alert("✅ Opay Account (8118618722) copied!");
+  });
+}
+
+document.getElementById("sendBtn").addEventListener("click", ()=>{
+  const name=document.getElementById("name").value.trim();
+  const address=document.getElementById("address").value.trim();
+  const phone=document.getElementById("phone").value.trim();
+  if(!name||!address||!phone){
+    alert("Please fill in all delivery details first.");
+    return;
+  }
+  const msg=`Hello OMK,%0AI'm ${name}.%0AHere are my delivery details:%0A📍 Address: ${address}%0A📞 Phone: ${phone}%0AI've made the payment and attached a screenshot below.`;
+  window.open(`https://wa.me/2347038112817?text=${msg}`,'_blank');
+});
+</script>
+</body>
+</html>
