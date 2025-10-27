@@ -125,8 +125,8 @@ footer .contact{margin-top:8px;font-size:14px;color:#555}
 
 <section class="product-section">
   <div class="product-gallery">
-    <img id="jacketFront" src="jacket-brown-front.jpg" alt="OMK Wolf Jacket Front">
-    <img id="jacketBack" src="jacket-brown-back.jpg" alt="OMK Wolf Jacket Back">
+    <img id="jacketFront" src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0140.jpeg" alt="OMK Wolf Jacket Front">
+    <img id="jacketBack" src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0141.jpeg" alt="OMK Wolf Jacket Back">
   </div>
 
   <div class="product-details">
@@ -178,8 +178,15 @@ function switchColor(color){
   const back=document.getElementById('jacketBack');
   document.querySelectorAll('.color-btn').forEach(btn=>btn.classList.remove('active'));
   document.getElementById(color).classList.add('active');
-  front.src=`jacket-${color}-front.jpg`;
-  back.src=`jacket-${color}-back.jpg`;
+
+  if(color==='brown'){
+    front.src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0140.jpeg";
+    back.src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0141.jpeg";
+  }else{
+    front.src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/jacket-black-front.jpg";
+    back.src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/jacket-black-back.jpg";
+  }
+
   document.getElementById('buyBtn').href=`https://wa.me/2347038112817?text=I'm%20interested%20in%20the%20OMK%20Wolf%20Jacket%20-%20${color.charAt(0).toUpperCase()+color.slice(1)}%20Edition`;
 }
 
