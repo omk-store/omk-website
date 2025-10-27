@@ -1,32 +1,159 @@
 <!doctype html>
-<html><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>OMK T-Shirt</title>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>OMK Chrome Tee 👕 | Only My Kind</title>
+
 <style>
-  body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#fff;color:#111}
-  .wrap{max-width:720px;margin:0 auto;padding:20px 14px}
-  a.back{display:inline-block;margin:12px 0 10px;text-decoration:none}
-  .card{background:#fff;border:1px solid #e9e9e9;border-radius:14px;padding:16px}
-  .card img{width:100%;border-radius:12px;display:block}
-  h1{margin:10px 0 6px;font-size:1.25rem}
-  .price{margin:0 0 12px;font-weight:700}
-  .buttons{display:flex;gap:10px;flex-wrap:wrap}
-  .btn{flex:1;text-align:center;text-decoration:none;border:1px solid #111;border-radius:10px;padding:10px 12px;color:#111;font-weight:700}
+:root{
+  --bg:#ffffff;
+  --text:#101010;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+  --accent:#111111;
+  --shadow:0 10px 30px rgba(0,0,0,.06);
+  --omk:#ff2d55;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+
+/* HEADER */
+.header{
+  position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;padding:12px 16px;
+  backdrop-filter:blur(8px);
+}
+.brand{font-weight:900;font-size:20px;letter-spacing:.5px}
+.h-icons{display:flex;gap:14px;align-items:center}
+.h-icons img{width:24px;height:24px;cursor:pointer;transition:.3s}
+.h-icons img:hover{opacity:.7}
+
+/* PAGE */
+.wrap{max-width:1100px;margin:32px auto;padding:0 16px}
+.grid{display:grid;gap:34px;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  align-items:start;
+}
+.card{background:#fff;border:1px solid var(--border);border-radius:18px;
+  box-shadow:var(--shadow);padding:14px}
+.gallery{display:flex;flex-direction:column;gap:16px}
+.gallery img{width:100%;border-radius:14px;border:1px solid var(--border);
+  object-fit:contain;}
+.title{font-size:28px;font-weight:900;margin:6px 0 10px}
+.desc{color:var(--muted);line-height:1.7;margin-bottom:14px}
+.price{font-weight:900;font-size:20px;margin:6px 0 18px}
+.subtle{font-size:13px;color:var(--muted)}
+.sizes{display:flex;gap:10px;margin:10px 0 4px}
+.size{padding:10px 16px;border:1px solid var(--border);
+  border-radius:10px;font-weight:800;cursor:pointer;background:#fff}
+.size.active{background:#111;color:#fff;border-color:#111}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:14px 18px;border-radius:12px;border:1px solid var(--border);
+  font-weight:900;cursor:pointer;background:#fff;
+}
+.btn.primary{background:#111;color:#fff;border-color:#111}
+.btn:active{transform:translateY(1px)}
+footer{margin:60px 0 90px;text-align:center;color:var(--muted);font-weight:600}
+footer a{font-weight:800}
+.wa{position:fixed;right:16px;bottom:90px;z-index:300;background:#fff;
+  border:1px solid var(--border);border-radius:999px;padding:10px 14px;
+  display:flex;align-items:center;gap:8px;box-shadow:var(--shadow);
+  font-weight:900;}
+.wa img{width:18px;height:18px}
+.dot{width:8px;height:8px;background:var(--omk);border-radius:50%}
 </style>
 </head>
+
 <body>
-<div class="wrap">
-  <a class="back" href="index.html">← Back to Shop</a>
-  <div class="card">
-    <img src="tshirt-black.jpg" alt="OMK T-Shirt black">
-    <h1>OMK T-Shirt</h1>
-    <p class="price">₦50,000</p>
-    <p>Classic black tee with OMK logo and “Only My Kind” identity.</p>
-    <div class="buttons">
-      <a class="btn" href="https://www.instagram.com/iam_omotaker" target="_blank">Instagram</a>
-      <a class="btn" href="https://www.tiktok.com/@iam.omotaker" target="_blank">TikTok</a>
-      <a class="btn" href="https://wa.me/2340000000000" target="_blank">WhatsApp</a>
+<header class="header">
+  <div class="brand"><a href="index.html">OMK</a></div>
+  <div class="h-icons">
+    <div class="cart-btn" id="cartBtn">
+      <img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png" alt="cart">
+      <div id="cartCount" class="cart-count" style="display:none">0</div>
     </div>
+    <img id="menuBtn" src="https://cdn-icons-png.flaticon.com/512/56/56763.png" alt="menu">
   </div>
-</div>
-</body></html>
+</header>
+
+<main class="wrap">
+  <section class="grid">
+    <div class="card">
+      <div class="gallery">
+        <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B95C37E-46F1-457A-9548-CF4E5B2A9227.png" alt="OMK Chrome Tee Front">
+        <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/B2EE6D2A-2258-4751-98AF-7098C5DBAADD.png" alt="OMK Chrome Tee Back">
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="title">OMK Chrome Tee 👕</div>
+      <div class="desc">
+        Futuristic 2030-style T-shirt featuring the chrome OMK logo and “Only My Kind” mark.
+        Built from soft premium cotton for comfort, confidence, and street-lux presence.
+      </div>
+      <div class="price">₦60,000</div>
+
+      <div class="subtle">Size</div>
+      <div class="sizes" id="sizes">
+        <button class="size">S</button>
+        <button class="size active">M</button>
+        <button class="size">L</button>
+        <button class="size">XL</button>
+      </div>
+
+      <div class="btns">
+        <button class="btn" id="addToCart">Add to Cart</button>
+        <a class="btn primary" href="checkout.html">Buy Now</a>
+      </div>
+      <p class="subtle" style="margin-top:14px">Loyalty • Future • Only My Kind</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 2025 <strong>OMK – Only My Kind</strong> · All Rights Reserved<br>
+  <span>Contact: <a href="mailto:omkdrip@gmail.com">omkdrip@gmail.com</a></span>
+</footer>
+
+<a class="wa" target="_blank" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20the%20Chrome%20Tee">
+  <span class="dot"></span>
+  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="">
+  <span>Chat with us</span>
+</a>
+
+<script>
+const sizes=document.querySelectorAll('.size');
+sizes.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    sizes.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+
+let cart=JSON.parse(localStorage.getItem('omkCart')||'[]');
+updateCart();
+
+function addToCart(){
+  const size=document.querySelector('.size.active')?.textContent||'M';
+  const item={name:`OMK Chrome Tee (${size})`,price:60000};
+  cart.push(item);
+  localStorage.setItem('omkCart',JSON.stringify(cart));
+  updateCart();
+  alert('OMK Chrome Tee added to cart!');
+}
+
+function updateCart(){
+  const count=document.getElementById('cartCount');
+  count.textContent=cart.length;
+  count.style.display=cart.length?'flex':'none';
+}
+
+document.getElementById('addToCart').addEventListener('click',addToCart);
+</script>
+</body>
+</html>
