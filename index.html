@@ -74,34 +74,12 @@ header{
 .btn:hover{background:#111;transform:translateY(-2px)}
 
 /* JOIN SECTION */
-.join{
-  width:min(900px,92%);
-  margin:60px auto;
-  background:#f9f9f9;
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:40px 20px;
-  text-align:center;
-}
+.join{width:min(900px,92%);margin:60px auto;background:#f9f9f9;border:1px solid var(--border);
+  border-radius:14px;padding:40px 20px;text-align:center;}
 .join h3{font-size:22px;font-weight:800;margin-bottom:10px;}
 .join p{margin-bottom:14px;color:#555;font-size:15px;}
-.join input{
-  width:min(520px,80%);
-  padding:12px 14px;
-  border:1px solid var(--border);
-  border-radius:10px;
-  font-size:14px;
-}
-.join button{
-  padding:12px 16px;
-  border-radius:10px;
-  background:#000;
-  color:#fff;
-  font-weight:800;
-  border:0;
-  cursor:pointer;
-  margin-left:8px;
-}
+.join input{width:min(520px,80%);padding:12px 14px;border:1px solid var(--border);border-radius:10px;font-size:14px;}
+.join button{padding:12px 16px;border-radius:10px;background:#000;color:#fff;font-weight:800;border:0;cursor:pointer;margin-left:8px;}
 .join button:hover{background:#111}
 .social-links{margin-top:30px;}
 .social-links a{font-size:26px;margin:0 10px;text-decoration:none;}
@@ -133,7 +111,6 @@ footer .contact{margin-top:8px;font-size:14px;color:#555}
   </div>
 </header>
 
-<!-- HERO showing jacket first -->
 <section class="hero" id="top">
   <img src="./jacket-black.jpg" alt="OMK Wolf Jacket">
   <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
@@ -150,7 +127,6 @@ footer .contact{margin-top:8px;font-size:14px;color:#555}
   <a id="checkoutBtn" href="#" target="_blank" class="checkout-btn">Checkout on WhatsApp</a>
 </div>
 
-<!-- MENU -->
 <div id="menuOverlay" class="menu-overlay">
   <button class="close-menu" onclick="toggleMenu()">✕</button>
   <div id="menuLinks">
@@ -159,20 +135,18 @@ footer .contact{margin-top:8px;font-size:14px;color:#555}
     <a href="mailto:omkdrip@gmail.com" onclick="toggleMenu()">Contact</a>
   </div>
 </div>
-<div id="backdrop" class="backdrop" onclick="toggleMenu"></div>
+<div id="backdrop" class="backdrop" onclick="toggleMenu()"></div>
 
 <section id="shop" class="section">
   <h2>Latest Drop 🔥</h2>
   <div class="grid" id="productGrid"></div>
 </section>
 
-<!-- JOIN SECTION -->
 <section class="join" id="join">
   <h3>Join the OMK Pack 🐺</h3>
   <p>Be the first to know about drops, restocks & exclusive offers.</p>
   <input type="email" placeholder="Enter your email" required>
   <button>Subscribe →</button>
-
   <div class="social-links">
     <h4>Follow Us</h4>
     <a href="https://www.instagram.com/whosomotaker" target="_blank">📸</a>
@@ -203,12 +177,11 @@ function toggleMenu(){
   const b=document.getElementById('backdrop');
   m.classList.toggle('open');b.classList.toggle('show');
 }
-
 function toggleCart(){
   document.getElementById('cartPanel').classList.toggle('open');
 }
 
-/* ---- PRODUCTS (use local files + links) ---- */
+/* PRODUCTS */
 const products=[
  {name:'OMK Wolf Jacket',price:80000,img:'./jacket-black.jpg',link:'jacket.html'},
  {name:'OMK Jeans',price:80000,img:'./jeans-blue.jpg',link:'jeans.html'},
@@ -216,35 +189,32 @@ const products=[
  {name:'OMK Shorts',price:50000,img:'./shorts-black.jpg',link:'shorts.html'}
 ];
 
-/* ---- RENDER GRID (image + title clickable; button still adds to cart) ---- */
+/* SHOW PRODUCTS */
 const grid=document.getElementById('productGrid');
 products.forEach((p,i)=>{
-  grid.innerHTML+=`
-  <div class="card">
-    <div class="card-img">
-      <a href="${p.link}"><img src="${p.img}" alt="${p.name}"></a>
-    </div>
-    <div class="card-body">
-      <h3><a href="${p.link}">${p.name}</a></h3>
-      <p class="price">₦${p.price.toLocaleString()}</p>
-      <button class="btn" onclick="addToCart(${i})">Add to Cart</button>
-    </div>
-  </div>`;
+ grid.innerHTML+=`
+ <a href="${p.link}" style="text-decoration:none;color:inherit;">
+   <div class="card">
+     <div class="card-img"><img src="${p.img}" alt="${p.name}"></div>
+     <div class="card-body">
+       <h3>${p.name}</h3>
+       <p class="price">₦${p.price.toLocaleString()}</p>
+       <button class="btn" onclick="addToCart(${i})">Add to Cart</button>
+     </div>
+   </div>
+ </a>`;
 });
 
 let cart=[];
-
 function addToCart(i){
  cart.push(products[i]);
  updateCart();
  document.getElementById('cartPanel').classList.add('open');
 }
-
 function removeFromCart(index){
  cart.splice(index,1);
  updateCart();
 }
-
 function updateCart(){
  const cartItems=document.getElementById('cartItems');
  const cartTotal=document.getElementById('cartTotal');
@@ -260,10 +230,9 @@ function updateCart(){
      </div>`;
  });
  cartTotal.innerText='Total: ₦'+total.toLocaleString();
- const msg = encodeURIComponent(cart.map(i=>i.name+' - ₦'+i.price.toLocaleString()).join('%0A') + '%0A%0ATotal: ₦'+total.toLocaleString());
- document.getElementById('checkoutBtn').href=\`https://wa.me/2347038112817?text=\${msg}\`;
+ const msg=encodeURIComponent(cart.map(i=>i.name+' - ₦'+i.price.toLocaleString()).join('%0A')+'%0A%0ATotal: ₦'+total.toLocaleString());
+ document.getElementById('checkoutBtn').href=`https://wa.me/2347038112817?text=${msg}`;
 }
-
 document.getElementById('cartBtn').addEventListener('click',toggleCart);
 document.getElementById('menuBtn').addEventListener('click',toggleMenu);
 </script>
