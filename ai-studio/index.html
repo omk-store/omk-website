@@ -8,15 +8,18 @@
 <meta name="description" content="OMK AI Studio — record, upload, and vibe. Translate the Earth through sound. 🌍🐺" />
 <style>
   :root{
-    --bg:#0b0b0f; --panel:#121218; --ink:#f5f7fb; --muted:#8b90a3; --accent:#5ef1ff; --accent2:#8a7bff; --line:#1e1f29;
+    --bg:#0b0b0f; --panel:#121218; --ink:#f5f7fb; --muted:#8b90a3;
+    --accent:#5ef1ff; --accent2:#8a7bff; --line:#1e1f29;
   }
   *{box-sizing:border-box}
-  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
   a{color:inherit;text-decoration:none}
   .wrap{width:min(1100px,92%);margin:0 auto;padding:24px}
   header{
     display:flex;align-items:center;justify-content:space-between;gap:12px;
-    padding:14px 0;border-bottom:1px solid var(--line);position:sticky;top:0;background:linear-gradient(180deg,rgba(11,11,15,.92),rgba(11,11,15,.75));
+    padding:14px 0;border-bottom:1px solid var(--line);
+    position:sticky;top:0;background:linear-gradient(180deg,rgba(11,11,15,.92),rgba(11,11,15,.75));
     backdrop-filter:blur(10px);z-index:50;
   }
   .brand{display:flex;align-items:center;gap:10px}
@@ -27,15 +30,16 @@
     box-shadow:0 10px 30px rgba(94,241,255,.25), inset 0 0 40px rgba(138,123,255,.25);
   }
   .title{font-weight:800;letter-spacing:.3px}
-  .badge{font-size:12px;padding:6px 10px;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
-  .cta{display:flex;gap:8px;flex-wrap:wrap}
+  .small{font-size:12px;color:var(--muted)}
   .btn{
-    padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:#0f0f15;color:var(--ink);
-    font-weight:600;cursor:pointer;transition:transform .15s ease, border-color .15s ease;
+    padding:10px 14px;border:1px solid var(--line);border-radius:10px;
+    background:#0f0f15;color:var(--ink);font-weight:600;cursor:pointer;
+    transition:transform .15s ease,border-color .15s ease;
   }
   .btn:hover{transform:translateY(-1px);border-color:var(--accent)}
   .hero{
-    display:grid;gap:18px;margin:26px 0 20px;padding:22px;border:1px solid var(--line);border-radius:16px;
+    display:grid;gap:18px;margin:26px 0 20px;padding:22px;
+    border:1px solid var(--line);border-radius:16px;
     background:
       radial-gradient(1200px 400px at 50% -10%, rgba(94,241,255,.10), transparent),
       radial-gradient(1000px 300px at 30% -20%, rgba(138,123,255,.10), transparent),
@@ -45,14 +49,12 @@
   .headline{font-size:clamp(22px,4vw,32px);line-height:1.25;font-weight:900}
   .sub{color:var(--muted);max-width:60ch}
   .panel{
-    border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,#121218,#0e0e13);
+    border:1px solid var(--line);border-radius:16px;
+    background:linear-gradient(180deg,#121218,#0e0e13);
     padding:18px;display:grid;gap:14px;
   }
   .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-  .small{font-size:12px;color:var(--muted)}
   footer{margin:28px 0 12px;color:var(--muted);font-size:12px;text-align:center}
-  .divider{height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:4px 0}
-  .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px dashed var(--line);border-radius:999px;color:var(--muted)}
   input[type="file"]{display:none}
   .file-label{cursor:pointer}
   audio{width:100%;outline:none}
@@ -68,7 +70,7 @@
           <div class="small">Translate the Earth through Sound 🌍🐺</div>
         </div>
       </div>
-      <div class="cta">
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
         <a class="btn" href="#upload">Upload</a>
         <a class="btn" href="#record">Record</a>
         <a class="btn" href="#player">Play</a>
@@ -76,10 +78,9 @@
     </header>
 
     <section class="hero">
-      <div class="pill">🎧 Studio Ready • 🔒 Local • ⚡ Fast</div>
+      <div style="font-size:13px;color:var(--muted)">🎧 Studio Ready • 🔒 Local • ⚡ Fast</div>
       <h1 class="headline">Record. Upload. Vibe. <span style="color:var(--accent)">OMK Sound</span> activated.</h1>
-      <p class="sub">Drop a vocal, add a beat, and let the vibe carry. This static page is ready for GitHub Pages. Hook APIs later when you're ready.</p>
-      <div class="divider"></div>
+      <p class="sub">Drop a vocal, add a beat, and let the vibe carry. When ready, connect AI mix/master APIs for your full OMK Studio flow.</p>
       <div class="grid">
         <div id="upload" class="panel">
           <b>Upload Audio</b>
@@ -87,7 +88,7 @@
             <input id="fileInput" type="file" accept="audio/*" />
             Choose file
           </label>
-          <div class="small">Supported: .mp3, .wav, .m4a</div>
+          <div class="small">Supported: .mp3 • .wav • .m4a</div>
         </div>
         <div id="record" class="panel">
           <b>Quick Record</b>
@@ -95,12 +96,12 @@
             <button id="recBtn" class="btn">● Start</button>
             <button id="stopBtn" class="btn" disabled>■ Stop</button>
           </div>
-          <div class="small">Uses your mic. Saved locally.</div>
+          <div class="small">Uses your mic • Saved locally</div>
         </div>
         <div id="player" class="panel">
           <b>Player</b>
           <audio id="playerEl" controls></audio>
-          <div class="small">Tip: After upload or record, hit play here.</div>
+          <div class="small">After upload or record → hit play here</div>
         </div>
       </div>
     </section>
@@ -109,57 +110,46 @@
   </div>
 
 <script>
-// Simple player for uploaded file
 const fileInput = document.getElementById('fileInput');
 const playerEl = document.getElementById('playerEl');
-
-fileInput?.addEventListener('change', (e) => {
-  const file = e.target.files?.[0];
-  if (!file) return;
-  const url = URL.createObjectURL(file);
-  playerEl.src = url;
+fileInput?.addEventListener('change', e=>{
+  const file=e.target.files?.[0];
+  if(!file)return;
+  const url=URL.createObjectURL(file);
+  playerEl.src=url;
   playerEl.play().catch(()=>{});
 });
 
-// Super-light recorder (no libraries)
-let mediaRecorder;
-let audioChunks = [];
-
-const recBtn = document.getElementById('recBtn');
-const stopBtn = document.getElementById('stopBtn');
+let mediaRecorder,audioChunks=[];
+const recBtn=document.getElementById('recBtn');
+const stopBtn=document.getElementById('stopBtn');
 
 async function startRecording(){
   try{
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    mediaRecorder = new MediaRecorder(stream);
-    audioChunks = [];
-    mediaRecorder.ondataavailable = (e)=> audioChunks.push(e.data);
-    mediaRecorder.onstop = ()=>{
-      const blob = new Blob(audioChunks, { type: 'audio/webm' });
-      const url = URL.createObjectURL(blob);
-      playerEl.src = url;
+    const stream=await navigator.mediaDevices.getUserMedia({audio:true});
+    mediaRecorder=new MediaRecorder(stream);
+    audioChunks=[];
+    mediaRecorder.ondataavailable=e=>audioChunks.push(e.data);
+    mediaRecorder.onstop=()=>{
+      const blob=new Blob(audioChunks,{type:'audio/webm'});
+      const url=URL.createObjectURL(blob);
+      playerEl.src=url;
       playerEl.play().catch(()=>{});
     };
     mediaRecorder.start();
-    recBtn.textContent = '● Recording...';
-    recBtn.disabled = true;
-    stopBtn.disabled = false;
-  }catch(err){
-    alert('Mic permission is needed to record.');
-  }
+    recBtn.textContent='● Recording…';
+    recBtn.disabled=true; stopBtn.disabled=false;
+  }catch(err){alert('Mic permission needed.');}
 }
 
 function stopRecording(){
-  if(mediaRecorder && mediaRecorder.state !== 'inactive'){
-    mediaRecorder.stop();
-  }
-  recBtn.textContent = '● Start';
-  recBtn.disabled = false;
-  stopBtn.disabled = true;
+  if(mediaRecorder && mediaRecorder.state!=='inactive'){mediaRecorder.stop();}
+  recBtn.textContent='● Start';
+  recBtn.disabled=false; stopBtn.disabled=true;
 }
 
-recBtn?.addEventListener('click', startRecording);
-stopBtn?.addEventListener('click', stopRecording);
+recBtn?.addEventListener('click',startRecording);
+stopBtn?.addEventListener('click',stopRecording);
 </script>
 </body>
 </html>
