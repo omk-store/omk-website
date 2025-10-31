@@ -1,228 +1,126 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Earth Voice Engine 🌍 | OMK AI Studio 🎧🐺</title>
-<meta name="theme-color" content="#0b0b0f" />
-<meta name="description" content="Earth Voice Engine 🌍 — record, blend, export and AI-master soon. Powered by OMK Sound." />
-<style>
-  :root{
-    --bg:#0b0b0f; --panel:#121218; --ink:#f5f7fb; --muted:#8b90a3;
-    --accent:#5ef1ff; --accent2:#8a7bff; --line:#1e1f29;
+/* ======================================
+   🌍 OMK EARTH-BLOOD MASTER ENGINE 🩸🐺
+   ======================================*/
+
+async function earthBloodMaster(inputBuffer) {
+  const ctx = new OfflineAudioContext(2, inputBuffer.length, inputBuffer.sampleRate);
+  const source = ctx.createBufferSource();
+  source.buffer = inputBuffer;
+
+  /* 1️⃣ Analog Warmth */
+  const saturator = ctx.createWaveShaper();
+  const curve = new Float32Array(2048);
+  for (let i = 0; i < 2048; i++) {
+    const x = (i / 2048) * 2 - 1;
+    curve[i] = Math.tanh(2.8 * x);
   }
-  *{box-sizing:border-box}
-  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
-    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-  a{color:inherit;text-decoration:none}
-  .wrap{width:min(1100px,92%);margin:0 auto;padding:24px}
-  header{
-    display:flex;align-items:center;justify-content:space-between;gap:12px;
-    padding:14px 0;border-bottom:1px solid var(--line);
-    position:sticky;top:0;background:linear-gradient(180deg,rgba(11,11,15,.92),rgba(11,11,15,.75));
-    backdrop-filter:blur(10px);z-index:50;
+  saturator.curve = curve;
+
+  /* 2️⃣ Glue Compressor (soul glue) */
+  const comp = ctx.createDynamicsCompressor();
+  comp.threshold.value = -18;
+  comp.knee.value = 12;
+  comp.ratio.value = 2.8;
+  comp.attack.value = 0.003;
+  comp.release.value = 0.22;
+
+  /* 3️⃣ EQ — Earth/Breath Balance */
+  const low = ctx.createBiquadFilter();
+  low.type = "lowshelf";
+  low.frequency.value = 120;
+  low.gain.value = 2.5;
+
+  const high = ctx.createBiquadFilter();
+  high.type = "highshelf";
+  high.frequency.value = 8500;
+  high.gain.value = 3.2;
+
+  /* 4️⃣ Stereo widen (space spirit) */
+  const merger = ctx.createChannelMerger(2);
+  const splitter = ctx.createChannelSplitter(2);
+  const widen = ctx.createGain();
+  widen.gain.value = 0.12;
+
+  /* 5️⃣ Reverb (Earth cave spirit) */
+  const reverb = ctx.createConvolver();
+  // Simple impulse tail
+  const ir = ctx.createBuffer(2, 44100, 44100);
+  for (let ch = 0; ch < 2; ch++) {
+    const data = ir.getChannelData(ch);
+    for (let i = 0; i < data.length; i++) {
+      data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / data.length, 2);
+    }
   }
-  .brand{display:flex;align-items:center;gap:10px}
-  .logo{
-    display:grid;place-items:center;width:36px;height:36px;border-radius:10px;
-    background:radial-gradient(60% 60% at 50% 50%, var(--accent), var(--accent2));
-    color:#0a0a0a;font-weight:900;
-    box-shadow:0 10px 30px rgba(94,241,255,.25), inset 0 0 40px rgba(138,123,255,.25);
-  }
-  .title{font-weight:800;letter-spacing:.3px}
-  .small{font-size:12px;color:var(--muted)}
-  .btn{
-    padding:10px 14px;border:1px solid var(--line);border-radius:10px;
-    background:#0f0f15;color:var(--ink);font-weight:600;cursor:pointer;
-    transition:transform .15s ease,border-color .15s ease;
-  }
-  .btn:hover{transform:translateY(-1px);border-color:var(--accent)}
-  .panel{border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,#121218,#0e0e13);padding:18px;display:grid;gap:14px;}
-  .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-  footer{margin:28px 0 12px;color:var(--muted);font-size:12px;text-align:center}
-  input[type="file"]{display:none}
-  .file-label{cursor:pointer}
-  audio{width:100%;outline:none}
-  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-  .range{width:140px}
-  .pill{font-size:11px;padding:6px 8px;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
-  .hint{font-size:12px;color:var(--muted)}
-  .center{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center}
-</style>
-</head>
-<body>
-<div class="wrap">
-<header>
-<div class="brand">
-<div class="logo">EV</div>
-<div>
-<div class="title">Earth Voice Engine</div>
-<div class="small">Translate the Earth through Sound 🌍</div>
-</div>
-</div>
-<div style="display:flex;gap:8px;flex-wrap:wrap">
-<a class="btn" href="#vocal">Vocal</a>
-<a class="btn" href="#beat">Beat</a>
-<a class="btn" href="#mixer">Mix</a>
-<a class="btn" href="#export">Export</a>
-</div>
-</header>
+  reverb.buffer = ir;
 
-<section class="hero">
-<h1 class="headline">Record. Upload. Blend. <span style="color:var(--accent)">EV Engine</span>.</h1>
-<p class="sub">Drop vocals + beat, preview blend, export WAV. Soon: Earth-Spirit Master 🩸🌍</p>
+  /* 6️⃣ Output limiter (clean loud) */
+  const limiter = ctx.createDynamicsCompressor();
+  limiter.threshold.value = -3;
+  limiter.knee.value = 0;
+  limiter.ratio.value = 20;
+  limiter.attack.value = 0.005;
+  limiter.release.value = 0.08;
 
-<div class="grid">
+  /* Chain */
+  source.connect(saturator)
+        .connect(comp)
+        .connect(low)
+        .connect(high)
+        .connect(splitter);
 
-<!-- VOCAL -->
-<div id="vocal" class="panel">
-<b>🎙️ Vocal</b>
-<label class="btn file-label"><input id="vocalFile" type="file" accept="audio/*" />Upload Vocal</label>
-<audio id="vocalPlayer" controls></audio>
-<label class="hint">Vocal Volume</label>
-<input id="vocalGain" class="range" type="range" min="0" max="2" step="0.01" value="1">
-<label class="hint">Offset (s)</label>
-<input id="vocalOffset" type="number" step="0.01" value="0" style="width:90px;">
-</div>
+  splitter.connect(merger, 0, 0);
+  splitter.connect(widen);
+  widen.connect(merger, 0, 1);
 
-<!-- BEAT -->
-<div id="beat" class="panel">
-<b>🥁 Beat</b>
-<label class="btn file-label"><input id="beatFile" type="file" accept="audio/*" />Upload Beat</label>
-<audio id="beatPlayer" controls></audio>
-<label class="hint">Beat Volume</label>
-<input id="beatGain" class="range" type="range" min="0" max="2" step="0.01" value="1">
-<label class="hint">Offset (s)</label>
-<input id="beatOffset" type="number" step="0.01" value="0" style="width:90px;">
-</div>
+  merger.connect(reverb);
+  merger.connect(limiter);
+  reverb.connect(limiter);
+  limiter.connect(ctx.destination);
 
-<!-- MIX -->
-<div id="mixer" class="panel">
-<b>🎚️ Mix</b>
-<button id="previewBtn" class="btn">▶️ Preview Blend</button>
-<button id="stopPreviewBtn" class="btn">⏹ Stop</button>
-<button id="masterBtn" class="btn">✨ Earth-Spirit Master</button>
-<div id="status" class="small">Load audio then preview.</div>
-</div>
-
-<!-- EXPORT -->
-<div id="export" class="panel">
-<b>💾 Export WAV</b>
-<button id="exportBtn" class="btn">⬇️ Export</button>
-<a id="downloadLink" class="btn" style="display:none">Download</a>
-</div>
-
-</div>
-</section>
-<footer>© OMK • Earth Voice Engine 🌍</footer>
-</div>
-
-<script>
-let vocalArrayBuffer=null, beatArrayBuffer=null;
-const vocalFile=document.getElementById('vocalFile');
-const beatFile=document.getElementById('beatFile');
-const vocalPlayer=document.getElementById('vocalPlayer');
-const beatPlayer=document.getElementById('beatPlayer');
-const vocalGain=document.getElementById('vocalGain');
-const beatGain=document.getElementById('beatGain');
-const vocalOffset=document.getElementById('vocalOffset');
-const beatOffset=document.getElementById('beatOffset');
-const previewBtn=document.getElementById('previewBtn');
-const stopPreviewBtn=document.getElementById('stopPreviewBtn');
-const exportBtn=document.getElementById('exportBtn');
-const downloadLink=document.getElementById('downloadLink');
-const masterBtn=document.getElementById('masterBtn');
-const statusEl=document.getElementById('status');
-
-function setStatus(m){statusEl.textContent=m;}
-function stopPreview(){try{ac && ac.close();}catch(e){} setStatus("Stopped.");}
-
-vocalFile.onchange=e=>{
-  const f=e.target.files[0]; const r=new FileReader();
-  r.onload=()=>vocalArrayBuffer=r.result; r.readAsArrayBuffer(f);
-  vocalPlayer.src=URL.createObjectURL(f); setStatus("Vocal loaded.");
-};
-
-beatFile.onchange=e=>{
-  const f=e.target.files[0]; const r=new FileReader();
-  r.onload=()=>beatArrayBuffer=r.result; r.readAsArrayBuffer(f);
-  beatPlayer.src=URL.createObjectURL(f); setStatus("Beat loaded.");
-};
-
-let ac=null;
-previewBtn.onclick=async()=>{
-  stopPreview();
-  if(!vocalArrayBuffer||!beatArrayBuffer) return alert("Load first.");
-  ac=new AudioContext();
-  const [vBuf,bBuf]=await Promise.all([
-    ac.decodeAudioData(vocalArrayBuffer.slice(0)),
-    ac.decodeAudioData(beatArrayBuffer.slice(0))
-  ]);
-  const v=ac.createBufferSource(),b=ac.createBufferSource();
-  v.buffer=vBuf; b.buffer=bBuf;
-  const vg=ac.createGain(),bg=ac.createGain();
-  vg.gain.value=vocalGain.value; bg.gain.value=beatGain.value;
-  v.connect(vg).connect(ac.destination);
-  b.connect(bg).connect(ac.destination);
-  const now=ac.currentTime+0.05;
-  v.start(now+parseFloat(vocalOffset.value));
-  b.start(now+parseFloat(beatOffset.value));
-  setStatus("Playing blend…");
-};
-
-stopPreviewBtn.onclick=stopPreview;
-
-/* -------- Export WAV ------- */
-function mergeBuffers(L,R){
-  const len=L.length+R.length, out=new Float32Array(len);
-  for(let i=0,j=0;i<L.length;i++,j+=2){out[j]=L[i]; out[j+1]=R[i]||0;}
-  return out;
-}
-function f16(out,input){for(let i=0;i<input.length;i++){let s=Math.max(-1,Math.min(1,input[i]));out[i]=s<0?s*0x8000:s*0x7FFF;}}
-function encodeWAV(samples,sr){
-  const buf=new ArrayBuffer(44+samples.length*2),v=new DataView(buf);
-  function w(o,s){for(let i=0;i<s.length;i++)v.setUint8(o+i,s.charCodeAt(i));}
-  w(0,'RIFF'); v.setUint32(4,32+samples.length*2,true);
-  w(8,'WAVE'); w(12,'fmt '); v.setUint32(16,16,true);
-  v.setUint16(20,1,true); v.setUint16(22,2,true);
-  v.setUint32(24,sr,true); v.setUint32(28,sr*4,true);
-  v.setUint16(32,4,true); v.setUint16(34,16,true);
-  w(36,'data'); v.setUint32(40,samples.length*2,true);
-  f16(new Int16Array(buf,44),samples);
-  return new Blob([v],{type:'audio/wav'});
+  source.start();
+  const rendered = await ctx.startRendering();
+  return rendered;
 }
 
-exportBtn.onclick=async()=>{
-  if(!vocalArrayBuffer||!beatArrayBuffer) return alert("Load first.");
-  setStatus("Rendering…");
-  const sr=44100;
-  const ctx=new OfflineAudioContext(2,44100*30,sr);
-  const [vBuf,bBuf]=await Promise.all([
+/* 🎚️ When user presses MASTER */
+masterBtn.onclick = async () => {
+  setStatus("⏳ Mastering with Earth-Blood engine… 🩸🌍");
+  if(!vocalArrayBuffer||!beatArrayBuffer) return alert("Load files first.");
+
+  // Decode both first
+  const ctx = new AudioContext();
+  const [vBuf,bBuf] = await Promise.all([
     ctx.decodeAudioData(vocalArrayBuffer.slice(0)),
     ctx.decodeAudioData(beatArrayBuffer.slice(0))
   ]);
-  const v=ctx.createBufferSource(),b=ctx.createBufferSource();
-  v.buffer=vBuf; b.buffer=bBuf;
-  const vg=ctx.createGain(),bg=ctx.createGain();
-  vg.gain.value=vocalGain.value; bg.gain.value=beatGain.value;
-  v.connect(vg).connect(ctx.destination);
-  b.connect(bg).connect(ctx.destination);
+
+  // Mix offline before mastering
+  const mixCtx = new OfflineAudioContext(2, vBuf.length, vBuf.sampleRate);
+  const v = mixCtx.createBufferSource(), b = mixCtx.createBufferSource();
+  v.buffer = vBuf; b.buffer = bBuf;
+
+  const vg = mixCtx.createGain(), bg = mixCtx.createGain();
+  vg.gain.value = vocalGain.value; bg.gain.value = beatGain.value;
+
+  v.connect(vg).connect(mixCtx.destination);
+  b.connect(bg).connect(mixCtx.destination);
+
   v.start(parseFloat(vocalOffset.value));
   b.start(parseFloat(beatOffset.value));
-  const r=await ctx.startRendering();
-  const L=r.getChannelData(0),R=r.getChannelData(1);
-  const wav=encodeWAV(mergeBuffers(L,R),sr);
-  downloadLink.href=URL.createObjectURL(wav);
-  downloadLink.download="EarthVoice_Mix.wav";
-  downloadLink.style.display="inline-block";
-  setStatus("✅ Mix ready — Download");
-};
 
-/* ---- Master Button Placeholder ---- */
-masterBtn.onclick=()=>{
-  setStatus("✨ Earth-Spirit Master loading…");
-  alert("Earth-Spirit Master engine will activate next update 🌍🐺🩸");
+  const mixed = await mixCtx.startRendering();
+
+  // Now MASTER it
+  const mastered = await earthBloodMaster(mixed);
+
+  // Convert to WAV + download
+  const L = mastered.getChannelData(0), R = mastered.getChannelData(1);
+  const samples = mergeBuffers(L, R);
+  const wav = encodeWAV(samples, mastered.sampleRate);
+
+  downloadLink.href = URL.createObjectURL(wav);
+  downloadLink.download = "OMK_EarthBlood_Master.wav";
+  downloadLink.style.display = "inline-block";
+  setStatus("✅ Earth-Blood Master Ready 🩸🐺");
+  alert("Master Complete — The Earth Spoke Through You 🌍🔥");
 };
-</script>
-</body>
-</html>
