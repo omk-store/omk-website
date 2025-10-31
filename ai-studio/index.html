@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>OMK AI Studio 🎧 | Translate the Earth through Sound 🌍🐺</title>
 <meta name="theme-color" content="#0b0b0f" />
-<meta name="description" content="OMK AI Studio — record, upload, and vibe. Translate the Earth through sound. 🌍🐺" />
+<meta name="description" content="OMK AI Studio — record, upload, blend vocals + beat, export WAV, and (soon) AI-master. 🌍🐺" />
 <style>
   :root{
     --bg:#0b0b0f; --panel:#121218; --ink:#f5f7fb; --muted:#8b90a3;
@@ -58,6 +58,11 @@
   input[type="file"]{display:none}
   .file-label{cursor:pointer}
   audio{width:100%;outline:none}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .range{width:140px}
+  .pill{font-size:11px;padding:6px 8px;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+  .hint{font-size:12px;color:var(--muted)}
+  .center{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center}
 </style>
 </head>
 <body>
@@ -71,38 +76,85 @@
         </div>
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <a class="btn" href="#upload">Upload</a>
-        <a class="btn" href="#record">Record</a>
-        <a class="btn" href="#player">Play</a>
+        <a class="btn" href="#vocal">Vocal</a>
+        <a class="btn" href="#beat">Beat</a>
+        <a class="btn" href="#mixer">Mix</a>
+        <a class="btn" href="#export">Export</a>
       </div>
     </header>
 
     <section class="hero">
       <div style="font-size:13px;color:var(--muted)">🎧 Studio Ready • 🔒 Local • ⚡ Fast</div>
-      <h1 class="headline">Record. Upload. Vibe. <span style="color:var(--accent)">OMK Sound</span> activated.</h1>
-      <p class="sub">Drop a vocal, add a beat, and let the vibe carry. When ready, connect AI mix/master APIs for your full OMK Studio flow.</p>
+      <h1 class="headline">Record. Upload. Blend. <span style="color:var(--accent)">OMK Sound</span> activated.</h1>
+      <p class="sub">Drop your vocal and a beat, set levels, preview, then export a WAV. “AI Mix & Master” placeholder is here — we’ll connect APIs when you’re ready.</p>
+
       <div class="grid">
-        <div id="upload" class="panel">
-          <b>Upload Audio</b>
-          <label class="btn file-label">
-            <input id="fileInput" type="file" accept="audio/*" />
-            Choose file
-          </label>
-          <div class="small">Supported: .mp3 • .wav • .m4a</div>
-        </div>
-        <div id="record" class="panel">
-          <b>Quick Record</b>
-          <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <button id="recBtn" class="btn">● Start</button>
-            <button id="stopBtn" class="btn" disabled>■ Stop</button>
+        <!-- VOCAL -->
+        <div id="vocal" class="panel">
+          <b>🎙️ Vocal</b>
+          <div class="row">
+            <label class="btn file-label">
+              <input id="vocalFile" type="file" accept="audio/*" />
+              Upload Vocal
+            </label>
+            <button id="recStart" class="btn">● Record</button>
+            <button id="recStop" class="btn" disabled>■ Stop</button>
+            <span id="recNote" class="pill">Mic stays local</span>
           </div>
-          <div class="small">Uses your mic • Saved locally</div>
+          <div class="row">
+            <label class="hint">Vocal Gain</label>
+            <input id="vocalGain" class="range" type="range" min="0" max="2" step="0.01" value="1">
+            <label class="hint">Start Offset (s)</label>
+            <input id="vocalOffset" type="number" step="0.01" value="0" style="width:90px;background:#0f0f15;border:1px solid var(--line);border-radius:8px;color:var(--ink);padding:6px 8px;">
+          </div>
+          <audio id="vocalPlayer" controls></audio>
         </div>
-        <div id="player" class="panel">
-          <b>Player</b>
-          <audio id="playerEl" controls></audio>
-          <div class="small">After upload or record → hit play here</div>
+
+        <!-- BEAT -->
+        <div id="beat" class="panel">
+          <b>🥁 Beat</b>
+          <div class="row">
+            <label class="btn file-label">
+              <input id="beatFile" type="file" accept="audio/*" />
+              Upload Beat
+            </label>
+            <span class="pill">Recommended: .wav or .mp3</span>
+          </div>
+          <div class="row">
+            <label class="hint">Beat Gain</label>
+            <input id="beatGain" class="range" type="range" min="0" max="2" step="0.01" value="1">
+            <label class="hint">Start Offset (s)</label>
+            <input id="beatOffset" type="number" step="0.01" value="0" style="width:90px;background:#0f0f15;border:1px solid var(--line);border-radius:8px;color:var(--ink);padding:6px 8px;">
+          </div>
+          <audio id="beatPlayer" controls></audio>
         </div>
+
+        <!-- MIXER -->
+        <div id="mixer" class="panel">
+          <b>🎚️ Mixer</b>
+          <div class="row">
+            <button id="previewBtn" class="btn">▶️ Preview Blend</button>
+            <button id="stopPreviewBtn" class="btn">⏹ Stop</button>
+            <button id="masterBtn" class="btn">✨ AI Mix & Master (Soon)</button>
+          </div>
+          <div id="status" class="small">Load vocal + beat, set gains/offsets, then Preview.</div>
+          <div class="hint">Tip: If the vocal comes in late/early, adjust the “Start Offset (s)”.</div>
+        </div>
+
+        <!-- EXPORT -->
+        <div id="export" class="panel">
+          <b>💾 Export</b>
+          <div class="row">
+            <button id="exportBtn" class="btn">⬇️ Export Mix (WAV)</button>
+            <a id="downloadLink" class="btn" style="display:none">Download WAV</a>
+          </div>
+          <div class="hint">Export renders an offline mix of your vocal + beat and gives you a .wav file.</div>
+        </div>
+      </div>
+
+      <div class="center" style="margin-top:8px">
+        <span class="pill">Wolf Mix AI • Coming Soon</span>
+        <span class="pill">Future of Afro-Fusion Recording</span>
       </div>
     </section>
 
@@ -110,46 +162,249 @@
   </div>
 
 <script>
-const fileInput = document.getElementById('fileInput');
-const playerEl = document.getElementById('playerEl');
-fileInput?.addEventListener('change', e=>{
-  const file=e.target.files?.[0];
-  if(!file)return;
+/* ---------- State ---------- */
+let vocalArrayBuffer=null, beatArrayBuffer=null;
+let vocalBlob=null; // from recorder
+let ac=null; // live preview AudioContext
+let vSrc=null, bSrc=null, vGainNode=null, bGainNode=null;
+let isPreviewing=false;
+
+/* Elements */
+const vocalFile=document.getElementById('vocalFile');
+const beatFile=document.getElementById('beatFile');
+const vocalPlayer=document.getElementById('vocalPlayer');
+const beatPlayer=document.getElementById('beatPlayer');
+const vocalGain=document.getElementById('vocalGain');
+const beatGain=document.getElementById('beatGain');
+const vocalOffset=document.getElementById('vocalOffset');
+const beatOffset=document.getElementById('beatOffset');
+const previewBtn=document.getElementById('previewBtn');
+const stopPreviewBtn=document.getElementById('stopPreviewBtn');
+const exportBtn=document.getElementById('exportBtn');
+const downloadLink=document.getElementById('downloadLink');
+const masterBtn=document.getElementById('masterBtn');
+const statusEl=document.getElementById('status');
+
+/* ---------- Helpers ---------- */
+function setStatus(msg){ statusEl.textContent=msg; }
+
+function fileToArrayBuffer(file){
+  return new Promise((resolve,reject)=>{
+    const fr=new FileReader();
+    fr.onload=()=>resolve(fr.result);
+    fr.onerror=reject;
+    fr.readAsArrayBuffer(file);
+  });
+}
+function blobToArrayBuffer(blob){
+  return new Promise((resolve,reject)=>{
+    const fr=new FileReader();
+    fr.onload=()=>resolve(fr.result);
+    fr.onerror=reject;
+    fr.readAsArrayBuffer(blob);
+  });
+}
+
+function stopPreview(){
+  try{
+    isPreviewing=false;
+    if(vSrc){ vSrc.stop(); vSrc.disconnect(); vSrc=null; }
+    if(bSrc){ bSrc.stop(); bSrc.disconnect(); bSrc=null; }
+    if(vGainNode){ vGainNode.disconnect(); vGainNode=null; }
+    if(bGainNode){ bGainNode.disconnect(); bGainNode=null; }
+    if(ac){ ac.close(); ac=null; }
+    setStatus("Preview stopped.");
+  }catch(e){}
+}
+
+/* ---------- Upload handlers ---------- */
+vocalFile?.addEventListener('change', async e=>{
+  const file=e.target.files?.[0]; if(!file) return;
+  vocalArrayBuffer = await fileToArrayBuffer(file);
   const url=URL.createObjectURL(file);
-  playerEl.src=url;
-  playerEl.play().catch(()=>{});
+  vocalPlayer.src=url; vocalPlayer.play().catch(()=>{});
+  setStatus("Vocal loaded.");
+});
+beatFile?.addEventListener('change', async e=>{
+  const file=e.target.files?.[0]; if(!file) return;
+  beatArrayBuffer = await fileToArrayBuffer(file);
+  const url=URL.createObjectURL(file);
+  beatPlayer.src=url; beatPlayer.play().catch(()=>{});
+  setStatus("Beat loaded.");
 });
 
-let mediaRecorder,audioChunks=[];
-const recBtn=document.getElementById('recBtn');
-const stopBtn=document.getElementById('stopBtn');
+/* ---------- Recorder for vocal ---------- */
+let mediaRecorder, chunks=[];
+const recStart=document.getElementById('recStart');
+const recStop=document.getElementById('recStop');
 
-async function startRecording(){
+async function startRec(){
   try{
     const stream=await navigator.mediaDevices.getUserMedia({audio:true});
     mediaRecorder=new MediaRecorder(stream);
-    audioChunks=[];
-    mediaRecorder.ondataavailable=e=>audioChunks.push(e.data);
+    chunks=[];
+    mediaRecorder.ondataavailable=e=>chunks.push(e.data);
     mediaRecorder.onstop=()=>{
-      const blob=new Blob(audioChunks,{type:'audio/webm'});
-      const url=URL.createObjectURL(blob);
-      playerEl.src=url;
-      playerEl.play().catch(()=>{});
+      vocalBlob=new Blob(chunks,{type:'audio/webm'});
+      const url=URL.createObjectURL(vocalBlob);
+      vocalPlayer.src=url;
+      vocalPlayer.play().catch(()=>{});
+      blobToArrayBuffer(vocalBlob).then(ab=>vocalArrayBuffer=ab);
+      setStatus("Recorded vocal ready.");
     };
     mediaRecorder.start();
-    recBtn.textContent='● Recording…';
-    recBtn.disabled=true; stopBtn.disabled=false;
-  }catch(err){alert('Mic permission needed.');}
+    recStart.disabled=true; recStop.disabled=false;
+    recStart.textContent="● Recording…";
+  }catch(err){
+    alert('Mic permission needed.');
+  }
+}
+function stopRec(){
+  if(mediaRecorder && mediaRecorder.state!=='inactive'){ mediaRecorder.stop(); }
+  recStart.disabled=false; recStop.disabled=true;
+  recStart.textContent="● Record";
+}
+recStart?.addEventListener('click',startRec);
+recStop?.addEventListener('click',stopRec);
+
+/* ---------- Live Preview Blend ---------- */
+previewBtn?.addEventListener('click', async ()=>{
+  if(!vocalArrayBuffer && !vocalBlob){ return alert("Load/record a vocal first."); }
+  if(!beatArrayBuffer){ return alert("Load a beat first."); }
+  try{
+    stopPreview();
+    ac = new (window.AudioContext || window.webkitAudioContext)();
+    const [vBuf, bBuf] = await Promise.all([
+      ac.decodeAudioData(vocalArrayBuffer.slice(0)),
+      ac.decodeAudioData(beatArrayBuffer.slice(0))
+    ]);
+    vSrc = ac.createBufferSource(); vSrc.buffer=vBuf;
+    bSrc = ac.createBufferSource(); bSrc.buffer=bBuf;
+    vGainNode = ac.createGain(); vGainNode.gain.value = parseFloat(vocalGain.value||"1");
+    bGainNode = ac.createGain(); bGainNode.gain.value = parseFloat(beatGain.value||"1");
+
+    vSrc.connect(vGainNode).connect(ac.destination);
+    bSrc.connect(bGainNode).connect(ac.destination);
+
+    const now = ac.currentTime + 0.05;
+    const vOff = Math.max(0, parseFloat(vocalOffset.value||"0"));
+    const bOff = Math.max(0, parseFloat(beatOffset.value||"0"));
+    vSrc.start(now + vOff);
+    bSrc.start(now + bOff);
+
+    isPreviewing=true;
+    setStatus(`Previewing… (Vocal offset ${vOff}s, Beat offset ${bOff}s)`);
+  }catch(err){
+    console.error(err);
+    alert("Could not preview. Try different files or browser.");
+  }
+});
+stopPreviewBtn?.addEventListener('click', stopPreview);
+
+/* ---------- Export Mix (Offline Render to WAV) ---------- */
+function interleave(left,right){
+  const len = left.length + right.length;
+  const out = new Float32Array(len);
+  for(let i=0,j=0;i<left.length;i++,j+=2){
+    out[j] = left[i];
+    out[j+1] = right[i] || 0;
+  }
+  return out;
+}
+function floatTo16BitPCM(output, input){
+  for (let i = 0; i < input.length; i++) {
+    let s = Math.max(-1, Math.min(1, input[i]));
+    output[i] = s < 0 ? s * 0x8000 : s * 0x7FFF;
+  }
+}
+function writeWAV(samples, sampleRate, numChannels=2){
+  const buffer = new ArrayBuffer(44 + samples.length * 2);
+  const view = new DataView(buffer);
+  function writeString(view, offset, string){
+    for (let i = 0; i < string.length; i++){
+      view.setUint8(offset + i, string.charCodeAt(i));
+    }
+  }
+  /* RIFF header */
+  writeString(view, 0, 'RIFF');
+  view.setUint32(4, 36 + samples.length * 2, true);
+  writeString(view, 8, 'WAVE');
+  /* fmt  */
+  writeString(view, 12, 'fmt ');
+  view.setUint32(16, 16, true);
+  view.setUint16(20, 1, true); // PCM
+  view.setUint16(22, numChannels, true);
+  view.setUint32(24, sampleRate, true);
+  view.setUint32(28, sampleRate * numChannels * 2, true);
+  view.setUint16(32, numChannels * 2, true);
+  view.setUint16(34, 16, true);
+  /* data */
+  writeString(view, 36, 'data');
+  view.setUint32(40, samples.length * 2, true);
+  const chBuffer = new Int16Array(buffer, 44);
+  floatTo16BitPCM(chBuffer, samples);
+  return new Blob([view], {type: 'audio/wav'});
 }
 
-function stopRecording(){
-  if(mediaRecorder && mediaRecorder.state!=='inactive'){mediaRecorder.stop();}
-  recBtn.textContent='● Start';
-  recBtn.disabled=false; stopBtn.disabled=true;
-}
+exportBtn?.addEventListener('click', async ()=>{
+  if(!vocalArrayBuffer && !vocalBlob){ return alert("Load/record a vocal first."); }
+  if(!beatArrayBuffer){ return alert("Load a beat first."); }
+  setStatus("Rendering offline mix… ⏳");
+  try{
+    // Use sampleRate of 44100 for compatibility
+    const sampleRate = 44100;
+    // Decode using a temporary AudioContext to know durations
+    const tmpAC = new (window.AudioContext || window.webkitAudioContext)({sampleRate});
+    const [vBuf, bBuf] = await Promise.all([
+      tmpAC.decodeAudioData(vocalArrayBuffer.slice(0)),
+      tmpAC.decodeAudioData(beatArrayBuffer.slice(0))
+    ]);
+    const vOff = Math.max(0, parseFloat(vocalOffset.value||"0"));
+    const bOff = Math.max(0, parseFloat(beatOffset.value||"0"));
 
-recBtn?.addEventListener('click',startRecording);
-stopBtn?.addEventListener('click',stopRecording);
+    const endTime = Math.max(vOff + vBuf.duration, bOff + bBuf.duration);
+    const length = Math.ceil(endTime * sampleRate);
+
+    const oac = new OfflineAudioContext(2, length, sampleRate);
+
+    // Vocal chain
+    const vSource = oac.createBufferSource(); vSource.buffer=vBuf;
+    const vGainN = oac.createGain(); vGainN.gain.value = parseFloat(vocalGain.value||"1");
+    vSource.connect(vGainN).connect(oac.destination);
+
+    // Beat chain
+    const bSource = oac.createBufferSource(); bSource.buffer=bBuf;
+    const bGainN = oac.createGain(); bGainN.gain.value = parseFloat(beatGain.value||"1");
+    bSource.connect(bGainN).connect(oac.destination);
+
+    vSource.start(vOff);
+    bSource.start(bOff);
+
+    const rendered = await oac.startRendering();
+
+    // Get channel data and make WAV (stereo)
+    const ch0 = rendered.getChannelData(0);
+    const ch1 = rendered.numberOfChannels>1 ? rendered.getChannelData(1) : ch0;
+    // Interleave
+    const inter = interleave(ch0, ch1);
+    const wavBlob = writeWAV(inter, rendered.sampleRate, 2);
+
+    const url = URL.createObjectURL(wavBlob);
+    downloadLink.href = url;
+    downloadLink.download = "OMK_Mix.wav";
+    downloadLink.style.display = "inline-block";
+    setStatus("✅ Mix rendered. Click ‘Download WAV’.");
+  }catch(err){
+    console.error(err);
+    setStatus("Render failed. Try shorter files or another browser.");
+  }
+});
+
+/* ---------- AI Master (Placeholder) ---------- */
+masterBtn?.addEventListener('click', ()=>{
+  setStatus("✨ Sending to Wolf Mix AI… (placeholder)");
+  setTimeout(()=>setStatus("✅ AI Mastering soon — we’ll wire LANDR/Ozone when ready."), 1400);
+});
 </script>
 </body>
 </html>
