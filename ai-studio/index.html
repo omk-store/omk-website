@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Earth Voice Engine 🌍 | OMK AI Studio 🎧🐺</title>
 <meta name="theme-color" content="#0b0b0f" />
-<meta name="description" content="Earth Voice Engine 🌍 — record, blend, export and soon AI-master. Powered by OMK Sound." />
+<meta name="description" content="Earth Voice Engine 🌍 — record, blend, export and AI-master soon. Powered by OMK Sound." />
 <style>
   :root{
     --bg:#0b0b0f; --panel:#121218; --ink:#f5f7fb; --muted:#8b90a3;
@@ -37,22 +37,7 @@
     transition:transform .15s ease,border-color .15s ease;
   }
   .btn:hover{transform:translateY(-1px);border-color:var(--accent)}
-  .hero{
-    display:grid;gap:18px;margin:26px 0 20px;padding:22px;
-    border:1px solid var(--line);border-radius:16px;
-    background:
-      radial-gradient(1200px 400px at 50% -10%, rgba(94,241,255,.10), transparent),
-      radial-gradient(1000px 300px at 30% -20%, rgba(138,123,255,.10), transparent),
-      linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
-    box-shadow:0 10px 30px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.02);
-  }
-  .headline{font-size:clamp(22px,4vw,32px);line-height:1.25;font-weight:900}
-  .sub{color:var(--muted);max-width:60ch}
-  .panel{
-    border:1px solid var(--line);border-radius:16px;
-    background:linear-gradient(180deg,#121218,#0e0e13);
-    padding:18px;display:grid;gap:14px;
-  }
+  .panel{border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,#121218,#0e0e13);padding:18px;display:grid;gap:14px;}
   .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
   footer{margin:28px 0 12px;color:var(--muted);font-size:12px;text-align:center}
   input[type="file"]{display:none}
@@ -66,106 +51,74 @@
 </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="logo">EV</div>
-        <div>
-          <div class="title">Earth Voice Engine</div>
-          <div class="small">Translate the Earth through Sound 🌍</div>
-        </div>
-      </div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <a class="btn" href="#vocal">Vocal</a>
-        <a class="btn" href="#beat">Beat</a>
-        <a class="btn" href="#mixer">Mix</a>
-        <a class="btn" href="#export">Export</a>
-      </div>
-    </header>
+<div class="wrap">
+<header>
+<div class="brand">
+<div class="logo">EV</div>
+<div>
+<div class="title">Earth Voice Engine</div>
+<div class="small">Translate the Earth through Sound 🌍</div>
+</div>
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<a class="btn" href="#vocal">Vocal</a>
+<a class="btn" href="#beat">Beat</a>
+<a class="btn" href="#mixer">Mix</a>
+<a class="btn" href="#export">Export</a>
+</div>
+</header>
 
-    <section class="hero">
-      <div style="font-size:13px;color:var(--muted)">🎧 Studio Ready • 🔒 Local • ⚡ Fast</div>
-      <h1 class="headline">Record. Upload. Blend. <span style="color:var(--accent)">EV Engine Sound</span> activated.</h1>
-      <p class="sub">Drop vocals + beat, preview blend, export WAV. Soon: AI mastering by Earth Voice Engine 🌍⚡</p>
+<section class="hero">
+<h1 class="headline">Record. Upload. Blend. <span style="color:var(--accent)">EV Engine</span>.</h1>
+<p class="sub">Drop vocals + beat, preview blend, export WAV. Soon: Earth-Spirit Master 🩸🌍</p>
 
-      <div class="grid">
-        <!-- VOCAL -->
-        <div id="vocal" class="panel">
-          <b>🎙️ Vocal</b>
-          <div class="row">
-            <label class="btn file-label">
-              <input id="vocalFile" type="file" accept="audio/*" />
-              Upload Vocal
-            </label>
-            <button id="recStart" class="btn">● Record</button>
-            <button id="recStop" class="btn" disabled>■ Stop</button>
-            <span id="recNote" class="pill">Mic stays local</span>
-          </div>
-          <div class="row">
-            <label class="hint">Vocal Volume</label>
-            <input id="vocalGain" class="range" type="range" min="0" max="2" step="0.01" value="1">
-            <label class="hint">Offset (s)</label>
-            <input id="vocalOffset" type="number" step="0.01" value="0" style="width:90px;background:#0f0f15;border:1px solid var(--line);border-radius:8px;color:var(--ink);padding:6px 8px;">
-          </div>
-          <audio id="vocalPlayer" controls></audio>
-        </div>
+<div class="grid">
 
-        <!-- BEAT -->
-        <div id="beat" class="panel">
-          <b>🥁 Beat</b>
-          <div class="row">
-            <label class="btn file-label">
-              <input id="beatFile" type="file" accept="audio/*" />
-              Upload Beat
-            </label>
-          </div>
-          <div class="row">
-            <label class="hint">Beat Volume</label>
-            <input id="beatGain" class="range" type="range" min="0" max="2" step="0.01" value="1">
-            <label class="hint">Offset (s)</label>
-            <input id="beatOffset" type="number" step="0.01" value="0" style="width:90px;background:#0f0f15;border:1px solid var(--line);border-radius:8px;color:var(--ink);padding:6px 8px;">
-          </div>
-          <audio id="beatPlayer" controls></audio>
-        </div>
+<!-- VOCAL -->
+<div id="vocal" class="panel">
+<b>🎙️ Vocal</b>
+<label class="btn file-label"><input id="vocalFile" type="file" accept="audio/*" />Upload Vocal</label>
+<audio id="vocalPlayer" controls></audio>
+<label class="hint">Vocal Volume</label>
+<input id="vocalGain" class="range" type="range" min="0" max="2" step="0.01" value="1">
+<label class="hint">Offset (s)</label>
+<input id="vocalOffset" type="number" step="0.01" value="0" style="width:90px;">
+</div>
 
-        <!-- MIXER -->
-        <div id="mixer" class="panel">
-          <b>🎚️ Mix</b>
-          <div class="row">
-            <button id="previewBtn" class="btn">▶️ Preview Blend</button>
-            <button id="stopPreviewBtn" class="btn">⏹ Stop</button>
-            <button id="masterBtn" class="btn">✨ Master with Earth Voice</button>
-          </div>
-          <div id="status" class="small">Load audio then preview.</div>
-        </div>
+<!-- BEAT -->
+<div id="beat" class="panel">
+<b>🥁 Beat</b>
+<label class="btn file-label"><input id="beatFile" type="file" accept="audio/*" />Upload Beat</label>
+<audio id="beatPlayer" controls></audio>
+<label class="hint">Beat Volume</label>
+<input id="beatGain" class="range" type="range" min="0" max="2" step="0.01" value="1">
+<label class="hint">Offset (s)</label>
+<input id="beatOffset" type="number" step="0.01" value="0" style="width:90px;">
+</div>
 
-        <!-- EXPORT -->
-        <div id="export" class="panel">
-          <b>💾 Export WAV</b>
-          <div class="row">
-            <button id="exportBtn" class="btn">⬇️ Export</button>
-            <a id="downloadLink" class="btn" style="display:none">Download</a>
-          </div>
-        </div>
-      </div>
+<!-- MIX -->
+<div id="mixer" class="panel">
+<b>🎚️ Mix</b>
+<button id="previewBtn" class="btn">▶️ Preview Blend</button>
+<button id="stopPreviewBtn" class="btn">⏹ Stop</button>
+<button id="masterBtn" class="btn">✨ Earth-Spirit Master</button>
+<div id="status" class="small">Load audio then preview.</div>
+</div>
 
-      <div class="center" style="margin-top:8px">
-        <span class="pill">Earth Voice Engine 🌍</span>
-        <span class="pill">Future of Afro-Spirit Sound</span>
-      </div>
-    </section>
+<!-- EXPORT -->
+<div id="export" class="panel">
+<b>💾 Export WAV</b>
+<button id="exportBtn" class="btn">⬇️ Export</button>
+<a id="downloadLink" class="btn" style="display:none">Download</a>
+</div>
 
-    <footer>© OMK • Earth Voice Engine 🌍 • Built for the world</footer>
-  </div>
+</div>
+</section>
+<footer>© OMK • Earth Voice Engine 🌍</footer>
+</div>
 
 <script>
-/* ---------- State ---------- */
 let vocalArrayBuffer=null, beatArrayBuffer=null;
-let vocalBlob=null; 
-let ac=null; 
-let vSrc=null, bSrc=null, vGainNode=null, bGainNode=null;
-
-/* Elements */
 const vocalFile=document.getElementById('vocalFile');
 const beatFile=document.getElementById('beatFile');
 const vocalPlayer=document.getElementById('vocalPlayer');
@@ -181,145 +134,94 @@ const downloadLink=document.getElementById('downloadLink');
 const masterBtn=document.getElementById('masterBtn');
 const statusEl=document.getElementById('status');
 
-/* Helpers */ 
-function setStatus(msg){ statusEl.textContent=msg; }
+function setStatus(m){statusEl.textContent=m;}
+function stopPreview(){try{ac && ac.close();}catch(e){} setStatus("Stopped.");}
 
-function stopPreview(){
-  try{
-    if(vSrc) vSrc.stop();
-    if(bSrc) bSrc.stop();
-    if(ac) ac.close();
-    setStatus("Preview stopped.");
-  }catch(e){}
-}
-
-/* Upload */
-vocalFile.addEventListener('change',async e=>{
-  const f=e.target.files[0]; 
-  const fr=new FileReader(); 
-  fr.onload=()=>vocalArrayBuffer=fr.result;
-  fr.readAsArrayBuffer(f);
-  vocalPlayer.src=URL.createObjectURL(f);
-  setStatus("Vocal loaded.");
-});
-
-beatFile.addEventListener('change',async e=>{
-  const f=e.target.files[0]; 
-  const fr=new FileReader(); 
-  fr.onload=()=>beatArrayBuffer=fr.result;
-  fr.readAsArrayBuffer(f);
-  beatPlayer.src=URL.createObjectURL(f);
-  setStatus("Beat loaded.");
-});
-
-/* Record */
-let mediaRecorder, chunks=[];
-document.getElementById('recStart').onclick=async()=>{
-  const stream=await navigator.mediaDevices.getUserMedia({audio:true});
-  mediaRecorder=new MediaRecorder(stream);
-  chunks=[];
-  mediaRecorder.ondataavailable=e=>chunks.push(e.data);
-  mediaRecorder.onstop=async()=>{
-    vocalBlob=new Blob(chunks,{type:'audio/webm'});
-    vocalPlayer.src=URL.createObjectURL(vocalBlob);
-    const fr=new FileReader();
-    fr.onload=()=>vocalArrayBuffer=fr.result;
-    fr.readAsArrayBuffer(vocalBlob);
-    setStatus("Recorded vocal ready.");
-  };
-  mediaRecorder.start();
-  document.getElementById('recStart').disabled=true;
-  document.getElementById('recStop').disabled=false;
+vocalFile.onchange=e=>{
+  const f=e.target.files[0]; const r=new FileReader();
+  r.onload=()=>vocalArrayBuffer=r.result; r.readAsArrayBuffer(f);
+  vocalPlayer.src=URL.createObjectURL(f); setStatus("Vocal loaded.");
 };
 
-document.getElementById('recStop').onclick=()=>{
-  mediaRecorder.stop();
-  document.getElementById('recStart').disabled=false;
-  document.getElementById('recStop').disabled=true;
+beatFile.onchange=e=>{
+  const f=e.target.files[0]; const r=new FileReader();
+  r.onload=()=>beatArrayBuffer=r.result; r.readAsArrayBuffer(f);
+  beatPlayer.src=URL.createObjectURL(f); setStatus("Beat loaded.");
 };
 
-/* Preview Blend */
+let ac=null;
 previewBtn.onclick=async()=>{
   stopPreview();
-  if(!vocalArrayBuffer||!beatArrayBuffer) return alert("Load vocal + beat first.");
+  if(!vocalArrayBuffer||!beatArrayBuffer) return alert("Load first.");
   ac=new AudioContext();
   const [vBuf,bBuf]=await Promise.all([
     ac.decodeAudioData(vocalArrayBuffer.slice(0)),
     ac.decodeAudioData(beatArrayBuffer.slice(0))
   ]);
-  vSrc=ac.createBufferSource(); bSrc=ac.createBufferSource();
-  vSrc.buffer=vBuf; bSrc.buffer=bBuf;
-  vGainNode=ac.createGain(); bGainNode=ac.createGain();
-  vGainNode.gain.value=vocalGain.value;
-  bGainNode.gain.value=beatGain.value;
-  vSrc.connect(vGainNode).connect(ac.destination);
-  bSrc.connect(bGainNode).connect(ac.destination);
+  const v=ac.createBufferSource(),b=ac.createBufferSource();
+  v.buffer=vBuf; b.buffer=bBuf;
+  const vg=ac.createGain(),bg=ac.createGain();
+  vg.gain.value=vocalGain.value; bg.gain.value=beatGain.value;
+  v.connect(vg).connect(ac.destination);
+  b.connect(bg).connect(ac.destination);
   const now=ac.currentTime+0.05;
-  vSrc.start(now+parseFloat(vocalOffset.value));
-  bSrc.start(now+parseFloat(beatOffset.value));
-  setStatus("Previewing mix…");
+  v.start(now+parseFloat(vocalOffset.value));
+  b.start(now+parseFloat(beatOffset.value));
+  setStatus("Playing blend…");
 };
 
 stopPreviewBtn.onclick=stopPreview;
 
-/* Export WAV */
-function mergeBuffers(ch1,ch2){
-  const length=ch1.length+ch2.length;
-  const result=new Float32Array(length);
-  for(let i=0,j=0;i<ch1.length;i++,j+=2){
-    result[j]=ch1[i];
-    result[j+1]=ch2[i]||0;
-  }
-  return result;
+/* -------- Export WAV ------- */
+function mergeBuffers(L,R){
+  const len=L.length+R.length, out=new Float32Array(len);
+  for(let i=0,j=0;i<L.length;i++,j+=2){out[j]=L[i]; out[j+1]=R[i]||0;}
+  return out;
 }
-function floatTo16(output,input){
-  for(let i=0;i<input.length;i++){
-    let s=Math.max(-1,Math.min(1,input[i]));
-    output[i]=s<0?s*0x8000:s*0x7FFF;
-  }
-}
+function f16(out,input){for(let i=0;i<input.length;i++){let s=Math.max(-1,Math.min(1,input[i]));out[i]=s<0?s*0x8000:s*0x7FFF;}}
 function encodeWAV(samples,sr){
-  const buffer=new ArrayBuffer(44+samples.length*2);
-  const view=new DataView(buffer);
-  function writeString(o,s){for(let i=0;i<s.length;i++)view.setUint8(o+i,s.charCodeAt(i));}
-  writeString(0,'RIFF'); view.setUint32(4,32+samples.length*2,true);
-  writeString(8,'WAVE'); writeString(12,'fmt ');
-  view.setUint32(16,16,true); view.setUint16(20,1,true);
-  view.setUint16(22,2,true); view.setUint32(24,sr,true);
-  view.setUint32(28,sr*4,true); view.setUint16(32,4,true);
-  view.setUint16(34,16,true); writeString(36,'data');
-  view.setUint32(40,samples.length*2,true);
-  floatTo16(new Int16Array(buffer,44),samples);
-  return new Blob([view],{type:'audio/wav'});
+  const buf=new ArrayBuffer(44+samples.length*2),v=new DataView(buf);
+  function w(o,s){for(let i=0;i<s.length;i++)v.setUint8(o+i,s.charCodeAt(i));}
+  w(0,'RIFF'); v.setUint32(4,32+samples.length*2,true);
+  w(8,'WAVE'); w(12,'fmt '); v.setUint32(16,16,true);
+  v.setUint16(20,1,true); v.setUint16(22,2,true);
+  v.setUint32(24,sr,true); v.setUint32(28,sr*4,true);
+  v.setUint16(32,4,true); v.setUint16(34,16,true);
+  w(36,'data'); v.setUint32(40,samples.length*2,true);
+  f16(new Int16Array(buf,44),samples);
+  return new Blob([v],{type:'audio/wav'});
 }
 
 exportBtn.onclick=async()=>{
   if(!vocalArrayBuffer||!beatArrayBuffer) return alert("Load first.");
   setStatus("Rendering…");
   const sr=44100;
-  const ctx=new OfflineAudioContext(2,44100*60,sr);
-  const vBuf=await ctx.decodeAudioData(vocalArrayBuffer.slice(0));
-  const bBuf=await ctx.decodeAudioData(beatArrayBuffer.slice(0));
+  const ctx=new OfflineAudioContext(2,44100*30,sr);
+  const [vBuf,bBuf]=await Promise.all([
+    ctx.decodeAudioData(vocalArrayBuffer.slice(0)),
+    ctx.decodeAudioData(beatArrayBuffer.slice(0))
+  ]);
   const v=ctx.createBufferSource(),b=ctx.createBufferSource();
   v.buffer=vBuf; b.buffer=bBuf;
-  const vG=ctx.createGain(),bG=ctx.createGain();
-  vG.gain.value=vocalGain.value; bG.gain.value=beatGain.value;
-  v.connect(vG).connect(ctx.destination);
-  b.connect(bG).connect(ctx.destination);
-  v.start(parseFloat(vocalOffset.value)); b.start(parseFloat(beatOffset.value));
-  const rendered=await ctx.startRendering();
-  const L=rendered.getChannelData(0),R=rendered.getChannelData(1);
-  const inter=mergeBuffers(L,R);
-  const wav=encodeWAV(inter,sr);
+  const vg=ctx.createGain(),bg=ctx.createGain();
+  vg.gain.value=vocalGain.value; bg.gain.value=beatGain.value;
+  v.connect(vg).connect(ctx.destination);
+  b.connect(bg).connect(ctx.destination);
+  v.start(parseFloat(vocalOffset.value));
+  b.start(parseFloat(beatOffset.value));
+  const r=await ctx.startRendering();
+  const L=r.getChannelData(0),R=r.getChannelData(1);
+  const wav=encodeWAV(mergeBuffers(L,R),sr);
   downloadLink.href=URL.createObjectURL(wav);
   downloadLink.download="EarthVoice_Mix.wav";
   downloadLink.style.display="inline-block";
   setStatus("✅ Mix ready — Download");
 };
 
-/* Master Button */
+/* ---- Master Button Placeholder ---- */
 masterBtn.onclick=()=>{
-  setStatus("✨ Earth Voice Engine Mastering Soon…");
+  setStatus("✨ Earth-Spirit Master loading…");
+  alert("Earth-Spirit Master engine will activate next update 🌍🐺🩸");
 };
 </script>
 </body>
