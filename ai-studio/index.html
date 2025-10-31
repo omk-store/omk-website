@@ -159,10 +159,168 @@
   </div>
 
 <script>
-/* --- same JS as before (unchanged engine) --- */
+/* ---------- State ---------- */
+let vocalArrayBuffer=null, beatArrayBuffer=null;
+let vocalBlob=null; 
+let ac=null; 
+let vSrc=null, bSrc=null, vGainNode=null, bGainNode=null;
 
-// (I removed for message size — your JS stays EXACTLY same from previous file)
+/* Elements */
+const vocalFile=document.getElementById('vocalFile');
+const beatFile=document.getElementById('beatFile');
+const vocalPlayer=document.getElementById('vocalPlayer');
+const beatPlayer=document.getElementById('beatPlayer');
+const vocalGain=document.getElementById('vocalGain');
+const beatGain=document.getElementById('beatGain');
+const vocalOffset=document.getElementById('vocalOffset');
+const beatOffset=document.getElementById('beatOffset');
+const previewBtn=document.getElementById('previewBtn');
+const stopPreviewBtn=document.getElementById('stopPreviewBtn');
+const exportBtn=document.getElementById('exportBtn');
+const downloadLink=document.getElementById('downloadLink');
+const masterBtn=document.getElementById('masterBtn');
+const statusEl=document.getElementById('status');
 
+/* Helpers */ 
+function setStatus(msg){ statusEl.textContent=msg; }
+
+function stopPreview(){
+  try{
+    if(vSrc) vSrc.stop();
+    if(bSrc) bSrc.stop();
+    if(ac) ac.close();
+    setStatus("Preview stopped.");
+  }catch(e){}
+}
+
+/* Upload */
+vocalFile.addEventListener('change',async e=>{
+  const f=e.target.files[0]; 
+  const fr=new FileReader(); 
+  fr.onload=()=>vocalArrayBuffer=fr.result;
+  fr.readAsArrayBuffer(f);
+  vocalPlayer.src=URL.createObjectURL(f);
+  setStatus("Vocal loaded.");
+});
+
+beatFile.addEventListener('change',async e=>{
+  const f=e.target.files[0]; 
+  const fr=new FileReader(); 
+  fr.onload=()=>beatArrayBuffer=fr.result;
+  fr.readAsArrayBuffer(f);
+  beatPlayer.src=URL.createObjectURL(f);
+  setStatus("Beat loaded.");
+});
+
+/* Record */
+let mediaRecorder, chunks=[];
+document.getElementById('recStart').onclick=async()=>{
+  const stream=await navigator.mediaDevices.getUserMedia({audio:true});
+  mediaRecorder=new MediaRecorder(stream);
+  chunks=[];
+  mediaRecorder.ondataavailable=e=>chunks.push(e.data);
+  mediaRecorder.onstop=async()=>{
+    vocalBlob=new Blob(chunks,{type:'audio/webm'});
+    vocalPlayer.src=URL.createObjectURL(vocalBlob);
+    const fr=new FileReader();
+    fr.onload=()=>vocalArrayBuffer=fr.result;
+    fr.readAsArrayBuffer(vocalBlob);
+    setStatus("Recorded vocal ready.");
+  };
+  mediaRecorder.start();
+  document.getElementById('recStart').disabled=true;
+  document.getElementById('recStop').disabled=false;
+};
+
+document.getElementById('recStop').onclick=()=>{
+  mediaRecorder.stop();
+  document.getElementById('recStart').disabled=false;
+  document.getElementById('recStop').disabled=true;
+};
+
+/* Preview Blend */
+previewBtn.onclick=async()=>{
+  stopPreview();
+  if(!vocalArrayBuffer||!beatArrayBuffer) return alert("Load vocal + beat first.");
+  ac=new AudioContext();
+  const [vBuf,bBuf]=await Promise.all([
+    ac.decodeAudioData(vocalArrayBuffer.slice(0)),
+    ac.decodeAudioData(beatArrayBuffer.slice(0))
+  ]);
+  vSrc=ac.createBufferSource(); bSrc=ac.createBufferSource();
+  vSrc.buffer=vBuf; bSrc.buffer=bBuf;
+  vGainNode=ac.createGain(); bGainNode=ac.createGain();
+  vGainNode.gain.value=vocalGain.value;
+  bGainNode.gain.value=beatGain.value;
+  vSrc.connect(vGainNode).connect(ac.destination);
+  bSrc.connect(bGainNode).connect(ac.destination);
+  const now=ac.currentTime+0.05;
+  vSrc.start(now+parseFloat(vocalOffset.value));
+  bSrc.start(now+parseFloat(beatOffset.value));
+  setStatus("Previewing mix…");
+};
+
+stopPreviewBtn.onclick=stopPreview;
+
+/* Export WAV */
+function mergeBuffers(ch1,ch2){
+  const length=ch1.length+ch2.length;
+  const result=new Float32Array(length);
+  for(let i=0,j=0;i<ch1.length;i++,j+=2){
+    result[j]=ch1[i];
+    result[j+1]=ch2[i]||0;
+  }
+  return result;
+}
+function floatTo16(output,input){
+  for(let i=0;i<input.length;i++){
+    let s=Math.max(-1,Math.min(1,input[i]));
+    output[i]=s<0?s*0x8000:s*0x7FFF;
+  }
+}
+function encodeWAV(samples,sr){
+  const buffer=new ArrayBuffer(44+samples.length*2);
+  const view=new DataView(buffer);
+  function writeString(o,s){for(let i=0;i<s.length;i++)view.setUint8(o+i,s.charCodeAt(i));}
+  writeString(0,'RIFF'); view.setUint32(4,32+samples.length*2,true);
+  writeString(8,'WAVE'); writeString(12,'fmt ');
+  view.setUint32(16,16,true); view.setUint16(20,1,true);
+  view.setUint16(22,2,true); view.setUint32(24,sr,true);
+  view.setUint32(28,sr*4,true); view.setUint16(32,4,true);
+  view.setUint16(34,16,true); writeString(36,'data');
+  view.setUint32(40,samples.length*2,true);
+  floatTo16(new Int16Array(buffer,44),samples);
+  return new Blob([view],{type:'audio/wav'});
+}
+
+exportBtn.onclick=async()=>{
+  if(!vocalArrayBuffer||!beatArrayBuffer) return alert("Load first.");
+  setStatus("Rendering…");
+  const sr=44100;
+  const ctx=new OfflineAudioContext(2,44100*60,sr);
+  const vBuf=await ctx.decodeAudioData(vocalArrayBuffer.slice(0));
+  const bBuf=await ctx.decodeAudioData(beatArrayBuffer.slice(0));
+  const v=ctx.createBufferSource(),b=ctx.createBufferSource();
+  v.buffer=vBuf; b.buffer=bBuf;
+  const vG=ctx.createGain(),bG=ctx.createGain();
+  vG.gain.value=vocalGain.value; bG.gain.value=beatGain.value;
+  v.connect(vG).connect(ctx.destination);
+  b.connect(bG).connect(ctx.destination);
+  v.start(parseFloat(vocalOffset.value)); b.start(parseFloat(beatOffset.value));
+  const rendered=await ctx.startRendering();
+  const L=rendered.getChannelData(0),R=rendered.getChannelData(1);
+  const inter=mergeBuffers(L,R);
+  const wav=encodeWAV(inter,sr);
+  downloadLink.href=URL.createObjectURL(wav);
+  downloadLink.download="EarthVoice_Mix.wav";
+  downloadLink.style.display="inline-block";
+  setStatus("✅ Mix ready — Download");
+};
+
+/* Master Button */
+masterBtn.onclick=()=>{
+  setStatus("✨ Earth Voice Engine Mastering Soon…");
+};
 </script>
 </body>
 </html>
