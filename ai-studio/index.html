@@ -9,7 +9,7 @@
 <style>
   :root{
     --bg:#0b0b0f; --panel:#121218; --ink:#f5f7fb; --muted:#8b90a3;
-    --accent:#5ef1ff; --accent2:#8a7bff; --line:#1e1f29; --ok:#00d18f;
+    --accent:#5ef1ff; --accent2:#8a7bff; --line:#1e1f29; --ok:#00d18f; --warn:#ffb020;
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
@@ -19,7 +19,8 @@
   h1{font-size:22px;margin:0 0 4px;font-weight:700;text-align:center}
   .sub{color:var(--muted);font-size:13px;text-align:center;margin:0 0 14px}
   label{display:block;font-size:12px;color:var(--muted);margin:10px 0 6px}
-  input[type="file"]{width:100%;padding:10px;background:#0f0f15;border:1px dashed #2a2b39;border-radius:10px;color:#cfd3e1}
+  input[type="file"], textarea{width:100%;padding:10px;background:#0f0f15;border:1px dashed #2a2b39;border-radius:10px;color:#cfd3e1}
+  textarea{min-height:80px;resize:vertical}
   audio{width:100%;margin-top:8px}
   .row{display:flex;gap:10px;flex-wrap:wrap}
   .col{flex:1;min-width:260px}
@@ -27,6 +28,7 @@
   .btn:active{transform:scale(.98)}
   .btn.sec{background:#1a1b25;color:#e9ecf7;border:1px solid var(--line)}
   .btn.good{background:var(--ok);color:#001f16}
+  .btn.warn{background:var(--warn);color:#2b1600}
   .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   .ctrl{display:flex;align-items:center;gap:10px}
   .ctrl input[type="range"]{flex:1}
@@ -36,18 +38,31 @@
   .bar > span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2))}
   .note{font-size:12px;color:var(--muted);margin-top:6px}
   .credits{font-size:12px;color:var(--muted);text-align:center;margin-top:6px}
+  .caps{font-size:11px;letter-spacing:.12em;color:#c9d2ea;text-transform:uppercase}
 </style>
 </head>
 <body>
 <div class="wrap">
   <h1>OMK AI Studio 🎧🐺</h1>
-  <p class="sub">Upload or record vocals, blend with your beat, pick a mastering vibe, and export WAV.</p>
+  <p class="sub">Upload/record vocals, blend with your beat, give AI a style prompt, master, and export WAV.</p>
+
+  <!-- AI Prompt -->
+  <div class="card">
+    <label class="caps">AI Style Prompt (type the vibe)</label>
+    <textarea id="promptBox" placeholder="e.g. bright afrobeat, airy high end, warm low mids, subtle hall reverb, tight compressor, OMK cosmic wolf energy"></textarea>
+    <div class="row" style="margin-top:8px">
+      <button class="btn sec" id="suggest1">✨ Afrobeat Clean</button>
+      <button class="btn sec" id="suggest2">🌌 Cosmic Wolf</button>
+      <button class="btn sec" id="suggest3">🔊 Club Banger</button>
+    </div>
+    <p class="note">Tip: words like <b>bright, airy, warm, punchy, reverb, tight, club</b> will shape EQ/Comp/Reverb automatically.</p>
+  </div>
 
   <!-- Inputs -->
   <div class="card">
     <div class="grid">
       <div>
-        <label>Upload Beat (MP3/WAV/M4A…)</label>
+        <label class="caps">Upload Beat (MP3/WAV/M4A…)</label>
         <input id="beatFile" type="file" accept="audio/*" />
         <audio id="beatPlayer" controls></audio>
         <div class="ctrl">
@@ -58,7 +73,7 @@
       </div>
 
       <div>
-        <label>Upload Vocal (or record)</label>
+        <label class="caps">Upload Vocal (or record)</label>
         <input id="vocalFile" type="file" accept="audio/*" />
         <audio id="vocalPlayer" controls></audio>
         <div class="ctrl">
@@ -81,31 +96,32 @@
           <button class="btn sec" id="recordBtn">🎙️ Record Vocal</button>
           <button class="btn sec" id="stopBtn" disabled>⏹️ Stop</button>
         </div>
-        <p class="note">Recording uses your mic. If iPhone asks, allow microphone access.</p>
+        <p class="note">If iPhone asks, allow mic. For best quality: record close, quiet room, face the mic.</p>
       </div>
     </div>
   </div>
 
   <!-- Mastering -->
   <div class="card">
-    <label>Mastering Preset</label>
+    <label class="caps">Mastering Preset</label>
     <div class="row" id="presetRow">
       <span class="tag active" data-preset="earth">🌍 Earth (clean, natural)</span>
       <span class="tag" data-preset="wolf">🐺 Wolf (bright + tight)</span>
       <span class="tag" data-preset="club">🔊 Club (low+air, loud)</span>
     </div>
-    <p class="note">Presets apply EQ + compression on the final mix during render.</p>
+    <p class="note">Presets are a base; your AI prompt further fine-tunes EQ/Comp/Reverb.</p>
   </div>
 
   <!-- Render -->
   <div class="card">
     <div class="row">
-      <button class="btn" id="renderBtn">Blend & Render 🔥</button>
+      <button class="btn" id="renderBtn">Blend & Render (Local) 🔥</button>
+      <button class="btn warn" id="cloudBtn">AI Mix (Cloud) 🤖</button>
       <button class="btn good" id="downloadBtn" style="display:none">Download WAV ✅</button>
     </div>
     <div class="bar" style="margin-top:12px"><span id="prog"></span></div>
     <audio id="finalPlayer" controls style="margin-top:12px"></audio>
-    <p class="note">Tip: Nudge <b>Vocal Offset</b> until your voice locks with the snare/kick.</p>
+    <p class="note">Nudge <b>Vocal Offset</b> until your voice locks with the snare/kick.</p>
   </div>
 
   <p class="credits">Powered by OMK Sound 🌍🐺 | © Only My Kind</p>
@@ -117,12 +133,14 @@
   const liveCtx = new (window.AudioContext || window.webkitAudioContext)();
 
   // --- UI refs ---
+  const promptBox = document.getElementById('promptBox');
   const beatFile = document.getElementById('beatFile');
   const vocalFile = document.getElementById('vocalFile');
   const beatPlayer = document.getElementById('beatPlayer');
   const vocalPlayer = document.getElementById('vocalPlayer');
   const finalPlayer = document.getElementById('finalPlayer');
   const renderBtn = document.getElementById('renderBtn');
+  const cloudBtn = document.getElementById('cloudBtn');
   const downloadBtn = document.getElementById('downloadBtn');
   const prog = document.getElementById('prog');
 
@@ -143,11 +161,17 @@
   function setProgress(p){ prog.style.width = (Math.max(0,Math.min(1,p))*100) + '%'; }
   function toURL(blob){ return URL.createObjectURL(blob); }
   function fmt(n){ return Number(n).toFixed(2); }
+  function msToSamples(ms, sr){ return Math.round((ms/1000)*sr); }
 
   async function decodeFile(file){
     const arr = await file.arrayBuffer();
     return await liveCtx.decodeAudioData(arr.slice(0));
   }
+
+  // AI prompt quick fills
+  document.getElementById('suggest1').onclick = ()=> promptBox.value = 'bright afrobeat, clear mids, gentle de-ess, subtle hall reverb, tight compressor, warm low end';
+  document.getElementById('suggest2').onclick = ()=> promptBox.value = 'cosmic wolf energy, airy highs, space reverb, controlled lows, present vocals, cinematic width';
+  document.getElementById('suggest3').onclick = ()=> promptBox.value = 'club banger, deep punchy bass, crisp hi hats, loud and tight, slight slapback, modern sheen';
 
   // Loaders
   beatFile.onchange = async e=>{
@@ -181,15 +205,21 @@
   recordBtn.onclick = async()=>{
     try{
       const stream = await navigator.mediaDevices.getUserMedia({audio:true});
-      mediaRecorder = new MediaRecorder(stream);
+      const mime = MediaRecorder.isTypeSupported('audio/webm;codecs=opus') ? 'audio/webm;codecs=opus'
+                 : (MediaRecorder.isTypeSupported('audio/mp4') ? 'audio/mp4' : '');
+      mediaRecorder = new MediaRecorder(stream, mime ? {mimeType:mime} : undefined);
       chunks = [];
       mediaRecorder.ondataavailable = e=>{ if(e.data.size>0) chunks.push(e.data); };
       mediaRecorder.onstop = async()=>{
-        recordedBlob = new Blob(chunks, {type:'audio/webm'});
+        recordedBlob = new Blob(chunks, {type: mime || 'audio/webm'});
         vocalPlayer.src = toURL(recordedBlob);
         // Decode for mixing
         const arr = await recordedBlob.arrayBuffer();
-        vocalBuffer = await liveCtx.decodeAudioData(arr.slice(0));
+        try{
+          vocalBuffer = await liveCtx.decodeAudioData(arr.slice(0));
+        }catch(err){
+          alert('Could not decode recording. Try uploading M4A/WAV from Voice Memos.');
+        }
       };
       mediaRecorder.start();
       recordBtn.disabled = true; stopBtn.disabled = false;
@@ -216,13 +246,17 @@
 
     function setUint16(data){ view.setUint16(pos, data, true); pos+=2; }
     function setUint32(data){ view.setUint32(pos, data, true); pos+=4; }
+    function writeString(s){ for(let i=0;i<s.length;i++) view.setUint8(pos++, s.charCodeAt(i)); }
+
     // RIFF header
-    writeString('RIFF'); setUint32(length - 8); writeString('WAVE'); // fmt chunk
+    writeString('RIFF'); setUint32(length - 8); writeString('WAVE');
+    // fmt chunk
     writeString('fmt '); setUint32(16); setUint16(1); setUint16(numChan);
     setUint32(ab.sampleRate); setUint32(ab.sampleRate * numChan * 2);
     setUint16(numChan * 2); setUint16(16);
     // data
     writeString('data'); setUint32(length - pos - 4);
+
     // write interleaved
     const chans = []; for(let i=0;i<numChan;i++) chans.push(ab.getChannelData(i));
     let i = 0;
@@ -234,11 +268,10 @@
       i++;
     }
     return new Blob([buffer], {type:'audio/wav'});
-
-    function writeString(s){ for(let i=0;i<s.length;i++) view.setUint8(pos++, s.charCodeAt(i)); }
   }
 
-  // Preset config
+  // --- Tone Engines ---
+  // Base mastering preset
   function getPresetNodes(ctx){
     const eq1 = ctx.createBiquadFilter(); // low-shelf
     eq1.type = 'lowshelf';
@@ -266,84 +299,57 @@
     }
 
     eq1.connect(eq2); eq2.connect(eq3); eq3.connect(comp);
-    return {input:eq1, output:comp};
+    return {input:eq1, output:comp, eq1, eq2, eq3, comp};
   }
 
-  // Render
-  renderBtn.onclick = async()=>{
-    try{
-      if(!beatBuffer){ alert('Upload a beat first.'); return; }
-      if(!vocalBuffer){ alert('Upload or record a vocal.'); return; }
+  // Simple "space" reverb using feedback delay network (very light)
+  function addSpace(ctx, inputNode, amount=0.15, time=0.22){
+    const dry = ctx.createGain(); dry.gain.value = 1.0;
+    const wet = ctx.createGain(); wet.gain.value = amount;
+    const delay = ctx.createDelay(); delay.delayTime.value = time;
+    const fb = ctx.createGain(); fb.gain.value = 0.25;
+    inputNode.connect(dry);
+    inputNode.connect(delay);
+    delay.connect(fb).connect(delay); // feedback
+    delay.connect(wet);
+    return {dry, wet, out: {connect: (node)=>{dry.connect(node); wet.connect(node);} } };
+  }
 
-      setProgress(0.05);
+  // Parse AI prompt into tone moves
+  function parsePrompt(p){
+    const t = (p||'').toLowerCase();
+    return {
+      bright: /bright|airy|sheen|sparkle/.test(t),
+      dark: /dark|warm|buttery|round/.test(t),
+      tight: /tight|punch|snappy|transient/.test(t),
+      club: /club|banger|festival|loud/.test(t),
+      space: /reverb|hall|space|room|ambience|echo/.test(t),
+      deess: /de-?ess|harsh|sss/.test(t),
+      wide: /wide|stereo|width|spread/.test(t)
+    };
+  }
 
-      // Match sample rate to beat (safer)
-      const sr = beatBuffer.sampleRate;
-      const length = Math.max(beatBuffer.length, vocalBuffer.length + Math.abs(msToSamples(vocalOffset.value, sr)));
-      const ctx = new OfflineAudioContext({
-        numberOfChannels: 2,
-        length,
-        sampleRate: sr
-      });
+  // Apply prompt tweaks to the master chain
+  function applyPromptToMaster(master, flags){
+    // EQ moves
+    if(flags.bright){ master.eq3.gain.value += 1.5; }
+    if(flags.dark){ master.eq1.gain.value += 1.2; master.eq3.gain.value -= 0.6; }
+    if(flags.club){ master.eq1.gain.value += 1.2; master.eq3.gain.value += 0.8; master.comp.threshold.value -= 2; master.comp.ratio.value += 0.5; }
+    if(flags.tight){ master.comp.attack.value = Math.max(0.002, master.comp.attack.value * 0.7); master.comp.release.value = Math.max(0.12, master.comp.release.value * 0.8); }
+  }
 
-      // Beat chain
-      const beatSrc = ctx.createBufferSource();
-      beatSrc.buffer = beatBuffer;
-      const beatGainNode = ctx.createGain();
-      beatGainNode.gain.value = parseFloat(beatGain.value);
+  // Optional light de-esser on vocal (peaking reduction around 7–9 kHz)
+  function makeDeEsser(ctx, intensity=0.0){
+    if(intensity<=0) return null;
+    const de = ctx.createBiquadFilter();
+    de.type = 'peaking';
+    de.frequency.value = 8000;
+    de.Q.value = 3.0;
+    de.gain.value = -Math.min(6, 2 + intensity*4); // up to -6 dB
+    return de;
+  }
 
-      // Vocal chain
-      const vocalSrc = ctx.createBufferSource();
-      vocalSrc.buffer = vocalBuffer;
-      const vGain = ctx.createGain();
-      vGain.gain.value = parseFloat(vocalGain.value);
-      const hpf = ctx.createBiquadFilter();
-      hpf.type = 'highpass';
-      hpf.frequency.value = parseFloat(vocalHPF.value);
-
-      // Routing
-      beatSrc.connect(beatGainNode);
-      vocalSrc.connect(hpf).connect(vGain);
-
-      // Master bus
-      const master = getPresetNodes(ctx);
-      beatGainNode.connect(master.input);
-      vGain.connect(master.input);
-      master.output.connect(ctx.destination);
-
-      // Start times with offset
-      const offsetMs = parseFloat(vocalOffset.value);
-      const offsetSec = offsetMs / 1000;
-      const beatStart = 0;
-      const vocalStart = Math.max(0, offsetSec);
-      const vocalOffsetInBuffer = offsetSec < 0 ? -offsetSec : 0;
-
-      beatSrc.start(beatStart);
-      vocalSrc.start(vocalStart, vocalOffsetInBuffer);
-
-      setProgress(0.2);
-      const rendered = await ctx.startRendering();
-      setProgress(0.8);
-
-      // Normalize lightly to avoid clipping
-      normalizeBuffer(rendered, 0.98);
-
-      const wavBlob = bufferToWav(rendered);
-      const url = toURL(wavBlob);
-      finalPlayer.src = url;
-      downloadBtn.style.display = 'inline-block';
-      downloadBtn.onclick = ()=> download(url, 'OMK-Mix.wav');
-
-      setProgress(1);
-    }catch(err){
-      console.error(err);
-      alert('Render failed. Try smaller files or different formats.');
-      setProgress(0);
-    }
-  };
-
-  function msToSamples(ms, sr){ return Math.round((ms/1000)*sr); }
-
+  // Normalize
   function normalizeBuffer(abuffer, target=0.98){
     let peak = 0;
     for(let c=0;c<abuffer.numberOfChannels;c++){
@@ -359,10 +365,153 @@
     }
   }
 
+  // --- Local Render (fallback + instant) ---
+  renderBtn.onclick = async()=>{
+    try{
+      if(!beatBuffer){ alert('Upload a beat first.'); return; }
+      if(!vocalBuffer){ alert('Upload or record a vocal.'); return; }
+
+      setProgress(0.05);
+
+      const flags = parsePrompt(promptBox.value);
+      // Match sample rate to beat
+      const sr = beatBuffer.sampleRate;
+      const length = Math.max(beatBuffer.length, vocalBuffer.length + Math.abs(msToSamples(vocalOffset.value, sr)));
+      const ctx = new OfflineAudioContext({ numberOfChannels: 2, length, sampleRate: sr });
+
+      // Beat
+      const beatSrc = ctx.createBufferSource(); beatSrc.buffer = beatBuffer;
+      const beatGainNode = ctx.createGain(); beatGainNode.gain.value = parseFloat(beatGain.value);
+
+      // Vocal
+      const vocalSrc = ctx.createBufferSource(); vocalSrc.buffer = vocalBuffer;
+      const vGain = ctx.createGain(); vGain.gain.value = parseFloat(vocalGain.value);
+      const hpf = ctx.createBiquadFilter(); hpf.type = 'highpass'; hpf.frequency.value = parseFloat(vocalHPF.value);
+
+      // Optional de-ess
+      const de = makeDeEsser(ctx, parsePrompt(promptBox.value).bright ? 1.0 : (parsePrompt(promptBox.value).deess ? 0.8 : 0.0));
+
+      // Light space if requested
+      const space = addSpace(ctx, de ? (hpf.connect(de), de) : hpf, parsePrompt(promptBox.value).space ? 0.22 : 0.08, parsePrompt(promptBox.value).space ? 0.28 : 0.18);
+
+      // Routing vocal
+      // src -> HPF -> (de-esser?) -> space(dry+wet) -> vGain
+      vocalSrc.connect(hpf);
+      if(de){ de.connect(space.dry); de.connect(space.wet); }
+      else { hpf.connect(space.dry); hpf.connect(space.wet); }
+      const vBus = ctx.createGain(); // sum dry+wet
+      space.out.connect(vBus);
+      vBus.connect(vGain);
+
+      // Master bus
+      const master = getPresetNodes(ctx);
+      applyPromptToMaster(master, flags);
+
+      // Beat width if "wide"
+      let beatBus = beatGainNode;
+      if(flags.wide){
+        const chSplit = ctx.createChannelSplitter(2);
+        const chMerge = ctx.createChannelMerger(2);
+        const lGain = ctx.createGain(); lGain.gain.value = 1.1;
+        const rGain = ctx.createGain(); rGain.gain.value = 1.1;
+        beatGainNode.connect(chSplit);
+        chSplit.connect(lGain,0); chSplit.connect(rGain,1);
+        lGain.connect(chMerge,0,0); rGain.connect(chMerge,0,1);
+        beatBus = chMerge;
+      }
+
+      // Connect to master
+      beatSrc.connect(beatGainNode);
+      beatBus.connect(master.input);
+      vGain.connect(master.input);
+      master.output.connect(ctx.destination);
+
+      // Start times with offset
+      const offsetMs = parseFloat(vocalOffset.value);
+      const offsetSec = offsetMs / 1000;
+      const beatStart = 0;
+      const vocalStart = Math.max(0, offsetSec);
+      const vocalOffsetInBuffer = offsetSec < 0 ? -offsetSec : 0;
+
+      beatSrc.start(beatStart);
+      vocalSrc.start(vocalStart, vocalOffsetInBuffer);
+
+      setProgress(0.25);
+      const rendered = await ctx.startRendering();
+      setProgress(0.85);
+
+      normalizeBuffer(rendered, 0.985);
+
+      const wavBlob = bufferToWav(rendered);
+      const url = toURL(wavBlob);
+      finalPlayer.src = url;
+      downloadBtn.style.display = 'inline-block';
+      downloadBtn.onclick = ()=> download(url, 'OMK-Mix.wav');
+
+      setProgress(1);
+    }catch(err){
+      console.error(err);
+      alert('Render failed. Try smaller files or different formats.');
+      setProgress(0);
+    }
+  };
+
+  // --- Cloud Render (real AI backend hook) ---
+  // Back-end expectation:
+  // POST /api/omk/process (multipart/form-data)
+  //  - beat: File
+  //  - vocal: File
+  //  - prompt: string
+  //  - preset: string ("earth"|"wolf"|"club")
+  // returns: audio/wav blob of final mix
+  cloudBtn.onclick = async()=>{
+    try{
+      if(!beatPlayer.src || (!vocalPlayer.src && !recordedBlob)){ alert('Upload beat and vocal first.'); return; }
+      setProgress(0.1);
+      const fd = new FormData();
+
+      // Reuse original file objects when possible, else re-encode sources
+      const beatFileEl = beatFile.files[0];
+      if(beatFileEl){ fd.append('beat', beatFileEl, beatFileEl.name); }
+      else{ alert('Please select a beat file again.'); return; }
+
+      const vocalFileEl = vocalFile.files[0];
+      if(vocalFileEl){ fd.append('vocal', vocalFileEl, vocalFileEl.name); }
+      else if(recordedBlob){ fd.append('vocal', recordedBlob, 'recorded.webm'); }
+      else{ alert('Please provide a vocal.'); return; }
+
+      fd.append('prompt', promptBox.value || '');
+      fd.append('preset', preset);
+      fd.append('beatGain', beatGain.value);
+      fd.append('vocalGain', vocalGain.value);
+      fd.append('vocalOffsetMs', vocalOffset.value);
+      fd.append('vocalHPF', vocalHPF.value);
+
+      // TODO: Replace URL with your deployed endpoint (e.g. Cloudflare Worker / Vercel / FastAPI)
+      const res = await fetch('/api/omk/process', { method:'POST', body: fd });
+      if(!res.ok) throw new Error('Cloud mix failed');
+      setProgress(0.7);
+      const blob = await res.blob();
+      const url = toURL(blob);
+      finalPlayer.src = url;
+      downloadBtn.style.display = 'inline-block';
+      downloadBtn.onclick = ()=> download(url, 'OMK-AI-Mix.wav');
+      setProgress(1);
+    }catch(err){
+      console.error(err);
+      alert('Cloud AI unavailable. Using Local Render instead.');
+      renderBtn.click(); // graceful fallback
+    }
+  };
+
   function download(url, name){
     const a = document.createElement('a');
     a.href = url; a.download = name; document.body.appendChild(a); a.click(); a.remove();
   }
+
+  // Tiny UX sugar
+  function setProgress(p){ prog.style.width = (Math.max(0,Math.min(1,p))*100) + '%'; }
+
 </script>
 </body>
 </html>
