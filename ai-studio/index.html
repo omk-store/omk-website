@@ -213,7 +213,6 @@
       mediaRecorder.onstop = async()=>{
         recordedBlob = new Blob(chunks, {type: mime || 'audio/webm'});
         vocalPlayer.src = toURL(recordedBlob);
-        // Decode for mixing
         const arr = await recordedBlob.arrayBuffer();
         try{
           vocalBuffer = await liveCtx.decodeAudioData(arr.slice(0));
@@ -243,21 +242,14 @@
     const buffer = new ArrayBuffer(length);
     const view = new DataView(buffer);
     let pos = 0;
-
     function setUint16(data){ view.setUint16(pos, data, true); pos+=2; }
     function setUint32(data){ view.setUint32(pos, data, true); pos+=4; }
     function writeString(s){ for(let i=0;i<s.length;i++) view.setUint8(pos++, s.charCodeAt(i)); }
-
-    // RIFF header
     writeString('RIFF'); setUint32(length - 8); writeString('WAVE');
-    // fmt chunk
     writeString('fmt '); setUint32(16); setUint16(1); setUint16(numChan);
     setUint32(ab.sampleRate); setUint32(ab.sampleRate * numChan * 2);
     setUint16(numChan * 2); setUint16(16);
-    // data
     writeString('data'); setUint32(length - pos - 4);
-
-    // write interleaved
     const chans = []; for(let i=0;i<numChan;i++) chans.push(ab.getChannelData(i));
     let i = 0;
     while(i < ab.length){
@@ -271,7 +263,6 @@
   }
 
   // --- Tone Engines ---
-  // Base mastering preset
   function getPresetNodes(ctx){
     const eq1 = ctx.createBiquadFilter(); // low-shelf
     eq1.type = 'lowshelf';
@@ -310,12 +301,11 @@
     const fb = ctx.createGain(); fb.gain.value = 0.25;
     inputNode.connect(dry);
     inputNode.connect(delay);
-    delay.connect(fb).connect(delay); // feedback
+    delay.connect(fb).connect(delay);
     delay.connect(wet);
     return {dry, wet, out: {connect: (node)=>{dry.connect(node); wet.connect(node);} } };
   }
 
-  // Parse AI prompt into tone moves
   function parsePrompt(p){
     const t = (p||'').toLowerCase();
     return {
@@ -329,27 +319,13 @@
     };
   }
 
-  // Apply prompt tweaks to the master chain
   function applyPromptToMaster(master, flags){
-    // EQ moves
     if(flags.bright){ master.eq3.gain.value += 1.5; }
     if(flags.dark){ master.eq1.gain.value += 1.2; master.eq3.gain.value -= 0.6; }
     if(flags.club){ master.eq1.gain.value += 1.2; master.eq3.gain.value += 0.8; master.comp.threshold.value -= 2; master.comp.ratio.value += 0.5; }
     if(flags.tight){ master.comp.attack.value = Math.max(0.002, master.comp.attack.value * 0.7); master.comp.release.value = Math.max(0.12, master.comp.release.value * 0.8); }
   }
 
-  // Optional light de-esser on vocal (peaking reduction around 7–9 kHz)
-  function makeDeEsser(ctx, intensity=0.0){
-    if(intensity<=0) return null;
-    const de = ctx.createBiquadFilter();
-    de.type = 'peaking';
-    de.frequency.value = 8000;
-    de.Q.value = 3.0;
-    de.gain.value = -Math.min(6, 2 + intensity*4); // up to -6 dB
-    return de;
-  }
-
-  // Normalize
   function normalizeBuffer(abuffer, target=0.98){
     let peak = 0;
     for(let c=0;c<abuffer.numberOfChannels;c++){
@@ -365,7 +341,7 @@
     }
   }
 
-  // --- Local Render (fallback + instant) ---
+  // --- Local Render (browser mix) ---
   renderBtn.onclick = async()=>{
     try{
       if(!beatBuffer){ alert('Upload a beat first.'); return; }
@@ -374,40 +350,35 @@
       setProgress(0.05);
 
       const flags = parsePrompt(promptBox.value);
-      // Match sample rate to beat
       const sr = beatBuffer.sampleRate;
       const length = Math.max(beatBuffer.length, vocalBuffer.length + Math.abs(msToSamples(vocalOffset.value, sr)));
       const ctx = new OfflineAudioContext({ numberOfChannels: 2, length, sampleRate: sr });
 
-      // Beat
       const beatSrc = ctx.createBufferSource(); beatSrc.buffer = beatBuffer;
       const beatGainNode = ctx.createGain(); beatGainNode.gain.value = parseFloat(beatGain.value);
 
-      // Vocal
       const vocalSrc = ctx.createBufferSource(); vocalSrc.buffer = vocalBuffer;
       const vGain = ctx.createGain(); vGain.gain.value = parseFloat(vocalGain.value);
       const hpf = ctx.createBiquadFilter(); hpf.type = 'highpass'; hpf.frequency.value = parseFloat(vocalHPF.value);
 
-      // Optional de-ess
-      const de = makeDeEsser(ctx, parsePrompt(promptBox.value).bright ? 1.0 : (parsePrompt(promptBox.value).deess ? 0.8 : 0.0));
+      const de = (parsePrompt(promptBox.value).bright || parsePrompt(promptBox.value).deess) ? makeDeEsser(ctx, 1.0) : null;
+      function makeDeEsser(ctx, intensity=1.0){
+        const de = ctx.createBiquadFilter();
+        de.type = 'peaking'; de.frequency.value = 8000; de.Q.value = 3.0;
+        de.gain.value = -Math.min(6, 2 + intensity*4);
+        return de;
+      }
 
-      // Light space if requested
       const space = addSpace(ctx, de ? (hpf.connect(de), de) : hpf, parsePrompt(promptBox.value).space ? 0.22 : 0.08, parsePrompt(promptBox.value).space ? 0.28 : 0.18);
 
-      // Routing vocal
-      // src -> HPF -> (de-esser?) -> space(dry+wet) -> vGain
       vocalSrc.connect(hpf);
       if(de){ de.connect(space.dry); de.connect(space.wet); }
       else { hpf.connect(space.dry); hpf.connect(space.wet); }
-      const vBus = ctx.createGain(); // sum dry+wet
-      space.out.connect(vBus);
-      vBus.connect(vGain);
+      const vBus = ctx.createGain(); space.out.connect(vBus); vBus.connect(vGain);
 
-      // Master bus
       const master = getPresetNodes(ctx);
       applyPromptToMaster(master, flags);
 
-      // Beat width if "wide"
       let beatBus = beatGainNode;
       if(flags.wide){
         const chSplit = ctx.createChannelSplitter(2);
@@ -420,13 +391,11 @@
         beatBus = chMerge;
       }
 
-      // Connect to master
       beatSrc.connect(beatGainNode);
       beatBus.connect(master.input);
       vGain.connect(master.input);
       master.output.connect(ctx.destination);
 
-      // Start times with offset
       const offsetMs = parseFloat(vocalOffset.value);
       const offsetSec = offsetMs / 1000;
       const beatStart = 0;
@@ -456,29 +425,20 @@
     }
   };
 
-  // --- Cloud Render (real AI backend hook) ---
-  // Back-end expectation:
-  // POST /api/omk/process (multipart/form-data)
-  //  - beat: File
-  //  - vocal: File
-  //  - prompt: string
-  //  - preset: string ("earth"|"wolf"|"club")
-  // returns: audio/wav blob of final mix
+  // --- Cloud Render (to your backend) ---
+  // POST https://omk-backend.onrender.com/api/omk/process
   cloudBtn.onclick = async()=>{
     try{
-      if(!beatPlayer.src || (!vocalPlayer.src && !recordedBlob)){ alert('Upload beat and vocal first.'); return; }
+      if(!beatFile.files[0]){ alert('Please choose your BEAT file again.'); return; }
+      if(!vocalFile.files[0] && !recordedBlob){ alert('Please provide a VOCAL.'); return; }
+
       setProgress(0.1);
       const fd = new FormData();
 
-      // Reuse original file objects when possible, else re-encode sources
-      const beatFileEl = beatFile.files[0];
-      if(beatFileEl){ fd.append('beat', beatFileEl, beatFileEl.name); }
-      else{ alert('Please select a beat file again.'); return; }
-
-      const vocalFileEl = vocalFile.files[0];
-      if(vocalFileEl){ fd.append('vocal', vocalFileEl, vocalFileEl.name); }
-      else if(recordedBlob){ fd.append('vocal', recordedBlob, 'recorded.webm'); }
-      else{ alert('Please provide a vocal.'); return; }
+      // Always send original files (most reliable)
+      fd.append('beat', beatFile.files[0], beatFile.files[0].name);
+      if(vocalFile.files[0]) fd.append('vocal', vocalFile.files[0], vocalFile.files[0].name);
+      else if(recordedBlob)  fd.append('vocal', recordedBlob, 'recorded.webm');
 
       fd.append('prompt', promptBox.value || '');
       fd.append('preset', preset);
@@ -487,9 +447,16 @@
       fd.append('vocalOffsetMs', vocalOffset.value);
       fd.append('vocalHPF', vocalHPF.value);
 
-      // TODO: Replace URL with your deployed endpoint (e.g. Cloudflare Worker / Vercel / FastAPI)
-      const res = await fetch('/api/omk/process', { method:'POST', body: fd });
-      if(!res.ok) throw new Error('Cloud mix failed');
+      const res = await fetch('https://omk-backend.onrender.com/api/omk/process', {
+        method:'POST',
+        body: fd
+      });
+
+      if(!res.ok){
+        const t = await res.text();
+        throw new Error('Cloud mix failed: ' + t);
+      }
+
       setProgress(0.7);
       const blob = await res.blob();
       const url = toURL(blob);
@@ -499,8 +466,9 @@
       setProgress(1);
     }catch(err){
       console.error(err);
-      alert('Cloud AI unavailable. Using Local Render instead.');
-      renderBtn.click(); // graceful fallback
+      alert('Cloud AI unavailable: ' + (err?.message||err));
+      // graceful fallback:
+      // renderBtn.click();
     }
   };
 
@@ -508,10 +476,6 @@
     const a = document.createElement('a');
     a.href = url; a.download = name; document.body.appendChild(a); a.click(); a.remove();
   }
-
-  // Tiny UX sugar
-  function setProgress(p){ prog.style.width = (Math.max(0,Math.min(1,p))*100) + '%'; }
-
 </script>
 </body>
 </html>
