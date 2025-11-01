@@ -7,13 +7,13 @@ const upload = multer();
 
 app.use(cors());
 
-app.post("/api/omk/process", upload.fields([{ name:"beat" }, { name:"vocal" }]), (req, res) => {
+app.post("/api/omk/process", upload.fields([{ name: "vocal" }]), (req, res) => {
   const vocal = req.files?.vocal?.[0];
-  if (!vocal) return res.status(400).send("No vocal file");
+  if (!vocal) return res.status(400).send("No vocal uploaded");
 
   // send vocal back now — AI coming next step
-  res.set("Content-Type","audio/webm");
+  res.set("Content-Type", "audio/webm");
   res.send(vocal.buffer);
 });
 
-app.listen(3000, () => console.log("Backend live at http://localhost:3000"));
+app.listen(3000, () => console.log("Backend live ✅ Port 3000"));
