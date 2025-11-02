@@ -106,17 +106,16 @@ footer .contact{margin-top:8px;font-size:14px;color:#555}
 <header>
   <div class="brand"><a href="#top" class="logo">OMK</a></div>
   <div class="header-icons">
-    <a class="icon-btn glow" id="cartBtn"><img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png" alt="cart"></a>
-    <a class="icon-btn" id="menuBtn"><img src="https://cdn-icons-png.flaticon.com/512/56/56763.png" alt="menu"></a>
+    <a class="icon-btn glow" id="cartBtn"><img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png"></a>
+    <a class="icon-btn" id="menuBtn"><img src="https://cdn-icons-png.flaticon.com/512/56/56763.png"></a>
   </div>
 </header>
 
 <section class="hero" id="top">
-  <img src="./jacket-black.jpg" alt="OMK Wolf Jacket">
+  <img src="./jacket-black.jpg">
   <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
 </section>
 
-<!-- CART PANEL -->
 <div id="cartPanel" class="cart-panel">
   <div class="cart-header">
     <h3>🛍️ Your Cart</h3>
@@ -173,20 +172,23 @@ footer .contact{margin-top:8px;font-size:14px;color:#555}
 
 <script>
 function toggleMenu(){
-  const m=document.getElementById('menuOverlay');
-  const b=document.getElementById('backdrop');
-  m.classList.toggle('open');b.classList.toggle('show');
+  document.getElementById('menuOverlay').classList.toggle('open');
+  document.getElementById('backdrop').classList.toggle('show');
 }
 function toggleCart(){
   document.getElementById('cartPanel').classList.toggle('open');
 }
 
-/* PRODUCTS */
+/* ✅ PRODUCTS WITH HOODIES ADDED */
 const products=[
  {name:'OMK Wolf Jacket',price:80000,img:'./jacket-black.jpg',link:'jacket.html'},
  {name:'OMK Jeans',price:80000,img:'./jeans-blue.jpg',link:'jeans.html'},
  {name:'OMK T-Shirt',price:45000,img:'./tee-white.jpg',link:'tshirt.html'},
- {name:'OMK Shorts',price:50000,img:'./shorts-black.jpg',link:'shorts.html'}
+ {name:'OMK Shorts',price:50000,img:'./shorts-black.jpg',link:'shorts.html'},
+
+ {name:'OMK Storm Hoodie Set',price:150000,img:'',link:'#'},
+ {name:'OMK Thunder Hoodie Set',price:150000,img:'',link:'#'},
+ {name:'OMK Wolf Spirit Hoodie Set',price:150000,img:'',link:'#'}
 ];
 
 /* SHOW PRODUCTS */
@@ -195,7 +197,7 @@ products.forEach((p,i)=>{
   grid.innerHTML+=`
   <div class="card">
     <a href="${p.link}" style="text-decoration:none;color:inherit;display:block;">
-      <div class="card-img"><img src="${p.img}" alt="${p.name}"></div>
+      <div class="card-img"><img src="${p.img || 'https://via.placeholder.com/400x400?text=OMK+SET'}"></div>
       <div class="card-body">
         <h3>${p.name}</h3>
         <p class="price">₦${p.price.toLocaleString()}</p>
