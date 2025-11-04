@@ -3,59 +3,76 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>OMK Wolf Sigil Shorts 🐺 | Only My Kind</title>
+<title>OMK Wolf Sigil Shorts 🩳 | Only My Kind</title>
 
 <style>
 :root{
-  --bg:#ffffff;--text:#101010;--muted:#6b7280;--border:#e5e7eb;--accent:#111;--shadow:0 10px 30px rgba(0,0,0,.06);--omk:#ff2d55;
+  --bg:#ffffff;--text:#101010;--muted:#6b7280;--border:#e5e7eb;--accent:#111;
+  --shadow:0 10px 30px rgba(0,0,0,.06);--omk:#ff2d55;
 }
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui;}
 a{text-decoration:none;color:inherit}
 
-/* HEADER */
-.header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;padding:12px 16px;backdrop-filter:blur(8px)}
+/* Header */
+.header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--border);
+display:flex;align-items:center;justify-content:space-between;padding:12px 16px;}
 .brand{font-weight:900;font-size:20px}
 .h-icons{display:flex;gap:14px;align-items:center}
 .h-icons img{width:24px;height:24px;cursor:pointer}
 
-/* CART ICON */
-.cart-btn{position:relative}
-.cart-count{position:absolute;top:-4px;right:-6px;background:var(--omk);color:#fff;font-size:11px;font-weight:700;border-radius:50%;width:16px;height:16px;display:flex;align-items:center;justify-content:center}
-
-/* MENU DRAWER */
-.menu-drawer{position:fixed;top:0;right:-100%;width:100%;max-width:300px;height:100%;background:#fff;z-index:200;transition:.4s;padding:30px 24px;box-shadow:-5px 0 20px rgba(0,0,0,.08)}
+/* Menu Drawer */
+.menu-drawer{position:fixed;top:0;right:-100%;width:100%;max-width:300px;height:100%;
+background:#fff;z-index:200;padding:30px 24px;transition:.4s;box-shadow:-5px 0 20px rgba(0,0,0,.1)}
 .menu-drawer.open{right:0}
-.menu-close{position:absolute;right:18px;top:16px;font-size:24px;cursor:pointer}
-.menu-drawer a{display:block;padding:10px 0;font-weight:700;color:#000}
+.menu-close{position:absolute;top:16px;right:18px;font-size:24px;font-weight:800;cursor:pointer}
+.menu-drawer a{display:block;padding:12px 0;font-weight:700}
 
-/* PAGE */
+/* Cart bubble */
+.cart-btn{position:relative}
+.cart-count{position:absolute;top:-4px;right:-6px;background:var(--omk);color:#fff;
+font-size:11px;font-weight:700;border-radius:50%;width:16px;height:16px;
+display:flex;align-items:center;justify-content:center}
+
+/* Layout */
 .wrap{max-width:1100px;margin:32px auto;padding:0 16px}
 .grid{display:grid;gap:34px;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
 
-/* PRODUCT CARD */
+/* Cards */
 .card{background:#fff;border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);padding:14px}
 .gallery{display:flex;flex-direction:column;gap:16px}
 .gallery img{width:100%;border-radius:14px;border:1px solid var(--border);object-fit:contain}
-.title{font-size:28px;font-weight:900}
-.desc{color:var(--muted);line-height:1.7;margin-bottom:14px}
-.price{font-weight:900;font-size:20px;margin-bottom:18px}
-.sizes{display:flex;gap:10px}
-.size{padding:10px 16px;border:1px solid var(--border);border-radius:10px;cursor:pointer;font-weight:800;background:#fff}
-.size.active{background:#111;border-color:#111;color:#fff}
-.btns{display:flex;gap:12px;margin-top:14px}
-.btn{padding:14px 18px;border-radius:12px;border:1px solid var(--border);cursor:pointer;font-weight:900}
-.btn.primary{background:#111;color:#fff}
+.title{font-size:28px;font-weight:900;margin:6px 0}
+.price{font-size:20px;font-weight:900;margin-top:6px}
 
-/* CART PANEL */
-.cart-panel{position:fixed;left:0;right:0;bottom:-100%;background:#fff;border-top:2px solid var(--border);transition:.4s;padding:20px 18px;border-radius:18px 18px 0 0;z-index:150}
+/* Sizes */
+.sizes{display:flex;gap:10px;margin:10px 0 4px}
+.size{padding:10px 16px;border:1px solid var(--border);border-radius:10px;font-weight:800;cursor:pointer}
+.size.active{background:#111;color:#fff;border-color:#111}
+
+/* Buttons */
+.btns{display:flex;gap:12px;margin-top:14px;flex-wrap:wrap}
+.btn{padding:14px 18px;border-radius:12px;border:1px solid var(--border);font-weight:900;cursor:pointer}
+.btn.primary{background:#111;color:#fff;border-color:#111}
+.btn:active{transform:translateY(1px)}
+
+/* Cart Panel */
+.cart-panel{position:fixed;left:0;right:0;bottom:-100%;background:#fff;border-top:2px solid var(--border);
+box-shadow:0 -8px 20px rgba(0,0,0,.1);transition:.4s;z-index:150;padding:20px;border-radius:18px 18px 0 0}
 .cart-panel.open{bottom:0}
-.cart-item{display:flex;justify-content:space-between;margin-bottom:8px}
+.cart-item{display:flex;justify-content:space-between;margin-bottom:8px;border-bottom:1px solid #eee;padding-bottom:8px}
+.cart-item button{background:none;border:none;color:#ff2d55;cursor:pointer;font-size:18px}
 .cart-total{text-align:right;font-weight:800;margin-top:10px}
-.cart-actions a{background:var(--omk);color:#fff;padding:10px 15px;border-radius:10px;font-weight:800;display:inline-block}
 
-/* FOOTER */
-footer{text-align:center;margin:60px 0 90px;color:var(--muted);font-weight:600}
+/* Footer */
+footer{text-align:center;margin:60px 0 90px;color:var(--muted)}
+footer a{font-weight:800}
+
+/* WhatsApp */
+.wa{position:fixed;right:16px;bottom:90px;background:#fff;padding:10px 14px;border-radius:50px;
+border:1px solid var(--border);font-weight:900;display:flex;align-items:center;gap:8px}
+.wa img{width:18px;height:18px}
+.dot{width:8px;height:8px;background:var(--omk);border-radius:50%}
 </style>
 </head>
 
@@ -64,11 +81,12 @@ footer{text-align:center;margin:60px 0 90px;color:var(--muted);font-weight:600}
 <header class="header">
   <div class="brand"><a href="index.html">OMK</a></div>
   <div class="h-icons">
-    <div id="cartBtn" class="cart-btn"><img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png"><div id="cartCount" class="cart-count" style="display:none">0</div></div>
+    <div class="cart-btn" id="cartBtn"><img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png"><div id="cartCount" class="cart-count" style="display:none">0</div></div>
     <img id="menuBtn" src="https://cdn-icons-png.flaticon.com/512/56/56763.png">
   </div>
 </header>
 
+<!-- MENU -->
 <div id="menuDrawer" class="menu-drawer">
   <span id="menuClose" class="menu-close">✕</span>
   <h3>Menu</h3>
@@ -83,17 +101,18 @@ footer{text-align:center;margin:60px 0 90px;color:var(--muted);font-weight:600}
 
 <div class="card">
 <div class="gallery">
-<img src="https://raw.githubusercontent.com/omk-store/omk-website/main/1F7DF10D-60F8-436E-8B79-C5E64F6C7576.png" alt="Front">
-<img src="https://raw.githubusercontent.com/omk-store/omk-website/main/5CB390F1-C296-439F-A95B-32679E9FE8BA.png" alt="Back">
+<!-- ✅ FRONT -->
+<img src="https://raw.githubusercontent.com/omk-store/omk-website/main/1F7DF10D-60F8-436E-8B79-C5E64F6C7576.png" alt="OMK Wolf Sigil Shorts — Front">
+<!-- ✅ BACK -->
+<img src="https://raw.githubusercontent.com/omk-store/omk-website/main/A630FF9E-1251-4FD8-B2D0-330772C82B15.png" alt="OMK Wolf Sigil Shorts — Back">
 </div>
 </div>
 
 <div class="card">
 <div class="title">OMK Wolf Sigil Shorts 🐺</div>
-<div class="desc">Chrome wolf sigil shorts — premium street fit with OMK energy.</div>
+<div class="desc">Chromed wolf sigil shorts — premium street fit with OMK 2035 energy.</div>
 <div class="price">₦60,000</div>
 
-<div class="subtle">Size</div>
 <div class="sizes">
 <button class="size active">S</button>
 <button class="size">M</button>
@@ -102,52 +121,58 @@ footer{text-align:center;margin:60px 0 90px;color:var(--muted);font-weight:600}
 </div>
 
 <div class="btns">
-<button id="addToCart" class="btn">Add to Cart</button>
-<a href="checkout.html" class="btn primary">Buy Now</a>
+<button class="btn" id="addToCart">Add to Cart</button>
+<a class="btn primary" href="checkout.html">Buy Now</a>
 </div>
 </div>
 
 </section>
 </main>
 
+<!-- CART -->
 <div id="cartPanel" class="cart-panel">
-<h3>Your Cart</h3>
+<div class="cart-header">
+<h3>Your Cart</h3><button onclick="toggleCart()">✕</button>
+</div>
 <div id="cartItems"></div>
 <div id="cartTotal" class="cart-total">Total: ₦0</div>
 <div class="cart-actions"><a href="checkout.html">Checkout</a></div>
 </div>
 
-<footer>© 2025 OMK – Only My Kind</footer>
+<footer>© 2025 <strong>OMK – Only My Kind</strong></footer>
+
+<!-- WhatsApp -->
+<a class="wa" target="_blank" href="https://wa.me/2347038112817?text=Hi%20OMK,%20I%20want%20to%20order%20Wolf%20Sigil%20Shorts">
+<span class="dot"></span><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png"><span>Chat with us</span>
+</a>
 
 <script>
-const sizes=document.querySelectorAll(".size");
-sizes.forEach(b=>b.onclick=()=>{sizes.forEach(x=>x.classList.remove("active"));b.classList.add("active")});
+const sizes=document.querySelectorAll('.size');
+sizes.forEach(b=>b.onclick=()=>{sizes.forEach(x=>x.classList.remove('active'));b.classList.add('active');});
 
-let cart=JSON.parse(localStorage.getItem("omkCart")||"[]");
+let cart=JSON.parse(localStorage.getItem('omkCart')||'[]');
 updateCart();
 
 function addToCart(){
- let size=document.querySelector(".size.active").textContent;
- cart.push({name:`OMK Wolf Sigil Shorts (${size})`,price:60000});
- localStorage.setItem("omkCart",JSON.stringify(cart));
- updateCart();toggleCart();
+const size=document.querySelector('.size.active').textContent;
+cart.push({name:`OMK Wolf Sigil Shorts (${size})`,price:60000});
+localStorage.setItem('omkCart',JSON.stringify(cart));
+updateCart();toggleCart();
 }
-
-function removeItem(i){cart.splice(i,1);localStorage.setItem("omkCart",JSON.stringify(cart));updateCart();}
+function removeItem(i){cart.splice(i,1);localStorage.setItem('omkCart',JSON.stringify(cart));updateCart();}
 function updateCart(){
- let items=document.getElementById("cartItems"),total=0;
- items.innerHTML="";cart.forEach((it,i)=>{total+=it.price;items.innerHTML+=`<div class="cart-item"><span>${it.name}</span><span>₦${it.price.toLocaleString()}</span><button onclick="removeItem(${i})">❌</button></div>`});
- document.getElementById("cartTotal").textContent="Total: ₦"+total.toLocaleString();
- document.getElementById("cartCount").textContent=cart.length;
- document.getElementById("cartCount").style.display=cart.length?"flex":"none";
+const wrap=document.getElementById('cartItems');wrap.innerHTML='';
+let t=0;cart.forEach((it,i)=>{t+=it.price;
+wrap.innerHTML+=`<div class="cart-item"><span>${it.name}</span><span>₦${it.price.toLocaleString()}</span><button onclick="removeItem(${i})">❌</button></div>`;});
+document.getElementById('cartTotal').textContent='Total: ₦'+t.toLocaleString();
+document.getElementById('cartCount').textContent=cart.length;
+document.getElementById('cartCount').style.display=cart.length?'flex':'none';
 }
-function toggleCart(){document.getElementById("cartPanel").classList.toggle("open")}
-document.getElementById("addToCart").onclick=addToCart;
-document.getElementById("cartBtn").onclick=toggleCart;
-
-// menu toggle
-menuBtn.onclick=()=>menuDrawer.classList.add("open");
-menuClose.onclick=()=>menuDrawer.classList.remove("open");
+function toggleCart(){document.getElementById('cartPanel').classList.toggle('open');}
+document.getElementById('addToCart').onclick=addToCart;
+document.getElementById('cartBtn').onclick=toggleCart;
+document.getElementById('menuBtn').onclick=()=>menuDrawer.classList.add('open');
+document.getElementById('menuClose').onclick=()=>menuDrawer.classList.remove('open');
 </script>
 
 </body>
