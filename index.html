@@ -64,7 +64,7 @@ header{
 
 /* CARD */
 .card{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#fff;text-align:center;
-  box-shadow:0 4px 10px rgba(0,0,0,.05);transition:transform .25s,box-shadow .25s;cursor:pointer}
+  box-shadow:0 4px 10px rgba(0,0,0,.05);transition:transform .25s,box-shadow .25s;cursor:pointer;position:relative;}
 .card:hover{transform:translateY(-4px);box-shadow:0 8px 22px rgba(0,0,0,.08)}
 .card-img img{width:100%;height:300px;object-fit:cover;border-radius:10px;}
 .card-body{padding:14px}
@@ -72,6 +72,20 @@ header{
 .price{color:#444;font-weight:700;margin-bottom:10px}
 .btn{display:inline-block;background:#000;color:#fff;padding:10px 20px;border-radius:12px;font-weight:800;transition:.3s}
 .btn:hover{background:#111;transform:translateY(-2px)}
+
+/* NEW BADGE */
+.badge {
+  position:absolute;
+  top:10px;
+  left:10px;
+  background:var(--accent);
+  color:#fff;
+  font-size:12px;
+  font-weight:800;
+  padding:6px 10px;
+  border-radius:20px;
+  box-shadow:0 4px 10px rgba(0,0,0,.2);
+}
 
 /* JOIN SECTION */
 .join{width:min(900px,92%);margin:60px auto;background:#f9f9f9;border:1px solid var(--border);
@@ -186,7 +200,7 @@ const products = [
   {name:'OMK T-Shirt',price:45000,img:'./images/tee-white.jpg',link:'tshirt.html'},
   {name:'OMK Shorts',price:50000,img:'./images/shorts-black.jpg',link:'shorts.html'},
   {name:'OMK Storm Hoodie Set',price:150000,img:'./images/omk-storm-hoodie.jpg',link:'storm-hoodie.html'},
-  {name:'OMK Thunder Hoodie Set',price:150000,img:'./images/omk-thunder-hoodie.jpg',link:'thunder-hoodie.html'},
+  {name:'OMK Thunder Hoodie Set',price:150000,img:'./images/omk-thunder-hoodie.jpg',link:'thunder-hoodie.html',badge:'NEW ⚡'},
   {name:'OMK Wolf Spirit Hoodie Set',price:150000,img:'./images/omk-wolf-spirit-hoodie.jpg',link:'wolf-spirit-hoodie.html'}
 ];
 
@@ -195,6 +209,7 @@ const grid=document.getElementById('productGrid');
 products.forEach((p,i)=>{
   grid.innerHTML+=`
   <div class="card">
+    ${p.badge ? `<span class="badge">${p.badge}</span>` : ''}
     <a href="${p.link}" style="text-decoration:none;color:inherit;display:block;">
       <div class="card-img"><img src="${p.img}" alt="${p.name}"></div>
       <div class="card-body">
