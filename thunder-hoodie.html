@@ -4,113 +4,287 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>OMK Wolf God Hoodie Set 🐺⚡ | Only My Kind</title>
+<meta name="description" content="OMK Wolf God Hoodie Set — street luxury with wolf sigil back and OMK crest front. Premium 280GSM cotton. Only My Kind."/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐺</text></svg>">
+<meta property="og:title" content="OMK Wolf God Hoodie Set 🐺⚡"/>
+<meta property="og:description" content="Street-luxury divine energy. Wolf sigil back, OMK crest front."/>
+<meta property="og:image" content="omk_wolf_god_front.png"/>
+<meta name="theme-color" content="#ff2d55"/>
+
 <style>
 :root{
-  --bg:#ffffff; --text:#101010; --muted:#6b7280; --border:#e5e7eb;
-  --accent:#111111; --shadow:0 10px 30px rgba(0,0,0,.06); --omk:#ff2d55;
+  --bg:#ffffff; --text:#0f1115; --muted:#6b7280; --border:#e5e7eb;
+  --accent:#111111; --omk:#ff2d55; --shadow:0 10px 30px rgba(0,0,0,.06);
 }
-*{box-sizing:border-box} body{margin:0;font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
 a{text-decoration:none;color:inherit}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
 
-header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
-.logo{font-weight:900;font-size:22px;letter-spacing:-1px}
-nav a{margin-left:16px;font-weight:600} nav a:hover{color:var(--omk)}
+/* Header */
+header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+.logo{font-weight:900;font-size:22px;letter-spacing:-.5px}
+header nav a{margin-left:18px;font-weight:600}
+header nav a:hover{color:var(--omk)}
 
-.hero{text-align:center;padding:48px 20px 12px}
-.hero h1{font-size:32px;font-weight:900;letter-spacing:-.5px;margin:0}
-.hero p{max-width:680px;margin:10px auto 0;color:var(--muted)}
+/* Breadcrumbs */
+.breadcrumb{font-size:13px;color:var(--muted);padding:10px 0 0}
+.breadcrumb a{color:var(--muted)} .breadcrumb a:hover{color:var(--omk)}
 
-.wrap{max-width:1000px;margin:28px auto;padding:0 20px}
-.product{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}
-.media{width:100%}
-.main-img{width:100%;border-radius:12px;box-shadow:var(--shadow);display:block}
-.thumb-row{display:flex;gap:12px;margin-top:12px}
-.thumb{flex:1;border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer}
+/* Hero */
+.hero{text-align:left;padding:24px 0 8px}
+.hero h1{margin:0;font-size:32px;letter-spacing:-.5px}
+.hero p{margin:8px 0 0;color:var(--muted)}
+
+/* Product grid */
+.product{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:start;margin:26px 0}
+.gallery{position:relative}
+.main-img{width:100%;border-radius:12px;box-shadow:var(--shadow);cursor:zoom-in}
+.thumb-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.thumb{border:1px solid var(--border);border-radius:10px;overflow:hidden;cursor:pointer}
 .thumb img{width:100%;display:block}
 .thumb.active{outline:2px solid var(--omk)}
 
-.info h2{margin:0 0 6px;font-size:26px}
-.info p{color:var(--muted);font-size:15px;margin:10px 0 18px}
-.bullets{margin:0 0 18px;padding-left:18px;color:var(--text)}
-.price{font-size:24px;font-weight:800;margin:6px 0 18px}
-.btn{background:var(--accent);color:#fff;border:none;padding:12px 22px;border-radius:8px;font-weight:700;cursor:pointer}
+.tag{position:absolute;left:12px;top:12px;background:#111;color:#fff;font-size:12px;padding:6px 10px;border-radius:999px}
+
+/* Info */
+.info h2{margin:0 0 10px;font-size:24px}
+.rating{font-size:13px;color:var(--muted)}
+.price{margin:14px 0 18px;font-size:26px;font-weight:800}
+.badge{display:inline-block;background:#111;color:#fff;font-size:12px;border-radius:999px;padding:6px 10px;margin-left:10px}
+
+/* Form */
+.form{border:1px solid var(--border);border-radius:12px;padding:16px}
+.label{font-size:13px;color:var(--muted);margin:0 0 6px}
+.size-grid{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.size{border:1px solid var(--border);border-radius:8px;padding:10px 14px;cursor:pointer;user-select:none;font-weight:600}
+.size.active,.size:hover{border-color:#111}
+.qty-wrap{display:flex;align-items:center;gap:10px;margin:10px 0 18px}
+.qty{width:70px;padding:10px;border:1px solid var(--border);border-radius:8px;text-align:center;font-weight:700}
+
+.btn{background:var(--accent);color:#fff;border:none;border-radius:10px;padding:12px 18px;font-weight:800;cursor:pointer}
 .btn:hover{background:var(--omk)}
+.help{font-size:13px;color:var(--muted);margin-top:10px}
+.whatsapp{display:inline-flex;align-items:center;gap:8px;margin-left:10px;background:#25D366;border:none;color:#fff;padding:12px 16px;border-radius:10px;cursor:pointer;font-weight:800}
+.whatsapp:hover{filter:brightness(0.95)}
 
-.details{margin-top:40px;border-top:1px solid var(--border);padding-top:24px;color:var(--muted);font-size:14px}
-footer{text-align:center;margin:56px 0 24px;color:var(--muted);font-size:14px}
+/* Details accordion */
+.details{margin-top:24px;border-top:1px solid var(--border)}
+.details summary{cursor:pointer;list-style:none;padding:14px 0;font-weight:700}
+details[open] summary{color:var(--omk)}
+.details p{margin:0 0 14px;color:var(--muted)}
 
-@media (max-width:900px){ .product{grid-template-columns:1fr} .hero h1{font-size:28px} }
+/* Sticky mobile bar */
+.sticky-bar{display:none;position:fixed;left:0;right:0;bottom:0;background:#111;color:#fff;
+  padding:12px 16px;z-index:50;box-shadow:0 -8px 30px rgba(0,0,0,.18)}
+.sticky-bar .row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.sticky-price{font-weight:900}
+.sticky-btn{border:0;border-radius:10px;padding:12px 18px;font-weight:900;background:#fff;color:#111;cursor:pointer}
+.sticky-btn:hover{background:#f2f2f2}
+
+/* Related */
+.related{margin:50px 0}
+.related h3{margin:0 0 14px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.card img{width:100%;display:block}
+.card .p{padding:10px}
+.card .p .t{font-weight:700}
+
+/* Footer */
+footer{border-top:1px solid var(--border);margin-top:40px}
+footer .inner{padding:28px 0;color:var(--muted);text-align:center;font-size:14px}
+
+/* Zoom modal */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:60}
+.modal img{max-width:92%;max-height:92%;border-radius:12px}
+.modal.show{display:flex}
+
+@media (max-width:960px){
+  .product{grid-template-columns:1fr}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .sticky-bar{display:block}
+}
+@media (max-width:560px){
+  .hero h1{font-size:26px}
+  .cards{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">OMK</div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="shop.html">Shop</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+  <div class="container header-inner">
+    <div class="logo">OMK</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
 </header>
 
-<section class="hero">
-  <h1>OMK Wolf God Hoodie Set 🐺⚡</h1>
-  <p>Street-luxury divine energy. Wolf sigil monogram at the back, bold OMK crest at the front. Premium 280GSM cotton — Only My Kind.</p>
-</section>
+<div class="container">
+  <div class="breadcrumb"><a href="index.html">Home</a> / <a href="shop.html">Shop</a> / Wolf God Hoodie</div>
 
-<div class="wrap">
-  <div class="product">
-    <!-- MEDIA -->
-    <div class="media">
-      <!-- BACK FIRST -->
-      <img id="mainImg" class="main-img" src="omk_wolf_god_back.png" alt="OMK Wolf God Hoodie Back">
+  <section class="hero">
+    <h1>OMK Wolf God Hoodie Set 🐺⚡</h1>
+    <p>Divine street luxury — wolf sigil monogram at the back, bold OMK crest at the front. Premium 280GSM cotton. Built for Only My Kind.</p>
+  </section>
+
+  <section class="product">
+    <!-- Gallery -->
+    <div class="gallery">
+      <span class="tag">NEW</span>
+      <!-- Back first -->
+      <img id="mainImg" class="main-img" src="omk_wolf_god_back.png" alt="OMK Wolf God Hoodie — Back">
       <div class="thumb-row">
         <div class="thumb active" data-src="omk_wolf_god_back.png" aria-label="Back view">
-          <img src="omk_wolf_god_back.png" alt="Back view thumbnail">
+          <img src="omk_wolf_god_back.png" alt="Back thumbnail">
         </div>
         <div class="thumb" data-src="omk_wolf_god_front.png" aria-label="Front view">
-          <img src="omk_wolf_god_front.png" alt="Front view thumbnail">
+          <img src="omk_wolf_god_front.png" alt="Front thumbnail">
         </div>
       </div>
     </div>
 
-    <!-- INFO -->
+    <!-- Info / Buy box -->
     <div class="info">
       <h2>Wolf God Hoodie Set</h2>
-      <p>Built for the chosen ones — cosmic lines, OMK crest, and wolf-tribe monogram.</p>
-      <ul class="bullets">
-        <li>Back: Giant wolf sigil monogram (dark grey)</li>
-        <li>Front: Bold OMK crest with red cosmic lines</li>
-        <li>Premium 280GSM cotton, soft interior</li>
-        <li>Tailored street-luxury fit</li>
-      </ul>
-      <div class="price">₦120,000</div>
-      <button class="btn" onclick="window.location.href='https://wa.me/2349012345678?text=I%20want%20the%20OMK%20Wolf%20God%20Hoodie%20Set'">Order on WhatsApp</button>
+      <div class="rating">⭐️⭐️⭐️⭐️⭐️ <span class="muted">(126)</span> <span class="badge">Limited</span></div>
+      <div class="price">₦120,000 <span class="badge">280GSM</span></div>
 
-      <div class="details">
-        <strong>Shipping:</strong> Lagos pick-up & nationwide delivery. <br>
-        <strong>Care:</strong> Cold wash, inside-out, hang dry. <br>
-        <strong>Note:</strong> Colors may vary slightly due to lighting.
+      <div class="form">
+        <div class="label">Select Size</div>
+        <div class="size-grid" id="sizeGrid">
+          <div class="size" data-size="S">S</div>
+          <div class="size" data-size="M">M</div>
+          <div class="size active" data-size="L">L</div>
+          <div class="size" data-size="XL">XL</div>
+          <div class="size" data-size="2XL">2XL</div>
+        </div>
+
+        <div class="label">Quantity</div>
+        <div class="qty-wrap">
+          <button class="size" id="minus">−</button>
+          <input id="qty" class="qty" type="number" min="1" value="1" />
+          <button class="size" id="plus">+</button>
+        </div>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn" id="addCart">Add to Cart</button>
+          <button class="whatsapp" id="waBtn" title="Order on WhatsApp">WhatsApp Order</button>
+        </div>
+        <div class="help">Need sizing help? DM us on Instagram @omkdrip.</div>
       </div>
+
+      <details class="details" open>
+        <summary>Details</summary>
+        <p>Front: bold OMK crest with red cosmic lines. Back: giant wolf sigil monogram in dark grey. Ribbed cuffs and waistband, soft interior, double-stitched for durability.</p>
+      </details>
+      <details class="details">
+        <summary>Care & Shipping</summary>
+        <p>Cold wash, inside-out. Hang dry only. Lagos pick-up & nationwide delivery available.</p>
+      </details>
     </div>
+  </section>
+
+  <!-- Related -->
+  <section class="related">
+    <h3>Related OMK Pieces</h3>
+    <div class="cards">
+      <a class="card" href="jacket.html">
+        <img src="jacket-black-front.jpg" alt="OMK Jacket">
+        <div class="p"><div class="t">OMK Wolf Jacket</div><div class="muted">₦150,000</div></div>
+      </a>
+      <a class="card" href="jeans.html">
+        <img src="jeans-black.jpg" alt="OMK Jeans">
+        <div class="p"><div class="t">OMK Wolf Jeans</div><div class="muted">₦85,000</div></div>
+      </a>
+      <a class="card" href="tshirt.html">
+        <img src="tshirt-front.png" alt="OMK Tee">
+        <div class="p"><div class="t">OMK Chrome Tee</div><div class="muted">₦45,000</div></div>
+      </a>
+    </div>
+  </section>
+</div>
+
+<!-- Sticky mobile bar -->
+<div class="sticky-bar" id="sticky">
+  <div class="row container">
+    <div>
+      <div style="font-size:12px;opacity:.8">Wolf God Hoodie</div>
+      <div class="sticky-price">₦120,000</div>
+    </div>
+    <button class="sticky-btn" id="stickyBuy">WhatsApp</button>
   </div>
 </div>
 
-<footer>© 2025 Only My Kind (OMK). All rights reserved.</footer>
+<!-- Zoom modal -->
+<div class="modal" id="zoom"><img id="zoomImg" alt="Zoom"></div>
+
+<footer>
+  <div class="container inner">© 2025 Only My Kind (OMK). All rights reserved.</div>
+</footer>
 
 <script>
-  // Simple gallery switcher (back ↔ front)
-  const main = document.getElementById('mainImg');
-  const thumbs = Array.from(document.querySelectorAll('.thumb'));
-  thumbs.forEach(t => {
-    t.addEventListener('click', () => {
-      thumbs.forEach(x => x.classList.remove('active'));
-      t.classList.add('active');
-      main.src = t.dataset.src;
-      main.alt = t.getAttribute('aria-label') + ' — OMK Wolf God Hoodie';
-    });
+// ---- Image gallery switcher
+const main = document.getElementById('mainImg');
+const thumbs = Array.from(document.querySelectorAll('.thumb'));
+thumbs.forEach(t=>{
+  t.addEventListener('click',()=>{
+    thumbs.forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    main.src = t.dataset.src;
+    main.alt = (t.getAttribute('aria-label')||'View') + ' — OMK Wolf God Hoodie';
   });
+});
+
+// ---- Zoom (tap/click main image)
+const zoom = document.getElementById('zoom');
+const zoomImg = document.getElementById('zoomImg');
+main.addEventListener('click',()=>{ zoomImg.src = main.src; zoom.classList.add('show'); });
+zoom.addEventListener('click',()=> zoom.classList.remove('show'));
+
+// ---- Size selection
+const sizeGrid = document.getElementById('sizeGrid');
+let selectedSize = 'L';
+sizeGrid.addEventListener('click',e=>{
+  const el = e.target.closest('.size'); if(!el) return;
+  sizeGrid.querySelectorAll('.size').forEach(s=>s.classList.remove('active'));
+  el.classList.add('active'); selectedSize = el.dataset.size;
+});
+
+// ---- Quantity controls
+const qty = document.getElementById('qty');
+document.getElementById('minus').onclick=()=>{ const v=Math.max(1,parseInt(qty.value||1)-1); qty.value=v; };
+document.getElementById('plus').onclick =()=>{ qty.value = parseInt(qty.value||1)+1; };
+
+// ---- WhatsApp checkout
+function waLink(){
+  const text = encodeURIComponent(`I want the OMK Wolf God Hoodie Set\nSize: ${selectedSize}\nQty: ${qty.value}\n`);
+  // Replace with your WhatsApp number
+  return `https://wa.me/2349012345678?text=${text}`;
+}
+document.getElementById('waBtn').onclick = ()=> window.location.href = waLink();
+
+// ---- Fake "Add to Cart" (toast)
+document.getElementById('addCart').onclick = ()=>{
+  alert(`Added Wolf God Hoodie — Size ${selectedSize} × ${qty.value}`);
+};
+
+// ---- Sticky mobile bar appear on scroll
+const sticky = document.getElementById('sticky');
+function onScroll(){
+  sticky.style.display = (window.scrollY > 400) ? 'block' : 'none';
+}
+document.addEventListener('scroll', onScroll);
+onScroll();
+
+// ---- Sticky bar button
+document.getElementById('stickyBuy').onclick = ()=> window.location.href = waLink();
 </script>
 
 </body>
