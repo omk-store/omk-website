@@ -231,7 +231,7 @@ function updateCart(){
     items.innerHTML+=`<div class="cart-item"><span>${it.name}</span><span>₦${it.price.toLocaleString()}</span><button onclick="removeItem(${i})">❌</button></div>`;
   });
   totalBox.textContent='Total: ₦'+total.toLocaleString();
-  count.textContent=cart.length;
+  count.textContent=cart.length?' '+cart.length:'0';
   count.style.display=cart.length?'flex':'none';
 }
 
