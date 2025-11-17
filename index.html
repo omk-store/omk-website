@@ -193,18 +193,18 @@ function toggleCart(){
   document.getElementById('cartPanel').classList.toggle('open');
 }
 
-/* ✅ ALL PRODUCTS WITH NEW 🐺⚡ BADGE */
+/* UPDATED NAMES */
 const products = [
   {name:'OMK Wolf Jacket',price:80000,img:'./images/jacket-black.jpg',link:'jacket.html',badge:'NEW 🐺⚡'},
   {name:'OMK Jeans',price:80000,img:'./images/jeans-blue.jpg',link:'jeans.html',badge:'NEW 🐺⚡'},
   {name:'OMK T-Shirt',price:45000,img:'./images/tee-white.jpg',link:'tshirt.html',badge:'NEW 🐺⚡'},
   {name:'OMK Shorts',price:50000,img:'./images/shorts-black.jpg',link:'shorts.html',badge:'NEW 🐺⚡'},
-  {name:'OMK Storm Hoodie Set',price:150000,img:'./images/omk-storm-hoodie.jpg',link:'storm-hoodie.html',badge:'NEW 🐺⚡'},
+  {name:'OMK Lighter Set',price:150000,img:'./images/omk-storm-hoodie.jpg',link:'storm-hoodie.html',badge:'NEW 🐺⚡'},
   {name:'OMK Thunder Hoodie Set',price:150000,img:'./images/omk-thunder-hoodie.jpg',link:'thunder-hoodie.html',badge:'NEW 🐺⚡'},
-  {name:'OMK Wolf Spirit Hoodie Set',price:150000,img:'./images/omk-wolf-spirit-hoodie.jpg',link:'wolf-spirit-hoodie.html',badge:'NEW 🐺⚡'}
+  {name:'OMK Voltage Signature',price:150000,img:'./images/omk-wolf-spirit-hoodie.jpg',link:'wolf-spirit-hoodie.html',badge:'NEW 🐺⚡'}
 ];
 
-/* ✅ DISPLAY PRODUCTS */
+/* DISPLAY PRODUCTS */
 const grid=document.getElementById('productGrid');
 products.forEach((p,i)=>{
   grid.innerHTML+=`
