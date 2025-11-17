@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>OMK Wolf Jacket 🐺 | Only My Kind</title>
+<title>OMK Voltage Signature ⚡ | Only My Kind</title>
 
 <style>
 :root{
@@ -139,15 +139,16 @@ footer a{font-weight:800}
 
 <main class="wrap">
   <section class="grid">
+
     <div class="card">
       <div class="gallery">
-        <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0140.jpeg" alt="OMK Wolf Jacket — Front">
-        <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0141.jpeg" alt="OMK Wolf Jacket — Back">
+        <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0140.jpeg" alt="OMK Voltage Signature — Front">
+        <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0141.jpeg" alt="OMK Voltage Signature — Back">
       </div>
     </div>
 
     <div class="card">
-      <div class="title">OMK Wolf Jacket 🐺</div>
+      <div class="title">OMK Voltage Signature ⚡</div>
       <div class="desc">Premium streetwear jacket in brown — crafted for loyalty, power, and the Only My Kind spirit. Quality fabric, detailed design, bold street statement.</div>
       <div class="price">₦80,000</div>
 
@@ -165,6 +166,7 @@ footer a{font-weight:800}
       </div>
       <p class="subtle" style="margin-top:14px">Loyalty • Truth • Legacy</p>
     </div>
+
   </section>
 </main>
 
@@ -206,7 +208,7 @@ updateCart();
 
 function addToCart(){
   const size=document.querySelector('.size.active')?.textContent||'M';
-  const item={name:`OMK Wolf Jacket (${size})`,price:80000};
+  const item={name:`OMK Voltage Signature (${size})`,price:80000};
   cart.push(item);
   localStorage.setItem('omkCart',JSON.stringify(cart));
   updateCart();
