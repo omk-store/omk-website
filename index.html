@@ -74,8 +74,6 @@ header{
 .card-body{padding:14px}
 .card h3{margin:6px 0 2px;font-size:16px;font-weight:800}
 .price{color:#444;font-weight:700;margin-bottom:10px}
-.btn{display:inline-block;background:#000;color:#fff;padding:10px 20px;border-radius:12px;font-weight:800;transition:.3s}
-.btn:hover{background:#111;transform:translateY(-2px)}
 
 /* BADGE */
 .badge{
@@ -130,9 +128,7 @@ footer .contact{margin-top:8px;font-size:14px;color:#555}
 </header>
 
 <section class="hero" id="top">
-  <!-- BIG WOLF HERO IMAGE -->
-  <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/5CB390F1-C296-439F-A95B-32679E9FE8BA.png"
-       alt="OMK Wolf – Only My Kind">
+  <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/5CB390F1-C296-439F-A95B-32679E9FE8BA.png">
   <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
 </section>
 
@@ -146,44 +142,14 @@ footer .contact{margin-top:8px;font-size:14px;color:#555}
   <a id="checkoutBtn" href="#" target="_blank" class="checkout-btn">Checkout on WhatsApp</a>
 </div>
 
-<div id="menuOverlay" class="menu-overlay">
-  <button class="close-menu" onclick="toggleMenu()">✕</button>
-  <div id="menuLinks">
-    <a href="#shop" onclick="toggleMenu()">Shop</a>
-    <a href="#about" onclick="toggleMenu()">About</a>
-    <a href="mailto:omkdrip@gmail.com" onclick="toggleMenu()">Contact</a>
-  </div>
-</div>
-<div id="backdrop" class="backdrop" onclick="toggleMenu()"></div>
-
 <section id="shop" class="section">
   <h2>Latest Drop 🐺⚡</h2>
   <div class="grid" id="productGrid"></div>
 </section>
 
-<section class="join" id="join">
-  <h3>Join the OMK Pack 🐺</h3>
-  <p>Be the first to know about drops, restocks & exclusive offers.</p>
-  <input type="email" placeholder="Enter your email" required>
-  <button>Subscribe →</button>
-  <div class="social-links">
-    <h4>Follow Us</h4>
-    <a href="https://www.instagram.com/whosomotaker" target="_blank">📸</a>
-    <a href="https://wa.me/2347038112817" target="_blank">💬</a>
-  </div>
-</section>
-
-<section id="about">
-  <h2>About OMK 🐺</h2>
-  <p>OMK – <strong>Only My Kind</strong> represents truth, loyalty, and strength.<br>
-  Born from the wolf spirit, we stand for those who move with purpose and pride.<br>
-  Every piece is crafted to embody a bold lifestyle — a blend of fashion, identity, and story.<br><br>
-  “Not for everyone. Only My Kind.”</p>
-</section>
-
 <footer>
   <p>© 2025 OMK – Only My Kind | All Rights Reserved</p>
-  <p class="contact">Contact / Report: <a href="mailto:omkdrip@gmail.com">omkdrip@gmail.com</a></p>
+  <p class="contact">Contact: <a href="mailto:omkdrip@gmail.com">omkdrip@gmail.com</a></p>
 </footer>
 
 <a class="chat-btn" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20some%20clothes" target="_blank">
@@ -191,16 +157,12 @@ footer .contact{margin-top:8px;font-size:14px;color:#555}
 </a>
 
 <script>
-function toggleMenu(){
-  document.getElementById('menuOverlay').classList.toggle('open');
-  document.getElementById('backdrop').classList.toggle('show');
-}
-function toggleCart(){
-  document.getElementById('cartPanel').classList.toggle('open');
-}
+/* MENU + CART */
+function toggleMenu(){ document.getElementById('menuOverlay').classList.toggle('open'); document.getElementById('backdrop').classList.toggle('show'); }
+function toggleCart(){ document.getElementById('cartPanel').classList.toggle('open'); }
 
-/* TWO PRODUCTS ONLY */
-const products = [
+/* PRODUCTS */
+const products=[
   {
     name:'OMK Voltage Track Set',
     price:150000,
@@ -217,57 +179,22 @@ const products = [
   }
 ];
 
-/* DISPLAY PRODUCTS */
+/* SHOW PRODUCTS – NO ADD TO CART BUTTON */
 const grid=document.getElementById('productGrid');
 products.forEach((p,i)=>{
   grid.innerHTML+=`
   <div class="card">
     ${p.badge ? `<span class="badge">${p.badge}</span>` : ''}
-    <a href="${p.link}" style="text-decoration:none;color:inherit;display:block;">
+    <a href="${p.link}">
       <div class="card-img"><img src="${p.img}" alt="${p.name}"></div>
       <div class="card-body">
         <h3>${p.name}</h3>
         <p class="price">₦${p.price.toLocaleString()}</p>
       </div>
     </a>
-    <button class="btn" onclick="addToCart(${i})">Add to Cart</button>
   </div>`;
 });
-
-let cart=[];
-function addToCart(i){
- cart.push(products[i]);
- updateCart();
- document.getElementById('cartPanel').classList.add('open');
-}
-function removeFromCart(index){
- cart.splice(index,1);
- updateCart();
-}
-function updateCart(){
- const cartItems=document.getElementById('cartItems');
- const cartTotal=document.getElementById('cartTotal');
- let total=0;
- cartItems.innerHTML='';
- cart.forEach((item,index)=>{
-   total+=item.price;
-   cartItems.innerHTML+=`
-     <div class="cart-item">
-       <span>${item.name}</span>
-       <span>₦${item.price.toLocaleString()}</span>
-       <button onclick="removeFromCart(${index})">✕</button>
-     </div>`;
- });
- cartTotal.innerText='Total: ₦'+total.toLocaleString();
- const msg=encodeURIComponent(
-   cart.map(i=>i.name+' - ₦'+i.price.toLocaleString()).join('%0A')+
-   '%0A%0ATotal: ₦'+total.toLocaleString()
- );
- document.getElementById('checkoutBtn').href=
-   `https://wa.me/2347038112817?text=${msg}`;
-}
-document.getElementById('cartBtn').addEventListener('click',toggleCart);
-document.getElementById('menuBtn').addEventListener('click',toggleMenu);
 </script>
+
 </body>
 </html>
