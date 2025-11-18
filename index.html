@@ -193,7 +193,7 @@ function toggleCart(){
   document.getElementById('cartPanel').classList.toggle('open');
 }
 
-/* ONLY T-SHIRT PRODUCT (everything else removed from list) */
+/* ONLY T-SHIRT PRODUCT */
 const products = [
   {name:'OMK T-Shirt',price:45000,img:'./images/tee-white.jpg',link:'tshirt.html',badge:'NEW 🐺⚡'}
 ];
@@ -246,5 +246,94 @@ function updateCart(){
 document.getElementById('cartBtn').addEventListener('click',toggleCart);
 document.getElementById('menuBtn').addEventListener('click',toggleMenu);
 </script>
+
+
+<!-- OMK Smart WhatsApp Chat Widget -->
+<style>
+#omkChatBtn{
+  position:fixed;bottom:20px;right:20px;background:#000;
+  color:#fff;padding:12px 18px;border-radius:30px;font-weight:700;
+  font-size:14px;cursor:pointer;z-index:999;box-shadow:0 4px 12px rgba(0,0,0,.25);
+  display:flex;align-items:center;gap:8px;
+}
+#omkChatBox{
+  position:fixed;bottom:80px;right:20px;width:260px;background:#fff;border-radius:12px;
+  box-shadow:0 6px 18px rgba(0,0,0,.25);overflow:hidden;display:none;z-index:999;
+  font-family:"Poppins",sans-serif;
+}
+#omkChatHeader{
+  background:#000;color:#fff;padding:10px;font-weight:700;text-align:center;
+}
+.omk-msg{
+  padding:10px;margin:6px;border-radius:10px;font-size:14px;max-width:90%;
+}
+.bot{background:#f2f2f2;margin-left:8px;}
+.user{background:#ff2d55;color:#fff;margin-left:auto;margin-right:8px;}
+#omkInputArea{display:flex;border-top:1px solid #eee;}
+#omkInput{
+  flex:1;padding:8px;border:none;outline:none;font-size:14px;
+}
+#omkSendBtn{
+  padding:8px 12px;background:#ff2d55;color:#fff;cursor:pointer;font-weight:700;border:none;
+}
+</style>
+
+<div id="omkChatBtn">💬 Chat</div>
+
+<div id="omkChatBox">
+  <div id="omkChatHeader">OMK Support 🐺</div>
+  <div id="omkChatMessages"></div>
+  <div id="omkInputArea">
+    <input id="omkInput" type="text" placeholder="Type here..." />
+    <button id="omkSendBtn">➤</button>
+  </div>
+</div>
+
+<script>
+const chatBtn = document.getElementById("omkChatBtn");
+const chatBox = document.getElementById("omkChatBox");
+const messagesArea = document.getElementById("omkChatMessages");
+const input = document.getElementById("omkInput");
+const sendBtn = document.getElementById("omkSendBtn");
+
+chatBtn.onclick = () => {
+  chatBox.style.display = "block";
+  chatBtn.style.display = "none";
+  botMsg("Yo fam! Welcome to OMK 🔥🐺");
+  setTimeout(()=>{ botMsg("How can we assist you today?"); }, 1500);
+};
+
+function botMsg(text){
+  let div = document.createElement("div");
+  div.className="omk-msg bot";
+  div.innerText=text;
+  messagesArea.appendChild(div);
+  messagesArea.scrollTop=messagesArea.scrollHeight;
+}
+
+function userMsg(text){
+  let div=document.createElement("div");
+  div.className="omk-msg user";
+  div.innerText=text;
+  messagesArea.appendChild(div);
+  messagesArea.scrollTop=messagesArea.scrollHeight;
+}
+
+sendBtn.onclick = sendToWhatsApp;
+input.addEventListener("keypress", e=>{ if(e.key==="Enter") sendToWhatsApp(); });
+
+function sendToWhatsApp(){
+  const text=input.value.trim();
+  if(text==="") return;
+
+  userMsg(text);
+  input.value="";
+  
+  setTimeout(()=>{
+    window.location.href=`https://wa.me/2347038112817?text=${encodeURIComponent(text)}`;
+  }, 400);
+}
+</script>
+
 </body>
 </html>
