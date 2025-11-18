@@ -66,25 +66,18 @@ header{
 .card{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#fff;text-align:center;
   box-shadow:0 4px 10px rgba(0,0,0,.05);transition:transform .25s,box-shadow .25s;cursor:pointer;position:relative;}
 .card:hover{transform:translateY(-4px);box-shadow:0 8px 22px rgba(0,0,0,.08)}
-.card-img img{width:100%;height:300px;object-fit:cover;border-radius:10px;}
+.card-img{
+  height:300px;display:flex;align-items:center;justify-content:center;
+  background:#f5f5f5;color:#777;font-weight:600;font-size:14px;
+}
 .card-body{padding:14px}
 .card h3{margin:6px 0 2px;font-size:16px;font-weight:800}
 .price{color:#444;font-weight:700;margin-bottom:10px}
 .btn{display:inline-block;background:#000;color:#fff;padding:10px 20px;border-radius:12px;font-weight:800;transition:.3s}
 .btn:hover{background:#111;transform:translateY(-2px)}
-
-/* NEW BADGE */
 .badge {
-  position:absolute;
-  top:10px;
-  left:10px;
-  background:var(--accent);
-  color:#fff;
-  font-size:12px;
-  font-weight:800;
-  padding:6px 10px;
-  border-radius:20px;
-  box-shadow:0 4px 10px rgba(0,0,0,.2);
+  position:absolute;top:10px;left:10px;background:var(--accent);color:#fff;
+  font-size:12px;font-weight:800;padding:6px 10px;border-radius:20px;
 }
 
 /* JOIN SECTION */
@@ -95,8 +88,6 @@ header{
 .join input{width:min(520px,80%);padding:12px 14px;border:1px solid var(--border);border-radius:10px;font-size:14px;}
 .join button{padding:12px 16px;border-radius:10px;background:#000;color:#fff;font-weight:800;border:0;cursor:pointer;margin-left:8px;}
 .join button:hover{background:#111}
-.social-links{margin-top:30px;}
-.social-links a{font-size:26px;margin:0 10px;text-decoration:none;}
 
 /* ABOUT */
 #about{background:#111;color:#fff;text-align:center;padding:80px 20px;margin-top:40px}
@@ -107,7 +98,7 @@ header{
 footer{border-top:1px solid var(--border);padding:22px 0;text-align:center;color:#666;font-weight:600}
 footer .contact{margin-top:8px;font-size:14px;color:#555}
 
-/* CHAT BUTTON */
+/* CHAT ICON */
 .chat-btn{position:fixed;right:18px;bottom:18px;z-index:70;background:#fff;border:1px solid var(--border);
   border-radius:40px;padding:10px 16px;font-weight:900;display:flex;align-items:center;gap:8px;
   box-shadow:0 8px 20px rgba(0,0,0,.12);transition:.25s}
@@ -155,7 +146,7 @@ footer .contact{margin-top:8px;font-size:14px;color:#555}
   <div class="grid" id="productGrid"></div>
 </section>
 
-<section class="join" id="join">
+<section class="join">
   <h3>Join the OMK Pack 🐺</h3>
   <p>Be the first to know about drops, restocks & exclusive offers.</p>
   <input type="email" placeholder="Enter your email" required>
@@ -180,55 +171,9 @@ footer .contact{margin-top:8px;font-size:14px;color:#555}
   <p class="contact">Contact / Report: <a href="mailto:omkdrip@gmail.com">omkdrip@gmail.com</a></p>
 </footer>
 
-<!-- SMART WHATSAPP CHAT BUTTON -->
 <a class="chat-btn" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20some%20clothes" target="_blank">
   <span class="chat-dot"></span> Chat with OMK
 </a>
-
-<!-- ================= PREMIUM SUPPORT CHAT ================= -->
-
-<style>
-#omkChatOpen{
-  position:fixed;bottom:90px;right:18px;background:#000;
-  color:#fff;padding:14px 22px;border-radius:40px;font-weight:700;
-  font-size:15px;cursor:pointer;z-index:999;box-shadow:0 8px 22px rgba(0,0,0,.30);
-  display:flex;align-items:center;gap:10px;
-}
-#omkChatBox{
-  position:fixed;bottom:170px;right:18px;width:360px;height:470px;
-  background:#fff;border-radius:14px;overflow:hidden;display:none;
-  box-shadow:0 12px 30px rgba(0,0,0,.28);z-index:999;
-  font-family:'Poppins',sans-serif;display:flex;flex-direction:column;
-}
-#omkChatHeader{
-  background:#111;color:#fff;padding:20px 18px;
-}
-#omkChatHeader h2{margin:0;font-size:20px;font-weight:800;}
-#omkChatHeader p{margin-top:5px;font-size:14px;color:#dcdcdc;}
-#omkChatMessages{flex:1;overflow-y:auto;padding:15px;background:#f7f7f7;}
-.omk-msg{padding:14px 16px;margin:8px 0;border-radius:14px;font-size:15px;max-width:92%;line-height:1.4;}
-.bot{background:#fff;border:1px solid #e5e5e5;}
-.user{background:#ff2d55;color:#fff;margin-left:auto;}
-#omkChatInputSection{border-top:1px solid #e5e5e5;background:#fff;padding:10px;display:flex;gap:8px;}
-#omkChatInput{flex:1;border:none;background:#f3f3f3;border-radius:10px;padding:12px 14px;
-  font-size:15px;outline:none;}
-#omkChatSend{background:#ff2d55;color:#fff;font-weight:800;border:none;border-radius:10px;
-  padding:0 18px;font-size:18px;cursor:pointer;}
-</style>
-
-<div id="omkChatOpen">💬 Support</div>
-
-<div id="omkChatBox">
-  <div id="omkChatHeader">
-    <h2>Hi there 👋</h2>
-    <p>Welcome to OMK – we reply in minutes</p>
-  </div>
-  <div id="omkChatMessages"></div>
-  <div id="omkChatInputSection">
-    <input id="omkChatInput" type="text" placeholder="Type your message..." />
-    <button id="omkChatSend">➤</button>
-  </div>
-</div>
 
 <script>
 function toggleMenu(){
@@ -239,28 +184,36 @@ function toggleCart(){
   document.getElementById('cartPanel').classList.toggle('open');
 }
 
-/* ONLY T-SHIRT PRODUCT */
+/* PRODUCT DATABASE: 5 ITEMS */
 const products = [
-  {name:'OMK T-Shirt',price:45000,img:'./images/tee-white.jpg',link:'tshirt.html',badge:'NEW 🐺⚡'}
+  {name:'OMK T-Shirt',price:45000,img:'./images/tee-white.jpg',link:'tshirt.html',badge:'NEW 🐺⚡'},
+  {name:'OMK Jacket',price:80000,img:null,link:'jacket.html',badge:'NEW 🐺⚡'},
+  {name:'OMK Jean',price:80000,img:null,link:'jeans.html',badge:'NEW 🐺⚡'},
+  {name:'OMK Thunder Hoodie',price:150000,img:null,link:'thunder-hoodie.html',badge:'NEW 🐺⚡'},
+  {name:'OMK Blue Track Set',price:150000,img:null,link:'blue-track.html',badge:'NEW 🐺⚡'}
 ];
 
 /* DISPLAY PRODUCTS */
 const grid=document.getElementById('productGrid');
 products.forEach((p,i)=>{
   grid.innerHTML+=`
-  <div class="card">
+  <div class="card" onclick="openProduct('${p.link}')">
     ${p.badge ? `<span class="badge">${p.badge}</span>` : ''}
-    <a href="${p.link}" style="text-decoration:none;color:inherit;display:block;">
-      <div class="card-img"><img src="${p.img}" alt="${p.name}"></div>
+      <div class="card-img">
+        ${p.img ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">` : `Coming Soon…`}
+      </div>
       <div class="card-body">
         <h3>${p.name}</h3>
         <p class="price">₦${p.price.toLocaleString()}</p>
       </div>
-    </a>
-    <button class="btn" onclick="addToCart(${i})">Add to Cart</button>
   </div>`;
 });
 
+function openProduct(link){
+  window.location.href = link;
+}
+
+/* CART SYSTEM */
 let cart=[];
 function addToCart(i){
  cart.push(products[i]);
@@ -289,36 +242,10 @@ function updateCart(){
  const msg=encodeURIComponent(cart.map(i=>i.name+' - ₦'+i.price.toLocaleString()).join('%0A')+'%0A%0ATotal: ₦'+total.toLocaleString());
  document.getElementById('checkoutBtn').href=`https://wa.me/2347038112817?text=${msg}`;
 }
+
 document.getElementById('cartBtn').addEventListener('click',toggleCart);
 document.getElementById('menuBtn').addEventListener('click',toggleMenu);
 
-/* PREMIUM CHAT SCRIPT */
-const cOpen=document.getElementById("omkChatOpen");
-const cBox=document.getElementById("omkChatBox");
-const cMsg=document.getElementById("omkChatMessages");
-const cInput=document.getElementById("omkChatInput");
-const cSend=document.getElementById("omkChatSend");
-
-cOpen.onclick = () => {
-  cBox.style.display = "flex";
-  cOpen.style.display = "none";
-  bot("Welcome to OMK Support 🐺🔥");
-  setTimeout(()=> bot("How may we help you today?"), 900);
-};
-function bot(t){let m=document.createElement("div");m.className="omk-msg bot";m.innerText=t;cMsg.appendChild(m);cMsg.scrollTop=cMsg.scrollHeight;}
-function user(t){let m=document.createElement("div");m.className="omk-msg user";m.innerText=t;cMsg.appendChild(m);cMsg.scrollTop=cMsg.scrollHeight;}
-
-cSend.onclick = goWA;
-cInput.addEventListener("keypress",e=>{if(e.key==="Enter")goWA();});
-
-function goWA(){
-  const txt=cInput.value.trim();
-  if(!txt) return;
-  user(txt);
-  cInput.value="";
-  setTimeout(()=>{window.location.href=`https://wa.me/2347038112817?text=${encodeURIComponent(txt)}`;},700);
-}
 </script>
-
 </body>
 </html>
