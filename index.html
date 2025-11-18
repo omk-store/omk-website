@@ -73,21 +73,8 @@ header{
 .btn{display:inline-block;background:#000;color:#fff;padding:10px 20px;border-radius:12px;font-weight:800;transition:.3s}
 .btn:hover{background:#111;transform:translateY(-2px)}
 
-/* placeholder for Coming Soon boxes */
-.card-img.placeholder{
-  height:300px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#f5f5f5;
-  color:#777;
-  font-weight:600;
-  font-size:14px;
-  border-radius:10px;
-}
-
 /* NEW BADGE */
-.badge {
+.badge{
   position:absolute;
   top:10px;
   left:10px;
@@ -120,7 +107,7 @@ header{
 footer{border-top:1px solid var(--border);padding:22px 0;text-align:center;color:#666;font-weight:600}
 footer .contact{margin-top:8px;font-size:14px;color:#555}
 
-/* WHATSAPP CHAT BUTTON ONLY */
+/* WHATSAPP CHAT BUTTON */
 .chat-btn{position:fixed;right:18px;bottom:18px;z-index:70;background:#fff;border:1px solid var(--border);
   border-radius:40px;padding:10px 16px;font-weight:900;display:flex;align-items:center;gap:8px;
   box-shadow:0 8px 20px rgba(0,0,0,.12);transition:.25s}
@@ -139,7 +126,7 @@ footer .contact{margin-top:8px;font-size:14px;color:#555}
 </header>
 
 <section class="hero" id="top">
-  <img src="./images/jacket-black.jpg">
+  <img src="jacket-black.jpg">
   <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
 </section>
 
@@ -193,7 +180,6 @@ footer .contact{margin-top:8px;font-size:14px;color:#555}
   <p class="contact">Contact / Report: <a href="mailto:omkdrip@gmail.com">omkdrip@gmail.com</a></p>
 </footer>
 
-<!-- ONLY WhatsApp button, no live chat widget -->
 <a class="chat-btn" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20some%20clothes" target="_blank">
   <span class="chat-dot"></span> Chat with OMK
 </a>
@@ -207,24 +193,22 @@ function toggleCart(){
   document.getElementById('cartPanel').classList.toggle('open');
 }
 
-/* BACKUP of old list (not used, just saved) */
-const allProductsBackup = [
-  {name:'OMK Wolf Jacket',price:80000,img:'./images/jacket-black.jpg',link:'jacket.html',badge:'NEW 🐺⚡'},
-  {name:'OMK Jeans',price:80000,img:'./images/jeans-blue.jpg',link:'jeans.html',badge:'NEW 🐺⚡'},
-  {name:'OMK T-Shirt',price:45000,img:'./images/tee-white.jpg',link:'tshirt.html',badge:'NEW 🐺⚡'},
-  {name:'OMK Shorts',price:50000,img:'./images/shorts-black.jpg',link:'shorts.html',badge:'NEW 🐺⚡'},
-  {name:'OMK Lighter Set',price:150000,img:'./images/omk-storm-hoodie.jpg',link:'storm-hoodie.html',badge:'NEW 🐺⚡'},
-  {name:'OMK Thunder Hoodie Set',price:150000,img:'./images/omk-thunder-hoodie.jpg',link:'thunder-hoodie.html',badge:'NEW 🐺⚡'},
-  {name:'OMK Voltage Signature',price:150000,img:'./images/omk-wolf-spirit-hoodie.jpg',link:'wolf-spirit-hoodie.html',badge:'NEW 🐺⚡'}
-];
-
-/* ACTIVE products now – 5 boxes */
+/* ONLY TWO PRODUCTS */
 const products = [
-  {name:'OMK T-Shirt',price:45000,img:'./images/tee-white.jpg',link:'tshirt.html',badge:'NEW 🐺⚡'},
-  {name:'OMK Jacket',price:80000,img:null,link:'jacket.html',badge:'NEW 🐺⚡'},
-  {name:'OMK Jean',price:80000,img:null,link:'jeans.html',badge:'NEW 🐺⚡'},
-  {name:'OMK Thunder Hoodie',price:150000,img:null,link:'thunder-hoodie.html',badge:'NEW 🐺⚡'},
-  {name:'OMK Blue Track Set',price:150000,img:null,link:'blue-track.html',badge:'NEW 🐺⚡'}
+  {
+    name:'OMK Voltage Track Set',
+    price:150000,
+    img:'omk-voltage-track.jpg',   // upload this image to the repo root
+    link:'voltage-track-set.html',
+    badge:'NEW 🐺⚡'
+  },
+  {
+    name:'OMK T-Shirt',
+    price:60000,
+    img:'tee-white.jpg',
+    link:'tshirt.html',
+    badge:'NEW 🐺⚡'
+  }
 ];
 
 /* DISPLAY PRODUCTS */
@@ -234,11 +218,7 @@ products.forEach((p,i)=>{
   <div class="card">
     ${p.badge ? `<span class="badge">${p.badge}</span>` : ''}
     <a href="${p.link}" style="text-decoration:none;color:inherit;display:block;">
-      ${
-        p.img
-        ? `<div class="card-img"><img src="${p.img}" alt="${p.name}"></div>`
-        : `<div class="card-img placeholder">Coming Soon…</div>`
-      }
+      <div class="card-img"><img src="${p.img}" alt="${p.name}"></div>
       <div class="card-body">
         <h3>${p.name}</h3>
         <p class="price">₦${p.price.toLocaleString()}</p>
@@ -274,12 +254,11 @@ function updateCart(){
  });
  cartTotal.innerText='Total: ₦'+total.toLocaleString();
  const msg=encodeURIComponent(
-   cart.map(i=>i.name+' - ₦'+i.price.toLocaleString()).join('%0A')
-   + '%0A%0ATotal: ₦' + total.toLocaleString()
+   cart.map(i=>i.name+' - ₦'+i.price.toLocaleString()).join('%0A')+
+   '%0A%0ATotal: ₦'+total.toLocaleString()
  );
  document.getElementById('checkoutBtn').href=`https://wa.me/2347038112817?text=${msg}`;
 }
-
 document.getElementById('cartBtn').addEventListener('click',toggleCart);
 document.getElementById('menuBtn').addEventListener('click',toggleMenu);
 </script>
