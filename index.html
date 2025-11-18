@@ -73,7 +73,7 @@ header{
 .btn{display:inline-block;background:#000;color:#fff;padding:10px 20px;border-radius:12px;font-weight:800;transition:.3s}
 .btn:hover{background:#111;transform:translateY(-2px)}
 
-/* NEW BADGE */
+/* BADGE */
 .badge{
   position:absolute;
   top:10px;
@@ -87,7 +87,7 @@ header{
   box-shadow:0 4px 10px rgba(0,0,0,.2);
 }
 
-/* JOIN SECTION */
+/* JOIN */
 .join{width:min(900px,92%);margin:60px auto;background:#f9f9f9;border:1px solid var(--border);
   border-radius:14px;padding:40px 20px;text-align:center;}
 .join h3{font-size:22px;font-weight:800;margin-bottom:10px;}
@@ -107,7 +107,7 @@ header{
 footer{border-top:1px solid var(--border);padding:22px 0;text-align:center;color:#666;font-weight:600}
 footer .contact{margin-top:8px;font-size:14px;color:#555}
 
-/* WHATSAPP CHAT BUTTON */
+/* WHATSAPP BUTTON */
 .chat-btn{position:fixed;right:18px;bottom:18px;z-index:70;background:#fff;border:1px solid var(--border);
   border-radius:40px;padding:10px 16px;font-weight:900;display:flex;align-items:center;gap:8px;
   box-shadow:0 8px 20px rgba(0,0,0,.12);transition:.25s}
@@ -193,12 +193,12 @@ function toggleCart(){
   document.getElementById('cartPanel').classList.toggle('open');
 }
 
-/* ONLY TWO PRODUCTS */
+/* TWO PRODUCTS ONLY */
 const products = [
   {
     name:'OMK Voltage Track Set',
     price:150000,
-    img:'omk-voltage-track.jpg',   // upload this image to the repo root
+    img:'omk-voltage-track.jpg',
     link:'voltage-track-set.html',
     badge:'NEW 🐺⚡'
   },
@@ -257,7 +257,8 @@ function updateCart(){
    cart.map(i=>i.name+' - ₦'+i.price.toLocaleString()).join('%0A')+
    '%0A%0ATotal: ₦'+total.toLocaleString()
  );
- document.getElementById('checkoutBtn').href=`https://wa.me/2347038112817?text=${msg}`;
+ document.getElementById('checkoutBtn').href=
+   `https://wa.me/2347038112817?text=${msg}`;
 }
 document.getElementById('cartBtn').addEventListener('click',toggleCart);
 document.getElementById('menuBtn').addEventListener('click',toggleMenu);
