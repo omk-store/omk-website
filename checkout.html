@@ -54,6 +54,7 @@ input, textarea {
   font-family:inherit;
 }
 textarea {resize:none;}
+
 .payment-box {
   background:#fafafa;
   border:1px dashed var(--accent);
@@ -66,6 +67,14 @@ textarea {resize:none;}
   font-size:18px;
   color:var(--accent);
 }
+
+.total-amount {
+  font-size:20px;
+  font-weight:900;
+  margin-top:10px;
+  color:#111;
+}
+
 .btn {
   display:block;
   width:100%;
@@ -110,6 +119,7 @@ footer {
 <main>
 <section>
   <form id="checkoutForm">
+
     <label>Full Name</label>
     <input type="text" id="name" placeholder="Enter your full name" required>
 
@@ -120,14 +130,19 @@ footer {
     <input type="tel" id="phone" placeholder="Enter your phone number" required>
 
     <div class="payment-box">
-      <p><strong>Pay to Opay:</strong><br>
+      <p><strong>Pay to Chipper:</strong><br>
       Ale Omorogbe Kelvin<br>
-      <b>8118618722</b><br>
+      <b id="accountNum">9878935099</b><br>
       <span style="font-size:13px;color:#555">After payment, take a screenshot 📸</span></p>
+
+      <div class="total-amount">
+        Total to Pay: <span id="totalPrice">₦0</span>
+      </div>
     </div>
 
     <button type="button" class="btn pay" onclick="copyAccount()">💸 Copy Account Number</button>
     <a id="sendBtn" class="btn whatsapp" target="_blank">📩 Send Screenshot on WhatsApp</a>
+
   </form>
 </section>
 </main>
@@ -135,23 +150,41 @@ footer {
 <footer>© 2025 OMK – Only My Kind. Loyalty • Truth • Legacy 🐺</footer>
 
 <script>
+// COPY ACCOUNT NUMBER
 function copyAccount(){
-  navigator.clipboard.writeText("8118618722").then(()=>{
-    alert("✅ Opay Account (8118618722) copied!");
+  navigator.clipboard.writeText("9878935099").then(()=>{
+    alert("✅ Chipper Account (9878935099) copied!");
   });
 }
 
+// LOAD TOTAL PRICE FROM CART (localStorage)
+let cart = JSON.parse(localStorage.getItem('omkCart') || '[]');
+let total = cart.reduce((sum, item)=> sum + item.price, 0);
+
+document.getElementById("totalPrice").innerText = "₦" + total.toLocaleString();
+
+// SEND WHATSAPP MESSAGE
 document.getElementById("sendBtn").addEventListener("click", ()=>{
   const name=document.getElementById("name").value.trim();
   const address=document.getElementById("address").value.trim();
   const phone=document.getElementById("phone").value.trim();
+
   if(!name||!address||!phone){
     alert("Please fill in all delivery details first.");
     return;
   }
-  const msg=`Hello OMK,%0AI'm ${name}.%0AHere are my delivery details:%0A📍 Address: ${address}%0A📞 Phone: ${phone}%0AI've made the payment and attached a screenshot below.`;
-  window.open(`https://wa.me/2347038112817?text=${msg}`,'_blank');
+
+  const msg =
+    `Hello OMK,%0A` +
+    `I am ${name}.%0A` +
+    `📍 Address: ${address}%0A` +
+    `📞 Phone: ${phone}%0A%0A` +
+    `🧾 Total Payment: ₦${total.toLocaleString()}%0A` +
+    `I have made the payment and attached the screenshot below.%0A`;
+
+  window.open(`https://wa.me/2347038112817?text=${msg}`, '_blank');
 });
 </script>
+
 </body>
 </html>
