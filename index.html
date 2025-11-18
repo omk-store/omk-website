@@ -75,7 +75,7 @@ header{
 
 /* BADGE */
 .badge{
-  position:absolute;top:10px;left:10px;background:var(--accent);
+  position:absolute;top:10px;left:10px;background:#000;
   color:#fff;font-size:12px;font-weight:800;padding:6px 10px;border-radius:20px;
   box-shadow:0 4px 10px rgba(0,0,0,.2);
 }
@@ -83,6 +83,7 @@ header{
 </head>
 
 <body>
+
 <header>
   <div class="brand"><a href="#top" class="logo">OMK</a></div>
   <div class="header-icons">
@@ -92,7 +93,7 @@ header{
 </header>
 
 <section class="hero" id="top">
-  <img src="./images/jacket-black.jpg">
+  <img src="./images/new-wave-jacket.jpg">
   <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
 </section>
 
@@ -102,38 +103,34 @@ header{
 </section>
 
 <script>
-/* ALL HIDDEN AND SAVED (NOT DELETED) */
+/* Archived (hidden) previous boxes */
 const archivedProducts = [
- {name:'OMK Wolf Jacket',price:80000,img:'./images/jacket-black.jpg',link:'jacket.html'},
- {name:'OMK Jeans',price:80000,img:'./images/jeans-blue.jpg',link:'jeans.html'},
- {name:'OMK Thunder Hoodie Set',price:150000,img:'./images/omk-thunder-hoodie.jpg',link:'thunder-hoodie.html'},
- {name:'OMK Blue-Line Track Set',price:150000,img:'./images/omk-storm-hoodie.jpg',link:'storm-hoodie.html'}
+ {name:'OMK Wolf Jacket',price:80000,img:'./images/jacket-black.jpg'},
+ {name:'OMK Jeans',price:80000,img:'./images/jeans-blue.jpg'}
 ];
 
-/* VISIBLE = JUST ONE + TWO NEW EMPTY */
+/* Visible Homepage Products */
 const products = [
-  /** Original T-shirt Box (Visible) **/
-  {name:'OMK T-Shirt',price:45000,img:'./images/tee-white.jpg',link:'tshirt.html',badge:'NEW 🐺⚡'},
+  {name:'OMK T-Shirt',price:45000,img:'./images/tee-white.jpg',badge:'NEW 🐺⚡'},
 
-  /** NEW PRODUCT BOX #1 **/
-  {name:'COMING SOON PRODUCT A',price:0,img:'./images/placeholder.jpg',link:'#',badge:'COMING SOON'},
+  {name:'OMK Wave Jacket — BlackNight Edition',price:80000,img:'./images/new-wave-jacket.jpg',badge:'NEW 🖤🌊'},
 
-  /** NEW PRODUCT BOX #2 **/
-  {name:'COMING SOON PRODUCT B',price:0,img:'./images/placeholder.jpg',link:'#',badge:'COMING SOON'}
+  {name:'OMK Wave Pants — BlackNight Edition',price:80000,img:'./images/new-wave-pants.jpg',badge:'NEW 🖤🌊'}
 ];
 
-/* RENDER BOXES */
+/* DISPLAY */
 const grid=document.getElementById('productGrid');
-products.forEach(p=>{
-  grid.innerHTML+=`
-  <div class="card">
-    ${p.badge?`<span class="badge">${p.badge}</span>`:''}
-    <div class="card-img"><img src="${p.img}" alt="${p.name}"></div>
-    <div class="card-body">
-      <h3>${p.name}</h3>
-      <p class="price">${p.price>0?`₦${p.price.toLocaleString()}`:'...'}</p>
-    </div>
-  </div>`;
+products.forEach((p,i)=>{
+grid.innerHTML+=`
+<div class="card">
+${p.badge?`<span class="badge">${p.badge}</span>`:''}
+<div class="card-img"><img src="${p.img}" alt="${p.name}"></div>
+<div class="card-body">
+<h3>${p.name}</h3>
+<p class="price">₦${p.price.toLocaleString()}</p>
+<button class="btn">Add to Cart</button>
+</div>
+</div>`;
 });
 </script>
 
