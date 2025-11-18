@@ -120,7 +120,7 @@ header{
 footer{border-top:1px solid var(--border);padding:22px 0;text-align:center;color:#666;font-weight:600}
 footer .contact{margin-top:8px;font-size:14px;color:#555}
 
-/* WHATSAPP CHAT BUTTON */
+/* WHATSAPP CHAT BUTTON ONLY */
 .chat-btn{position:fixed;right:18px;bottom:18px;z-index:70;background:#fff;border:1px solid var(--border);
   border-radius:40px;padding:10px 16px;font-weight:900;display:flex;align-items:center;gap:8px;
   box-shadow:0 8px 20px rgba(0,0,0,.12);transition:.25s}
@@ -193,7 +193,7 @@ footer .contact{margin-top:8px;font-size:14px;color:#555}
   <p class="contact">Contact / Report: <a href="mailto:omkdrip@gmail.com">omkdrip@gmail.com</a></p>
 </footer>
 
-<!-- Simple WhatsApp entry (no live chat, just direct) -->
+<!-- ONLY WhatsApp button, no live chat widget -->
 <a class="chat-btn" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20some%20clothes" target="_blank">
   <span class="chat-dot"></span> Chat with OMK
 </a>
@@ -207,7 +207,7 @@ function toggleCart(){
   document.getElementById('cartPanel').classList.toggle('open');
 }
 
-/* 🔒 BACKUP OF OLD FULL PRODUCT LIST (HIDDEN, NOT USED) */
+/* BACKUP of old list (not used, just saved) */
 const allProductsBackup = [
   {name:'OMK Wolf Jacket',price:80000,img:'./images/jacket-black.jpg',link:'jacket.html',badge:'NEW 🐺⚡'},
   {name:'OMK Jeans',price:80000,img:'./images/jeans-blue.jpg',link:'jeans.html',badge:'NEW 🐺⚡'},
@@ -218,7 +218,7 @@ const allProductsBackup = [
   {name:'OMK Voltage Signature',price:150000,img:'./images/omk-wolf-spirit-hoodie.jpg',link:'wolf-spirit-hoodie.html',badge:'NEW 🐺⚡'}
 ];
 
-/* ✅ VISIBLE PRODUCTS NOW (5 BOXES) */
+/* ACTIVE products now – 5 boxes */
 const products = [
   {name:'OMK T-Shirt',price:45000,img:'./images/tee-white.jpg',link:'tshirt.html',badge:'NEW 🐺⚡'},
   {name:'OMK Jacket',price:80000,img:null,link:'jacket.html',badge:'NEW 🐺⚡'},
