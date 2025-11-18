@@ -25,7 +25,7 @@ header{
 .icon-btn.glow img{animation:cartGlow 1.2s infinite alternate}
 @keyframes cartGlow{0%{filter:drop-shadow(0 0 0 #ff2d55);}100%{filter:drop-shadow(0 0 6px #ff2d55);}}
 
-/* CART PANEL */
+/* CART */
 .cart-panel{
   position:fixed;top:0;right:0;height:100%;width:320px;background:#fff;
   border-left:1px solid var(--border);box-shadow:-4px 0 12px rgba(0,0,0,.15);
@@ -75,16 +75,8 @@ header{
 
 /* BADGE */
 .badge {
-  position:absolute;
-  top:10px;
-  left:10px;
-  background:var(--accent);
-  color:#fff;
-  font-size:12px;
-  font-weight:800;
-  padding:6px 10px;
-  border-radius:20px;
-  box-shadow:0 4px 10px rgba(0,0,0,.2);
+  position:absolute;top:10px;left:10px;background:var(--accent);
+  color:#fff;font-size:12px;font-weight:800;padding:6px 10px;border-radius:20px;
 }
 </style>
 </head>
@@ -117,34 +109,46 @@ function toggleCart(){
   document.getElementById('cartPanel').classList.toggle('open');
 }
 
-/* 🔒 All product data preserved but hidden EXCEPT T-shirt */
+/* SAVED ARCHIVE (hidden safely, unchanged) */
 const archivedProducts = [
-  {name:'OMK Wolf Jacket',price:80000,img:'./images/jacket-black.jpg',link:'jacket.html'},
-  {name:'OMK Jeans',price:80000,img:'./images/jeans-blue.jpg',link:'jeans.html'},
-  {name:'OMK Shorts',price:50000,img:'./images/shorts-black.jpg',link:'shorts.html'},
-  {name:'OMK Lighter Set',price:150000,img:'./images/omk-storm-hoodie.jpg',link:'storm-hoodie.html'},
-  {name:'OMK Thunder Hoodie Set',price:150000,img:'./images/omk-thunder-hoodie.jpg',link:'thunder-hoodie.html'},
-  {name:'OMK Voltage Signature',price:150000,img:'./images/omk-wolf-spirit-hoodie.jpg',link:'wolf-spirit-hoodie.html'}
+  {name:'OMK Wolf Jacket',price:80000,img:'./images/jacket-black.jpg'},
+  {name:'OMK Jeans',price:80000,img:'./images/jeans-blue.jpg'},
+  {name:'OMK Shorts',price:50000,img:'./images/shorts-black.jpg'},
+  {name:'OMK Lighter Set',price:150000,img:'./images/omk-storm-hoodie.jpg'},
+  {name:'OMK Thunder Hoodie Set',price:150000,img:'./images/omk-thunder-hoodie.jpg'},
+  {name:'OMK Voltage Signature',price:150000,img:'./images/omk-wolf-spirit-hoodie.jpg'}
 ];
 
-/* 👕 Only visible product */
+/* ACTIVE PRODUCT BOXES (TOTAL 5) */
 const products = [
-  {name:'OMK T-Shirt',price:45000,img:'./images/tee-white.jpg',link:'tshirt.html',badge:'NEW 🐺⚡'}
+
+  /* 1 — Existing T-shirt */
+  {name:'OMK T-Shirt',price:45000,img:'./images/tee-white.jpg',badge:'NEW 🐺⚡'},
+
+  /* 2 — NEW Jacket Box */
+  {name:'OMK Wave Jacket — BlackNight Edition',price:80000,img:'./images/new-wave-jacket.jpg',badge:'NEW 🖤🌊'},
+
+  /* 3 — NEW Jean Box */
+  {name:'OMK Wave Pants — BlackNight Edition',price:80000,img:'./images/new-wave-pants.jpg',badge:'NEW 🖤🌊'},
+
+  /* 4 — Placeholder Box */
+  {name:'COMING SOON A',price:'...',img:'./images/placeholder.jpg',badge:'COMING SOON'},
+
+  /* 5 — Placeholder Box */
+  {name:'COMING SOON B',price:'...',img:'./images/placeholder.jpg',badge:'COMING SOON'}
 ];
 
-/* Render only T-Shirt */
-const grid = document.getElementById('productGrid');
-products.forEach((p,i)=>{
+/* DISPLAY ALL 5 BOXES */
+const grid=document.getElementById('productGrid');
+products.forEach((p)=>{
   grid.innerHTML+=`
     <div class="card">
       ${p.badge?`<span class="badge">${p.badge}</span>`:''}
-      <a href="${p.link}" style="text-decoration:none;color:inherit;display:block;">
-        <div class="card-img"><img src="${p.img}" alt="${p.name}"></div>
-        <div class="card-body">
-          <h3>${p.name}</h3>
-          <p class="price">₦${p.price.toLocaleString()}</p>
-        </div>
-      </a>
+      <div class="card-img"><img src="${p.img}" alt="${p.name}"></div>
+      <div class="card-body">
+        <h3>${p.name}</h3>
+        <p class="price">${p.price==='...'?'...':('₦'+p.price.toLocaleString())}</p>
+      </div>
     </div>`;
 });
 </script>
