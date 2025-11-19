@@ -101,18 +101,35 @@ footer{text-align:center;padding:20px;color:#666}
 
 /* 🎵 MUSIC PANEL */
 .music-panel{
-  position:fixed;left:18px;bottom:80px;width:270px;background:#fff;border-radius:14px;
+  position:fixed;left:18px;bottom:80px;width:260px;background:#fff;border-radius:14px;
   box-shadow:0 10px 30px rgba(0,0,0,.25);padding:16px;z-index:95;display:none;
 }
 .music-title{font-weight:800;margin-bottom:6px;font-size:14px}
 .music-small{font-size:12px;color:#555;margin-bottom:10px}
+.music-controls{display:flex;justify-content:space-between;margin-top:10px}
+.music-controls button{
+  padding:6px 12px;border-radius:20px;background:#000;color:#fff;font-weight:700;font-size:12px;
+}
 .music-close{position:absolute;right:10px;top:10px;background:none;border:none;font-size:18px;cursor:pointer}
 
-iframe.spotify-player{
-  width:100%;
-  height:152px;
-  border-radius:12px;
-  border:none;
+/* INSTAGRAM BLOCK */
+.ig-box{
+  width:min(900px,92%);
+  margin:40px auto;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:20px;
+  text-align:center;
+  box-shadow:0 6px 20px rgba(0,0,0,0.08);
+}
+.ig-box img{
+  width:90px;height:90px;border-radius:50%;margin-bottom:10px;
+}
+.ig-box a{
+  display:inline-block;margin-top:10px;
+  padding:10px 18px;background:#000;color:#fff;border-radius:10px;
+  font-weight:800;
 }
 </style>
 </head>
@@ -144,6 +161,14 @@ iframe.spotify-player{
   <button onclick="joinPack()">Join →</button>
 </section>
 
+<!-- ⭐ INSTAGRAM BLOCK (TRUST SECTION) -->
+<div class="ig-box">
+  <img src="https://i.imgur.com/7Yj1WfT.jpeg" alt="OMK Instagram">
+  <h3>@whosomotaker</h3>
+  <p style="color:#555;font-size:14px;">Official OMK / Omo Taker Instagram.<br>Tap to follow & message.</p>
+  <a href="https://www.instagram.com/whosomotaker" target="_blank">Visit Instagram</a>
+</div>
+
 <section id="about">
   <h2>About OMK 🐺</h2>
   <p>OMK – Only My Kind represents truth, loyalty & the wolf spirit.</p>
@@ -164,17 +189,13 @@ iframe.spotify-player{
 <!-- 🎵 MINI PLAYER -->
 <div class="music-panel" id="musicPanel">
   <button class="music-close" onclick="closePlayer()">✕</button>
-
   <div class="music-title">OMK Playlist</div>
   <div class="music-small" id="trackName">Now Playing: Bend Down Select</div>
 
-  <!-- EMBEDDED SPOTIFY PLAYER (INSIDE WEBSITE) -->
-  <iframe
-    id="spotifyFrame"
-    class="spotify-player"
-    src="https://open.spotify.com/embed/track/591YkWluaQeC3tGMWhSFWu?utm_source=generator"
-    allow="autoplay; encrypted-media">
-  </iframe>
+  <div class="music-controls">
+    <button onclick="playSong()">Play ▶</button>
+    <button onclick="nextSong()">Next ▶▶</button>
+  </div>
 </div>
 
 <script>
@@ -219,11 +240,24 @@ function joinPack(){
 }
 
 /* 🎵 MUSIC PLAYER */
-function openPlayer(){
- document.getElementById("musicPanel").style.display="block";
+let tracks=[
+ {name:"Bend Down Select", url:"https://open.spotify.com/track/591YkWluaQeC3tGMWhSFWu"},
+ {name:"Track 2", url:"https://open.spotify.com/track/5hUcqZkMzIxacx5WH9M91g"},
+ {name:"Track 3", url:"https://open.spotify.com/track/0WNxlHhUgyWuRfxsWa49Lr"}
+];
+
+let current=0;
+
+function openPlayer(){ document.getElementById("musicPanel").style.display="block"; }
+function closePlayer(){ document.getElementById("musicPanel").style.display="none"; }
+
+function playSong(){
+ window.open(tracks[current].url, "_blank");
 }
-function closePlayer(){
- document.getElementById("musicPanel").style.display="none";
+
+function nextSong(){
+ current = (current+1) % tracks.length;
+ document.getElementById("trackName").innerHTML = "Now Playing: " + tracks[current].name;
 }
 </script>
 
