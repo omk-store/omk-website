@@ -126,17 +126,21 @@ footer {
     <input type="tel" id="phone" placeholder="Enter your phone number" required>
 
     <div class="payment-box">
-      <p><strong>Pay to Opay:</strong><br>
-      Ale Omorogbe Kelvin<br>
-      <b>8118618722</b><br><br>
+      <p>
+        <strong>Pay to Chippercash:</strong><br>
+        Ale Omorogbe<br>
+        <b>9878935099</b>
+        <br><br>
 
-      <div class="total-amount" id="totalAmount">Total: ₦0</div>
+        <div class="total-amount" id="totalAmount">Total: ₦0</div>
 
-      <span style="font-size:13px;color:#555">
-      After payment, take a screenshot 📸</span></p>
+        <span style="font-size:13px;color:#555">
+        After payment, take a screenshot 📸</span>
+      </p>
     </div>
 
     <button type="button" class="btn pay" onclick="copyAccount()">💸 Copy Account Number</button>
+
     <a id="sendBtn" class="btn whatsapp" target="_blank">
       📩 Send Screenshot on WhatsApp
     </a>
@@ -147,29 +151,31 @@ footer {
 <footer>© 2025 OMK – Only My Kind. Loyalty • Truth • Legacy 🐺</footer>
 
 <script>
-// Copy Opay account number
+// Copy Account Number
 function copyAccount(){
-  navigator.clipboard.writeText("8118618722").then(()=>{
-    alert("✅ Opay Account (8118618722) copied!");
+  navigator.clipboard.writeText("9878935099").then(()=>{
+    alert("✅ Chipper Account (9878935099) copied!");
   });
 }
 
-// Load total amount from cart (sent via WhatsApp checkout)
+// Load total amount from cart
 let cart = JSON.parse(localStorage.getItem("omkCart") || "[]");
 let total = cart.reduce((sum, item)=> sum + item.price, 0);
 document.getElementById("totalAmount").innerText = "Total: ₦" + total.toLocaleString();
 
-// Send details to WhatsApp AFTER payment
+// WhatsApp send
 document.getElementById("sendBtn").addEventListener("click", ()=>{
   const name=document.getElementById("name").value.trim();
   const address=document.getElementById("address").value.trim();
   const phone=document.getElementById("phone").value.trim();
+
   if(!name||!address||!phone){
     alert("Please fill in all delivery details first.");
     return;
   }
-  const msg=
-  `Hello OMK,%0AI'm ${name}.%0AHere are my delivery details:%0A📍 Address: ${address}%0A📞 Phone: ${phone}%0A🧾 Order Total: ₦${total.toLocaleString()}%0AI've made the payment and attached a screenshot.`;
+
+  const msg =
+    `Hello OMK,%0AI'm ${name}.%0AHere are my delivery details:%0A📍 Address: ${address}%0A📞 Phone: ${phone}%0A🧾 Order Total: ₦${total.toLocaleString()}%0AI've paid to Chippercash (9878935099) and attached the screenshot.`;
 
   window.open(`https://wa.me/2347038112817?text=${msg}`,'_blank');
 });
