@@ -47,11 +47,11 @@ a{color:inherit;text-decoration:none}
 .colors{display:flex;gap:10px;margin:10px 0}
 .color-btn{
   width:26px;height:26px;border-radius:50%;cursor:pointer;
-  border:2px solid #e5e7eb;
+  border:2px solid #e5e7eb;transition:.2s;
 }
-.color-btn.active{border-color:#111}
+.color-btn.active{border-color:#111;transform:scale(1.1)}
 
-/* TEXT + BUTTONS */
+/* TEXT */
 .title{font-size:28px;font-weight:900;margin:6px 0 10px}
 .desc{color:var(--muted);line-height:1.7;margin-bottom:14px}
 .price{font-weight:900;font-size:20px;margin:6px 0 18px}
@@ -105,6 +105,7 @@ footer a{font-weight:800}
     </div>
 
     <div class="card">
+
       <div class="title">OMK Voltage Track Set ⚡</div>
 
       <div class="desc">
@@ -112,118 +113,7 @@ footer a{font-weight:800}
         Built for performance, flex, and luxury comfort.
       </div>
 
-      <!-- COLOR SELECTOR -->
+      <!-- COLOR SELECTOR (NO IMAGE SWITCHING) -->
       <div class="subtle">Color</div>
       <div class="colors">
-        <div class="color-btn active" id="black" style="background:#000"></div>
-        <div class="color-btn" id="white" style="background:#fff"></div>
-        <div class="color-btn" id="blue" style="background:#1e40af"></div>
-      </div>
-
-      <span style="
-        background:#007bff;
-        color:#fff;
-        font-size:12px;
-        padding:6px 12px;
-        border-radius:8px;
-        font-weight:700;
-        display:inline-block;
-        margin-bottom:14px;">
-        PRE-ORDER • Ready in 6 Days
-      </span>
-
-      <div class="price">
-        ₦150,000
-        <span style="color:#007bff;font-size:14px;font-weight:700;">· Pre-Order (6 Days)</span>
-      </div>
-
-      <div class="subtle">Size</div>
-      <div class="sizes" id="sizes">
-        <button class="size">S</button>
-        <button class="size active">M</button>
-        <button class="size">L</button>
-        <button class="size">XL</button>
-      </div>
-
-      <div class="btns">
-        <button class="btn" id="addToCart">Add to Cart</button>
-        <a class="btn primary" href="checkout.html">Buy Now</a>
-      </div>
-
-      <p class="subtle" style="margin-top:14px">
-        Only My Kind • Wolf Tribe • Voltage Edition
-      </p>
-    </div>
-  </section>
-</main>
-
-<footer>
-  © 2025 <strong>OMK – Only My Kind</strong> · All Rights Reserved<br>
-  <span>Contact: <a href="mailto:omkdrip@gmail.com">omkdrip@gmail.com</a></span>
-</footer>
-
-<a class="wa" target="_blank"
-href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20pre-order%20the%20Voltage%20Track%20Set">
-  <span class="dot"></span>
-  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
-  <span>Chat with us</span>
-</a>
-
-<script>
-// SIZE SELECTOR
-const sizes=document.querySelectorAll('.size');
-sizes.forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    sizes.forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-  });
-});
-
-// COLOR SWITCHER
-const colors=document.querySelectorAll('.color-btn');
-colors.forEach(c=>{
-  c.addEventListener('click',()=>{
-    colors.forEach(x=>x.classList.remove('active'));
-    c.classList.add('active');
-
-    if(c.id==="black"){
-      frontImg.src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_2305.jpeg";
-      backImg.src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/50FEE19E-A67C-4F15-9FD8-BC67619396E6.png";
-    }
-
-    if(c.id==="white"){
-      frontImg.src="https://via.placeholder.com/1200x1400?text=White+Voltage+Front";
-      backImg.src="https://via.placeholder.com/1200x1400?text=White+Voltage+Back";
-    }
-
-    if(c.id==="blue"){
-      frontImg.src="https://via.placeholder.com/1200x1400?text=Blue+Voltage+Front";
-      backImg.src="https://via.placeholder.com/1200x1400?text=Blue+Voltage+Back";
-    }
-  });
-});
-
-// CART SYSTEM
-let cart=JSON.parse(localStorage.getItem('omkCart')||'[]');
-updateCart();
-
-function addToCart(){
-  const size=document.querySelector('.size.active')?.textContent||'M';
-  const item={name:`Voltage Track Set (${size})`,price:150000};
-  cart.push(item);
-  localStorage.setItem('omkCart',JSON.stringify(cart));
-  updateCart();
-  alert('Voltage Track Set added to cart!');
-}
-
-function updateCart(){
-  const count=document.getElementById('cartCount');
-  count.textContent=cart.length;
-  count.style.display=cart.length?'flex':'none';
-}
-
-document.getElementById('addToCart').addEventListener('click',addToCart);
-</script>
-
-</body>
-</html>
+        <div class="
