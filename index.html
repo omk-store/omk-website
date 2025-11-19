@@ -1,136 +1,152 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>OMK | Only My Kind</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>OMK | Only My Kind</title>
 
-<style>
-:root{
-  --bg:#ffffff;
-  --text:#101010;
-  --muted:#6b7280;
-  --border:#e5e7eb;
-  --accent:#ff2d55;
-  --dark:#000000;
-  --shadow:0 10px 30px rgba(0,0,0,.06);
-}
-*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
-body{
-  font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  background:var(--bg);color:var(--text);
-}
-a{text-decoration:none;color:inherit;cursor:pointer}
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#101010;
+      --muted:#6b7280;
+      --border:#e5e7eb;
+      --accent:#ff2d55;
+      --dark:#000000;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
+    body{
+      font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--bg);color:var(--text);
+    }
+    a{text-decoration:none;color:inherit;cursor:pointer}
 
-/* LAYOUT */
-.page{max-width:480px;margin:0 auto;background:#fff;min-height:100vh}
+    .page{
+      max-width:480px;
+      margin:0 auto;
+      min-height:100vh;
+      background:#fff;
+    }
 
-/* HEADER */
-header{
-  position:sticky;top:0;z-index:40;
-  background:rgba(255,255,255,.97);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;
-  padding:12px 18px;
-}
-.logo{font-weight:900;font-size:22px;letter-spacing:.04em}
-.header-icons{display:flex;align-items:center;gap:16px;font-size:22px}
+    /* HEADER */
+    header{
+      position:sticky;top:0;z-index:10;
+      background:rgba(255,255,255,.97);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--border);
+      display:flex;align-items:center;justify-content:space-between;
+      padding:12px 18px;
+    }
+    .logo{
+      font-weight:900;font-size:22px;letter-spacing:.05em;
+    }
+    .header-icons{
+      display:flex;align-items:center;gap:16px;font-size:22px;
+    }
 
-/* SECTION WRAPPER */
-.section{padding:18px 16px}
+    .section{padding:18px 16px;}
 
-/* PRODUCT GRID */
-.products{
-  display:grid;grid-template-columns:1fr 1fr;gap:16px;
-}
-.product-card{
-  background:#fff;border:1px solid var(--border);border-radius:14px;
-  overflow:hidden;box-shadow:var(--shadow);
-}
-.product-card img{width:100%;display:block}
-.product-info{padding:10px 12px}
-.product-name{font-size:14px;font-weight:600;margin-bottom:4px}
-.product-price{font-size:13px;color:#4b5563}
+    /* PRODUCTS */
+    .products{
+      display:grid;grid-template-columns:1fr 1fr;gap:16px;
+    }
+    .product-card{
+      border:1px solid var(--border);
+      border-radius:12px;
+      overflow:hidden;
+      background:#fff;
+    }
+    .product-card img{
+      width:100%;display:block;
+    }
+    .product-info{padding:10px 12px;}
+    .product-name{font-size:14px;font-weight:600;margin-bottom:4px;}
+    .product-price{font-size:13px;color:var(--muted);}
 
-/* SPOTIFY */
-.spotify-wrap{
-  padding:0 16px;margin-top:10px;
-}
+    /* SPOTIFY */
+    .spotify-wrap{
+      padding:0 16px;
+      margin-top:10px;
+    }
 
-/* JOIN BOX */
-.join-box{
-  margin-top:24px;
-  background:#fafafa;border:1px solid var(--border);border-radius:16px;
-  padding:18px 16px;text-align:center;
-}
-.join-box h3{font-size:18px;margin-bottom:4px}
-.join-box p{font-size:14px;color:var(--muted)}
-.join-input-wrap{
-  margin-top:14px;display:flex;flex-direction:column;gap:10px;
-}
-.join-box input{
-  padding:12px;border-radius:10px;border:1px solid var(--border);
-  font-size:14px;
-}
-.join-box button{
-  padding:12px 18px;border-radius:999px;border:none;
-  background:var(--accent);color:#fff;font-weight:600;font-size:14px;
-}
+    /* JOIN BOX */
+    .join-box{
+      margin-top:24px;
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:18px 16px;
+      background:#fafafa;
+      text-align:center;
+    }
+    .join-box h3{font-size:18px;margin-bottom:4px;}
+    .join-box p{font-size:14px;color:var(--muted);}
+    .join-input-wrap{
+      margin-top:14px;
+      display:flex;flex-direction:column;gap:10px;
+    }
+    .join-box input{
+      padding:12px;
+      border-radius:10px;
+      border:1px solid var(--border);
+      font-size:14px;
+    }
+    .join-box button{
+      padding:12px 18px;
+      border-radius:999px;
+      border:none;
+      background:var(--accent);
+      color:#fff;
+      font-weight:600;
+      font-size:14px;
+    }
 
-/* SOCIAL CARD */
-.social-card{
-  margin-top:24px;background:#fff;border-radius:18px;
-  border:1px solid var(--border);box-shadow:var(--shadow);
-  padding:22px 18px;text-align:center;
-}
-.social-avatar{
-  width:80px;height:80px;border-radius:999px;
-  background:#111;color:#fff;font-size:12px;
-  display:flex;align-items:center;justify-content:center;
-  margin:0 auto 10px;
-}
-.social-handle{font-weight:700;margin-top:2px}
-.social-text{font-size:13px;color:var(--muted);margin-top:4px}
-.social-btn{
-  margin-top:14px;padding:11px 18px;border-radius:999px;
-  border:none;background:var(--dark);color:#fff;font-size:14px;
-  font-weight:600;display:inline-flex;align-items:center;gap:6px;
-}
+    /* SOCIAL LINKS */
+    .social-simple{
+      margin-top:26px;
+      border-top:1px solid var(--border);
+      padding-top:16px;
+      font-size:14px;
+    }
+    .social-simple h3{
+      font-size:16px;
+      margin-bottom:8px;
+    }
+    .social-list{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-top:4px;
+    }
+    .social-item{
+      display:flex;
+      flex-direction:column;
+    }
+    .social-label{font-weight:600;}
+    .social-handle{color:var(--muted);font-size:13px;}
 
-/* SOCIAL LINKS LIST */
-.social-links{
-  margin-top:22px;text-align:left;font-size:14px;
-}
-.social-link{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:10px 0;border-bottom:1px solid #f1f1f1;
-}
-.social-link:last-child{border-bottom:none}
-.social-label{font-weight:600}
-.social-handle-text{color:var(--muted);font-size:13px}
+    /* ABOUT */
+    .about{
+      margin-top:32px;
+      background:#000;
+      color:#fff;
+      padding:26px 16px;
+      text-align:center;
+    }
+    .about h3{font-size:18px;margin-bottom:6px;}
+    .about p{
+      font-size:14px;
+      color:#e5e7eb;
+      max-width:360px;
+      margin:0 auto;
+    }
 
-/* ABOUT */
-.about{
-  margin-top:32px;background:#000;color:#fff;
-  padding:28px 16px;text-align:center;
-}
-.about h3{font-size:18px;margin-bottom:6px}
-.about p{font-size:14px;color:#e5e7eb;max-width:360px;margin:0 auto 18px;}
-.about-actions{
-  display:flex;flex-direction:column;gap:10px;align-items:center;
-}
-.about-actions a{
-  display:inline-flex;align-items:center;justify-content:center;
-  gap:8px;padding:11px 18px;border-radius:999px;font-size:14px;
-  font-weight:500;
-}
-.omk-music{background:#fff;color:#000;}
-.chat-omk{background:var(--accent);color:#fff;}
-footer{
-  text-align:center;padding:20px 10px;font-size:13px;color:#6b7280;
-}
-</style>
+    footer{
+      text-align:center;
+      padding:18px 10px;
+      font-size:13px;
+      color:#6b7280;
+    }
+  </style>
 </head>
 
 <body>
@@ -177,7 +193,7 @@ footer{
     </iframe>
   </div>
 
-  <!-- JOIN & SOCIAL -->
+  <!-- JOIN + SOCIAL -->
   <section class="section">
 
     <!-- JOIN BOX -->
@@ -190,36 +206,32 @@ footer{
       </div>
     </div>
 
-    <!-- SOCIAL CARD (INSTAGRAM + TIKTOKS) -->
-    <div class="social-card">
-      <div class="social-avatar">
-        Image not available
-      </div>
-      <div class="social-handle">@iam_omotaker</div>
-      <div class="social-text">
-        Official OMK / Omo Taker Instagram & TikTok. Tap to follow & message.
-      </div>
-      <a
-        href="https://www.instagram.com/iam_omotaker?igsh=NXhvNXdyb2JvcnQx&utm_source=qr"
-        target="_blank"
-      >
-        <button class="social-btn">Visit Instagram</button>
-      </a>
+    <!-- SIMPLE SOCIAL LINKS -->
+    <div class="social-simple">
+      <h3>Connect with OMK</h3>
+      <div class="social-list">
 
-      <div class="social-links">
-        <a class="social-link"
-           href="https://www.tiktok.com/@omkdrip?_r=1&_t=ZS-91WB5fJdC9S"
-           target="_blank">
+        <a href="https://www.instagram.com/iam_omotaker?igsh=NXhvNXdyb2JvcnQx&utm_source=qr"
+           target="_blank"
+           class="social-item">
+          <span class="social-label">Instagram</span>
+          <span class="social-handle">@iam_omotaker</span>
+        </a>
+
+        <a href="https://www.tiktok.com/@omkdrip?_r=1&_t=ZS-91WB5fJdC9S"
+           target="_blank"
+           class="social-item">
           <span class="social-label">TikTok (Brand)</span>
-          <span class="social-handle-text">@omkdrip</span>
+          <span class="social-handle">@omkdrip</span>
         </a>
 
-        <a class="social-link"
-           href="https://www.tiktok.com/@iam.omotaker?_r=1&_t=ZS-91WBO7aLisM"
-           target="_blank">
+        <a href="https://www.tiktok.com/@iam.omotaker?_r=1&_t=ZS-91WBO7aLisM"
+           target="_blank"
+           class="social-item">
           <span class="social-label">TikTok (Main)</span>
-          <span class="social-handle-text">@iam.omotaker</span>
+          <span class="social-handle">@iam.omotaker</span>
         </a>
+
       </div>
     </div>
 
@@ -227,15 +239,11 @@ footer{
 
   <!-- ABOUT -->
   <section class="about">
-    <h3>About OMK 🐺</h3>
+    <h3>About OMK</h3>
     <p>
       OMK — Only My Kind represents truth, loyalty &amp; the wolf spirit.
       Music, fashion &amp; lifestyle from Omo Taker to the world.
     </p>
-    <div class="about-actions">
-      <a href="#" class="omk-music">🎵 OMK Music</a>
-      <a href="#" class="chat-omk">💬 Chat with OMK</a>
-    </div>
   </section>
 
   <footer>omkdrip.com</footer>
