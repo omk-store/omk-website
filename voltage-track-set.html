@@ -86,27 +86,40 @@ footer a{font-weight:800}
   <section class="grid">
     <div class="card">
       <div class="gallery">
-
-        <!-- FRONT -->
-        <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_2305.jpeg"
-        alt="OMK Voltage Track Set Front">
-
-        <!-- BACK -->
-        <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/50FEE19E-A67C-4F15-9FD8-BC67619396E6.png"
-        alt="OMK Voltage Track Set Back">
-
+        <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_2305.jpeg" alt="OMK Voltage Track Set Front">
+        <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/50FEE19E-A67C-4F15-9FD8-BC67619396E6.png" alt="OMK Voltage Track Back">
       </div>
     </div>
 
     <div class="card">
       <div class="title">OMK Voltage Track Set ⚡</div>
+
       <div class="desc">
         Premium OMK Track Suit with electric blue lines, wolf-energy flow, and futuristic 2035 street style.
-        Built for performance, flex, and luxury comfort.  
-        <strong>PRE-ORDER ONLY (Made in 6 days)</strong>.
+        Built for performance, flex, and luxury comfort.
       </div>
 
-      <div class="price">₦150,000</div>
+      <!-- ⭐ BLUE PRE-ORDER BADGE (MATCHES CHROME TEE STYLE) -->
+      <span style="
+        background:#007bff;
+        color:#fff;
+        font-size:12px;
+        padding:6px 12px;
+        border-radius:8px;
+        font-weight:700;
+        display:inline-block;
+        margin-bottom:14px;
+      ">
+        PRE-ORDER • Ready in 6 Days
+      </span>
+
+      <!-- ⭐ UPDATED PRICE WITH BLUE PRE-ORDER TEXT -->
+      <div class="price">
+        ₦150,000
+        <span style="color:#007bff;font-size:14px;font-weight:700;">
+          · Pre-Order (6 Days)
+        </span>
+      </div>
 
       <div class="subtle">Size</div>
       <div class="sizes" id="sizes">
@@ -117,11 +130,13 @@ footer a{font-weight:800}
       </div>
 
       <div class="btns">
-        <button class="btn" id="addToCart">Pre-Order</button>
+        <button class="btn" id="addToCart">Add to Cart</button>
         <a class="btn primary" href="checkout.html">Buy Now</a>
       </div>
 
-      <p class="subtle" style="margin-top:14px">Only My Kind • Wolf Tribe • Voltage Edition</p>
+      <p class="subtle" style="margin-top:14px">
+        Only My Kind • Wolf Tribe • Voltage Edition
+      </p>
     </div>
   </section>
 </main>
@@ -167,5 +182,6 @@ function updateCart(){
 
 document.getElementById('addToCart').addEventListener('click',addToCart);
 </script>
+
 </body>
 </html>
