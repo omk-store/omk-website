@@ -42,14 +42,17 @@ a{color:inherit;text-decoration:none}
 .gallery{display:flex;flex-direction:column;gap:16px}
 .gallery img{width:100%;border-radius:14px;border:1px solid var(--border);
   object-fit:contain;}
+
 .title{font-size:28px;font-weight:900;margin:6px 0 10px}
 .desc{color:var(--muted);line-height:1.7;margin-bottom:14px}
 .price{font-weight:900;font-size:20px;margin:6px 0 18px}
 .subtle{font-size:13px;color:var(--muted)}
+
 .sizes{display:flex;gap:10px;margin:10px 0 4px}
 .size{padding:10px 16px;border:1px solid var(--border);
   border-radius:10px;font-weight:800;cursor:pointer;background:#fff}
 .size.active{background:#111;color:#fff;border-color:#111}
+
 .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:8px;
@@ -58,6 +61,15 @@ a{color:inherit;text-decoration:none}
 }
 .btn.primary{background:#111;color:#fff;border-color:#111}
 .btn:active{transform:translateY(1px)}
+
+/* NEW COLOR SELECTOR */
+.colors{display:flex;gap:10px;margin:10px 0 14px}
+.color-btn{
+  width:26px;height:26px;border-radius:50%;cursor:pointer;
+  border:2px solid #e5e7eb;transition:.2s;
+}
+.color-btn.active{border-color:#111;transform:scale(1.12)}
+
 footer{margin:60px 0 90px;text-align:center;color:var(--muted);font-weight:600}
 footer a{font-weight:800}
 
@@ -84,6 +96,7 @@ footer a{font-weight:800}
 
 <main class="wrap">
   <section class="grid">
+    
     <div class="card">
       <div class="gallery">
         <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_2305.jpeg" alt="OMK Voltage Track Set Front">
@@ -92,6 +105,7 @@ footer a{font-weight:800}
     </div>
 
     <div class="card">
+
       <div class="title">OMK Voltage Track Set ⚡</div>
 
       <div class="desc">
@@ -99,7 +113,15 @@ footer a{font-weight:800}
         Built for performance, flex, and luxury comfort.
       </div>
 
-      <!-- ⭐ BLUE PRE-ORDER BADGE (MATCHES CHROME TEE STYLE) -->
+      <!-- 🔵 NEW COLOR SELECTOR (NO IMAGE CHANGE) -->
+      <div class="subtle">Color</div>
+      <div class="colors">
+        <div class="color-btn active" id="c1" style="background:#000"></div>
+        <div class="color-btn" id="c2" style="background:#fff"></div>
+        <div class="color-btn" id="c3" style="background:#b91c1c"></div>
+      </div>
+
+      <!-- ⭐ BLUE PRE-ORDER BADGE -->
       <span style="
         background:#007bff;
         color:#fff;
@@ -113,7 +135,6 @@ footer a{font-weight:800}
         PRE-ORDER • Ready in 6 Days
       </span>
 
-      <!-- ⭐ UPDATED PRICE WITH BLUE PRE-ORDER TEXT -->
       <div class="price">
         ₦150,000
         <span style="color:#007bff;font-size:14px;font-weight:700;">
@@ -137,6 +158,7 @@ footer a{font-weight:800}
       <p class="subtle" style="margin-top:14px">
         Only My Kind • Wolf Tribe • Voltage Edition
       </p>
+
     </div>
   </section>
 </main>
@@ -154,6 +176,7 @@ href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20pre-order%2
 </a>
 
 <script>
+// SIZE SELECTOR
 const sizes=document.querySelectorAll('.size');
 sizes.forEach(btn=>{
   btn.addEventListener('click',()=>{
@@ -162,6 +185,16 @@ sizes.forEach(btn=>{
   });
 });
 
+// COLOR BUTTONS (NO IMAGE CHANGE)
+const colors=document.querySelectorAll('.color-btn');
+colors.forEach(c=>{
+  c.addEventListener('click',()=>{
+    colors.forEach(x=>x.classList.remove('active'));
+    c.classList.add('active');
+  });
+});
+
+// CART SYSTEM
 let cart=JSON.parse(localStorage.getItem('omkCart')||'[]');
 updateCart();
 
