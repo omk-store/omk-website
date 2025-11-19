@@ -15,56 +15,39 @@ a{text-decoration:none;color:inherit;cursor:pointer}
 header{
   position:sticky;top:0;z-index:30;background:rgba(255,255,255,.95);
   backdrop-filter:blur(10px);border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;padding:12px 20px;flex-wrap:wrap;
+  display:flex;align-items:center;justify-content:space-between;padding:12px 20px;
 }
 .logo{font-weight:900;font-size:22px}
 .header-icons{display:flex;align-items:center;gap:14px}
-.icon-btn img{width:26px;height:26px;cursor:pointer;transition:.2s}
-.icon-btn img:hover{opacity:.75}
-.icon-btn.glow img{animation:cartGlow 1.2s infinite alternate}
-@keyframes cartGlow{0%{filter:drop-shadow(0 0 0 #ff2d55);}100%{filter:drop-shadow(0 0 6px #ff2d55);}}
-
-/* CART */
-.cart-panel{
-  position:fixed;top:0;right:0;height:100%;width:320px;background:#fff;
-  border-left:1px solid var(--border);box-shadow:-4px 0 12px rgba(0,0,0,.15);
-  transform:translateX(100%);transition:.35s ease;z-index:90;padding:20px;overflow-y:auto;
-}
-.cart-panel.open{transform:translateX(0)}
-.close-cart{background:none;border:none;font-size:20px;font-weight:900;cursor:pointer;color:#333}
-
-/* MENU */
-.menu-overlay{position:fixed;top:0;right:0;width:70%;max-width:280px;height:100%;background:#fff;
-  box-shadow:-4px 0 14px rgba(0,0,0,.1);transform:translateX(100%);transition:.35s ease;z-index:60;padding:24px;}
-.menu-overlay.open{transform:translateX(0)}
-.menu-overlay a{display:block;margin:16px 0;font-weight:700;color:#333;font-size:16px;}
-.close-menu{position:absolute;top:14px;right:14px;font-size:22px;font-weight:900;background:none;border:none;cursor:pointer}
-.backdrop{position:fixed;inset:0;background:rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:.3s;z-index:50}
-.backdrop.show{opacity:1;pointer-events:auto}
+.icon-btn img{width:26px;height:26px;cursor:pointer}
 
 /* HERO */
 .hero{text-align:center;padding:36px 16px 0}
 .hero img{
   width:min(420px,92%);
   border-radius:12px;
-  box-shadow:0 6px 20px rgba(0,0,0,.25);
+  box-shadow:0 6px 20px rgba(0,0,0,0.25);
 }
-.hero p{font-size:15px;color:#444;font-weight:500;margin-top:10px}
+.hero p{font-size:15px;color:#444;margin-top:10px}
 
 /* SECTION */
 .section{padding:56px 0}
 .section h2{text-align:center;font-size:28px;margin-bottom:26px}
-.grid{width:min(1100px,92%);margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
-
-/* CARD */
-.card{
-  border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#fff;text-align:center;
-  box-shadow:0 4px 10px rgba(0,0,0,.05);transition:.25s;cursor:pointer;position:relative;
+.grid{
+  width:min(1100px,92%);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:22px;
 }
-.card:hover{transform:translateY(-4px);box-shadow:0 8px 22px rgba(0,0,0,.1)}
-.card-img img{width:100%;height:300px;object-fit:cover;border-radius:10px;}
+
+/* PRODUCT CARD */
+.card{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#fff;text-align:center;
+  box-shadow:0 4px 10px rgba(0,0,0,.05);transition:.25s;cursor:pointer;position:relative;}
+.card:hover{transform:translateY(-4px)}
+.card-img img{width:100%;height:300px;object-fit:cover}
 .card-body{padding:14px}
-.price{font-weight:700;color:#444}
+.price{color:#444;font-weight:700}
 
 /* BADGE */
 .badge{
@@ -72,182 +55,182 @@ header{
   font-size:12px;font-weight:800;padding:6px 10px;border-radius:20px;
 }
 
-/* JOIN */
+/* JOIN EMAIL */
 .join{
-  width:min(900px,92%);margin:40px auto 60px;
-  background:#f9f9f9;border:1px solid var(--border);
-  border-radius:14px;padding:26px 18px;text-align:center;
+  width:min(900px,92%);
+  margin:40px auto;
+  background:#f9f9f9;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:26px;
+  text-align:center;
 }
-.join h3{font-size:20px;font-weight:800;margin-bottom:6px;}
-.join-form{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
 .join input{
-  min-width:220px;padding:10px 12px;border:1px solid var(--border);
-  border-radius:10px;font-size:14px;
+  width:75%;
+  padding:12px;
+  border-radius:10px;
+  border:1px solid var(--border);
 }
 .join button{
-  padding:10px 16px;background:#000;color:#fff;font-weight:800;
-  border:0;border-radius:10px;cursor:pointer;
+  margin-left:8px;
+  padding:12px 20px;
+  background:#000;color:#fff;font-weight:800;border-radius:10px;
 }
 
 /* ABOUT */
-#about{background:#111;color:#fff;text-align:center;padding:80px 20px}
-#about p{max-width:700px;margin:auto;font-size:16px;line-height:1.6;color:#ddd}
+#about{background:#111;color:#fff;text-align:center;padding:70px 20px;margin-top:40px}
+#about p{max-width:700px;margin:auto;color:#ddd}
 
 /* FOOTER */
-footer{text-align:center;padding:22px 0;color:#666;font-weight:600}
+footer{text-align:center;padding:20px;color:#666}
 
-/* WHATSAPP */
+/* FLOATING WHATSAPP */
 .chat-btn{
-  position:fixed;right:18px;bottom:18px;background:#fff;border:1px solid var(--border);
-  border-radius:40px;padding:10px 16px;font-weight:900;display:flex;align-items:center;
-  gap:8px;box-shadow:0 8px 20px rgba(0,0,0,.12);
+  position:fixed;right:18px;bottom:18px;z-index:90;background:#fff;border:1px solid var(--border);
+  border-radius:40px;padding:10px 16px;font-weight:900;display:flex;align-items:center;gap:8px;
+  box-shadow:0 8px 20px rgba(0,0,0,.12);
 }
 .chat-dot{width:10px;height:10px;background:var(--accent);border-radius:50%}
 
-/* MUSIC */
+/* 🎵 MUSIC BUTTON */
 .music-btn{
-  position:fixed;left:18px;bottom:18px;background:#000;color:#fff;
-  padding:10px 16px;border-radius:40px;font-weight:800;
-  box-shadow:0 8px 20px rgba(0,0,0,.25);cursor:pointer;
+  position:fixed;left:18px;bottom:18px;z-index:90;background:#000;color:#fff;
+  border-radius:40px;padding:10px 16px;font-weight:800;display:flex;align-items:center;
+  box-shadow:0 6px 20px rgba(0,0,0,.25);cursor:pointer;
 }
+
+/* 🎵 MUSIC PANEL */
 .music-panel{
-  position:fixed;left:18px;bottom:80px;width:280px;max-width:90vw;
-  background:#fff;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.25);
-  padding:12px;display:none;z-index:80;
+  position:fixed;left:18px;bottom:80px;width:260px;background:#fff;border-radius:14px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);padding:16px;z-index:95;display:none;
 }
-.music-header{display:flex;justify-content:space-between;font-weight:800;font-size:14px}
-.music-close{border:none;background:none;font-size:18px;cursor:pointer}
-.music-controls{display:flex;justify-content:space-between;margin-top:8px;font-size:12px;color:#444}
+.music-title{font-weight:800;margin-bottom:6px;font-size:14px}
+.music-small{font-size:12px;color:#555;margin-bottom:10px}
+.music-controls{display:flex;justify-content:space-between;margin-top:10px}
 .music-controls button{
-  background:#000;color:#fff;border:none;padding:6px 10px;border-radius:999px;font-size:11px;
+  padding:6px 12px;border-radius:20px;background:#000;color:#fff;font-weight:700;font-size:12px;
 }
+.music-close{position:absolute;right:10px;top:10px;background:none;border:none;font-size:18px;cursor:pointer}
 </style>
 </head>
 
 <body>
 
 <header>
-  <a href="#top" class="logo">OMK</a>
+  <a class="logo">OMK</a>
   <div class="header-icons">
-    <a class="icon-btn glow" id="cartBtn"><img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png"></a>
-    <a class="icon-btn" id="menuBtn"><img src="https://cdn-icons-png.flaticon.com/512/56/56763.png"></a>
+    <a class="icon-btn"><img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png"></a>
+    <a class="icon-btn"><img src="https://cdn-icons-png.flaticon.com/512/56/56763.png"></a>
   </div>
 </header>
 
 <section class="hero" id="top">
-  <img loading="lazy" src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/5CB390F1-C296-439F-A95B-32679E9FE8BA.png">
+  <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/5CB390F1-C296-439F-A95B-32679E9FE8BA.png">
   <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
 </section>
 
-<section id="shop" class="section">
+<section class="section" id="shop">
   <h2>Latest Drop 🐺⚡</h2>
   <div class="grid" id="productGrid"></div>
 </section>
 
 <section class="join">
   <h3>Join the OMK Pack 🐺</h3>
-  <p>First access to drops, sales & exclusive OMK drip.</p>
-  <div class="join-form">
-    <input type="email" id="joinEmail" placeholder="Enter your email">
-    <button onclick="joinPack()">Join Pack →</button>
-  </div>
+  <p>Get first access to OMK drops.</p>
+  <input id="joinEmail" type="email" placeholder="Enter your email">
+  <button onclick="joinPack()">Join →</button>
 </section>
 
 <section id="about">
   <h2>About OMK 🐺</h2>
-  <p>OMK – <strong>Only My Kind</strong> represents truth, loyalty, and strength…<br>“Not for everyone. Only My Kind.”</p>
+  <p>OMK – Only My Kind represents truth, loyalty & the wolf spirit.</p>
 </section>
 
 <footer>
-  © 2025 OMK – Only My Kind
+  © 2025 OMK — Only My Kind  
+  <br>Contact: omkdrip@gmail.com
 </footer>
 
-<a class="chat-btn" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20some%20clothes">
+<a class="chat-btn" href="https://wa.me/2347038112817">
   <span class="chat-dot"></span> Chat with OMK
 </a>
 
-<!-- MUSIC BUTTON -->
-<div class="music-btn" id="musicBtn">🎵 OMK Music</div>
+<!-- 🎵 MUSIC BUTTON -->
+<div class="music-btn" onclick="openPlayer()">🎵 OMK Music</div>
 
-<!-- MUSIC PANEL -->
+<!-- 🎵 MINI PLAYER -->
 <div class="music-panel" id="musicPanel">
-  <div class="music-header">
-    <div>OMK Playlist</div>
-    <button class="music-close" id="musicClose">✕</button>
-  </div>
-
-  <iframe id="spotifyFrame" style="border-radius:12px"
-    src="https://open.spotify.com/embed/track/591YkWluaQeC3tGMWhSFWu"
-    width="100%" height="152" frameborder="0"
-    allow="encrypted-media"
-    loading="lazy"></iframe>
+  <button class="music-close" onclick="closePlayer()">✕</button>
+  <div class="music-title">OMK Playlist</div>
+  <div class="music-small" id="trackName">Now Playing: Bend Down Select</div>
 
   <div class="music-controls">
-    <span id="trackLabel">Now: Bend Down Select</span>
-    <button id="nextTrackBtn">Next ▶</button>
+    <button onclick="playSong()">Play ▶</button>
+    <button onclick="nextSong()">Next ▶▶</button>
   </div>
 </div>
 
 <script>
-/* MENU + CART */
-function toggleMenu(){ menuOverlay.classList.toggle('open'); backdrop.classList.toggle('show'); }
-menuBtn.onclick=toggleMenu;
-
 /* PRODUCTS */
 const products=[
-  { name:'OMK Voltage Track Set', price:150000,
+  {
+    name:'OMK Voltage Track Set',
+    price:150000,
     img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_2305.jpeg',
-    link:'voltage-track-set.html', badge:'NEW 🐺⚡'
+    link:'voltage-track-set.html',
+    badge:'NEW 🐺⚡'
   },
-  { name:'OMK Chrome Tee', price:60000,
+  {
+    name:'OMK Chrome Tee',
+    price:60000,
     img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B95C37E-46F1-457A-9548-CF4E5B2A9227.png',
-    link:'tshirt.html', badge:'NEW 🐺⚡'
+    link:'tshirt.html',
+    badge:'NEW 🐺⚡'
   }
 ];
 
 const grid=document.getElementById('productGrid');
 products.forEach(p=>{
  grid.innerHTML+=`
+ <a href="${p.link}">
  <div class="card">
-   ${p.badge?`<span class="badge">${p.badge}</span>`:''}
-   <a href="${p.link}">
-     <div class="card-img"><img loading="lazy" src="${p.img}"></div>
-     <div class="card-body">
-       <h3>${p.name}</h3>
-       <p class="price">₦${p.price.toLocaleString()}</p>
-     </div>
-   </a>
- </div>`;
+   <span class="badge">${p.badge}</span>
+   <div class="card-img"><img src="${p.img}"></div>
+   <div class="card-body">
+     <h3>${p.name}</h3>
+     <p class="price">₦${p.price.toLocaleString()}</p>
+   </div>
+ </div>
+ </a>`;
 });
 
-/* JOIN */
+/* EMAIL JOIN */
 function joinPack(){
-  let email=document.getElementById('joinEmail').value.trim();
-  if(!email) return alert("Enter your email");
-  window.open(`https://wa.me/2347038112817?text=Hi%20OMK,%20I%20joined:%20${email}`);
+ let email=document.getElementById('joinEmail').value;
+ if(!email){alert("Enter email");return;}
+ window.open(`https://wa.me/2347038112817?text=I%20joined%20OMK%20Pack:%20${email}`);
 }
 
-/* MUSIC PLAYER */
-const tracks=[
- {id:'591YkWluaQeC3tGMWhSFWu',label:'Bend Down Select'},
- {id:'5hUcqZkMzIxacx5WH9M91g',label:'OMK Track 2'},
- {id:'0WNxlHhUgyWuRfxsWa49Lr',label:'OMK Track 3'}
+/* 🎵 MUSIC PLAYER */
+let tracks=[
+ {name:"Bend Down Select", url:"https://open.spotify.com/track/591YkWluaQeC3tGMWhSFWu"},
+ {name:"Track 2", url:"https://open.spotify.com/track/5hUcqZkMzIxacx5WH9M91g"},
+ {name:"Track 3", url:"https://open.spotify.com/track/0WNxlHhUgyWuRfxsWa49Lr"}
 ];
 
-let i=0;
-const mp=document.getElementById('musicPanel');
-document.getElementById('musicBtn').onclick=()=>mp.style.display='block';
-document.getElementById('musicClose').onclick=()=>mp.style.display='none';
+let current=0;
 
-document.getElementById('nextTrackBtn').onclick=()=>{
- i=(i+1)%tracks.length;
- const t=tracks[i];
- spotifyFrame.src=`https://open.spotify.com/embed/track/${t.id}`;
- trackLabel.innerText='Now: '+t.label;
-};
+function openPlayer(){ document.getElementById("musicPanel").style.display="block"; }
+function closePlayer(){ document.getElementById("musicPanel").style.display="none"; }
 
-/* Auto-open after 10 minutes */
-setTimeout(()=>{ mp.style.display='block'; },10*60*1000);
+function playSong(){
+ window.open(tracks[current].url, "_blank");
+}
+
+function nextSong(){
+ current = (current+1) % tracks.length;
+ document.getElementById("trackName").innerHTML = "Now Playing: " + tracks[current].name;
+}
 </script>
 
 </body>
