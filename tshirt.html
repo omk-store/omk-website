@@ -42,14 +42,24 @@ a{color:inherit;text-decoration:none}
 .gallery{display:flex;flex-direction:column;gap:16px}
 .gallery img{width:100%;border-radius:14px;border:1px solid var(--border);
   object-fit:contain;}
+
 .title{font-size:28px;font-weight:900;margin:6px 0 10px}
 .desc{color:var(--muted);line-height:1.7;margin-bottom:14px}
 .price{font-weight:900;font-size:20px;margin:6px 0 18px}
 .subtle{font-size:13px;color:var(--muted)}
+
 .sizes{display:flex;gap:10px;margin:10px 0 4px}
 .size{padding:10px 16px;border:1px solid var(--border);
   border-radius:10px;font-weight:800;cursor:pointer;background:#fff}
 .size.active{background:#111;color:#fff;border-color:#111}
+
+.colors{display:flex;gap:10px;margin:14px 0}
+.color-btn{
+  width:28px;height:28px;border-radius:50%;cursor:pointer;border:2px solid #e5e7eb;
+}
+.color-btn.active{border-color:#111}
+
+/* BUTTONS */
 .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:8px;
@@ -58,6 +68,7 @@ a{color:inherit;text-decoration:none}
 }
 .btn.primary{background:#111;color:#fff;border-color:#111}
 .btn:active{transform:translateY(1px)}
+
 footer{margin:60px 0 90px;text-align:center;color:var(--muted);font-weight:600}
 footer a{font-weight:800}
 .wa{position:fixed;right:16px;bottom:90px;z-index:300;background:#fff;
@@ -85,8 +96,8 @@ footer a{font-weight:800}
   <section class="grid">
     <div class="card">
       <div class="gallery">
-        <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B95C37E-46F1-457A-9548-CF4E5B2A9227.png" alt="OMK Chrome Tee Front">
-        <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/742321CF-26BB-4BC2-9A45-AC6BFF36DAF9.png" alt="OMK Chrome Tee Back">
+        <img id="frontImg" src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B95C37E-46F1-457A-9548-CF4E5B2A9227.png">
+        <img id="backImg" src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/742321CF-26BB-4BC2-9A45-AC6BFF36DAF9.png">
       </div>
     </div>
 
@@ -97,6 +108,14 @@ footer a{font-weight:800}
       <div class="desc">
         Futuristic 2030-style T-shirt featuring the chrome OMK logo and “Only My Kind” mark.
         Built from soft premium cotton for comfort, confidence, and street-lux presence.
+      </div>
+
+      <!-- ⭐ COLORS -->
+      <div class="subtle" style="margin-top:10px;">Color</div>
+      <div class="colors">
+        <div class="color-btn active" id="black" style="background:#000"></div>
+        <div class="color-btn" id="white" style="background:#fff"></div>
+        <div class="color-btn" id="blue" style="background:#1e3a8a"></div>
       </div>
 
       <!-- ⭐ PRE-ORDER BADGE -->
@@ -113,7 +132,6 @@ footer a{font-weight:800}
         PRE-ORDER • Ready in 4 Days
       </span>
 
-      <!-- ⭐ UPDATED PRICE LINE -->
       <div class="price">
         ₦60,000 
         <span style="color:#007bff;font-size:14px;font-weight:700;">
@@ -152,6 +170,7 @@ footer a{font-weight:800}
 </a>
 
 <script>
+/* SIZE BUTTONS */
 const sizes=document.querySelectorAll('.size');
 sizes.forEach(btn=>{
   btn.addEventListener('click',()=>{
@@ -160,6 +179,31 @@ sizes.forEach(btn=>{
   });
 });
 
+/* COLOR SWITCHER */
+const colors=document.querySelectorAll('.color-btn');
+colors.forEach(c=>{
+  c.addEventListener('click',()=>{
+    colors.forEach(x=>x.classList.remove('active'));
+    c.classList.add('active');
+
+    if(c.id==="black"){
+      frontImg.src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B95C37E-46F1-457A-9548-CF4E5B2A9227.png";
+      backImg.src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/742321CF-26BB-4BC2-9A45-AC6BFF36DAF9.png";
+    }
+
+    if(c.id==="white"){
+      frontImg.src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/white-front.png";
+      backImg.src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/white-back.png";
+    }
+
+    if(c.id==="blue"){
+      frontImg.src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/blue-front.png";
+      backImg.src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/blue-back.png";
+    }
+  });
+});
+
+/* CART */
 let cart=JSON.parse(localStorage.getItem('omkCart')||'[]');
 updateCart();
 
