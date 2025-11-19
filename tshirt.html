@@ -97,6 +97,7 @@ footer a{font-weight:800}
 
 <main class="wrap">
   <section class="grid">
+
     <div class="card">
       <div class="gallery">
         <img id="frontImg" src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B95C37E-46F1-457A-9548-CF4E5B2A9227.png">
@@ -113,12 +114,12 @@ footer a{font-weight:800}
         Built from soft premium cotton for comfort, confidence, and street-lux presence.
       </div>
 
-      <!-- COLORS -->
+      <!-- COLORS (NO IMAGE CHANGE) -->
       <div class="subtle">Color</div>
       <div class="colors">
-        <div class="color-btn active" id="black" style="background:#000"></div>
-        <div class="color-btn" id="white" style="background:#fff"></div>
-        <div class="color-btn" id="blue" style="background:#1e40af"></div>
+        <div class="color-btn active" style="background:#000"></div>
+        <div class="color-btn" style="background:#fff"></div>
+        <div class="color-btn" style="background:#1e40af"></div>
       </div>
 
       <span style="
@@ -178,25 +179,12 @@ sizes.forEach(btn=>{
   });
 });
 
-// COLOR SWITCHER
+// COLOR BUTTONS (NO IMAGE CHANGE)
 const colors=document.querySelectorAll('.color-btn');
 colors.forEach(c=>{
   c.addEventListener('click',()=>{
     colors.forEach(x=>x.classList.remove('active'));
     c.classList.add('active');
-
-    if(c.id==="black"){
-      frontImg.src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B95C37E-46F1-457A-9548-CF4E5B2A9227.png";
-      backImg.src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/742321CF-26BB-4BC2-94A5-AC6BFF36DAF9.png";
-    }
-    if(c.id==="white"){
-      frontImg.src="https://via.placeholder.com/1000x1200?text=White+Front";
-      backImg.src="https://via.placeholder.com/1000x1200?text=White+Back";
-    }
-    if(c.id==="blue"){
-      frontImg.src="https://via.placeholder.com/1000x1200?text=Blue+Front";
-      backImg.src="https://via.placeholder.com/1000x1200?text=Blue+Back";
-    }
   });
 });
 
