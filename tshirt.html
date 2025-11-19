@@ -86,20 +86,40 @@ footer a{font-weight:800}
     <div class="card">
       <div class="gallery">
         <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B95C37E-46F1-457A-9548-CF4E5B2A9227.png" alt="OMK Chrome Tee Front">
-
-        <!-- UPDATED BACK IMAGE BELOW -->
         <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/B90CA9B6-7F77-41DD-B894-13D145727334.png" alt="OMK Chrome Tee Back">
-
       </div>
     </div>
 
     <div class="card">
+
       <div class="title">OMK Chrome Tee 👕</div>
+
       <div class="desc">
         Futuristic 2030-style T-shirt featuring the chrome OMK logo and “Only My Kind” mark.
         Built from soft premium cotton for comfort, confidence, and street-lux presence.
       </div>
-      <div class="price">₦60,000</div>
+
+      <!-- ⭐ PRE-ORDER BADGE -->
+      <span style="
+        background:#007bff;
+        color:#fff;
+        font-size:12px;
+        padding:6px 12px;
+        border-radius:8px;
+        font-weight:700;
+        display:inline-block;
+        margin-bottom:14px;
+      ">
+        PRE-ORDER • Ready in 4 Days
+      </span>
+
+      <!-- ⭐ UPDATED PRICE LINE -->
+      <div class="price">
+        ₦60,000 
+        <span style="color:#007bff;font-size:14px;font-weight:700;">
+          · Pre-Order (4 Days)
+        </span>
+      </div>
 
       <div class="subtle">Size</div>
       <div class="sizes" id="sizes">
@@ -113,7 +133,9 @@ footer a{font-weight:800}
         <button class="btn" id="addToCart">Add to Cart</button>
         <a class="btn primary" href="checkout.html">Buy Now</a>
       </div>
+
       <p class="subtle" style="margin-top:14px">Loyalty • Future • Only My Kind</p>
+
     </div>
   </section>
 </main>
@@ -158,5 +180,6 @@ function updateCart(){
 
 document.getElementById('addToCart').addEventListener('click',addToCart);
 </script>
+
 </body>
 </html>
