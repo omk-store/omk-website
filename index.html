@@ -77,16 +77,10 @@ header{
 }
 
 /* SOCIAL ICONS */
-.social-icons{
-  text-align:center;margin:40px auto 20px;
-}
+.social-icons{text-align:center;margin:40px auto 20px;}
 .social-icons img{
   width:42px;height:42px;margin:0 12px;
   transition:0.25s ease-in-out;
-  transform:translateY(0);
-}
-.social-icons img:hover{
-  transform:translateY(-4px) scale(1.1);
 }
 
 /* ABOUT */
@@ -125,49 +119,32 @@ footer{text-align:center;padding:20px;color:#666}
   font-size:18px;cursor:pointer;
 }
 
-/* REFER POPUP */
-#referPopup {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.75);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 200;
-  display: none;
+/* POPUP BACKDROP */
+#refPopupBg{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,.55);
+  display:none;z-index:200;backdrop-filter:blur(3px);
 }
-.refer-box {
-  background: #fff;
-  width: 90%;
-  max-width: 400px;
-  padding: 30px;
-  border-radius: 14px;
-  text-align: center;
+
+/* POPUP BOX */
+#refPopup{
+  width:90%;max-width:380px;background:#fff;border-radius:18px;
+  padding:28px;text-align:center;margin:140px auto 0;
+  box-shadow:0 8px 30px rgba(0,0,0,.25);
 }
-.refer-box h2 { font-size: 26px; margin-bottom: 14px; }
-.refer-box p { font-size: 14px; color:#444; margin-bottom:20px; }
-.refer-box button {
-  padding: 12px 20px;
-  background:#000;color:#fff;
-  border-radius:10px;font-weight:800;
-  margin-top:10px;
+#refPopup h2{margin-bottom:10px;font-size:26px;font-weight:900}
+#refPopup p{color:#444;margin-bottom:20px}
+
+.popup-btn{
+  padding:12px 20px;border:none;border-radius:10px;font-weight:800;
+  cursor:pointer;font-size:14px;
 }
+.copy-btn{background:#000;color:#fff;margin-right:8px}
+.close-btn{background:#ff2d55;color:#fff}
 </style>
 </head>
 
 <body>
-
-<!-- REFER POPUP -->
-<div id="referPopup">
-  <div class="refer-box">
-    <h2>Refer a Friend 🐺</h2>
-    <p>Refer someone and get <b>5% OFF</b> your next order.</p>
-    <button onclick="copyReferral()">Copy My Referral Link</button>
-    <button onclick="closePopup()" style="background:#ff2d55;margin-top:12px;">Close</button>
-  </div>
-</div>
-
 
 <header>
   <a class="logo">OMK</a>
@@ -194,29 +171,11 @@ footer{text-align:center;padding:20px;color:#666}
   <button onclick="joinPack()">Join →</button>
 </section>
 
-<!-- ⭐ SOCIAL ICONS -->
 <div class="social-icons">
-
-  <!-- INSTAGRAM MAIN -->
-  <a href="https://www.instagram.com/iam_omotaker?igsh=NXhvNXdyb2JvcnQx&utm_source=qr" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png">
-  </a>
-
-  <!-- INSTAGRAM BRAND -->
-  <a href="https://www.instagram.com/whosomotaker" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png">
-  </a>
-
-  <!-- TIKTOK BRAND -->
-  <a href="https://www.tiktok.com/@omkdrip?_r=1&_t=ZS-91WB5fJdC9S" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/3116/3116491.png">
-  </a>
-
-  <!-- TIKTOK MAIN -->
-  <a href="https://www.tiktok.com/@iam.omotaker?_r=1&_t=ZS-91WBO7aLisM" target="_blank">
-    <img src="https://cdn-icons-png.flaticon.com/512/3116/3116491.png">
-  </a>
-
+  <a href="https://www.instagram.com/iam_omotaker" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png"></a>
+  <a href="https://www.instagram.com/whosomotaker" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png"></a>
+  <a href="https://www.tiktok.com/@omkdrip" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3116/3116491.png"></a>
+  <a href="https://www.tiktok.com/@iam.omotaker" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3116/3116491.png"></a>
 </div>
 
 <section id="about">
@@ -239,22 +198,18 @@ footer{text-align:center;padding:20px;color:#666}
   <button class="music-close" onclick="closePlayer()">✕</button>
 </div>
 
+<!-- ⭐⭐ POPUP ⭐⭐ -->
+<div id="refPopupBg">
+  <div id="refPopup">
+    <h2>Refer a Friend 🐺</h2>
+    <p>Refer someone and get <b>5% OFF</b> your next order.</p>
+
+    <button class="popup-btn copy-btn" onclick="copyReferral()">Copy My Referral Link</button>
+    <button class="popup-btn close-btn" onclick="closePopup()">Close</button>
+  </div>
+</div>
+
 <script>
-/* SHOW POPUP AFTER 4 SECONDS */
-setTimeout(()=>{ document.getElementById("referPopup").style.display="flex"; }, 4000);
-
-/* COPY LINK FUNCTION */
-function copyReferral(){
-  let link="https://omkdrip.com?ref=OMK_WOLF";
-  navigator.clipboard.writeText(link);
-  window.open(`https://wa.me/2347038112817?text=I%20referred%20a%20friend%20with%20this%20link:%20${link}`);
-}
-
-/* CLOSE POPUP */
-function closePopup(){
-  document.getElementById("referPopup").style.display="none";
-}
-
 /* PRODUCTS */
 const products=[
   {
@@ -295,22 +250,42 @@ function joinPack(){
  window.open(`https://wa.me/2347038112817?text=I%20joined%20OMK%20Pack:%20${email}`);
 }
 
-/* SPOTIFY PLAYER IN POPUP */
+/* MUSIC PLAYER */
 function openPlayer(){
   document.getElementById("musicPanel").style.display="block";
   document.getElementById("musicPanel").innerHTML=
   `
     <button class="music-close" onclick="closePlayer()">✕</button>
     <iframe style="border-radius:12px"
-      src="https://open.spotify.com/embed/track/591YkWluaQeC3tGMWhSFWu?utm_source=generator"
+      src="https://open.spotify.com/embed/track/591YkWluaQeC3tGMWhSFWu"
       width="100%" height="152" frameBorder="0"
       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
       loading="lazy"></iframe>
   `;
 }
-
 function closePlayer(){
   document.getElementById("musicPanel").style.display="none";
+}
+
+/* ⭐ POPUP FUNCTIONS ⭐ */
+function showPopup(){
+  document.getElementById("refPopupBg").style.display="block";
+}
+setTimeout(showPopup, 5000); // SHOW AFTER 5 SECONDS
+
+function closePopup(){
+  document.getElementById("refPopupBg").style.display="none";
+}
+
+function copyReferral(){
+  const link = "https://omkdrip.com/?ref=OMK_WOLF";
+  navigator.clipboard.writeText(link);
+
+  document.querySelector(".copy-btn").innerText="Copied ✔️";
+
+  setTimeout(()=>{
+    closePopup();
+  },1200);
 }
 </script>
 
