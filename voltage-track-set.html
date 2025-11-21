@@ -80,45 +80,34 @@ footer a{font-weight:800}
 .wa img{width:18px;height:18px}
 .dot{width:8px;height:8px;background:var(--omk);border-radius:50%}
 
-/* 🔥 CUSTOM POPUP */
-.popup-bg {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,.35);
-  z-index: 9990;
-  display: none;
+/* 🔥 CART DRAWER */
+.cart-drawer-bg{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,.3);display:none;z-index:9000;
 }
-
-.popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #fff;
-  padding: 20px 24px;
-  border-radius: 14px;
-  box-shadow: 0 8px 25px rgba(0,0,0,.15);
-  z-index: 9999;
-  display: none;
-  min-width: 260px;
-  text-align: center;
-  font-weight: 700;
-  color: #111;
+.cart-drawer{
+  position:fixed;right:0;top:0;width:300px;height:100%;
+  background:#fff;box-shadow:-4px 0 20px rgba(0,0,0,.15);
+  transform:translateX(100%);transition:.35s;z-index:9999;
+  padding:20px;display:flex;flex-direction:column;
 }
-
-.popup-close {
-  position: absolute;
-  top: 8px;
-  right: 12px;
-  font-size: 26px;
-  cursor: pointer;
-  color: #333;
+.cart-drawer.open{transform:translateX(0)}
+.cart-title{font-weight:900;font-size:18px;margin-bottom:16px}
+.cart-items{flex:1;overflow-y:auto;padding-right:6px}
+.cart-item{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 0;border-bottom:1px solid #eee;
+}
+.remove-btn{cursor:pointer;font-size:20px;font-weight:900;color:#333}
+.checkout-btn{
+  padding:12px 16px;background:#111;color:#fff;border-radius:10px;
+  text-align:center;font-weight:900;margin-top:14px;display:block;
 }
 </style>
 </head>
 
 <body>
+
 <header class="header">
   <div class="brand"><a href="index.html">OMK</a></div>
   <div class="h-icons">
@@ -157,15 +146,8 @@ footer a{font-weight:800}
       </div>
 
       <span style="
-        background:#007bff;
-        color:#fff;
-        font-size:12px;
-        padding:6px 12px;
-        border-radius:8px;
-        font-weight:700;
-        display:inline-block;
-        margin-bottom:14px;
-      ">
+        background:#007bff;color:#fff;font-size:12px;padding:6px 12px;
+        border-radius:8px;font-weight:700;display:inline-block;margin-bottom:14px;">
         PRE-ORDER • Ready in 6 Days
       </span>
 
@@ -209,12 +191,13 @@ href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20pre-order%2
   <span>Chat with us</span>
 </a>
 
-<!-- 🔥 NEW POPUP HTML -->
-<div class="popup-bg" id="popupBg"></div>
+<!-- 🔥 CART DRAWER ELEMENTS -->
+<div class="cart-drawer-bg" id="drawerBg"></div>
 
-<div class="popup" id="popupBox">
-  <div class="popup-close" id="popupClose">&times;</div>
-  Voltage Track Set added to cart!
+<div class="cart-drawer" id="drawer">
+  <div class="cart-title">Your Cart</div>
+  <div class="cart-items" id="cartItems"></div>
+  <a href="checkout.html" class="checkout-btn">Checkout</a>
 </div>
 
 <script>
@@ -227,7 +210,7 @@ sizes.forEach(btn=>{
   });
 });
 
-// COLOR BUTTONS
+// COLOR SELECTOR
 const colors=document.querySelectorAll('.color-btn');
 colors.forEach(c=>{
   c.addEventListener('click',()=>{
@@ -236,45 +219,65 @@ colors.forEach(c=>{
   });
 });
 
-// CART SYSTEM
+// CART
 let cart=JSON.parse(localStorage.getItem('omkCart')||'[]');
 updateCart();
 
+// OPEN/CLOSE DRAWER
+document.getElementById('cartBtn').onclick=()=>openDrawer();
+document.getElementById('drawerBg').onclick=()=>closeDrawer();
+
+function openDrawer(){
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('drawerBg').style.display='block';
+  renderDrawer();
+}
+function closeDrawer(){
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('drawerBg').style.display='none';
+}
+
+// ADD TO CART
 function addToCart(){
   const size=document.querySelector('.size.active')?.textContent||'M';
   const item={name:`Voltage Track Set (${size})`,price:150000};
   cart.push(item);
   localStorage.setItem('omkCart',JSON.stringify(cart));
   updateCart();
-  showPopup();
+  openDrawer();
 }
 
+// UPDATE CART COUNT
 function updateCart(){
   const count=document.getElementById('cartCount');
   count.textContent=cart.length;
   count.style.display=cart.length?'flex':'none';
 }
 
-// POPUP FUNCTION
-function showPopup(){
-  const box = document.getElementById('popupBox');
-  const bg  = document.getElementById('popupBg');
-
-  box.style.display = 'block';
-  bg.style.display = 'block';
-
-  setTimeout(()=>{
-    box.style.display = 'none';
-    bg.style.display = 'none';
-  }, 2500);
+// RENDER ITEMS
+function renderDrawer(){
+  const box=document.getElementById('cartItems');
+  box.innerHTML='';
+  cart.forEach((item,i)=>{
+    box.innerHTML+=`
+      <div class="cart-item">
+        <span>${item.name}</span>
+        <span class="remove-btn" onclick="removeItem(${i})">&times;</span>
+      </div>
+    `;
+  });
 }
 
-document.getElementById('popupClose').onclick = () => {
-  popupBox.style.display = 'none';
-  popupBg.style.display  = 'none';
-};
+// REMOVE
+function removeItem(i){
+  cart.splice(i,1);
+  localStorage.setItem('omkCart',JSON.stringify(cart));
+  updateCart();
+  renderDrawer();
+}
 
-document.getElementById('addToCart').addEventListener('click',addToCart);
+document.getElementById('addToCart')
+.addEventListener('click',addToCart);
 </script>
 
 </body>
