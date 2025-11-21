@@ -62,7 +62,7 @@ a{color:inherit;text-decoration:none}
 .btn.primary{background:#111;color:#fff;border-color:#111}
 .btn:active{transform:translateY(1px)}
 
-/* NEW COLOR SELECTOR */
+/* COLOR SELECTOR */
 .colors{display:flex;gap:10px;margin:10px 0 14px}
 .color-btn{
   width:26px;height:26px;border-radius:50%;cursor:pointer;
@@ -79,6 +79,42 @@ footer a{font-weight:800}
   font-weight:900;}
 .wa img{width:18px;height:18px}
 .dot{width:8px;height:8px;background:var(--omk);border-radius:50%}
+
+/* 🔥 CUSTOM POPUP */
+.popup-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,.35);
+  z-index: 9990;
+  display: none;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 20px 24px;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0,0,0,.15);
+  z-index: 9999;
+  display: none;
+  min-width: 260px;
+  text-align: center;
+  font-weight: 700;
+  color: #111;
+}
+
+.popup-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 26px;
+  cursor: pointer;
+  color: #333;
+}
 </style>
 </head>
 
@@ -113,7 +149,6 @@ footer a{font-weight:800}
         Built for performance, flex, and luxury comfort.
       </div>
 
-      <!-- 🔵 NEW COLOR SELECTOR (NO IMAGE CHANGE) -->
       <div class="subtle">Color</div>
       <div class="colors">
         <div class="color-btn active" id="c1" style="background:#000"></div>
@@ -121,7 +156,6 @@ footer a{font-weight:800}
         <div class="color-btn" id="c3" style="background:#b91c1c"></div>
       </div>
 
-      <!-- ⭐ BLUE PRE-ORDER BADGE -->
       <span style="
         background:#007bff;
         color:#fff;
@@ -175,6 +209,14 @@ href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20pre-order%2
   <span>Chat with us</span>
 </a>
 
+<!-- 🔥 NEW POPUP HTML -->
+<div class="popup-bg" id="popupBg"></div>
+
+<div class="popup" id="popupBox">
+  <div class="popup-close" id="popupClose">&times;</div>
+  Voltage Track Set added to cart!
+</div>
+
 <script>
 // SIZE SELECTOR
 const sizes=document.querySelectorAll('.size');
@@ -185,7 +227,7 @@ sizes.forEach(btn=>{
   });
 });
 
-// COLOR BUTTONS (NO IMAGE CHANGE)
+// COLOR BUTTONS
 const colors=document.querySelectorAll('.color-btn');
 colors.forEach(c=>{
   c.addEventListener('click',()=>{
@@ -204,7 +246,7 @@ function addToCart(){
   cart.push(item);
   localStorage.setItem('omkCart',JSON.stringify(cart));
   updateCart();
-  alert('Voltage Track Set added to cart!');
+  showPopup();
 }
 
 function updateCart(){
@@ -212,6 +254,25 @@ function updateCart(){
   count.textContent=cart.length;
   count.style.display=cart.length?'flex':'none';
 }
+
+// POPUP FUNCTION
+function showPopup(){
+  const box = document.getElementById('popupBox');
+  const bg  = document.getElementById('popupBg');
+
+  box.style.display = 'block';
+  bg.style.display = 'block';
+
+  setTimeout(()=>{
+    box.style.display = 'none';
+    bg.style.display = 'none';
+  }, 2500);
+}
+
+document.getElementById('popupClose').onclick = () => {
+  popupBox.style.display = 'none';
+  popupBg.style.display  = 'none';
+};
 
 document.getElementById('addToCart').addEventListener('click',addToCart);
 </script>
