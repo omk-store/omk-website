@@ -227,16 +227,16 @@ const products=[
     badge:'NEW 🐺⚡'
   },
 
-  /* ⭐ NEW LADIES SET – 99k */
+  /* ⭐ UPDATED LADIES SET */
   {
-    name:'OMK Blue-Line Women’s Set',
+    name:'OMK Blue-Line Baddies',
     price:99000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/70699854-ECB1-412D-85E3-70C54B105909.png',
-    link:'omk-women-blue.html',
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/omk-women-blue-front.png',
+    link:'women-blue-line.html',
     badge:'NEW 🐺'
   },
 
-  /* ⭐ NEW MEN WOLF FLAME SET – 160k */
+  /* ⭐ MEN WOLF FLAME SET */
   {
     name:'OMK Wolf Flame Set (Men)',
     price:160000,
@@ -289,7 +289,7 @@ function closePlayer(){
 function showPopup(){
   document.getElementById("refPopupBg").style.display="block";
 }
-setTimeout(showPopup, 5000); // SHOW AFTER 5 SECONDS
+setTimeout(showPopup, 5000);
 
 function closePopup(){
   document.getElementById("refPopupBg").style.display="none";
@@ -298,12 +298,8 @@ function closePopup(){
 function copyReferral(){
   const link = "https://omkdrip.com/?ref=OMK_WOLF";
   navigator.clipboard.writeText(link);
-
   document.querySelector(".copy-btn").innerText="Copied ✔️";
-
-  setTimeout(()=>{
-    closePopup();
-  },1200);
+  setTimeout(()=>{ closePopup(); },1200);
 }
 </script>
 
