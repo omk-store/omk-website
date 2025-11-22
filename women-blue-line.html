@@ -65,7 +65,7 @@ a{text-decoration:none;color:inherit}
 }
 .btn.primary{background:#111;color:#fff;border-color:#111}
 
-/* CART DRAWER */
+/* CART */
 .cart-drawer-bg{
   position:fixed;top:0;left:0;width:100%;height:100%;
   background:rgba(0,0,0,.3);display:none;z-index:7000;
@@ -115,8 +115,8 @@ footer a{font-weight:800}
     <!-- IMAGES -->
     <div class="card">
       <div class="gallery">
-        <img id="frontImg" src="omk-women-blue-front.png">
-        <img id="backImg" src="omk-women-blue-back.png">
+        <img id="frontImg" src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/95C388D3-89A5-4CA8-BD5E-F7E5EB1F7204.png">
+        <img id="backImg" src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/89DBDFB2-8C6A-4C34-82EC-ED691C0C9A18.png">
       </div>
     </div>
 
@@ -125,7 +125,7 @@ footer a{font-weight:800}
       <div class="title">OMK Blue-Line Baddies 💙</div>
 
       <div class="desc">
-        Exclusive OMK Baddies Edition for queens who move with power, confidence & smooth elegance.
+        Exclusive OMK Baddies Edition for queens who move with power, confidence & elegance.
         Premium stitching, clean blue-line detailing, and the signature OMK silhouette.
       </div>
 
@@ -161,13 +161,13 @@ footer a{font-weight:800}
   <span>Contact: <a href="mailto:omkdrip@gmail.com">omkdrip@gmail.com</a></span>
 </footer>
 
-<a class="wa" target="_blank" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20the%20Blue-Line%20Baddies">
+<a class="wa" target="_blank" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20the%20OMK%20Blue-Line%20Baddies">
   <span class="dot"></span>
   <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
   <span>Chat with us</span>
 </a>
 
-<!-- CART DRAWER -->
+<!-- CART -->
 <div class="cart-drawer-bg" id="drawerBg"></div>
 
 <div class="cart-drawer" id="drawer">
@@ -179,7 +179,6 @@ footer a{font-weight:800}
 <script>
 let cart = JSON.parse(localStorage.getItem('omkCart') || '[]');
 
-// SIZE SELECT
 const sizes=document.querySelectorAll('.size');
 sizes.forEach(btn=>{
   btn.addEventListener('click',()=>{
@@ -188,7 +187,6 @@ sizes.forEach(btn=>{
   });
 });
 
-// CART DRAWER
 function openDrawer(){
   drawer.classList.add('open');
   drawerBg.style.display='block';
@@ -202,7 +200,6 @@ function closeDrawer(){
 document.getElementById('cartBtn').onclick=openDrawer;
 document.getElementById('drawerBg').onclick=closeDrawer;
 
-// ADD TO CART
 document.getElementById('addToCart').onclick = () =>{
   const size=document.querySelector('.size.active').textContent;
   cart.push({name:`OMK Blue-Line Baddies (${size})`,price:99000});
@@ -210,7 +207,6 @@ document.getElementById('addToCart').onclick = () =>{
   openDrawer();
 };
 
-// RENDER CART
 function renderDrawer(){
   const box=document.getElementById('cartItems');
   box.innerHTML='';
