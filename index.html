@@ -151,7 +151,7 @@ footer{text-align:center;padding:20px;color:#666}
 
 <section class="hero" id="top">
   <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/5CB390F1-C296-439F-A95B-32679E9FE8BA.png">
-  <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
+  <p>Streetwear born from truth, loyalty &amp; the wolf spirit 🐺</p>
 </section>
 
 <section class="section" id="shop">
@@ -175,7 +175,7 @@ footer{text-align:center;padding:20px;color:#666}
 
 <section id="about">
   <h2>About OMK 🐺</h2>
-  <p>OMK – Only My Kind represents truth, loyalty & the wolf spirit.</p>
+  <p>OMK – Only My Kind represents truth, loyalty &amp; the wolf spirit.</p>
 </section>
 
 <footer>
@@ -206,7 +206,7 @@ footer{text-align:center;padding:20px;color:#666}
 
 <script>
 /* PRODUCTS */
-const products=[
+const products = [
   {
     name:'OMK Voltage Track Set',
     price:150000,
@@ -221,8 +221,20 @@ const products=[
     link:'tshirt.html',
     badge:'NEW 🐺⚡'
   },
-
-  /* BLUE-LINE BADDIES (NEW IMAGE LINK) */
+  {
+    name:'OMK Blue-Line Tee',
+    price:60000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/42CB264F-3EDC-4B58-A10E-556BDEE31F93.png',
+    link:'omk-blue-line-tee.html',
+    badge:'BLUE-LINE'
+  },
+  {
+    name:'OMK Blue-Line Short',
+    price:70000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/28541704-6980-4D74-8ABF-4145A746F4CA.png',
+    link:'omk-blue-line-short.html',
+    badge:'BLUE-LINE'
+  },
   {
     name:'OMK Blue-Line Baddies',
     price:99000,
@@ -230,8 +242,6 @@ const products=[
     link:'women-blue-line.html',
     badge:'NEW 🐺'
   },
-
-  /* WOLF FLAME SET */
   {
     name:'OMK Wolf Flame Set (Men)',
     price:160000,
@@ -241,9 +251,9 @@ const products=[
   }
 ];
 
-const grid=document.getElementById('productGrid');
+const grid = document.getElementById('productGrid');
 products.forEach(p=>{
-  grid.innerHTML+=`
+  grid.innerHTML += `
   <a href="${p.link}">
     <div class="card">
       <span class="badge">${p.badge}</span>
