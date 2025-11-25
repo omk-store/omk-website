@@ -151,12 +151,6 @@ footer{text-align:center;padding:20px;color:#666}
 
 <section class="hero" id="top">
   <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/5CB390F1-C296-439F-A95B-32679E9FE8BA.png">
-
-  <!-- ⭐ ADDED BLUE-LINE EDITION -->
-  <p style="margin-top:14px;font-weight:800;color:#007bff;font-size:15px;">
-    BLUE-LINE EDITION ⚡🐺
-  </p>
-
   <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
 </section>
 
@@ -214,7 +208,7 @@ footer{text-align:center;padding:20px;color:#666}
 /* PRODUCTS */
 const products = [
 
-  /* #1 Voltage Track Set */
+  /* 1. Voltage Track Set */
   {
     name:'OMK Voltage Track Set',
     price:150000,
@@ -223,7 +217,7 @@ const products = [
     badge:'NEW 🐺⚡'
   },
 
-  /* #2 Voltage Jacket */
+  /* 2. Voltage Jacket */
   {
     name:'OMK Voltage Jacket',
     price:90000,
@@ -232,7 +226,16 @@ const products = [
     badge:'NEW ⚡'
   },
 
-  /* #3 Women Blue-Line Baddies */
+  /* 3. Voltage Jean */
+  {
+    name:'OMK Voltage Jean',
+    price:90000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9BBC37D7-695C-4650-AEE9-C04910FBDF28.png',
+    link:'omk-voltage-jean.html',
+    badge:'NEW ⚡'
+  },
+
+  /* 4. Blue-Line Baddies */
   {
     name:'OMK Blue-Line Baddies',
     price:99000,
@@ -241,7 +244,7 @@ const products = [
     badge:'NEW 🐺'
   },
 
-  /* #4 Blue-Line Tee */
+  /* 5. Blue-Line Tee */
   {
     name:'OMK Blue-Line Tee',
     price:60000,
@@ -250,16 +253,16 @@ const products = [
     badge:'BLUE-LINE'
   },
 
-  /* #5 Blue-Line Short */
+  /* 6. Blue-Line Shorts */
   {
-    name:'OMK Blue-Line Short',
+    name:'OMK Blue-Line Shorts',
     price:70000,
     img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/0FDEF34E-CFDA-4A0B-92E2-2C68BA19645A.png',
     link:'omk-blue-line-short.html',
     badge:'BLUE-LINE'
   },
 
-  /* #6 Wolf Flame Set */
+  /* 7. Wolf Flame Set */
   {
     name:'OMK Wolf Flame Set (Men)',
     price:160000,
@@ -269,9 +272,9 @@ const products = [
   }
 ];
 
-const grid = document.getElementById('productGrid');
+const grid=document.getElementById('productGrid');
 products.forEach(p=>{
-  grid.innerHTML += `
+  grid.innerHTML+=`
   <a href="${p.link}">
     <div class="card">
       <span class="badge">${p.badge}</span>
@@ -312,17 +315,17 @@ function closePlayer(){
 function showPopup(){
   document.getElementById("refPopupBg").style.display="block";
 }
-setTimeout(showPopup, 5000);
+setTimeout(showPopup,5000);
 
 function closePopup(){
   document.getElementById("refPopupBg").style.display="none";
 }
 
 function copyReferral(){
-  const link = "https://omkdrip.com/?ref=OMK_WOLF";
+  const link="https://omkdrip.com/?ref=OMK_WOLF";
   navigator.clipboard.writeText(link);
   document.querySelector(".copy-btn").innerText="Copied ✔️";
-  setTimeout(()=>{ closePopup(); },1200);
+  setTimeout(()=>{closePopup();},1200);
 }
 </script>
 
