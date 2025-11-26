@@ -44,6 +44,15 @@ header{
   gap:22px;
 }
 
+/* MAKE FULL CARD CLICKABLE */
+.grid a{
+  display:block;
+  width:100%;
+  height:100%;
+  text-decoration:none;
+  color:inherit;
+}
+
 /* PRODUCT CARD */
 .card{
   border:1px solid var(--border);border-radius:12px;overflow:hidden;
@@ -208,7 +217,6 @@ footer{text-align:center;padding:20px;color:#666}
 /* PRODUCTS */
 const products = [
 
-  /* 1. Voltage Track Set */
   {
     name:'OMK Voltage Track Set',
     price:150000,
@@ -217,7 +225,6 @@ const products = [
     badge:'NEW 🐺⚡'
   },
 
-  /* 2. Voltage Jacket */
   {
     name:'OMK Voltage Jacket',
     price:90000,
@@ -226,7 +233,6 @@ const products = [
     badge:'NEW ⚡'
   },
 
-  /* 3. Voltage Jean (MOVED BELOW JACKET) */
   {
     name:'OMK Voltage Jean',
     price:90000,
@@ -235,7 +241,6 @@ const products = [
     badge:'NEW ⚡'
   },
 
-  /* 4. Blue-Line Baddies */
   {
     name:'OMK Blue-Line Baddies',
     price:99000,
@@ -244,7 +249,6 @@ const products = [
     badge:'NEW 🐺'
   },
 
-  /* 5. Blue-Line Tee (FIXED LINK) */
   {
     name:'OMK Blue-Line Tee',
     price:60000,
@@ -253,7 +257,6 @@ const products = [
     badge:'BLUE-LINE'
   },
 
-  /* 6. Blue-Line Shorts */
   {
     name:'OMK Blue-Line Shorts',
     price:70000,
@@ -262,7 +265,6 @@ const products = [
     badge:'BLUE-LINE'
   },
 
-  /* 7. Wolf Flame Set */
   {
     name:'OMK Wolf Flame Set (Men)',
     price:160000,
