@@ -6,83 +6,74 @@
 <title>OMK | Only My Kind</title>
 
 <style>
-:root { --border:#eaeaea; --accent:#ff2d55; --dark:#000; }
+:root{--border:#eaeaea;--accent:#ff2d55;--dark:#000;}
 *{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
-body{
-  font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  color:#111;background:#fff;
-}
+body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#111;background:#fff;}
 a{text-decoration:none;color:inherit;cursor:pointer}
 
 /* HEADER */
 header{
-  position:sticky;top:0;z-index:30;background:rgba(255,255,255,.95);
-  backdrop-filter:blur(10px);border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;padding:12px 20px;
+ position:sticky;top:0;z-index:30;background:rgba(255,255,255,.95);
+ backdrop-filter:blur(10px);border-bottom:1px solid var(--border);
+ display:flex;align-items:center;justify-content:space-between;padding:12px 20px;
 }
 .logo{font-weight:900;font-size:22px}
 .header-icons{display:flex;align-items:center;gap:14px}
-.icon-btn img{width:26px;height:26px;cursor:pointer}
+.header-icons img{width:26px;height:26px;cursor:pointer}
 
 /* HERO */
 .hero{text-align:center;padding:36px 16px 0}
 .hero img{
-  width:min(420px,92%);
-  border-radius:12px;
-  box-shadow:0 6px 20px rgba(0,0,0,0.25);
+ width:min(420px,92%);border-radius:12px;
+ box-shadow:0 6px 20px rgba(0,0,0,0.25);
 }
 .hero p{font-size:15px;color:#444;margin-top:10px}
 
-/* SECTION */
+/* GRID */
 .section{padding:56px 0}
 .section h2{text-align:center;font-size:28px;margin-bottom:26px}
 .grid{
-  width:min(1100px,92%);
-  margin:0 auto;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:22px;
+ width:min(1100px,92%);margin:0 auto;
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;
 }
 
 /* CARD */
-.grid a{display:block;width:100%;height:100%;text-decoration:none;color:inherit;}
+.grid a{display:block;width:100%;height:100%}
 .card{
-  border:1px solid var(--border);border-radius:12px;overflow:hidden;
-  background:#fff;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,.05);
-  transition:.25s;cursor:pointer;position:relative;
+ border:1px solid var(--border);border-radius:12px;overflow:hidden;
+ background:#fff;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,.05);
+ transition:.25s;cursor:pointer;position:relative;
 }
 .card:hover{transform:translateY(-4px)}
 .card-img img{width:100%;height:300px;object-fit:cover}
 .card-body{padding:14px}
 .price{color:#444;font-weight:700}
 .badge{
-  position:absolute;top:10px;left:10px;background:var(--accent);color:#fff;
-  font-size:12px;font-weight:800;padding:6px 10px;border-radius:20px;
+ position:absolute;top:10px;left:10px;background:var(--accent);color:#fff;
+ font-size:12px;font-weight:800;padding:6px 10px;border-radius:20px;
 }
 
-/* JOIN EMAIL */
+/* JOIN */
 .join{
-  width:min(900px,92%);margin:40px auto;background:#f9f9f9;
-  border:1px solid var(--border);border-radius:14px;padding:26px;text-align:center;
+ width:min(900px,92%);margin:40px auto;background:#f9f9f9;
+ border:1px solid var(--border);border-radius:14px;padding:26px;text-align:center;
 }
 .join input{
-  width:75%;padding:12px;border-radius:10px;border:1px solid var(--border);
+ width:75%;padding:12px;border-radius:10px;border:1px solid var(--border);
 }
 .join button{
-  margin-left:8px;padding:12px 20px;background:#000;color:#fff;
-  font-weight:800;border-radius:10px;
+ margin-left:8px;padding:12px 20px;background:#000;color:#fff;
+ font-weight:800;border-radius:10px;
 }
 
 /* SOCIAL */
 .social-icons{text-align:center;margin:40px auto 20px;}
-.social-icons img{
-  width:42px;height:42px;margin:0 12px;transition:0.25s;
-}
+.social-icons img{width:42px;height:42px;margin:0 12px;}
 
 /* ABOUT */
 #about{
-  background:#111;color:#fff;text-align:center;
-  padding:70px 20px;margin-top:40px;
+ background:#111;color:#fff;text-align:center;
+ padding:70px 20px;margin-top:40px;
 }
 #about p{max-width:700px;margin:auto;color:#ddd}
 
@@ -91,10 +82,10 @@ footer{text-align:center;padding:20px;color:#666}
 
 /* WHATSAPP */
 .chat-btn{
-  position:fixed;right:18px;bottom:18px;z-index:90;background:#fff;
-  border:1px solid var(--border);border-radius:40px;padding:10px 16px;
-  font-weight:900;display:flex;align-items:center;gap:8px;
-  box-shadow:0 8px 20px rgba(0,0,0,.12);
+ position:fixed;right:18px;bottom:18px;z-index:90;background:#fff;
+ border:1px solid var(--border);border-radius:40px;padding:10px 16px;
+ font-weight:900;display:flex;align-items:center;gap:8px;
+ box-shadow:0 8px 20px rgba(0,0,0,.12);
 }
 .chat-dot{width:10px;height:10px;background:var(--accent);border-radius:50%}
 </style>
@@ -103,138 +94,128 @@ footer{text-align:center;padding:20px;color:#666}
 <body>
 
 <header>
-  <a class="logo">OMK</a>
-  <div class="header-icons">
-    <a class="icon-btn"><img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png"></a>
-    <a class="icon-btn"><img src="https://cdn-icons-png.flaticon.com/512/56/56763.png"></a>
-  </div>
+ <a class="logo">OMK</a>
+ <div class="header-icons">
+   <img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png">
+   <img src="https://cdn-icons-png.flaticon.com/512/56/56763.png">
+ </div>
 </header>
 
 <section class="hero" id="top">
-  <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/5CB390F1-C296-439F-A95B-32679E9FE8BA.png">
-  <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
+ <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/5CB390F1-C296-439F-A95B-32679E9FE8BA.png">
+ <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
 </section>
 
 <section class="section" id="shop">
-  <h2>Latest Drop 🐺⚡</h2>
-  <div class="grid" id="productGrid"></div>
+ <h2>Latest Drop 🐺⚡</h2>
+ <div class="grid" id="productGrid"></div>
 </section>
-
-<section class="join">
-  <h3>Join the OMK Pack 🐺</h3>
-  <p>Get first access to OMK drops.</p>
-  <input id="joinEmail" type="email" placeholder="Enter your email">
-  <button onclick="joinPack()">Join →</button>
-</section>
-
-<div class="social-icons">
-  <a href="https://www.instagram.com/iam_omotaker" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png"></a>
-  <a href="https://www.instagram.com/whosomotaker" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png"></a>
-  <a href="https://www.tiktok.com/@omkdrip" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3116/3116491.png"></a>
-  <a href="https://www.tiktok.com/@iam.omotaker" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3116/3116491.png"></a>
-</div>
-
-<section id="about">
-  <h2>About OMK 🐺</h2>
-  <p>OMK – Only My Kind represents truth, loyalty & the wolf spirit.</p>
-</section>
-
-<footer>
-  © 2025 OMK — Only My Kind  
-  <br>Contact: omkdrip@gmail.com
-</footer>
-
-<a class="chat-btn" href="https://wa.me/2348118618722">
-  <span class="chat-dot"></span> Chat with OMK
-</a>
 
 <script>
 /* PRODUCTS */
-const products = [
-
-  {
-    name:'OMK Voltage Track Set',
-    price:150000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_2305.jpeg',
-    link:'voltage-track-set.html',
-    badge:'NEW 🐺⚡'
-  },
-
-  /* FIXED CHROME TEE */
-  {
-    name:'OMK Chrome Tee',
-    price:60000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/A96D98D0-CA03-4CE9-8F11-3F0F6D556A11.jpeg',
-    link:'chrome-tee.html',
-    badge:'NEW 🐺⚡'
-  },
-
-  {
-    name:'OMK Voltage Jacket',
-    price:90000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/4F6463CE-AC93-46AC-9E46-24CFC46DEE4C.png',
-    link:'omk-voltage-jacket.html',
-    badge:'NEW ⚡'
-  },
-
-  {
-    name:'OMK Voltage Jean',
-    price:90000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9BBC37D7-695C-4650-AEE9-C04910FBDF28.png',
-    link:'omk-voltage-jean.html',
-    badge:'NEW ⚡'
-  },
-
-  {
-    name:'OMK Blue-Line Baddies',
-    price:99000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/95C388D3-89A5-4CA8-BD5E-F7E5EB1F7204.png',
-    link:'women-blue-line.html',
-    badge:'NEW 🐺'
-  },
-
-  {
-    name:'OMK Blue-Line Tee',
-    price:60000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/42CB264F-3EDC-4B58-A10E-556BDEE31F93.png',
-    link:'blue-line-tee.html',
-    badge:'BLUE-LINE'
-  },
-
-  {
-    name:'OMK Blue-Line Shorts',
-    price:70000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/0FDEF34E-CFDA-4A0B-92E2-2C68BA19645A.png',
-    link:'omk-blue-line-short.html',
-    badge:'BLUE-LINE'
-  },
-
-  {
-    name:'OMK Wolf Flame Set (Men)',
-    price:160000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9F47FB09-10CD-4A48-9551-90F370051D7D.png',
-    link:'omk-wolf-flame-men.html',
-    badge:'🔥 LIMITED'
-  }
-
+const products=[
+ {
+   name:'OMK Voltage Track Set',
+   price:150000,
+   img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_2305.jpeg',
+   link:'voltage-track-set.html',
+   badge:'NEW 🐺⚡'
+ },
+ {
+   name:'OMK Chrome Tee',
+   price:60000,
+   img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/A96D98D0-CA03-4CE9-8F11-3F0F6D556A11.jpeg',
+   link:'chrome-tee.html',
+   badge:'NEW 🐺⚡'
+ },
+ {
+   name:'OMK Voltage Jacket',
+   price:90000,
+   img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/4F6463CE-AC93-46AC-9E46-24CFC46DEE4C.png',
+   link:'omk-voltage-jacket.html',
+   badge:'NEW ⚡'
+ },
+ {
+   name:'OMK Voltage Jean',
+   price:90000,
+   img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9BBC37D7-695C-4650-AEE9-C04910FBDF28.png',
+   link:'omk-voltage-jean.html',
+   badge:'NEW ⚡'
+ },
+ {
+   name:'OMK Blue-Line Baddies',
+   price:99000,
+   img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/95C388D3-89A5-4CA8-BD5E-F7E5EB1F7204.png',
+   link:'women-blue-line.html',
+   badge:'NEW 🐺'
+ },
+ {
+   name:'OMK Blue-Line Tee',
+   price:60000,
+   img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/42CB264F-3EDC-4B58-A10E-556BDEE31F93.png',
+   link:'blue-line-tee.html',
+   badge:'BLUE-LINE'
+ },
+ {
+   name:'OMK Blue-Line Shorts',
+   price:70000,
+   img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/0FDEF34E-CFDA-4A0B-92E2-2C68BA19645A.png',
+   link:'omk-blue-line-short.html',
+   badge:'BLUE-LINE'
+ },
+ {
+   name:'OMK Wolf Flame Set (Men)',
+   price:160000,
+   img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9F47FB09-10CD-4A48-9551-90F370051D7D.png',
+   link:'omk-wolf-flame-men.html',
+   badge:'🔥 LIMITED'
+ }
 ];
 
 const grid=document.getElementById('productGrid');
 products.forEach(p=>{
-  grid.innerHTML+=`
-    <a href="${p.link}">
-      <div class="card">
-        <span class="badge">${p.badge}</span>
-        <div class="card-img"><img src="${p.img}"></div>
-        <div class="card-body">
-          <h3>${p.name}</h3>
-          <p class="price">₦${p.price.toLocaleString()}</p>
-        </div>
-      </div>
-    </a>
-  `;
+ grid.innerHTML+=`
+ <a href="${p.link}">
+   <div class="card">
+     <span class="badge">${p.badge}</span>
+     <div class="card-img"><img src="${p.img}"></div>
+     <div class="card-body">
+       <h3>${p.name}</h3>
+       <p class="price">₦${p.price.toLocaleString()}</p>
+     </div>
+   </div>
+ </a>
+ `;
 });
 </script>
+
+<section class="join">
+ <h3>Join the OMK Pack 🐺</h3>
+ <p>Get first access to OMK drops.</p>
+ <input id="joinEmail" type="email" placeholder="Enter your email">
+ <button onclick="joinPack()">Join →</button>
+</section>
+
+<div class="social-icons">
+ <a href="https://www.instagram.com/iam_omotaker" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png"></a>
+ <a href="https://www.instagram.com/whosomotaker" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png"></a>
+ <a href="https://www.tiktok.com/@omkdrip" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3116/3116491.png"></a>
+ <a href="https://www.tiktok.com/@iam.omotaker" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3116/3116491.png"></a>
+</div>
+
+<section id="about">
+ <h2>About OMK 🐺</h2>
+ <p>OMK – Only My Kind represents truth, loyalty & the wolf spirit.</p>
+</section>
+
+<footer>
+ © 2025 OMK — Only My Kind  
+ <br>Contact: omkdrip@gmail.com
+</footer>
+
+<a class="chat-btn" href="https://wa.me/2348118618722">
+ <span class="chat-dot"></span> Chat with OMK
+</a>
 
 </body>
 </html>
