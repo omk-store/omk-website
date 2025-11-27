@@ -28,27 +28,36 @@ header{
 }
 .logo{font-weight:900;font-size:22px}
 
-/* PAGE */
+/* PAGE WRAPPER */
 .wrapper{
   width:min(900px,92%);margin:25px auto;
 }
 
+/* PRODUCT IMAGE */
 .product-img{
   width:100%;border-radius:14px;box-shadow:var(--shadow);
-  margin-bottom:14px;object-fit:cover;
+  margin-bottom:18px;object-fit:cover;
 }
 
-h1{font-size:28px;margin:12px 0;font-weight:900}
+/* MAIN CARD */
+.product-card{
+  background:#fff;border:1px solid var(--border);
+  border-radius:18px;padding:22px 20px;
+  box-shadow:var(--shadow);margin-top:8px;
+}
+
+/* TITLE */
+h1{font-size:26px;margin-bottom:6px;font-weight:900}
 .price{
-  font-size:22px;font-weight:800;margin-bottom:18px;
+  font-size:22px;font-weight:900;margin:4px 0 18px;
 }
 
 /* SIZE BUTTONS */
 .size-group{
-  display:flex;gap:10px;margin:12px 0 16px;
+  display:flex;gap:10px;margin:12px 0 20px;
 }
 .size-btn{
-  padding:10px 16px;border:1px solid var(--border);
+  padding:10px 18px;border:1px solid var(--border);
   border-radius:10px;font-weight:700;cursor:pointer;
   background:#fff;
 }
@@ -56,24 +65,26 @@ h1{font-size:28px;margin:12px 0;font-weight:900}
   background:#000;color:#fff;border-color:#000;
 }
 
+/* BUTTONS */
+.add-btn{
+  display:block;width:100%;background:#fff;color:#000;
+  border:2px solid #000;text-align:center;
+  padding:15px;border-radius:12px;
+  font-weight:800;font-size:17px;margin-bottom:10px;
+}
+
 .buy{
   display:block;width:100%;background:#000;color:#fff;
   text-align:center;padding:16px;border-radius:12px;
-  font-weight:800;font-size:18px;margin-top:10px;
+  font-weight:800;font-size:18px;
   box-shadow:0 6px 20px rgba(0,0,0,.25);
 }
 
-.add-btn{
-  display:block;width:100%;background:#fff;
-  color:#000;border:2px solid #000;
-  text-align:center;padding:16px;border-radius:12px;
-  font-weight:800;font-size:17px;margin-top:10px;
+/* SECTION TITLES */
+.section-title{
+  margin-top:30px;font-size:18px;font-weight:800;margin-bottom:10px;
 }
 
-/* DETAILS */
-.section-title{
-  margin-top:30px;font-size:20px;font-weight:800;margin-bottom:10px;
-}
 .details{
   font-size:15px;line-height:1.6;color:#444;
 }
@@ -83,7 +94,7 @@ footer{
   margin:50px 0 90px;text-align:center;font-size:14px;color:#555;
 }
 
-/* FLOATING CHAT */
+/* FLOAT CHAT */
 .chat-btn{
   position:fixed;right:18px;bottom:20px;z-index:2000;
   background:#fff;border:1px solid var(--border);
@@ -91,7 +102,9 @@ footer{
   align-items:center;gap:8px;font-weight:800;
   box-shadow:0 8px 20px rgba(0,0,0,.15);
 }
-.chat-btn img{width:20px;height:20px}
+.chat-btn img{
+  width:20px;height:20px;
+}
 </style>
 </head>
 
@@ -103,46 +116,47 @@ footer{
 
 <div class="wrapper">
 
-  <!-- PRODUCT IMAGES -->
+  <!-- FRONT VIEW -->
   <img class="product-img" 
     src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/0FDEF34E-CFDA-4A0B-92E2-2C68BA19645A.png">
 
+  <!-- BACK VIEW -->
   <img class="product-img"
     src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/3E6D7448-C7E5-4B94-9627-2EF1A0554952.png">
 
-  <!-- TITLE -->
-  <h1>OMK Blue-Line Shorts 🩳</h1>
+  <!-- PRODUCT CARD -->
+  <div class="product-card">
 
-  <!-- PRICE -->
-  <div class="price">₦70,000</div>
+    <h1>OMK Blue-Line Shorts 🩳</h1>
 
-  <!-- SIZES -->
-  <div class="section-title">Select Size</div>
-  <div class="size-group">
-    <button class="size-btn">S</button>
-    <button class="size-btn active">M</button>
-    <button class="size-btn">L</button>
-    <button class="size-btn">XL</button>
+    <div class="price">₦70,000</div>
+
+    <div class="section-title">Select Size</div>
+
+    <div class="size-group">
+      <button class="size-btn">S</button>
+      <button class="size-btn active">M</button>
+      <button class="size-btn">L</button>
+      <button class="size-btn">XL</button>
+    </div>
+
+    <a class="add-btn" href="#">Add to Cart</a>
+    <a class="buy" href="checkout.html">Buy Now →</a>
+
+    <div class="section-title">Details</div>
+    <div class="details">
+      Clean premium shorts with the signature OMK Blue-Line energy.<br>
+      Soft fabric, athletic cut and the iconic OMK mark.<br>
+      Perfect for daily drip, parties and wolf-tribe moves.
+    </div>
+
+    <div class="section-title">Tags</div>
+    <div class="details">Loyalty • Blue-Line • OMK Drip</div>
+
   </div>
-
-  <!-- BUTTONS -->
-  <a class="add-btn" href="#">Add to Cart</a>
-  <a class="buy" href="checkout.html">Buy Now →</a>
-
-  <!-- DETAILS -->
-  <div class="section-title">Details</div>
-  <div class="details">
-    Clean premium shorts with the signature OMK Blue-Line energy.  
-    Soft fabric, athletic cut and the iconic OMK mark.  
-    Perfect for daily drip, parties and wolf-tribe moves.
-  </div>
-
-  <div class="section-title">Tags</div>
-  <div class="details">Loyalty • Blue-Line • OMK Drip</div>
-
 </div>
 
-<!-- FLOATING CHAT BUTTON -->
+<!-- floating chat -->
 <a class="chat-btn" target="_blank"
 href="https://wa.me/2348118618722?text=Hi%20OMK%2C%20I%20have%20a%20question%20about%20the%20Blue-Line%20Shorts">
   <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
