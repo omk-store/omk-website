@@ -168,22 +168,22 @@ footer a{font-weight:800}
     <div class="card">
       <div class="gallery">
 
-        <!-- FRONT -->
-        <img src="https://raw.githubusercontent.com/omk-store/omk-website/main/42CB264F-3EDC-4B58-A10E-556BDEE31F93.png" 
-             alt="OMK Blue-Line Tee — Front">
+        <!-- FRONT (SHORTS FRONT) -->
+        <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/0FDEF34E-CFDA-4A0B-92E2-2C68BA19645A.png" 
+             alt="OMK Blue-Line Shorts — Front">
 
-        <!-- BACK -->
-        <img src="https://raw.githubusercontent.com/omk-store/omk-website/main/28541704-6980-4D74-8ABF-4145A746F4CA.png" 
-             alt="OMK Blue-Line Tee — Back">
+        <!-- BACK (SHORTS BACK) -->
+        <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/3E6D7448-C7E5-4B94-9627-2EF1A0554952.png" 
+             alt="OMK Blue-Line Shorts — Back">
 
       </div>
     </div>
 
     <!-- PRODUCT DETAILS -->
     <div class="card">
-      <div class="title">OMK Blue-Line Tee 👕</div>
-      <div class="desc">Premium fitted tee with electric blue-line detailing — Only My Kind styling for real wolves. Clean, sharp, luxury street energy.</div>
-      <div class="price">₦60,000</div>
+      <div class="title">OMK Blue-Line Shorts 🩳</div>
+      <div class="desc">Clean premium shorts with the signature OMK Blue-Line energy. Soft fabric, athletic cut and the iconic OMK mark. Perfect for daily drip, parties and wolf-tribe moves.</div>
+      <div class="price">₦70,000</div>
 
       <div class="subtle">Size</div>
       <div class="sizes" id="sizes">
@@ -197,7 +197,7 @@ footer a{font-weight:800}
         <button class="btn" id="addToCart">Add to Cart</button>
         <a class="btn primary" href="checkout.html">Buy Now</a>
       </div>
-      <p class="subtle" style="margin-top:14px">Blue-Line • Fresh • Loyalty</p>
+      <p class="subtle" style="margin-top:14px">Loyalty • Blue-Line • OMK Drip</p>
     </div>
 
   </section>
@@ -221,7 +221,7 @@ footer a{font-weight:800}
   <span>Contact: <a href="mailto:omkdrip@gmail.com">omkdrip@gmail.com</a></span>
 </footer>
 
-<a class="wa" target="_blank" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20the%20OMK%20Blue-Line%20Tee">
+<a class="wa" target="_blank" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20the%20OMK%20Blue-Line%20Shorts">
   <span class="dot"></span>
   <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="">
   <span>Chat with us</span>
@@ -241,7 +241,7 @@ updateCart();
 
 function addToCart(){
   const size=document.querySelector('.size.active')?.textContent||'M';
-  const item={name:`OMK Blue-Line Tee (${size})`,price:60000};
+  const item={name:`OMK Blue-Line Shorts (${size})`,price:70000};
   cart.push(item);
   localStorage.setItem('omkCart',JSON.stringify(cart));
   updateCart();
