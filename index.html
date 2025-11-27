@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 
-<!-- 🔥 FIX: FORCE SAFARI + CHROME TO LOAD NEW FILE (removes invisible blocker) -->
+<!-- 🔥 FORCE BROWSER TO LOAD NEW VERSION -->
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="0" />
@@ -31,7 +31,12 @@ header{
 .icon-btn img{width:26px;height:26px;cursor:pointer}
 
 /* HERO */
-.hero{text-align:center;padding:36px 16px 0}
+.hero{
+  text-align:center;
+  padding:36px 16px 0;
+  position: relative;
+  z-index: 1; /* 🔥 FIX: hero stays below grid */
+}
 .hero img{
   width:min(420px,92%);
   border-radius:12px;
@@ -40,7 +45,11 @@ header{
 .hero p{font-size:15px;color:#444;margin-top:10px}
 
 /* SECTION */
-.section{padding:56px 0}
+.section{
+  padding:56px 0;
+  position: relative;
+  z-index: 2; /* 🔥 FIX: grid always above hero */
+}
 .section h2{text-align:center;font-size:28px;margin-bottom:26px}
 .grid{
   width:min(1100px,92%);
@@ -56,7 +65,7 @@ header{
   width:100%;
   height:100%;
   position:relative;
-  z-index:20; /* ALWAYS above any hidden element */
+  z-index:20;
 }
 
 /* PRODUCT CARD */
@@ -125,7 +134,7 @@ footer{text-align:center;padding:20px;color:#666}
   box-shadow:0 6px 20px rgba(0,0,0,.25);cursor:pointer;
 }
 
-/* SAFARI-SAFE MUSIC PANEL */
+/* MUSIC PANEL */
 .music-panel{
   position:fixed;left:18px;bottom:80px;width:260px;background:#fff;border-radius:14px;
   box-shadow:0 10px 30px rgba(0,0,0,.25);padding:16px;
