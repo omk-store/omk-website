@@ -3,97 +3,276 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>OMK Chrome Tee 👕 | Only My Kind</title>
+<title>OMK | Only My Kind</title>
 
 <style>
-:root{
-  --bg:#ffffff;
-  --text:#101010;
-  --muted:#6b7280;
-  --border:#e5e7eb;
-  --shadow:0 10px 30px rgba(0,0,0,.06);
-}
-*{box-sizing:border-box;margin:0;padding:0}
+:root { --border:#eaeaea; --accent:#ff2d55; --dark:#000; }
+*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
 body{
-  background:var(--bg);color:var(--text);
-  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:#111;background:#fff;
 }
-a{text-decoration:none;color:inherit}
+a{text-decoration:none;color:inherit;cursor:pointer}
 
 /* HEADER */
 header{
-  position:sticky;top:0;z-index:50;background:#fff;
-  border-bottom:1px solid var(--border);
-  padding:14px 20px;display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:30;background:rgba(255,255,255,.95);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;padding:12px 20px;
 }
 .logo{font-weight:900;font-size:22px}
+.header-icons{display:flex;align-items:center;gap:14px}
+.icon-btn img{width:26px;height:26px;cursor:pointer}
 
-/* PRODUCT */
-.wrapper{
-  width:min(900px,92%);margin:25px auto;
+/* HERO */
+.hero{text-align:center;padding:36px 16px 0}
+.hero img{
+  width:min(420px,92%);
+  border-radius:12px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.25);
 }
-.product-img{
-  width:100%;border-radius:14px;box-shadow:var(--shadow);
-  margin-bottom:14px;
+.hero p{font-size:15px;color:#444;margin-top:10px}
+
+/* SECTION */
+.section{padding:56px 0}
+.section h2{text-align:center;font-size:28px;margin-bottom:26px}
+.grid{
+  width:min(1100px,92%);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:22px;
 }
-h1{font-size:28px;margin:12px 0;font-weight:900}
-.price{
-  font-size:22px;font-weight:800;margin-bottom:18px;
+
+/* PRODUCT CARD CLICKABLE */
+.grid a{
+  display:block;
+  width:100%;
+  height:100%;
+  text-decoration:none;
+  color:inherit;
 }
-.buy{
-  display:block;width:100%;background:#000;color:#fff;
-  text-align:center;padding:16px;border-radius:12px;
-  font-weight:800;font-size:18px;margin-top:10px;
-  box-shadow:0 6px 20px rgba(0,0,0,.25);
+
+/* PRODUCT CARD */
+.card{
+  border:1px solid var(--border);border-radius:12px;overflow:hidden;
+  background:#fff;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,.05);
+  transition:.25s;cursor:pointer;position:relative;
 }
-.section-title{
-  margin-top:30px;font-size:20px;font-weight:800;margin-bottom:10px;
+.card:hover{transform:translateY(-4px)}
+.card-img img{width:100%;height:300px;object-fit:cover}
+.card-body{padding:14px}
+.price{color:#444;font-weight:700}
+
+/* BADGE */
+.badge{
+  position:absolute;top:10px;left:10px;background:var(--accent);color:#fff;
+  font-size:12px;font-weight:800;padding:6px 10px;border-radius:20px;
 }
-.details{
-  font-size:15px;line-height:1.6;color:#444;
+
+/* JOIN EMAIL */
+.join{
+  width:min(900px,92%);
+  margin:40px auto;
+  background:#f9f9f9;border:1px solid var(--border);
+  border-radius:14px;padding:26px;text-align:center;
 }
+.join input{
+  width:75%;padding:12px;border-radius:10px;border:1px solid var(--border);
+}
+.join button{
+  margin-left:8px;padding:12px 20px;background:#000;color:#fff;
+  font-weight:800;border-radius:10px;
+}
+
+/* SOCIAL ICONS */
+.social-icons{text-align:center;margin:40px auto 20px;}
+.social-icons img{
+  width:42px;height:42px;margin:0 12px;
+}
+
+/* ABOUT */
+#about{
+  background:#111;color:#fff;text-align:center;
+  padding:70px 20px;margin-top:40px;
+}
+#about p{max-width:700px;margin:auto;color:#ddd}
+
+/* FOOTER */
+footer{text-align:center;padding:20px;color:#666}
+
+/* WHATSAPP */
+.chat-btn{
+  position:fixed;right:18px;bottom:18px;z-index:90;background:#fff;
+  border:1px solid var(--border);border-radius:40px;padding:10px 16px;
+  font-weight:900;display:flex;align-items:center;gap:8px;
+  box-shadow:0 8px 20px rgba(0,0,0,.12);
+}
+.chat-dot{width:10px;height:10px;background:var(--accent);border-radius:50%}
+
+/* MUSIC BUTTON */
+.music-btn{
+  position:fixed;left:18px;bottom:18px;z-index:90;background:#000;color:#fff;
+  border-radius:40px;padding:10px 16px;font-weight:800;
+  display:flex;align-items:center;cursor:pointer;
+}
+
+/* MUSIC PANEL */
+.music-panel{
+  position:fixed;left:18px;bottom:80px;width:260px;background:#fff;
+  border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.25);
+  padding:16px;z-index:95;display:none;
+}
+.music-close{
+  position:absolute;right:10px;top:10px;font-size:20px;border:none;background:none;
+  cursor:pointer;
+}
+
+/* POPUP */
+#refPopupBg{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,.55);
+  display:none;z-index:200;backdrop-filter:blur(4px);
+}
+#refPopup{
+  width:90%;max-width:380px;background:#fff;border-radius:18px;
+  padding:28px;text-align:center;margin:140px auto 0;
+}
+.popup-btn{
+  padding:12px 18px;border:none;border-radius:10px;font-weight:800;cursor:pointer;
+}
+.copy-btn{background:#000;color:#fff;margin-right:10px}
+.close-btn{background:#ff2d55;color:#fff}
 </style>
 </head>
 
 <body>
 
 <header>
-  <div class="logo">OMK</div>
+  <a class="logo">OMK</a>
+  <div class="header-icons">
+    <a class="icon-btn"><img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png"></a>
+    <a class="icon-btn"><img src="https://cdn-icons-png.flaticon.com/512/56/56763.png"></a>
+  </div>
 </header>
 
-<div class="wrapper">
+<section class="hero">
+  <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/5CB390F1-C296-439F-A95B-32679E9FE8BA.png">
+  <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
+</section>
 
-  <!-- PRODUCT IMAGES -->
-  <img class="product-img" 
-    src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B95C37E-46F1-457A-9548-CF4E5B2A9227.png">
+<section class="section">
+  <h2>Latest Drop 🐺⚡</h2>
+  <div class="grid" id="productGrid"></div>
+</section>
 
-  <img class="product-img"
-    src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/tee-black.jpg">
+<section class="join">
+  <h3>Join the OMK Pack 🐺</h3>
+  <p>Get first access to OMK drops.</p>
+  <input id="joinEmail" type="email" placeholder="Enter your email">
+  <button onclick="joinPack()">Join →</button>
+</section>
 
-  <!-- TITLE -->
-  <h1>OMK Chrome Tee 👕</h1>
-
-  <!-- PRICE -->
-  <div class="price">₦60,000</div>
-
-  <!-- BUY BUTTON -->
-  <a class="buy" href="https://wa.me/2348118618722?text=I%20want%20the%20OMK%20Chrome%20Tee">
-    Buy Now →
+<div class="social-icons">
+  <a href="https://www.instagram.com/iam_omotaker" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png">
   </a>
-
-  <!-- DETAILS -->
-  <div class="section-title">Details</div>
-  <div class="details">
-    • Premium cotton  
-    <br>• Chrome OMK chest logo  
-    <br>• Smooth print finish  
-    <br>• True to size  
-  </div>
-
-  <div class="section-title">Sizes</div>
-  <div class="details">M, L, XL</div>
-
+  <a href="https://www.instagram.com/whosomotaker" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png">
+  </a>
+  <a href="https://www.tiktok.com/@omkdrip" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/3116/3116491.png">
+  </a>
+  <a href="https://www.tiktok.com/@iam.omotaker" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/3116/3116491.png">
+  </a>
 </div>
+
+<section id="about">
+  <h2>About OMK 🐺</h2>
+  <p>OMK – Only My Kind represents truth, loyalty & the wolf spirit.</p>
+</section>
+
+<footer>
+  © 2025 OMK — Only My Kind  
+  <br>Contact: omkdrip@gmail.com
+</footer>
+
+<a class="chat-btn" href="https://wa.me/2348118618722">
+  <span class="chat-dot"></span> Chat with OMK
+</a>
+
+<div class="music-btn" onclick="openMusic()">🎵 OMK Music</div>
+
+<div class="music-panel" id="musicPanel">
+  <button class="music-close" onclick="closeMusic()">✕</button>
+</div>
+
+<div id="refPopupBg">
+  <div id="refPopup">
+    <h2>Refer a Friend 🐺</h2>
+    <p>Refer someone and get <b>5% OFF</b> your next order.</p>
+    <button class="popup-btn copy-btn" onclick="copyRef()">Copy Link</button>
+    <button class="popup-btn close-btn" onclick="closePopup()">Close</button>
+  </div>
+</div>
+
+<script>
+/* PRODUCTS */
+const products=[
+  {name:'OMK Voltage Track Set',price:150000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_2305.jpeg',link:'voltage-track-set.html',badge:'NEW 🐺⚡'},
+  {name:'OMK Chrome Tee',price:60000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B95C37E-46F1-457A-9548-CF4E5B2A9227.png',link:'tshirt.html',badge:'NEW 🐺⚡'},
+  {name:'OMK Voltage Jacket',price:90000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/4F6463CE-AC93-46AC-9E46-24CFC46DEE4C.png',link:'omk-voltage-jacket.html',badge:'NEW ⚡'},
+  {name:'OMK Voltage Jean',price:90000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9BBC37D7-695C-4650-AEE9-C04910FBDF28.png',link:'omk-voltage-jean.html',badge:'NEW ⚡'},
+  {name:'OMK Blue-Line Baddies',price:99000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/95C388D3-89A5-4CA8-BD5E-F7E5EB1F7204.png',link:'women-blue-line.html',badge:'NEW 🐺'},
+  {name:'OMK Blue-Line Tee',price:60000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/42CB264F-3EDC-4B58-A10E-556BDEE31F93.png',link:'blue-line-tee.html',badge:'BLUE-LINE'},
+  {name:'OMK Blue-Line Shorts',price:70000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/0FDEF34E-CFDA-4A0B-92E2-2C68BA19645A.png',link:'omk-blue-line-short.html',badge:'BLUE-LINE'},
+  {name:'OMK Wolf Flame Set (Men)',price:160000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9F47FB09-10CD-4A48-9551-90F370051D7D.png',link:'omk-wolf-flame-men.html',badge:'🔥 LIMITED'}
+];
+
+const grid=document.getElementById("productGrid");
+products.forEach(p=>{
+  grid.innerHTML+=`
+  <a href="${p.link}">
+    <div class="card">
+      <span class="badge">${p.badge}</span>
+      <div class="card-img"><img src="${p.img}"></div>
+      <div class="card-body">
+        <h3>${p.name}</h3>
+        <p class="price">₦${p.price.toLocaleString()}</p>
+      </div>
+    </div>
+  </a>
+  `;
+});
+
+/* MUSIC */
+function openMusic(){
+  const mp=document.getElementById("musicPanel");
+  mp.style.display="block";
+  mp.innerHTML=`
+    <button class="music-close" onclick="closeMusic()">✕</button>
+    <iframe style="border-radius:12px"
+      src="https://open.spotify.com/embed/track/591YkWluaQeC3tGMWhSFWu"
+      width="100%" height="152"
+      frameBorder="0"
+      allow="autoplay; clipboard-write; encrypted-media;"
+      loading="lazy"></iframe>
+  `;
+}
+function closeMusic(){
+  document.getElementById("musicPanel").style.display="none";
+}
+
+/* POPUP */
+setTimeout(()=>{document.getElementById("refPopupBg").style.display="block"},5000);
+function closePopup(){document.getElementById("refPopupBg").style.display="none";}
+function copyRef(){
+  navigator.clipboard.writeText("https://omkdrip.com/?ref=OMK_WOLF");
+  document.querySelector(".copy-btn").innerText="Copied ✔️";
+  setTimeout(closePopup,1200);
+}
+</script>
 
 </body>
 </html>
