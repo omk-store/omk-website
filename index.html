@@ -44,13 +44,13 @@ header{
   gap:22px;
 }
 
-/* CARD CLICKABLE */
+/* MAKE CARDS ALWAYS TAPABLE */
 .grid a{
   display:block;
   width:100%;
   height:100%;
   position:relative;
-  z-index:20;
+  z-index:50;
 }
 
 /* PRODUCT CARD */
@@ -102,26 +102,26 @@ header{
 /* FOOTER */
 footer{text-align:center;padding:20px;color:#666}
 
-/* WHATSAPP */
+/* WHATSAPP BUTTON */
 .chat-btn{
-  position:fixed;right:18px;bottom:18px;z-index:10;
+  position:fixed;right:18px;bottom:18px;z-index:20;
   background:#fff;border:1px solid var(--border);border-radius:40px;padding:10px 16px;
   font-weight:900;display:flex;align-items:center;gap:8px;
   box-shadow:0 8px 20px rgba(0,0,0,.12);
 }
 .chat-dot{width:10px;height:10px;background:var(--accent);border-radius:50%}
 
-/* MUSIC BUTTON */
+/* MUSIC BUTTON (MOVED TO TOP-LEFT) */
 .music-btn{
-  position:fixed;left:18px;bottom:18px;z-index:10;
+  position:fixed;left:18px;top:90px;z-index:20;
   background:#000;color:#fff;border-radius:40px;padding:10px 16px;
   font-weight:800;display:flex;align-items:center;
   box-shadow:0 6px 20px rgba(0,0,0,.25);cursor:pointer;
 }
 
-/* MUSIC PANEL (NO BLOCKING) */
+/* MUSIC PANEL (SAFE) */
 .music-panel{
-  position:fixed;left:18px;bottom:80px;width:260px;background:#fff;border-radius:14px;
+  position:fixed;left:18px;top:150px;width:260px;background:#fff;border-radius:14px;
   box-shadow:0 10px 30px rgba(0,0,0,.25);padding:16px;
 
   opacity:0;
@@ -196,7 +196,7 @@ footer{text-align:center;padding:20px;color:#666}
 </div>
 
 <script>
-/* PRODUCTS */
+/* PRODUCT LIST */
 const products = [
   {
     name:'OMK Voltage Track Set',
@@ -271,27 +271,30 @@ products.forEach(p=>{
   </a>`;
 });
 
-/* MUSIC PLAYER */
-function openPlayer(){
-  const panel=document.getElementById("musicPanel");
-  panel.classList.add("active");
-  panel.innerHTML=`
-    <button class="music-close" onclick="closePlayer()">✕</button>
-    <iframe style="border-radius:12px"
-      src="https://open.spotify.com/embed/track/591YkWluaQeC3tGMWhSFWu"
-      width="100%" height="152" frameBorder="0"
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-      loading="lazy"></iframe>`;
-}
-function closePlayer(){
-  document.getElementById("musicPanel").classList.remove("active");
-}
-
 /* JOIN PACK */
 function joinPack(){
  let email=document.getElementById('joinEmail').value;
  if(!email){alert("Enter email");return;}
  window.open(`https://wa.me/2348118618722?text=I%20joined%20OMK%20Pack:%20${email}`);
+}
+
+/* MUSIC */
+function openPlayer(){
+  const panel = document.getElementById("musicPanel");
+  panel.classList.add("active");
+  panel.innerHTML=
+  `
+    <button class="music-close" onclick="closePlayer()">✕</button>
+    <iframe style="border-radius:12px"
+      src="https://open.spotify.com/embed/track/591YkWluaQeC3tGMWhSFWu"
+      width="100%" height="152" frameBorder="0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy"></iframe>
+  `;
+}
+function closePlayer(){
+  const panel = document.getElementById("musicPanel");
+  panel.classList.remove("active");
 }
 </script>
 
