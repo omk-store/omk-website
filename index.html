@@ -44,13 +44,13 @@ header{
   gap:22px;
 }
 
-/* CARDS CLICKABLE */
+/* CARD CLICKABLE */
 .grid a{
   display:block;
   width:100%;
   height:100%;
   position:relative;
-  z-index:20;
+  z-index:20; /* products always clickable */
 }
 
 /* PRODUCT CARD */
@@ -89,6 +89,7 @@ header{
 .social-icons{text-align:center;margin:40px auto 20px;}
 .social-icons img{
   width:42px;height:42px;margin:0 12px;
+  transition:0.25s ease-in-out;
 }
 
 /* ABOUT */
@@ -101,32 +102,40 @@ header{
 /* FOOTER */
 footer{text-align:center;padding:20px;color:#666}
 
-/* WHATSAPP BUTTON */
+/* FLOATING WHATSAPP */
 .chat-btn{
-  position:fixed;right:18px;bottom:18px;z-index:20;
+  position:fixed;right:18px;bottom:18px;z-index:10;
   background:#fff;border:1px solid var(--border);border-radius:40px;padding:10px 16px;
   font-weight:900;display:flex;align-items:center;gap:8px;
   box-shadow:0 8px 20px rgba(0,0,0,.12);
 }
 .chat-dot{width:10px;height:10px;background:var(--accent);border-radius:50%}
 
-/* MUSIC BUTTON (TOP-LEFT) */
+/* MUSIC BUTTON */
 .music-btn{
-  position:fixed;left:18px;top:90px;z-index:20;
+  position:fixed;left:18px;bottom:18px;z-index:10;
   background:#000;color:#fff;border-radius:40px;padding:10px 16px;
   font-weight:800;display:flex;align-items:center;
   box-shadow:0 6px 20px rgba(0,0,0,.25);cursor:pointer;
 }
 
-/* MUSIC PANEL */
+/* SAFARI-SAFE MUSIC PANEL (DOESN'T BLOCK TOUCH ANYMORE) */
 .music-panel{
-  position:fixed;left:18px;top:150px;width:260px;background:#fff;border-radius:14px;
+  position:fixed;left:18px;bottom:80px;width:260px;background:#fff;border-radius:14px;
   box-shadow:0 10px 30px rgba(0,0,0,.25);padding:16px;
-  opacity:0;pointer-events:none;z-index:-1;transition:opacity .25s;
+
+  opacity:0;           /* hidden */
+  pointer-events:none; /* doesn't block clicks */
+  z-index:-1;          /* sits behind everything */
+  transition:opacity .25s;
 }
+
 .music-panel.active{
-  opacity:1;pointer-events:auto;z-index:200;
+  opacity:1;
+  pointer-events:auto;
+  z-index:200; /* visible above all */
 }
+
 .music-close{
   position:absolute;right:10px;top:10px;background:none;border:none;
   font-size:18px;cursor:pointer;
@@ -189,39 +198,43 @@ footer{text-align:center;padding:20px;color:#666}
 </div>
 
 <script>
-/* 🔥 ALL PRODUCTS ON HOMEPAGE */
+/* FINAL PRODUCTS (INCLUDING VOLTAGE SIGNATURE + WOLF JEANS) */
 const products = [
-  /* NEW SIGNATURE & JEANS */
-  {
-    name:'OMK Voltage Signature ⚡',
-    price:80000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0140.jpeg',
-    link:'omk-voltage-signature.html',
-    badge:'SIGNATURE'
-  },
-  {
-    name:'OMK Wolf Jeans 🐺',
-    price:80000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/5E3C1575-6B29-4829-B13B-421B2EEF630D.png',
-    link:'omk-wolf-jeans.html',
-    badge:'🔥 WOLF'
-  },
 
-  /* MAIN SETS */
   {
     name:'OMK Voltage Track Set',
     price:150000,
     img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_2305.jpeg',
     link:'voltage-track-set.html',
-    badge:'NEW ⚡'
+    badge:'NEW 🐺⚡'
   },
+
   {
     name:'OMK Chrome Tee',
     price:60000,
     img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B95C37E-46F1-457A-9548-CF4E5B2A9227.png',
     link:'tshirt.html',
-    badge:'NEW 🐺'
+    badge:'NEW 🐺⚡'
   },
+
+  /* ⭐ NEW – VOLTAGE SIGNATURE */
+  {
+    name:'OMK Voltage Signature ⚡',
+    price:80000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0140.jpeg',
+    link:'omk-voltage-signature.html', // change this if your file name is different
+    badge:'SIGNATURE'
+  },
+
+  /* ⭐ NEW – WOLF JEANS */
+  {
+    name:'OMK Wolf Jeans 🐺',
+    price:80000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/5E3C1575-6B29-4829-B13B-421B2EEF630D.png',
+    link:'omk-wolf-jeans.html', // change this if your file name is different
+    badge:'🔥 WOLF'
+  },
+
   {
     name:'OMK Voltage Jacket',
     price:90000,
@@ -229,6 +242,7 @@ const products = [
     link:'omk-voltage-jacket.html',
     badge:'NEW ⚡'
   },
+
   {
     name:'OMK Voltage Jean',
     price:90000,
@@ -237,7 +251,14 @@ const products = [
     badge:'NEW ⚡'
   },
 
-  /* BLUE-LINE COLLECTION */
+  {
+    name:'OMK Blue-Line Baddies',
+    price:99000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/95C388D3-89A5-4CA8-BD5E-F7E5EB1F7204.png',
+    link:'women-blue-line.html',
+    badge:'NEW 🐺'
+  },
+
   {
     name:'OMK Blue-Line Tee',
     price:60000,
@@ -245,6 +266,7 @@ const products = [
     link:'blue-line-tee.html',
     badge:'BLUE-LINE'
   },
+
   {
     name:'OMK Blue-Line Shorts',
     price:70000,
@@ -252,12 +274,13 @@ const products = [
     link:'omk-blue-line-short.html',
     badge:'BLUE-LINE'
   },
+
   {
-    name:'OMK Blue-Line Baddies',
-    price:99000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/95C388D3-89A5-4CA8-BD5E-F7E5EB1F7204.png',
-    link:'women-blue-line.html',
-    badge:'BLUE-LINE'
+    name:'OMK Wolf Flame Set (Men)',
+    price:160000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9F47FB09-10CD-4A48-9551-90F370051D7D.png',
+    link:'omk-wolf-flame-men.html',
+    badge:'🔥 LIMITED'
   }
 ];
 
@@ -297,6 +320,7 @@ function openPlayer(){
       loading="lazy"></iframe>
   `;
 }
+
 function closePlayer(){
   const panel = document.getElementById("musicPanel");
   panel.classList.remove("active");
