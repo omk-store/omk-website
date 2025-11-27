@@ -6,7 +6,7 @@
 <title>OMK | Only My Kind</title>
 
 <style>
-:root { --border:#eaeaea; --accent:#ff2d55; --dark:#000; }
+:root { --border:#eaeaea; --accent:#ff2d55; }
 *{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
 body{
   font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
@@ -44,13 +44,12 @@ header{
   gap:22px;
 }
 
-/* MAKE CARDS ALWAYS TAPABLE */
+/* MAKE CARDS TAPABLE */
 .grid a{
   display:block;
   width:100%;
   height:100%;
-  position:relative;
-  z-index:50;
+  z-index:20;
 }
 
 /* PRODUCT CARD */
@@ -70,27 +69,6 @@ header{
   font-size:12px;font-weight:800;padding:6px 10px;border-radius:20px;
 }
 
-/* JOIN EMAIL */
-.join{
-  width:min(900px,92%);
-  margin:40px auto;
-  background:#f9f9f9;border:1px solid var(--border);
-  border-radius:14px;padding:26px;text-align:center;
-}
-.join input{
-  width:75%;padding:12px;border-radius:10px;border:1px solid var(--border);
-}
-.join button{
-  margin-left:8px;padding:12px 20px;background:#000;color:#fff;
-  font-weight:800;border-radius:10px;
-}
-
-/* SOCIAL ICONS */
-.social-icons{text-align:center;margin:40px auto 20px;}
-social-icons img{
-  width:42px;height:42px;margin:0 12px;
-}
-
 /* ABOUT */
 #about{
   background:#111;color:#fff;text-align:center;
@@ -100,31 +78,6 @@ social-icons img{
 
 /* FOOTER */
 footer{text-align:center;padding:20px;color:#666}
-
-/* WHATSAPP */
-.chat-btn{
-  position:fixed;right:18px;bottom:18px;z-index:20;
-  background:#fff;border:1px solid var(--border);border-radius:40px;padding:10px 16px;
-  font-weight:900;display:flex;align-items:center;gap:8px;
-  box-shadow:0 8px 20px rgba(0,0,0,.12);
-}
-.chat-dot{width:10px;height:10px;background:var(--accent);border-radius:50%}
-
-/* MUSIC */
-.music-btn{
-  position:fixed;left:18px;top:90px;z-index:20;
-  background:#000;color:#fff;border-radius:40px;padding:10px 16px;
-  font-weight:800;display:flex;align-items:center;
-}
-.music-panel{
-  position:fixed;left:18px;top:150px;width:260px;background:#fff;border-radius:14px;
-  box-shadow:0 10px 30px rgba(0,0,0,.25);padding:16px;
-  opacity:0;pointer-events:none;z-index:-1;transition:opacity .25s;
-}
-.music-panel.active{
-  opacity:1;pointer-events:auto;z-index:200;
-}
-.music-close{position:absolute;right:10px;top:10px;font-size:18px;cursor:pointer}
 </style>
 </head>
 
@@ -138,27 +91,17 @@ footer{text-align:center;padding:20px;color:#666}
   </div>
 </header>
 
-<section class="hero" id="top">
+<section class="hero">
   <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/5CB390F1-C296-439F-A95B-32679E9FE8BA.png">
   <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
 </section>
 
-<section class="section" id="shop">
+<section class="section">
   <h2>Latest Drop 🐺⚡</h2>
   <div class="grid" id="productGrid"></div>
 </section>
 
-<section class="join">
-  <h3>Join the OMK Pack 🐺</h3>
-  <p>Get first access to OMK drops.</p>
-  <input id="joinEmail" type="email" placeholder="Enter your email">
-  <button onclick="joinPack()">Join →</button>
-</section>
-
-<div class="social-icons">
-  <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png"></a>
-</div>
-
+<!-- ABOUT -->
 <section id="about">
   <h2>About OMK 🐺</h2>
   <p>OMK – Only My Kind represents truth, loyalty & the wolf spirit.</p>
@@ -169,19 +112,28 @@ footer{text-align:center;padding:20px;color:#666}
   <br>Contact: omkdrip@gmail.com
 </footer>
 
-<a class="chat-btn" href="https://wa.me/2348118618722">
-  <span class="chat-dot"></span> Chat with OMK
-</a>
-
-<div class="music-btn" onclick="openPlayer()">🎵 OMK Music</div>
-
-<div class="music-panel" id="musicPanel">
-  <button class="music-close" onclick="closePlayer()">✕</button>
-</div>
-
 <script>
-/* PRODUCT LIST */
+/* 🔥 ALL PRODUCTS ARE BACK ON THE WEB */
 const products = [
+
+  /* SIGNATURE / NEW */
+  {
+    name:'OMK Voltage Signature ⚡',
+    price:80000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0140.jpeg',
+    link:'omk-voltage-signature.html',
+    badge:'SIGNATURE'
+  },
+
+  {
+    name:'OMK Wolf Jeans 🐺',
+    price:80000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/5E3C1575-6B29-4829-B13B-421B2EEF630D.png',
+    link:'omk-wolf-jeans.html',
+    badge:'🔥 WOLF'
+  },
+
+  /* MAIN PRODUCTS */
   {
     name:'OMK Voltage Track Set',
     price:150000,
@@ -189,6 +141,7 @@ const products = [
     link:'voltage-track-set.html',
     badge:'NEW ⚡'
   },
+
   {
     name:'OMK Chrome Tee',
     price:60000,
@@ -197,45 +150,49 @@ const products = [
     badge:'NEW 🐺'
   },
 
-  /* ⭐ ADDED NOW */
-  {
-    name:'OMK Voltage Signature ⚡',
-    price:80000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0140.jpeg',
-    link:'omk-voltage-signature.html',
-    badge:'NEW ⚡'
-  },
-  {
-    name:'OMK Wolf Jeans 🐺',
-    price:80000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/5E3C1575-6B29-4829-B13B-421B2EEF630D.png',
-    link:'omk-wolf-jeans.html',
-    badge:'NEW 🐺'
-  },
-
   {
     name:'OMK Voltage Jacket',
     price:90000,
     img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/4F6463CE-AC93-46AC-9E46-24CFC46DEE4C.png',
     link:'omk-voltage-jacket.html',
-    badge:'⚡'
+    badge:'NEW ⚡'
   },
+
   {
     name:'OMK Voltage Jean',
     price:90000,
     img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9BBC37D7-695C-4650-AEE9-C04910FBDF28.png',
     link:'omk-voltage-jean.html',
-    badge:'⚡'
+    badge:'NEW ⚡'
   },
+
+  /* BLUE LINE COLLECTION */
+  {
+    name:'OMK Blue-Line Tee',
+    price:60000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/42CB264F-3EDC-4B58-A10E-556BDEE31F93.png',
+    link:'blue-line-tee.html',
+    badge:'BLUE-LINE'
+  },
+
   {
     name:'OMK Blue-Line Shorts',
     price:70000,
     img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/0FDEF34E-CFDA-4A0B-92E2-2C68BA19645A.png',
     link:'omk-blue-line-short.html',
     badge:'BLUE-LINE'
+  },
+
+  {
+    name:'OMK Blue-Line Baddies',
+    price:99000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/95C388D3-89A5-4CA8-BD5E-F7E5EB1F7204.png',
+    link:'women-blue-line.html',
+    badge:'BLUE-LINE'
   }
 ];
 
+/* ADD TO GRID */
 const grid=document.getElementById('productGrid');
 products.forEach(p=>{
   grid.innerHTML+=`
@@ -250,28 +207,6 @@ products.forEach(p=>{
     </div>
   </a>`;
 });
-
-function joinPack(){
- let email=document.getElementById('joinEmail').value;
- if(!email){alert("Enter email");return;}
- window.open(`https://wa.me/2348118618722?text=I%20joined%20OMK%20Pack:%20${email}`);
-}
-
-function openPlayer(){
-  const panel=document.getElementById("musicPanel");
-  panel.classList.add("active");
-  panel.innerHTML=
-  `
-    <button class="music-close" onclick="closePlayer()">✕</button>
-    <iframe style="border-radius:12px"
-      src="https://open.spotify.com/embed/track/591YkWluaQeC3tGMWhSFWu"
-      width="100%" height="152">
-    </iframe>
-  `;
-}
-function closePlayer(){
-  document.getElementById("musicPanel").classList.remove("active");
-}
 </script>
 
 </body>
