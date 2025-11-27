@@ -22,7 +22,7 @@ header{
 }
 .logo{font-weight:900;font-size:22px}
 .header-icons{display:flex;align-items:center;gap:14px}
-.icon-btn img{width:26px;height:26px;cursor:pointer}
+.header-icons img{width:26px;height:26px;cursor:pointer}
 
 /* HERO */
 .hero{text-align:center;padding:36px 16px 0}
@@ -44,13 +44,13 @@ header{
   gap:22px;
 }
 
-/* CARD CLICKABLE */
+/* CLICKABLE WRAPPER */
 .grid a{
   display:block;
   width:100%;
   height:100%;
-  position:relative;
-  z-index:20; /* products always clickable */
+  text-decoration:none;
+  color:inherit;
 }
 
 /* PRODUCT CARD */
@@ -92,7 +92,7 @@ header{
   transition:0.25s ease-in-out;
 }
 
-/* ABOUT */
+/* ABOUT SECTION */
 #about{
   background:#111;color:#fff;text-align:center;
   padding:70px 20px;margin-top:40px;
@@ -102,44 +102,63 @@ header{
 /* FOOTER */
 footer{text-align:center;padding:20px;color:#666}
 
-/* FLOATING WHATSAPP */
+/* FLOATING WHATSAPP (FIXED TAP ISSUE) */
 .chat-btn{
-  position:fixed;right:18px;bottom:18px;z-index:10;
-  background:#fff;border:1px solid var(--border);border-radius:40px;padding:10px 16px;
-  font-weight:900;display:flex;align-items:center;gap:8px;
-  box-shadow:0 8px 20px rgba(0,0,0,.12);
+  position:fixed;
+  right:14px;
+  bottom:10px;
+  z-index:50;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:40px;
+  padding:8px 14px;
+  font-weight:900;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  box-shadow:0 5px 12px rgba(0,0,0,.12);
 }
 .chat-dot{width:10px;height:10px;background:var(--accent);border-radius:50%}
 
-/* MUSIC BUTTON */
+/* FLOATING MUSIC (FIXED TAP ISSUE) */
 .music-btn{
-  position:fixed;left:18px;bottom:18px;z-index:10;
-  background:#000;color:#fff;border-radius:40px;padding:10px 16px;
+  position:fixed;
+  left:14px;
+  bottom:10px;
+  z-index:50;
+  background:#000;color:#fff;
+  border-radius:40px;padding:8px 14px;
   font-weight:800;display:flex;align-items:center;
-  box-shadow:0 6px 20px rgba(0,0,0,.25);cursor:pointer;
+  box-shadow:0 5px 12px rgba(0,0,0,.12);cursor:pointer;
 }
 
-/* SAFARI-SAFE MUSIC PANEL (DOESN'T BLOCK TOUCH ANYMORE) */
+/* MUSIC PANEL */
 .music-panel{
-  position:fixed;left:18px;bottom:80px;width:260px;background:#fff;border-radius:14px;
-  box-shadow:0 10px 30px rgba(0,0,0,.25);padding:16px;
-
-  opacity:0;           /* hidden */
-  pointer-events:none; /* doesn't block clicks */
-  z-index:-1;          /* sits behind everything */
-  transition:opacity .25s;
+  position:fixed;left:14px;bottom:70px;width:260px;background:#fff;border-radius:14px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);padding:16px;z-index:95;display:none;
 }
-
-.music-panel.active{
-  opacity:1;
-  pointer-events:auto;
-  z-index:200; /* visible above all */
-}
-
 .music-close{
   position:absolute;right:10px;top:10px;background:none;border:none;
   font-size:18px;cursor:pointer;
 }
+
+/* POPUP */
+#refPopupBg{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,.55);
+  display:none;z-index:200;backdrop-filter:blur(3px);
+}
+#refPopup{
+  width:90%;max-width:380px;background:#fff;border-radius:18px;
+  padding:28px;text-align:center;margin:140px auto 0;
+  box-shadow:0 8px 30px rgba(0,0,0,.25);
+}
+.popup-btn{
+  padding:12px 20px;border:none;border-radius:10px;font-weight:800;
+  cursor:pointer;font-size:14px;
+}
+.copy-btn{background:#000;color:#fff;margin-right:8px}
+.close-btn{background:#ff2d55;color:#fff}
 </style>
 </head>
 
@@ -148,8 +167,8 @@ footer{text-align:center;padding:20px;color:#666}
 <header>
   <a class="logo">OMK</a>
   <div class="header-icons">
-    <a class="icon-btn"><img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png"></a>
-    <a class="icon-btn"><img src="https://cdn-icons-png.flaticon.com/512/56/56763.png"></a>
+    <img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png">
+    <img src="https://cdn-icons-png.flaticon.com/512/56/56763.png">
   </div>
 </header>
 
@@ -171,10 +190,18 @@ footer{text-align:center;padding:20px;color:#666}
 </section>
 
 <div class="social-icons">
-  <a href="https://www.instagram.com/iam_omotaker" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png"></a>
-  <a href="https://www.instagram.com/whosomotaker" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png"></a>
-  <a href="https://www.tiktok.com/@omkdrip" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3116/3116491.png"></a>
-  <a href="https://www.tiktok.com/@iam.omotaker" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3116/3116491.png"></a>
+  <a href="https://www.instagram.com/iam_omotaker" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png">
+  </a>
+  <a href="https://www.instagram.com/whosomotaker" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png">
+  </a>
+  <a href="https://www.tiktok.com/@omkdrip" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/3116/3116491.png">
+  </a>
+  <a href="https://www.tiktok.com/@iam.omotaker" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/3116/3116491.png">
+  </a>
 </div>
 
 <section id="about">
@@ -197,10 +224,20 @@ footer{text-align:center;padding:20px;color:#666}
   <button class="music-close" onclick="closePlayer()">✕</button>
 </div>
 
-<script>
-/* FINAL PRODUCTS (INCLUDING VOLTAGE SIGNATURE + WOLF JEANS) */
-const products = [
+<!-- POPUP -->
+<div id="refPopupBg">
+  <div id="refPopup">
+    <h2>Refer a Friend 🐺</h2>
+    <p>Refer someone and get <b>5% OFF</b> your next order.</p>
 
+    <button class="popup-btn copy-btn" onclick="copyReferral()">Copy My Referral Link</button>
+    <button class="popup-btn close-btn" onclick="closePopup()">Close</button>
+  </div>
+</div>
+
+<script>
+/* PRODUCTS */
+const products = [
   {
     name:'OMK Voltage Track Set',
     price:150000,
@@ -208,7 +245,6 @@ const products = [
     link:'voltage-track-set.html',
     badge:'NEW 🐺⚡'
   },
-
   {
     name:'OMK Chrome Tee',
     price:60000,
@@ -216,25 +252,6 @@ const products = [
     link:'tshirt.html',
     badge:'NEW 🐺⚡'
   },
-
-  /* ⭐ NEW – VOLTAGE SIGNATURE */
-  {
-    name:'OMK Voltage Signature ⚡',
-    price:80000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0140.jpeg',
-    link:'omk-voltage-signature.html', // change this if your file name is different
-    badge:'SIGNATURE'
-  },
-
-  /* ⭐ NEW – WOLF JEANS */
-  {
-    name:'OMK Wolf Jeans 🐺',
-    price:80000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/5E3C1575-6B29-4829-B13B-421B2EEF630D.png',
-    link:'omk-wolf-jeans.html', // change this if your file name is different
-    badge:'🔥 WOLF'
-  },
-
   {
     name:'OMK Voltage Jacket',
     price:90000,
@@ -242,7 +259,6 @@ const products = [
     link:'omk-voltage-jacket.html',
     badge:'NEW ⚡'
   },
-
   {
     name:'OMK Voltage Jean',
     price:90000,
@@ -250,7 +266,6 @@ const products = [
     link:'omk-voltage-jean.html',
     badge:'NEW ⚡'
   },
-
   {
     name:'OMK Blue-Line Baddies',
     price:99000,
@@ -258,7 +273,6 @@ const products = [
     link:'women-blue-line.html',
     badge:'NEW 🐺'
   },
-
   {
     name:'OMK Blue-Line Tee',
     price:60000,
@@ -266,7 +280,6 @@ const products = [
     link:'blue-line-tee.html',
     badge:'BLUE-LINE'
   },
-
   {
     name:'OMK Blue-Line Shorts',
     price:70000,
@@ -274,7 +287,6 @@ const products = [
     link:'omk-blue-line-short.html',
     badge:'BLUE-LINE'
   },
-
   {
     name:'OMK Wolf Flame Set (Men)',
     price:160000,
@@ -284,19 +296,20 @@ const products = [
   }
 ];
 
+/* RENDER PRODUCTS */
 const grid=document.getElementById('productGrid');
 products.forEach(p=>{
   grid.innerHTML+=`
-  <a href="${p.link}">
-    <div class="card">
-      <span class="badge">${p.badge}</span>
-      <div class="card-img"><img src="${p.img}"></div>
-      <div class="card-body">
-        <h3>${p.name}</h3>
-        <p class="price">₦${p.price.toLocaleString()}</p>
+    <a href="${p.link}">
+      <div class="card">
+        <span class="badge">${p.badge}</span>
+        <div class="card-img"><img src="${p.img}"></div>
+        <div class="card-body">
+          <h3>${p.name}</h3>
+          <p class="price">₦${p.price.toLocaleString()}</p>
+        </div>
       </div>
-    </div>
-  </a>`;
+    </a>`;
 });
 
 /* JOIN PACK */
@@ -306,11 +319,10 @@ function joinPack(){
  window.open(`https://wa.me/2348118618722?text=I%20joined%20OMK%20Pack:%20${email}`);
 }
 
-/* MUSIC */
+/* MUSIC PLAYER */
 function openPlayer(){
-  const panel = document.getElementById("musicPanel");
-  panel.classList.add("active");
-  panel.innerHTML=
+  document.getElementById("musicPanel").style.display="block";
+  document.getElementById("musicPanel").innerHTML=
   `
     <button class="music-close" onclick="closePlayer()">✕</button>
     <iframe style="border-radius:12px"
@@ -320,10 +332,25 @@ function openPlayer(){
       loading="lazy"></iframe>
   `;
 }
-
 function closePlayer(){
-  const panel = document.getElementById("musicPanel");
-  panel.classList.remove("active");
+  document.getElementById("musicPanel").style.display="none";
+}
+
+/* POP-UP */
+function showPopup(){
+  document.getElementById("refPopupBg").style.display="block";
+}
+setTimeout(showPopup,5000);
+
+function closePopup(){
+  document.getElementById("refPopupBg").style.display="none";
+}
+
+function copyReferral(){
+  const link="https://omkdrip.com/?ref=OMK_WOLF";
+  navigator.clipboard.writeText(link);
+  document.querySelector(".copy-btn").innerText="Copied ✔️";
+  setTimeout(()=>{closePopup();},1200);
 }
 </script>
 
