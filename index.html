@@ -44,8 +44,16 @@ header{
   gap:22px;
 }
 
-/* CARD */
-.grid a{display:block;width:100%;height:100%;text-decoration:none;color:inherit}
+/* CLICKABLE WRAPPER */
+.grid a{
+  display:block;
+  width:100%;
+  height:100%;
+  text-decoration:none;
+  color:inherit;
+}
+
+/* PRODUCT CARD */
 .card{
   border:1px solid var(--border);border-radius:12px;overflow:hidden;
   background:#fff;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,.05);
@@ -64,8 +72,10 @@ header{
 
 /* JOIN EMAIL */
 .join{
-  width:min(900px,92%);margin:40px auto;background:#f9f9f9;
-  border:1px solid var(--border);border-radius:14px;padding:26px;text-align:center;
+  width:min(900px,92%);
+  margin:40px auto;
+  background:#f9f9f9;border:1px solid var(--border);
+  border-radius:14px;padding:26px;text-align:center;
 }
 .join input{
   width:75%;padding:12px;border-radius:10px;border:1px solid var(--border);
@@ -77,7 +87,10 @@ header{
 
 /* SOCIAL ICONS */
 .social-icons{text-align:center;margin:40px auto 20px;}
-.social-icons img{width:42px;height:42px;margin:0 12px;transition:0.25s ease-in-out}
+.social-icons img{
+  width:42px;height:42px;margin:0 12px;
+  transition:0.25s ease-in-out;
+}
 
 /* ABOUT SECTION */
 #about{
@@ -91,13 +104,32 @@ footer{text-align:center;padding:20px;color:#666}
 
 /* FLOATING WHATSAPP */
 .chat-btn{
-  position:fixed;right:14px;bottom:10px;z-index:50;background:#fff;
-  border:1px solid var(--border);border-radius:40px;padding:8px 14px;
-  font-weight:900;display:flex;align-items:center;gap:8px;
+  position:fixed;
+  right:14px;
+  bottom:10px;
+  z-index:50;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:40px;
+  padding:8px 14px;
+  font-weight:900;
+  display:flex;
+  align-items:center;
+  gap:8px;
   box-shadow:0 5px 12px rgba(0,0,0,.12);
 }
-.chat-dot{
-  width:10px;height:10px;background:#ff2d55;border-radius:50%;
+.chat-dot{width:10px;height:10px;background:var(--accent);border-radius:50%}
+
+/* FLOATING MUSIC */
+.music-btn{
+  position:fixed;
+  left:14px;
+  bottom:10px;
+  z-index:50;
+  background:#000;color:#fff;
+  border-radius:40px;padding:8px 14px;
+  font-weight:800;display:flex;align-items:center;
+  box-shadow:0 5px 12px rgba(0,0,0,.12);
 }
 </style>
 </head>
@@ -105,14 +137,14 @@ footer{text-align:center;padding:20px;color:#666}
 <body>
 
 <header>
-  <a class="logo" href="index.html">OMK</a>
+  <a class="logo">OMK</a>
   <div class="header-icons">
     <img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png">
     <img src="https://cdn-icons-png.flaticon.com/512/56/56763.png">
   </div>
 </header>
 
-<section class="hero">
+<section class="hero" id="top">
   <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/5CB390F1-C296-439F-A95B-32679E9FE8BA.png">
   <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
 </section>
@@ -130,10 +162,18 @@ footer{text-align:center;padding:20px;color:#666}
 </section>
 
 <div class="social-icons">
-  <a href="https://www.instagram.com/iam_omotaker"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png"></a>
-  <a href="https://www.instagram.com/whosomotaker"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png"></a>
-  <a href="https://www.tiktok.com/@omkdrip"><img src="https://cdn-icons-png.flaticon.com/512/3116/3116491.png"></a>
-  <a href="https://www.tiktok.com/@iam.omotaker"><img src="https://cdn-icons-png.flaticon.com/512/3116/3116491.png"></a>
+  <a href="https://www.instagram.com/iam_omotaker" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png">
+  </a>
+  <a href="https://www.instagram.com/whosomotaker" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png">
+  </a>
+  <a href="https://www.tiktok.com/@omkdrip" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/3116/3116491.png">
+  </a>
+  <a href="https://www.tiktok.com/@iam.omotaker" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/3116/3116491.png">
+  </a>
 </div>
 
 <section id="about">
@@ -151,10 +191,8 @@ footer{text-align:center;padding:20px;color:#666}
 </a>
 
 <script>
-/* PRODUCTS LIST */
+/* PRODUCTS */
 const products = [
-
-  /* Your existing items */
   {
     name:'OMK Voltage Track Set',
     price:150000,
@@ -169,28 +207,65 @@ const products = [
     link:'tshirt.html',
     badge:'NEW 🐺⚡'
   },
+  {
+    name:'OMK Voltage Jacket',
+    price:90000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/4F6463CE-AC93-46AC-9E46-24CFC46DEE4C.png',
+    link:'omk-voltage-jacket.html',
+    badge:'NEW ⚡'
+  },
+  {
+    name:'OMK Voltage Jean',
+    price:90000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9BBC37D7-695C-4650-AEE9-C04910FBDF28.png',
+    link:'omk-voltage-jean.html',
+    badge:'NEW ⚡'
+  },
+  {
+    name:'OMK Blue-Line Baddies',
+    price:99000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/95C388D3-89A5-4CA8-BD5E-F7E5EB1F7204.png',
+    link:'women-blue-line.html',
+    badge:'NEW 🐺'
+  },
+  {
+    name:'OMK Blue-Line Tee',
+    price:60000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/42CB264F-3EDC-4B58-A10E-556BDEE31F93.png',
+    link:'blue-line-tee.html',
+    badge:'BLUE-LINE'
+  },
+  {
+    name:'OMK Blue-Line Shorts',
+    price:70000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/0FDEF34E-CFDA-4A0B-92E2-2C68BA19645A.png',
+    link:'omk-blue-line-short.html',
+    badge:'BLUE-LINE'
+  },
 
-  /* ⭐ NEW ITEMS */
+  /* ⭐ NEW PRODUCT 1 — HOODIE */
   {
     name:'OMK Wolf Hoodie (Blue-Line)',
     price:85000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/56A58A00-78C3-4799-8220-18254057C8BD.png',
-    link:'omk-wolf-hoodie-blue-line.html',
+    img:'HOODIE_FRONT.png',
+    link:'omk-wolf-hoodie.html',
     badge:'NEW 🐺🔥'
   },
 
+  /* ⭐ NEW PRODUCT 2 — PANTS */
   {
     name:'OMK Wolf Pants (Blue-Line)',
     price:90000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/1637CA26-DCA2-4D8C-A95A-F67CD0C3E9D4.png',
+    img:'PANTS_FRONT.png',
     link:'omk-wolf-pants.html',
     badge:'NEW 🐺🔥'
   },
 
+  /* ⭐ NEW PRODUCT 3 — CAP */
   {
     name:'OMK OG Cap (Blue-Line)',
     price:55000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/CAP.png',
+    img:'CAP.png',
     link:'omk-cap.html',
     badge:'NEW 🧢'
   }
@@ -203,14 +278,13 @@ products.forEach(p=>{
     <a href="${p.link}">
       <div class="card">
         <span class="badge">${p.badge}</span>
-        <div class="card-img"><img src="${p.img}" /></div>
+        <div class="card-img"><img src="${p.img}"></div>
         <div class="card-body">
           <h3>${p.name}</h3>
           <p class="price">₦${p.price.toLocaleString()}</p>
         </div>
       </div>
-    </a>
-  `;
+    </a>`;
 });
 
 /* JOIN PACK */
