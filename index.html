@@ -87,9 +87,8 @@ header{
 
 /* SOCIAL ICONS */
 .social-icons{text-align:center;margin:40px auto 20px;}
-.social-icons img{
+social-icons img{
   width:42px;height:42px;margin:0 12px;
-  transition:0.25s ease-in-out;
 }
 
 /* ABOUT */
@@ -102,7 +101,7 @@ header{
 /* FOOTER */
 footer{text-align:center;padding:20px;color:#666}
 
-/* WHATSAPP BUTTON */
+/* WHATSAPP */
 .chat-btn{
   position:fixed;right:18px;bottom:18px;z-index:20;
   background:#fff;border:1px solid var(--border);border-radius:40px;padding:10px 16px;
@@ -111,33 +110,21 @@ footer{text-align:center;padding:20px;color:#666}
 }
 .chat-dot{width:10px;height:10px;background:var(--accent);border-radius:50%}
 
-/* MUSIC BUTTON (MOVED TO TOP-LEFT) */
+/* MUSIC */
 .music-btn{
   position:fixed;left:18px;top:90px;z-index:20;
   background:#000;color:#fff;border-radius:40px;padding:10px 16px;
   font-weight:800;display:flex;align-items:center;
-  box-shadow:0 6px 20px rgba(0,0,0,.25);cursor:pointer;
 }
-
-/* MUSIC PANEL (SAFE) */
 .music-panel{
   position:fixed;left:18px;top:150px;width:260px;background:#fff;border-radius:14px;
   box-shadow:0 10px 30px rgba(0,0,0,.25);padding:16px;
-
-  opacity:0;
-  pointer-events:none;
-  z-index:-1;
-  transition:opacity .25s;
+  opacity:0;pointer-events:none;z-index:-1;transition:opacity .25s;
 }
 .music-panel.active{
-  opacity:1;
-  pointer-events:auto;
-  z-index:200;
+  opacity:1;pointer-events:auto;z-index:200;
 }
-.music-close{
-  position:absolute;right:10px;top:10px;background:none;border:none;
-  font-size:18px;cursor:pointer;
-}
+.music-close{position:absolute;right:10px;top:10px;font-size:18px;cursor:pointer}
 </style>
 </head>
 
@@ -169,10 +156,7 @@ footer{text-align:center;padding:20px;color:#666}
 </section>
 
 <div class="social-icons">
-  <a href="https://www.instagram.com/iam_omotaker" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png"></a>
-  <a href="https://www.instagram.com/whosomotaker" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png"></a>
-  <a href="https://www.tiktok.com/@omkdrip" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3116/3116491.png"></a>
-  <a href="https://www.tiktok.com/@iam.omotaker" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3116/3116491.png"></a>
+  <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png"></a>
 </div>
 
 <section id="about">
@@ -203,42 +187,45 @@ const products = [
     price:150000,
     img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_2305.jpeg',
     link:'voltage-track-set.html',
-    badge:'NEW 🐺⚡'
+    badge:'NEW ⚡'
   },
   {
     name:'OMK Chrome Tee',
     price:60000,
     img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B95C37E-46F1-457A-9548-CF4E5B2A9227.png',
     link:'tshirt.html',
-    badge:'NEW 🐺⚡'
+    badge:'NEW 🐺'
   },
+
+  /* ⭐ ADDED NOW */
+  {
+    name:'OMK Voltage Signature ⚡',
+    price:80000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_0140.jpeg',
+    link:'omk-voltage-signature.html',
+    badge:'NEW ⚡'
+  },
+  {
+    name:'OMK Wolf Jeans 🐺',
+    price:80000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/5E3C1575-6B29-4829-B13B-421B2EEF630D.png',
+    link:'omk-wolf-jeans.html',
+    badge:'NEW 🐺'
+  },
+
   {
     name:'OMK Voltage Jacket',
     price:90000,
     img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/4F6463CE-AC93-46AC-9E46-24CFC46DEE4C.png',
     link:'omk-voltage-jacket.html',
-    badge:'NEW ⚡'
+    badge:'⚡'
   },
   {
     name:'OMK Voltage Jean',
     price:90000,
     img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9BBC37D7-695C-4650-AEE9-C04910FBDF28.png',
     link:'omk-voltage-jean.html',
-    badge:'NEW ⚡'
-  },
-  {
-    name:'OMK Blue-Line Baddies',
-    price:99000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/95C388D3-89A5-4CA8-BD5E-F7E5EB1F7204.png',
-    link:'women-blue-line.html',
-    badge:'NEW 🐺'
-  },
-  {
-    name:'OMK Blue-Line Tee',
-    price:60000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/42CB264F-3EDC-4B58-A10E-556BDEE31F93.png',
-    link:'blue-line-tee.html',
-    badge:'BLUE-LINE'
+    badge:'⚡'
   },
   {
     name:'OMK Blue-Line Shorts',
@@ -246,13 +233,6 @@ const products = [
     img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/0FDEF34E-CFDA-4A0B-92E2-2C68BA19645A.png',
     link:'omk-blue-line-short.html',
     badge:'BLUE-LINE'
-  },
-  {
-    name:'OMK Wolf Flame Set (Men)',
-    price:160000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9F47FB09-10CD-4A48-9551-90F370051D7D.png',
-    link:'omk-wolf-flame-men.html',
-    badge:'🔥 LIMITED'
   }
 ];
 
@@ -271,30 +251,26 @@ products.forEach(p=>{
   </a>`;
 });
 
-/* JOIN PACK */
 function joinPack(){
  let email=document.getElementById('joinEmail').value;
  if(!email){alert("Enter email");return;}
  window.open(`https://wa.me/2348118618722?text=I%20joined%20OMK%20Pack:%20${email}`);
 }
 
-/* MUSIC */
 function openPlayer(){
-  const panel = document.getElementById("musicPanel");
+  const panel=document.getElementById("musicPanel");
   panel.classList.add("active");
   panel.innerHTML=
   `
     <button class="music-close" onclick="closePlayer()">✕</button>
     <iframe style="border-radius:12px"
       src="https://open.spotify.com/embed/track/591YkWluaQeC3tGMWhSFWu"
-      width="100%" height="152" frameBorder="0"
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-      loading="lazy"></iframe>
+      width="100%" height="152">
+    </iframe>
   `;
 }
 function closePlayer(){
-  const panel = document.getElementById("musicPanel");
-  panel.classList.remove("active");
+  document.getElementById("musicPanel").classList.remove("active");
 }
 </script>
 
