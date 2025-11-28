@@ -179,9 +179,10 @@ footer{text-align:center;padding:20px;color:#666}
 </a>
 
 <script>
-/* PRODUCTS */
+/* PRODUCTS — ONLY ORDER CHANGED */
 const products = [
 
+  /* 1 — FULL TRACK SUIT FIRST */
   {
     name:'OMK Voltage Track Set',
     price:150000,
@@ -190,14 +191,7 @@ const products = [
     badge:'NEW 🐺⚡'
   },
 
-  {
-    name:'OMK Chrome Tee',
-    price:60000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B95C37E-46F1-457A-9548-CF4E5B2A9227.png',
-    link:'tshirt.html',
-    badge:'NEW 🐺⚡'
-  },
-
+  /* 2 — JACKETS */
   {
     name:'OMK Voltage Jacket',
     price:90000,
@@ -206,6 +200,7 @@ const products = [
     badge:'NEW ⚡'
   },
 
+  /* 3 — PANTS */
   {
     name:'OMK Voltage Jean',
     price:90000,
@@ -214,12 +209,31 @@ const products = [
     badge:'NEW ⚡'
   },
 
+  /* 4 — HOODIE */
   {
-    name:'OMK Blue-Line Baddies',
-    price:99000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/95C388D3-89A5-4CA8-BD5E-F7E5EB1F7204.png',
-    link:'women-blue-line.html',
-    badge:'NEW 🐺'
+    name:'OMK Wolf Hoodie (Blue-Line)',
+    price:90000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/56A58A00-78C3-4799-8220-18254057C8BD.png',
+    link:'omk-wolf-hoodie-blue-line.html',
+    badge:'NEW 🐺🔥'
+  },
+
+  /* 5 — BLUE-LINE PANTS */
+  {
+    name:'OMK Wolf Pants (Blue-Line)',
+    price:90000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/06762C45-D3E7-49F7-B60A-684330FE167C.png',
+    link:'omk-wolf-pants-blue-line.html',
+    badge:'NEW 🐺🔥'
+  },
+
+  /* 6 — T-SHIRTS */
+  {
+    name:'OMK Chrome Tee',
+    price:60000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B95C37E-46F1-457A-9548-CF4E5B2A9227.png',
+    link:'tshirt.html',
+    badge:'NEW 🐺⚡'
   },
 
   {
@@ -230,6 +244,7 @@ const products = [
     badge:'BLUE-LINE'
   },
 
+  /* 7 — SHORTS */
   {
     name:'OMK Blue-Line Shorts',
     price:70000,
@@ -238,25 +253,16 @@ const products = [
     badge:'BLUE-LINE'
   },
 
-  /* HOODIE UPDATED TO ₦90K */
+  /* 8 — WOMEN BLUE-LINE */
   {
-    name:'OMK Wolf Hoodie (Blue-Line)',
-    price:90000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/56A58A00-78C3-4799-8220-18254057C8BD.png',
-    link:'omk-wolf-hoodie-blue-line.html',
-    badge:'NEW 🐺🔥'
+    name:'OMK Blue-Line Baddies',
+    price:99000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/95C388D3-89A5-4CA8-BD5E-F7E5EB1F7204.png',
+    link:'women-blue-line.html',
+    badge:'NEW 🐺'
   },
 
-  /* NEW REAL BLUE-LINE PANTS */
-  {
-    name:'OMK Wolf Pants (Blue-Line)',
-    price:90000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/06762C45-D3E7-49F7-B60A-684330FE167C.png',
-    link:'omk-wolf-pants-blue-line.html',
-    badge:'NEW 🐺🔥'
-  },
-
-  /* REAL BLUE-LINE CAP */
+  /* 9 — CAP */
   {
     name:'OMK OG Cap (Blue-Line)',
     price:55000,
@@ -267,7 +273,7 @@ const products = [
 
 ];
 
-/* RENDER PRODUCTS */
+/* RENDER */
 const grid=document.getElementById('productGrid');
 products.forEach(p=>{
   grid.innerHTML+=`
