@@ -35,7 +35,13 @@ header{
 
 /* SECTION */
 .section{padding:56px 0}
-.section h2{text-align:center;font-size:28px;margin-bottom:26px}
+.section h2{text-align:center;font-size:28px;margin-bottom:8px}
+.section p.sub-head{
+  text-align:center;
+  font-size:13px;
+  color:#777;
+  margin-bottom:24px;
+}
 .grid{
   width:min(1100px,92%);
   margin:0 auto;
@@ -62,7 +68,7 @@ header{
 .card:hover{transform:translateY(-4px)}
 .card-img img{width:100%;height:300px;object-fit:cover}
 .card-body{padding:14px}
-.price{color:#444;font-weight:700}
+.price{color:#444;font-weight:700;font-size:15px}
 
 /* BADGE */
 .badge{
@@ -77,6 +83,8 @@ header{
   background:#f9f9f9;border:1px solid var(--border);
   border-radius:14px;padding:26px;text-align:center;
 }
+.join h3{margin-top:0;margin-bottom:6px}
+.join p{margin-top:0;margin-bottom:16px;color:#555;font-size:14px}
 .join input{
   width:75%;padding:12px;border-radius:10px;border:1px solid var(--border);
 }
@@ -97,10 +105,11 @@ header{
   background:#111;color:#fff;text-align:center;
   padding:70px 20px;margin-top:40px;
 }
-#about p{max-width:700px;margin:auto;color:#ddd}
+#about h2{margin-top:0;margin-bottom:10px}
+#about p{max-width:700px;margin:auto;color:#ddd;font-size:14px;line-height:1.6}
 
 /* FOOTER */
-footer{text-align:center;padding:20px;color:#666}
+footer{text-align:center;padding:20px;color:#666;font-size:13px}
 
 /* WHATSAPP FLOAT */
 .chat-btn{
@@ -139,12 +148,13 @@ footer{text-align:center;padding:20px;color:#666}
 
 <section class="section" id="shop">
   <h2>Latest Drop 🐺⚡</h2>
+  <p class="sub-head">Tap any product to see full details, front/back views & order on WhatsApp.</p>
   <div class="grid" id="productGrid"></div>
 </section>
 
 <section class="join">
   <h3>Join the OMK Pack 🐺</h3>
-  <p>Get first access to OMK drops.</p>
+  <p>Get first access to OMK drops, private sales & wolf-tribe news.</p>
   <input id="joinEmail" type="email" placeholder="Enter your email">
   <button onclick="joinPack()">Join →</button>
 </section>
@@ -166,7 +176,7 @@ footer{text-align:center;padding:20px;color:#666}
 
 <section id="about">
   <h2>About OMK 🐺</h2>
-  <p>OMK – Only My Kind represents truth, loyalty & the wolf spirit.</p>
+  <p>OMK – Only My Kind is for the chosen ones who move with truth, loyalty and wolf energy. Every piece is built to feel like luxury, look like 2030 streetwear, and speak your story without you saying a word.</p>
 </section>
 
 <footer>
@@ -179,10 +189,11 @@ footer{text-align:center;padding:20px;color:#666}
 </a>
 
 <script>
-/* PRODUCTS — ONLY ORDER CHANGED */
+/* PRODUCTS */
 const products = [
 
-  /* 1 — FULL TRACK SUIT FIRST */
+  /* FULL OMK & BLUE-LINE ENERGY FIRST */
+
   {
     name:'OMK Voltage Track Set',
     price:150000,
@@ -191,25 +202,6 @@ const products = [
     badge:'NEW 🐺⚡'
   },
 
-  /* 2 — JACKETS */
-  {
-    name:'OMK Voltage Jacket',
-    price:90000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/4F6463CE-AC93-46AC-9E46-24CFC46DEE4C.png',
-    link:'omk-voltage-jacket.html',
-    badge:'NEW ⚡'
-  },
-
-  /* 3 — PANTS */
-  {
-    name:'OMK Voltage Jean',
-    price:90000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9BBC37D7-695C-4650-AEE9-C04910FBDF28.png',
-    link:'omk-voltage-jean.html',
-    badge:'NEW ⚡'
-  },
-
-  /* 4 — HOODIE */
   {
     name:'OMK Wolf Hoodie (Blue-Line)',
     price:90000,
@@ -218,7 +210,6 @@ const products = [
     badge:'NEW 🐺🔥'
   },
 
-  /* 5 — BLUE-LINE PANTS */
   {
     name:'OMK Wolf Pants (Blue-Line)',
     price:90000,
@@ -227,13 +218,48 @@ const products = [
     badge:'NEW 🐺🔥'
   },
 
-  /* 6 — T-SHIRTS */
+  {
+    name:'OMK OG Cap (Blue-Line)',
+    price:55000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/C074D825-2E7B-46D8-8C27-3B7D27E6B8B3.png',
+    link:'omk-og-cap.html',
+    badge:'NEW 🧢'
+  },
+
+  /* VOLTAGE CORE PIECES */
+
+  {
+    name:'OMK Voltage Jacket',
+    price:90000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/4F6463CE-AC93-46AC-9E46-24CFC46DEE4C.png',
+    link:'omk-voltage-jacket.html',
+    badge:'NEW ⚡'
+  },
+
+  {
+    name:'OMK Voltage Jean',
+    price:90000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9BBC37D7-695C-4650-AEE9-C04910FBDF28.png',
+    link:'omk-voltage-jean.html',
+    badge:'NEW ⚡'
+  },
+
+  /* TEES & BLUE-LINE FAMILY */
+
   {
     name:'OMK Chrome Tee',
     price:60000,
     img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B95C37E-46F1-457A-9548-CF4E5B2A9227.png',
     link:'tshirt.html',
     badge:'NEW 🐺⚡'
+  },
+
+  {
+    name:'OMK Blue-Line Baddies',
+    price:99000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/95C388D3-89A5-4CA8-BD5E-F7E5EB1F7204.png',
+    link:'women-blue-line.html',
+    badge:'NEW 🐺'
   },
 
   {
@@ -244,43 +270,24 @@ const products = [
     badge:'BLUE-LINE'
   },
 
-  /* 7 — SHORTS */
   {
     name:'OMK Blue-Line Shorts',
     price:70000,
     img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/0FDEF34E-CFDA-4A0B-92E2-2C68BA19645A.png',
     link:'omk-blue-line-short.html',
     badge:'BLUE-LINE'
-  },
-
-  /* 8 — WOMEN BLUE-LINE */
-  {
-    name:'OMK Blue-Line Baddies',
-    price:99000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/95C388D3-89A5-4CA8-BD5E-F7E5EB1F7204.png',
-    link:'women-blue-line.html',
-    badge:'NEW 🐺'
-  },
-
-  /* 9 — CAP */
-  {
-    name:'OMK OG Cap (Blue-Line)',
-    price:55000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/C074D825-2E7B-46D8-8C27-3B7D27E6B8B3.png',
-    link:'omk-og-cap.html',
-    badge:'NEW 🧢'
   }
 
 ];
 
-/* RENDER */
+/* RENDER PRODUCTS */
 const grid=document.getElementById('productGrid');
 products.forEach(p=>{
   grid.innerHTML+=`
     <a href="${p.link}">
       <div class="card">
         <span class="badge">${p.badge}</span>
-        <div class="card-img"><img src="${p.img}"></div>
+        <div class="card-img"><img src="${p.img}" alt="${p.name}"></div>
         <div class="card-body">
           <h3>${p.name}</h3>
           <p class="price">₦${p.price.toLocaleString()}</p>
@@ -291,9 +298,9 @@ products.forEach(p=>{
 
 /* JOIN PACK */
 function joinPack(){
- let email=document.getElementById('joinEmail').value;
- if(!email){alert("Enter email");return;}
- window.open(`https://wa.me/2348118618722?text=I%20joined%20OMK%20Pack:%20${email}`);
+  let email=document.getElementById('joinEmail').value;
+  if(!email){alert("Enter email");return;}
+  window.open(`https://wa.me/2348118618722?text=I%20joined%20OMK%20Pack:%20${email}`);
 }
 </script>
 
