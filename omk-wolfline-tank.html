@@ -12,7 +12,6 @@
   --muted:#6b7280;
   --border:#e5e7eb;
   --shadow:0 10px 30px rgba(0,0,0,.06);
-  --omk:#ff2d55;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{
@@ -39,7 +38,9 @@ header{
 }
 
 h1{font-size:28px;margin:12px 0;font-weight:900}
-.price{font-size:22px;font-weight:800;margin-bottom:18px}
+.price{
+  font-size:22px;font-weight:800;margin-bottom:18px;
+}
 
 /* SIZE BUTTONS */
 .size-group{
@@ -58,41 +59,37 @@ h1{font-size:28px;margin:12px 0;font-weight:900}
   display:block;width:100%;background:#000;color:#fff;
   text-align:center;padding:16px;border-radius:12px;
   font-weight:800;font-size:18px;margin-top:10px;
+  box-shadow:0 6px 20px rgba(0,0,0,.25);
 }
 .add-btn{
-  display:block;width:100%;background:#fff;color:#000;
-  border:2px solid #000;text-align:center;padding:16px;
-  border-radius:12px;font-weight:800;font-size:17px;margin-top:10px;
+  display:block;width:100%;background:#fff;
+  color:#000;border:2px solid #000;
+  text-align:center;padding:16px;border-radius:12px;
+  font-weight:800;font-size:17px;margin-top:10px;
 }
 
-/* CART PANEL */
-.cart-panel{
-  position:fixed;left:0;right:0;bottom:-100%;
-  background:#fff;border-top:2px solid var(--border);
-  box-shadow:0 -8px 20px rgba(0,0,0,.1);
-  transition:bottom .4s ease;z-index:500;
-  padding:20px 18px;border-radius:22px 22px 0 0;
+/* DETAILS */
+.section-title{
+  margin-top:30px;font-size:20px;font-weight:800;margin-bottom:10px;
 }
-.cart-panel.open{bottom:0}
-
-.cart-item{
-  padding:12px 0;border-bottom:1px solid #eee;
-  display:flex;justify-content:space-between;font-size:15px;font-weight:600;
+.details{
+  font-size:15px;line-height:1.6;color:#444;
 }
-.cart-total{margin-top:12px;font-weight:900;font-size:17px}
 
-/* FLOATING CART BUTTON */
-.fcart{
-  position:fixed;right:18px;bottom:20px;z-index:600;
+/* FOOTER */
+footer{
+  margin:50px 0 90px;text-align:center;font-size:14px;color:#555;
+}
+
+/* FLOATING CHAT */
+.chat-btn{
+  position:fixed;right:18px;bottom:20px;z-index:2000;
   background:#fff;border:1px solid var(--border);
-  padding:12px 16px;border-radius:40px;font-weight:800;
-  box-shadow:0 8px 20px rgba(0,0,0,.15);display:flex;align-items:center;gap:10px;
+  padding:10px 16px;border-radius:40px;display:flex;
+  align-items:center;gap:8px;font-weight:800;
+  box-shadow:0 8px 20px rgba(0,0,0,.15);
 }
-.fcart-count{
-  background:#ff2d55;color:#fff;font-size:11px;font-weight:700;
-  border-radius:50%;width:16px;height:16px;display:flex;
-  align-items:center;justify-content:center;
-}
+.chat-btn img{width:20px;height:20px}
 </style>
 </head>
 
@@ -118,6 +115,7 @@ h1{font-size:28px;margin:12px 0;font-weight:900}
   <div class="price">₦55,000</div>
 
   <!-- SIZES -->
+  <div class="section-title">Select Size</div>
   <div class="size-group">
     <button class="size-btn">S</button>
     <button class="size-btn active">M</button>
@@ -126,80 +124,33 @@ h1{font-size:28px;margin:12px 0;font-weight:900}
   </div>
 
   <!-- BUTTONS -->
-  <a class="add-btn" href="#" id="addToCart">Add to Cart</a>
+  <a class="add-btn" href="#">Add to Cart</a>
+
   <a class="buy" href="checkout.html">Buy Now →</a>
 
+  <!-- DETAILS -->
+  <div class="section-title">Details</div>
+  <div class="details">
+    Sleek athletic tank top infused with OMK Wolfline energy.
+    Perfect for gym, lifestyle, content and clean drip.
+  </div>
+
+  <div class="section-title">Tags</div>
+  <div class="details">OMK • Wolfline • Premium Wear</div>
+
 </div>
 
-<!-- CART PANEL -->
-<div id="cartPanel" class="cart-panel">
-  <h3 style="font-weight:900;margin-bottom:14px">Your Cart</h3>
+<!-- CHAT BUTTON -->
+<a class="chat-btn" target="_blank"
+href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20the%20Wolfline%20Tank%20Top">
+  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+  <span>Chat with us</span>
+</a>
 
-  <div id="cartItems"></div>
-
-  <div class="cart-total" id="cartTotal">Total: ₦0</div>
-
-  <a class="add-btn" 
-     href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20the%20OMK%20Wolfline%20Tank%20Top"
-     style="margin-top:16px;text-align:center;display:block">
-     Chat with us
-  </a>
-
-  <a href="checkout.html" class="buy" style="margin-top:16px;">Checkout</a>
-</div>
-
-<!-- FLOATING CART -->
-<div class="fcart" id="openCart">
-  <img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png" width="22">
-  <span class="fcart-count" id="cartCount">0</span>
-</div>
-
-<script>
-const sizes=document.querySelectorAll('.size-btn');
-sizes.forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    sizes.forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-  });
-});
-
-let cart=JSON.parse(localStorage.getItem('omkCart')||'[]');
-updateCart();
-
-function addToCart(){
-  const size=document.querySelector('.size-btn.active')?.textContent||'M';
-  cart.push({name:`OMK Wolfline Tank Top (${size})`,price:55000});
-  localStorage.setItem('omkCart',JSON.stringify(cart));
-  updateCart();
-  toggleCart();
-}
-
-function toggleCart(){
-  document.getElementById('cartPanel').classList.toggle('open');
-}
-
-function updateCart(){
-  const items=document.getElementById('cartItems');
-  const totalBox=document.getElementById('cartTotal');
-  const count=document.getElementById('cartCount');
-  let total=0;
-  items.innerHTML='';
-  cart.forEach((it)=>{
-    total+=it.price;
-    items.innerHTML+=`
-      <div class="cart-item">
-        <span>${it.name}</span>
-        <span>₦${it.price.toLocaleString()}</span>
-      </div>
-    `;
-  });
-  totalBox.textContent='Total: ₦'+total.toLocaleString();
-  count.textContent=cart.length;
-}
-
-document.getElementById('addToCart').onclick=addToCart;
-document.getElementById('openCart').onclick=toggleCart;
-</script>
+<footer>
+  © 2025 <strong>OMK – Only My Kind</strong> • All Rights Reserved  
+  <br>Contact: omkdrip@gmail.com
+</footer>
 
 </body>
 </html>
