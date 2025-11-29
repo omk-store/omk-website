@@ -170,24 +170,11 @@ footer{text-align:center;padding:20px;color:#666}
 </a>
 
 <script>
-/* PRODUCTS */
+/* PRODUCTS — updated with SWAP */
 const products = [
 
-  {
-    name:'OMK Wolf Bag Hoodie',
-    price:95000,
-    img:'',
-    link:'wolf-bag-hoodie.html',
-    badge:'NEW 🐺🎒'
-  },
-
-  {
-    name:'OMK Wolf Bag Pants',
-    price:95000,
-    img:'',
-    link:'wolf-bag-pants.html',
-    badge:'NEW 🐺👖'
-  },
+  { name:'OMK Wolf Bag Hoodie', price:95000, img:'', link:'wolf-bag-hoodie.html', badge:'NEW 🐺🎒' },
+  { name:'OMK Wolf Bag Pants', price:95000, img:'', link:'wolf-bag-pants.html', badge:'NEW 🐺👖' },
 
   {
     name:'OMK Blue-Line Trackset',
@@ -201,7 +188,7 @@ const products = [
     name:'OMK Wolfline Tank Top',
     price:55000,
     img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/C0DCC802-519A-482E-A86D-93CA99AB8638.png',
-    link:'omk-wolfline-tank.html',  // ✅ UPDATED LINK
+    link:'omk-wolfline-tank.html',
     badge:'NEW 🐺💪'
   },
 
@@ -253,12 +240,13 @@ const products = [
     badge:'NEW 🐺🔥'
   },
 
+  /* 🔄 SWAPPED — CAP MOVED UP */
   {
-    name:'OMK Chrome Tee',
-    price:60000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B95C37E-46F1-457A-9548-CF4E5B2A9227.png',
-    link:'tshirt.html',
-    badge:'NEW 🐺⚡'
+    name:'OMK OG Cap (Blue-Line)',
+    price:55000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/C074D825-2E7B-46D8-8C27-3B7D27E6B8B3.png',
+    link:'omk-og-cap.html',
+    badge:'NEW 🧢'
   },
 
   {
@@ -269,25 +257,26 @@ const products = [
     badge:'BLUE-LINE'
   },
 
+  /* 🔄 SWAPPED — CHROME TEE MOVED DOWN */
+  {
+    name:'OMK Chrome Tee',
+    price:60000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B95C37E-46F1-457A-9548-CF4E5B2A9227.png',
+    link:'tshirt.html',
+    badge:'NEW 🐺⚡'
+  },
+
   {
     name:'OMK Blue-Line Shorts',
     price:70000,
     img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/0FDEF34E-CFDA-4A0B-92E2-2C68BA19645A.png',
     link:'omk-blue-line-short.html',
     badge:'BLUE-LINE'
-  },
-
-  {
-    name:'OMK OG Cap (Blue-Line)',
-    price:55000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/C074D825-2E7B-46D8-8C27-3B7D27E6B8B3.png',
-    link:'omk-og-cap.html',
-    badge:'NEW 🧢'
   }
 
 ];
 
-/* RENDER */
+/* RENDER GRID */
 const grid=document.getElementById('productGrid');
 products.forEach(p=>{
   grid.innerHTML+=`
