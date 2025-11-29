@@ -14,148 +14,244 @@
   --accent:#111111;
   --shadow:0 10px 30px rgba(0,0,0,.06);
 }
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  background:var(--bg);color:var(--text);
+*{box-sizing:border-box}
+html,body{
+  margin:0;background:var(--bg);color:var(--text);
   font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
 }
 a{text-decoration:none;color:inherit}
 
 /* HEADER */
-header{
-  position:sticky;top:0;z-index:50;background:#fff;
-  border-bottom:1px solid var(--border);
-  padding:14px 20px;display:flex;align-items:center;justify-content:space-between;
+.header{
+  position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;padding:12px 16px;
+  backdrop-filter:blur(8px);
 }
-.logo{font-weight:900;font-size:22px}
+.brand{font-weight:900;font-size:20px;letter-spacing:.5px}
+.h-icons{display:flex;gap:14px;align-items:center}
+.h-icons img{width:24px;height:24px;cursor:pointer;transition:.3s}
 
 /* PAGE */
-.wrapper{
-  width:min(900px,92%);margin:25px auto;
+.wrap{max-width:1100px;margin:32px auto;padding:0 16px}
+.grid{display:grid;gap:34px;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  align-items:start;
 }
+.card{background:#fff;border:1px solid var(--border);border-radius:18px;
+  box-shadow:var(--shadow);padding:14px}
+.gallery{display:flex;flex-direction:column;gap:16px}
+.gallery img{width:100%;border-radius:14px;border:1px solid var(--border);
+  object-fit:contain;}
 
-.product-img{
-  width:100%;border-radius:14px;box-shadow:var(--shadow);
-  margin-bottom:14px;object-fit:cover;
-}
-
-h1{font-size:28px;margin:12px 0;font-weight:900}
-.price{
-  font-size:22px;font-weight:800;margin-bottom:18px;
-}
+/* TEXT */
+.title{font-size:28px;font-weight:900;margin:6px 0 10px}
+.desc{color:var(--muted);line-height:1.6;margin-bottom:14px}
+.price{font-weight:900;font-size:22px;margin:10px 0 16px}
+.subtle{font-size:13px;color:var(--muted);margin-bottom:6px}
 
 /* SIZE BUTTONS */
-.size-group{
-  display:flex;gap:10px;margin:12px 0 16px;
-}
-.size-btn{
-  padding:10px 16px;border:1px solid var(--border);
-  border-radius:10px;font-weight:700;cursor:pointer;background:#fff;
-}
-.size-btn.active{
-  background:#000;color:#fff;border-color:#000;
-}
+.sizes{display:flex;gap:10px;margin:10px 0 4px}
+.size{padding:10px 16px;border:1px solid var(--border);
+  border-radius:10px;font-weight:800;cursor:pointer;background:#fff}
+.size.active{background:#111;color:#fff;border-color:#111}
 
 /* BUTTONS */
-.buy{
-  display:block;width:100%;background:#000;color:#fff;
-  text-align:center;padding:16px;border-radius:12px;
-  font-weight:800;font-size:18px;margin-top:10px;
-  box-shadow:0 6px 20px rgba(0,0,0,.25);
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:14px 18px;border-radius:12px;border:1px solid var(--border);
+  font-weight:900;cursor:pointer;background:#fff;
 }
-.add-btn{
-  display:block;width:100%;background:#fff;
-  color:#000;border:2px solid #000;
-  text-align:center;padding:16px;border-radius:12px;
-  font-weight:800;font-size:17px;margin-top:10px;
-}
+.btn.primary{background:#000;color:#fff;border-color:#000}
+.btn:active{transform:translateY(1px)}
 
-/* DETAILS */
-.section-title{
-  margin-top:30px;font-size:20px;font-weight:800;margin-bottom:10px;
-}
-.details{
-  font-size:15px;line-height:1.6;color:#444;
-}
+footer{text-align:center;padding:40px 0 80px;color:var(--muted);font-weight:600}
 
-/* FOOTER */
-footer{
-  margin:50px 0 90px;text-align:center;font-size:14px;color:#555;
-}
+/* WHATSAPP BUTTON */
+.wa{position:fixed;right:16px;bottom:90px;z-index:300;background:#fff;
+  border:1px solid var(--border);border-radius:999px;padding:10px 14px;
+  display:flex;align-items:center;gap:8px;box-shadow:var(--shadow);
+  font-weight:900;}
+.wa img{width:18px;height:18px}
+.dot{width:8px;height:8px;background:#ff2d55;border-radius:50%}
 
-/* FLOATING CHAT */
-.chat-btn{
-  position:fixed;right:18px;bottom:20px;z-index:2000;
-  background:#fff;border:1px solid var(--border);
-  padding:10px 16px;border-radius:40px;display:flex;
-  align-items:center;gap:8px;font-weight:800;
-  box-shadow:0 8px 20px rgba(0,0,0,.15);
+/* CART DRAWER */
+.cart-drawer-bg{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,.3);display:none;z-index:9000;
 }
-.chat-btn img{width:20px;height:20px}
+.cart-drawer{
+  position:fixed;right:0;top:0;width:300px;height:100%;
+  background:#fff;box-shadow:-4px 0 20px rgba(0,0,0,.15);
+  transform:translateX(100%);transition:.35s;z-index:9999;
+  padding:20px;display:flex;flex-direction:column;
+}
+.cart-drawer.open{transform:translateX(0)}
+.cart-title{font-weight:900;font-size:18px;margin-bottom:16px}
+.cart-items{flex:1;overflow-y:auto;padding-right:6px}
+.cart-item{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 0;border-bottom:1px solid #eee;
+}
+.remove-btn{cursor:pointer;font-size:20px;font-weight:900;color:#333}
+.checkout-btn{
+  padding:12px 16px;background:#111;color:#fff;border-radius:10px;
+  text-align:center;font-weight:900;margin-top:14px;display:block;
+}
 </style>
 </head>
 
 <body>
 
-<header>
-  <div class="logo"><a href="index.html">OMK</a></div>
+<header class="header">
+  <div class="brand"><a href="index.html">OMK</a></div>
+  <div class="h-icons">
+    <div id="cartBtn">
+      <img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png">
+      <div id="cartCount" style="
+        display:none;background:#ff2d55;color:#fff;font-size:12px;
+        padding:2px 6px;border-radius:8px;position:absolute;transform:translate(12px,-8px);
+      ">0</div>
+    </div>
+    <img src="https://cdn-icons-png.flaticon.com/512/56/56763.png">
+  </div>
 </header>
 
-<div class="wrapper">
+<main class="wrap">
+  <section class="grid">
 
-  <!-- PRODUCT IMAGES -->
-  <img class="product-img" 
-    src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/56A58A00-78C3-4799-8220-18254057C8BD.png">
+    <!-- IMAGE GALLERY -->
+    <div class="card">
+      <div class="gallery">
 
-  <img class="product-img"
-    src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/1637CA26-DCA2-4D8C-A95A-F67CD0C3E9D4.png">
+        <!-- FRONT -->
+        <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/56A58A00-78C3-4799-8220-18254057C8BD.png">
 
-  <!-- TITLE -->
-  <h1>OMK UDI 🐺</h1>
+        <!-- BACK -->
+        <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/1637CA26-DCA2-4D8C-A95A-F67CD0C3E9D4.png">
 
-  <!-- PRICE -->
-  <div class="price">₦90,000</div>
+      </div>
+    </div>
 
-  <!-- SIZES -->
-  <div class="section-title">Select Size</div>
-  <div class="size-group">
-    <button class="size-btn">S</button>
-    <button class="size-btn active">M</button>
-    <button class="size-btn">L</button>
-    <button class="size-btn">XL</button>
-  </div>
+    <!-- PRODUCT DETAILS -->
+    <div class="card">
 
-  <!-- BUTTONS -->
-  <a class="add-btn" href="#">Add to Cart</a>
+      <div class="title">OMK UDI 🐺</div>
 
-  <a class="buy" 
-     href="https://wa.me/2348118618722?text=Hi%20OMK%2C%20I%20want%20to%20order%20the%20UDI">
-     Buy Now →
-  </a>
+      <div class="desc">
+        Premium UDI edition — clean, detailed and built with luxury OMK energy.  
+        Wolf-tribe crafted piece for daily drip, content, parties and movement.
+      </div>
 
-  <!-- DETAILS -->
-  <div class="section-title">Details</div>
-  <div class="details">
-    Premium UDI edition — clean, detailed and built with luxury OMK energy.
-    Wolf-tribe crafted piece for daily drip, content, parties and movement.
-  </div>
+      <div class="price">₦90,000</div>
 
-  <div class="section-title">Tags</div>
-  <div class="details">Only My Kind • Wolf Tribe • Premium Wear</div>
+      <div class="subtle">Select Size</div>
+      <div class="sizes" id="sizes">
+        <button class="size">S</button>
+        <button class="size active">M</button>
+        <button class="size">L</button>
+        <button class="size">XL</button>
+      </div>
 
-</div>
+      <div class="btns">
+        <button class="btn" id="addToCart">Add to Cart</button>
+        <a class="btn primary" href="checkout.html">Buy Now</a>
+      </div>
 
-<!-- FLOATING CHAT BUTTON -->
-<a class="chat-btn" target="_blank"
+      <p class="subtle" style="margin-top:14px">
+        Loyalty • UDI • OMK Drip
+      </p>
+
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 2025 <strong>OMK – Only My Kind</strong> · All Rights Reserved<br>
+  <span>Contact: omkdrip@gmail.com</span>
+</footer>
+
+<!-- WhatsApp -->
+<a class="wa" target="_blank"
 href="https://wa.me/2348118618722?text=Hi%20OMK%2C%20I%20want%20to%20order%20the%20UDI">
+  <span class="dot"></span>
   <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
   <span>Chat with us</span>
 </a>
 
-<footer>
-  © 2025 <strong>OMK – Only My Kind</strong> • All Rights Reserved  
-  <br>Contact: omkdrip@gmail.com
-</footer>
+<!-- CART DRAWER -->
+<div class="cart-drawer-bg" id="drawerBg"></div>
+
+<div class="cart-drawer" id="drawer">
+  <div class="cart-title">Your Cart</div>
+  <div class="cart-items" id="cartItems"></div>
+  <a href="checkout.html" class="checkout-btn">Checkout</a>
+</div>
+
+<script>
+// SIZE SELECTOR
+const sizes=document.querySelectorAll('.size');
+sizes.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    sizes.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+
+// CART SYSTEM
+let cart=JSON.parse(localStorage.getItem('omkCart')||'[]');
+updateCart();
+
+document.getElementById('cartBtn').onclick=openDrawer;
+document.getElementById('drawerBg').onclick=closeDrawer;
+
+function openDrawer(){
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('drawerBg').style.display='block';
+  renderCart();
+}
+function closeDrawer(){
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('drawerBg').style.display='none';
+}
+
+function addToCart(){
+  const size=document.querySelector('.size.active')?.textContent||'M';
+  cart.push({name:`UDI (${size})`,price:90000});
+  localStorage.setItem('omkCart',JSON.stringify(cart));
+  updateCart();
+  openDrawer();
+}
+
+function updateCart(){
+  const count=document.getElementById('cartCount');
+  count.textContent=cart.length;
+  count.style.display=cart.length?'flex':'none';
+}
+
+function renderCart(){
+  const box=document.getElementById('cartItems');
+  box.innerHTML='';
+  cart.forEach((item,i)=>{
+    box.innerHTML+=`
+      <div class="cart-item">
+        <span>${item.name}</span>
+        <span>₦${item.price.toLocaleString()}</span>
+        <span class="remove-btn" onclick="removeItem(${i})">&times;</span>
+      </div>
+    `;
+  });
+}
+
+function removeItem(i){
+  cart.splice(i,1);
+  localStorage.setItem('omkCart',JSON.stringify(cart));
+  updateCart();
+  renderCart();
+}
+
+document.getElementById('addToCart').onclick=addToCart;
+</script>
 
 </body>
 </html>
