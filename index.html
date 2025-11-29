@@ -170,10 +170,45 @@ footer{text-align:center;padding:20px;color:#666}
 </a>
 
 <script>
-/* PRODUCTS – NOW ARRANGED PERFECTLY */
+/* PRODUCTS */
 const products = [
 
-  /* FULL OUTFITS FIRST */
+  /* 4 NEW BUSES FIRST */
+
+  {
+    name:'OMK Wolf Bag Hoodie',
+    price:95000,
+    img:'', // image coming later
+    link:'wolf-bag-hoodie.html',
+    badge:'NEW 🐺🎒'
+  },
+
+  {
+    name:'OMK Wolf Bag Pants',
+    price:95000,
+    img:'', // image coming later
+    link:'wolf-bag-pants.html',
+    badge:'NEW 🐺👖'
+  },
+
+  {
+    name:'OMK Blue-Line Trackset',
+    price:130000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B5E6F8A-2C94-47EF-A8CF-BAE93AA23563.png',
+    link:'blue-line-trackset.html',
+    badge:'NEW ⚡🔥'
+  },
+
+  {
+    name:'OMK Wolfline Tank Top',
+    price:55000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/7ec11b6c53c12bc248e3ec9308e26c25605d1d88/7A644193-F63C-44F1-8862-9C47E5F5A56E.png',
+    link:'wolfline-tanktop.html',
+    badge:'NEW 🐺💪'
+  },
+
+  /* EXISTING PRODUCTS BELOW */
+
   {
     name:'OMK Voltage Track Set',
     price:150000,
@@ -190,7 +225,6 @@ const products = [
     badge:'NEW 🐺🔥'
   },
 
-  /* JACKET & JEAN TOGETHER */
   {
     name:'OMK Voltage Jacket',
     price:90000,
@@ -207,7 +241,6 @@ const products = [
     badge:'NEW ⚡'
   },
 
-  /* HOODIE + PANTS TOGETHER */
   {
     name:'OMK Wolf Hoodie (Blue-Line)',
     price:90000,
@@ -224,7 +257,6 @@ const products = [
     badge:'NEW 🐺🔥'
   },
 
-  /* TEES TOGETHER */
   {
     name:'OMK Chrome Tee',
     price:60000,
@@ -241,7 +273,6 @@ const products = [
     badge:'BLUE-LINE'
   },
 
-  /* SHORTS */
   {
     name:'OMK Blue-Line Shorts',
     price:70000,
@@ -250,47 +281,12 @@ const products = [
     badge:'BLUE-LINE'
   },
 
-  /* CAP LAST */
   {
     name:'OMK OG Cap (Blue-Line)',
     price:55000,
     img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/C074D825-2E7B-46D8-8C27-3B7D27E6B8B3.png',
     link:'omk-og-cap.html',
     badge:'NEW 🧢'
-  },
-
-  /* 🔥 4 NEW BUSES — ADDED SAFELY AT THE BOTTOM 🔥 */
-
-  {
-    name:'OMK Wolf Bag Hoodie',
-    price:95000,
-    img:'',
-    link:'wolf-bag-hoodie.html',
-    badge:'NEW 🐺🎒'
-  },
-
-  {
-    name:'OMK Wolf Bag Pants',
-    price:95000,
-    img:'',
-    link:'wolf-bag-pants.html',
-    badge:'NEW 🐺👖'
-  },
-
-  {
-    name:'OMK Blue-Line Trackset',
-    price:130000,
-    img:'',
-    link:'blue-line-trackset.html',
-    badge:'NEW ⚡🔥'
-  },
-
-  {
-    name:'OMK Wolfline Tank Top',
-    price:55000,
-    img:'',
-    link:'wolfline-tanktop.html',
-    badge:'NEW 🐺💪'
   }
 
 ];
@@ -302,7 +298,9 @@ products.forEach(p=>{
     <a href="${p.link}">
       <div class="card">
         <span class="badge">${p.badge}</span>
-        <div class="card-img"><img src="${p.img}"></div>
+        <div class="card-img">
+          ${p.img ? `<img src="${p.img}">` : ``}
+        </div>
         <div class="card-body">
           <h3>${p.name}</h3>
           <p class="price">₦${p.price.toLocaleString()}</p>
