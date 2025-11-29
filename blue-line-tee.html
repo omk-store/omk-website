@@ -3,159 +3,273 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>OMK Blue-Line Tee 👕 | Only My Kind</title>
+<title>OMK | Only My Kind</title>
 
 <style>
-:root{
-  --bg:#ffffff;
-  --text:#101010;
-  --muted:#6b7280;
-  --border:#e5e7eb;
-  --accent:#111111;
-  --shadow:0 10px 30px rgba(0,0,0,.06);
-  --omk:#ff2d55;
-}
-*{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-a{color:inherit;text-decoration:none}
+:root { --border:#eaeaea; --accent:#ff2d55; --dark:#000; }
+*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
+body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#111;background:#fff;}
+a{text-decoration:none;color:inherit;cursor:pointer}
 
 /* HEADER */
-.header{
-  position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;padding:12px 16px;
-  backdrop-filter:blur(8px);
+header{
+  position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;padding:12px 20px;
 }
-.brand{font-weight:900;font-size:20px;letter-spacing:.5px}
-.h-icons{display:flex;gap:14px;align-items:center}
-.h-icons img{width:24px;height:24px;cursor:pointer;transition:.3s}
-.h-icons img:hover{opacity:.7}
+.logo{font-weight:900;font-size:22px}
+.header-icons{display:flex;align-items:center;gap:14px}
+.cart-btn{position:relative;cursor:pointer}
+.cart-count{
+  position:absolute;top:-4px;right:-6px;background:var(--accent);color:#fff;
+  font-size:11px;font-weight:700;border-radius:50%;width:16px;height:16px;
+  display:none;align-items:center;justify-content:center;
+}
+.header-icons img{width:26px;height:26px;cursor:pointer}
 
-/* PAGE */
-.wrap{max-width:1100px;margin:32px auto;padding:0 16px}
+/* HERO */
+.hero{text-align:center;padding:36px 16px 0}
+.hero img{
+  width:min(420px,92%);
+  border-radius:12px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.25);
+}
+.hero p{font-size:15px;color:#444;margin-top:10px}
+
+/* GRID */
+.section{padding:56px 0}
+.section h2{text-align:center;font-size:28px;margin-bottom:26px}
 .grid{
-  display:grid;gap:34px;
-  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  align-items:start;
+  width:min(1100px,92%);margin:0 auto;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:22px;
 }
 
 /* PRODUCT CARD */
 .card{
-  background:#fff;border:1px solid var(--border);border-radius:18px;
-  box-shadow:var(--shadow);padding:14px
+  border:1px solid var(--border);border-radius:12px;overflow:hidden;
+  background:#fff;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,.05);
+  transition:.25s;cursor:pointer;position:relative;
 }
-.gallery{display:flex;flex-direction:column;gap:16px}
-.gallery img{
-  width:100%;border-radius:14px;border:1px solid var(--border);object-fit:contain;
-}
-.title{font-size:28px;font-weight:900;margin:6px 0 10px}
-.desc{color:var(--muted);line-height:1.7;margin-bottom:14px}
-.price{font-weight:900;font-size:20px;margin:6px 0 18px}
-.subtle{font-size:13px;color:var(--muted)}
-.sizes{display:flex;gap:10px;margin:10px 0 4px}
-.size{
-  padding:10px 16px;border:1px solid var(--border);
-  border-radius:10px;font-weight:800;cursor:pointer;background:#fff
-}
-.size.active{background:#111;color:#fff;border-color:#111}
-.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  padding:14px 18px;border-radius:12px;border:1px solid var(--border);
-  font-weight:900;cursor:pointer;background:#fff;
-}
-.btn.primary{background:#111;color:#fff;border-color:#111}
-.btn:active{transform:translateY(1px)}
+.card:hover{transform:translateY(-4px)}
+.card-img img{width:100%;height:300px;object-fit:cover}
+.card-body{padding:14px}
+.price{color:#444;font-weight:700}
 
-footer{
-  margin:60px 0 90px;text-align:center;color:var(--muted);
-  font-weight:600
+/* BADGE */
+.badge{
+  position:absolute;top:10px;left:10px;background:var(--accent);color:#fff;
+  font-size:12px;font-weight:800;padding:6px 10px;border-radius:20px;
 }
-footer a{font-weight:800}
 
-/* WHATSAPP CHAT */
-.wa{
-  position:fixed;right:16px;bottom:90px;z-index:300;background:#fff;
-  border:1px solid var(--border);border-radius:999px;padding:10px 14px;
-  display:flex;align-items:center;gap:8px;box-shadow:var(--shadow);
-  font-weight:900;
+/* JOIN EMAIL */
+.join{
+  width:min(900px,92%);margin:40px auto;background:#f9f9f9;
+  border:1px solid var(--border);border-radius:14px;padding:26px;text-align:center;
 }
-.wa img{width:18px;height:18px}
-.dot{width:8px;height:8px;background:var(--omk);border-radius:50%}
+.join input{
+  width:75%;padding:12px;border-radius:10px;border:1px solid var(--border);
+}
+.join button{
+  margin-left:8px;padding:12px 20px;background:#000;color:#fff;
+  font-weight:800;border-radius:10px;
+}
+
+/* SOCIALS */
+.social-icons{text-align:center;margin:40px auto 20px;}
+.social-icons img{
+  width:42px;height:42px;margin:0 12px;transition:0.25s ease-in-out;
+}
+
+/* ABOUT */
+#about{
+  background:#111;color:#fff;text-align:center;padding:70px 20px;margin-top:40px;
+}
+#about p{max-width:700px;margin:auto;color:#ddd}
+
+/* FOOTER */
+footer{text-align:center;padding:20px;color:#666}
+
+/* WHATSAPP */
+.chat-btn{
+  position:fixed;right:14px;bottom:10px;z-index:50;background:#fff;
+  border:1px solid var(--border);border-radius:40px;padding:8px 14px;
+  font-weight:900;display:flex;align-items:center;gap:8px;
+  box-shadow:0 5px 12px rgba(0,0,0,.12);
+}
+.chat-dot{width:10px;height:10px;background:var(--accent);border-radius:50%}
+
+/* CART DRAWER */
+.cart-drawer-bg{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,.3);display:none;z-index:9000;
+}
+.cart-drawer{
+  position:fixed;right:0;top:0;width:300px;height:100%;
+  background:#fff;box-shadow:-4px 0 20px rgba(0,0,0,.15);
+  transform:translateX(100%);transition:.35s;z-index:9999;
+  padding:20px;display:flex;flex-direction:column;
+}
+.cart-drawer.open{transform:translateX(0)}
+.cart-title{font-weight:900;font-size:18px;margin-bottom:16px}
+.cart-items{flex:1;overflow-y:auto;padding-right:6px}
+.cart-item{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 0;border-bottom:1px solid #eee;
+}
+.remove-btn{cursor:pointer;font-size:20px;font-weight:900;color:#333}
+.checkout-btn{
+  padding:12px 16px;background:#111;color:#fff;border-radius:10px;
+  text-align:center;font-weight:900;margin-top:14px;display:block;
+}
 </style>
 </head>
 
 <body>
 
-<header class="header">
-  <div class="brand"><a href="index.html">OMK</a></div>
-  <div class="h-icons">
-    <img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png">
+<header>
+  <a class="logo">OMK</a>
+
+  <div class="header-icons">
+    <!-- 🔥 FIXED CART BUTTON -->
+    <div class="cart-btn" id="cartBtn">
+      <img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png">
+      <div id="cartCount" class="cart-count">0</div>
+    </div>
+
     <img src="https://cdn-icons-png.flaticon.com/512/56/56763.png">
   </div>
 </header>
 
-<main class="wrap">
-  <section class="grid">
+<section class="hero" id="top">
+  <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/5CB390F1-C296-439F-A95B-32679E9FE8BA.png">
+  <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
+</section>
 
-    <!-- PRODUCT IMAGES -->
-    <div class="card">
-      <div class="gallery">
+<section class="section" id="shop">
+  <h2>Latest Drop 🐺⚡</h2>
+  <div class="grid" id="productGrid"></div>
+</section>
 
-        <!-- FRONT -->
-        <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/42CB264F-3EDC-4B58-A10E-556BDEE31F93.png" 
-             alt="OMK Blue-Line Tee — Front">
+<section class="join">
+  <h3>Join the OMK Pack 🐺</h3>
+  <p>Get first access to OMK drops.</p>
+  <input id="joinEmail" type="email" placeholder="Enter your email">
+  <button onclick="joinPack()">Join →</button>
+</section>
 
-        <!-- BACK -->
-        <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/28541704-6980-4D74-8ABF-4145A746F4CA.png" 
-             alt="OMK Blue-Line Tee — Back">
+<div class="social-icons">
+  <a href="https://www.instagram.com/iam_omotaker" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png">
+  </a>
+  <a href="https://www.tiktok.com/@omkdrip" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/3116/3116491.png">
+  </a>
+</div>
 
-      </div>
-    </div>
-
-    <!-- PRODUCT DETAILS -->
-    <div class="card">
-      <div class="title">OMK Blue-Line Tee 👕</div>
-
-      <div class="desc">
-        Premium OMK Blue-Line T-Shirt with clean line detailing,
-        sharp silhouette and wolf-energy presence. 
-      </div>
-
-      <div class="price">₦60,000</div>
-
-      <div class="subtle">Size</div>
-      <div class="sizes" id="sizes">
-        <button class="size">S</button>
-        <button class="size active">M</button>
-        <button class="size">L</button>
-        <button class="size">XL</button>
-      </div>
-
-      <div class="btns">
-        <button class="btn">Add to Cart</button>
-        <a class="btn primary" href="checkout.html">Buy Now</a>
-      </div>
-
-      <p class="subtle" style="margin-top:14px">
-        Blue-Line • Wolf Tribe • OMK Drip
-      </p>
-    </div>
-
-  </section>
-</main>
+<section id="about">
+  <h2>About OMK 🐺</h2>
+  <p>OMK – Only My Kind represents truth, loyalty & the wolf spirit.</p>
+</section>
 
 <footer>
-  © 2025 <strong>OMK – Only My Kind</strong> · All Rights Reserved<br>
-  <span>Contact: omkdrip@gmail.com</span>
+  © 2025 OMK — Only My Kind  
+  <br>Contact: omkdrip@gmail.com
 </footer>
 
-<!-- WhatsApp -->
-<a class="wa" target="_blank"
-href="https://wa.me/2348118618722?text=Hi%20OMK%2C%20I%20want%20to%20order%20the%20Blue-Line%20Tee">
-  <span class="dot"></span>
-  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
-  <span>Chat with us</span>
+<a class="chat-btn" href="https://wa.me/2348118618722">
+  <span class="chat-dot"></span> Chat with OMK
 </a>
+
+<!-- CART DRAWER ELEMENTS -->
+<div class="cart-drawer-bg" id="drawerBg"></div>
+<div class="cart-drawer" id="drawer">
+  <div class="cart-title">Your Cart</div>
+  <div class="cart-items" id="cartItems"></div>
+  <a href="checkout.html" class="checkout-btn">Checkout</a>
+</div>
+
+<script>
+/* LOAD CART */
+let cart = JSON.parse(localStorage.getItem('omkCart') || '[]');
+updateCart();
+
+/* CART OPEN/CLOSE */
+document.getElementById('cartBtn').onclick = () => openDrawer();
+document.getElementById('drawerBg').onclick = () => closeDrawer();
+
+function openDrawer(){
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('drawerBg').style.display = 'block';
+  renderCart();
+}
+function closeDrawer(){
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('drawerBg').style.display = 'none';
+}
+
+/* UPDATE CART COUNT */
+function updateCart(){
+  const count = document.getElementById('cartCount');
+  count.textContent = cart.length;
+  count.style.display = cart.length ? 'flex' : 'none';
+}
+
+/* RENDER CART */
+function renderCart(){
+  const box = document.getElementById('cartItems');
+  box.innerHTML = '';
+  cart.forEach((item,i)=>{
+    box.innerHTML += `
+      <div class="cart-item">
+        <span>${item.name}</span>
+        <span class="remove-btn" onclick="removeItem(${i})">&times;</span>
+      </div>`;
+  });
+}
+
+/* REMOVE ITEM */
+function removeItem(i){
+  cart.splice(i,1);
+  localStorage.setItem('omkCart',JSON.stringify(cart));
+  updateCart();
+  renderCart();
+}
+
+/* JOIN PACK */
+function joinPack(){
+ let email=document.getElementById('joinEmail').value;
+ if(!email){alert("Enter email");return;}
+ window.open(`https://wa.me/2348118618722?text=I%20joined%20OMK%20Pack:%20${email}`);
+}
+
+/* PRODUCTS */
+const products = [
+  {name:'OMK Wolf Bag Hoodie',price:95000,img:'',link:'wolf-bag-hoodie.html',badge:'NEW 🐺🎒'},
+  {name:'OMK Wolf Bag Pants',price:95000,img:'',link:'wolf-bag-pants.html',badge:'NEW 🐺👖'},
+  {name:'OMK Blue-Line Trackset',price:130000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B5E6F8A-2C94-47EF-A8CF-BAE93AA23563.png',link:'omk-blue-line-trackset.html',badge:'NEW ⚡🔥'},
+  {name:'OMK Voltage Track Set',price:150000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_2305.jpeg',link:'voltage-track-set.html',badge:'NEW ⚡'},
+  {name:'OMK Chrome Tee',price:60000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B95C37E-46F1-457A-9548-CF4E5B2A9227.png',link:'tshirt.html',badge:'NEW 🐺'}
+];
+
+/* RENDER PRODUCTS */
+const grid=document.getElementById('productGrid');
+products.forEach(p=>{
+  grid.innerHTML += `
+    <a href="${p.link}">
+      <div class="card">
+        <span class="badge">${p.badge}</span>
+        <div class="card-img">
+          ${p.img ? `<img src="${p.img}">` : ``}
+        </div>
+        <div class="card-body">
+          <h3>${p.name}</h3>
+          <p class="price">₦${p.price.toLocaleString()}</p>
+        </div>
+      </div>
+    </a>`;
+});
+</script>
 
 </body>
 </html>
