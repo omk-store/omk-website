@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>OMK Wolfline Tank Top 💪🐺 | Only My Kind</title>
+<title>OMK Wolfline Tank Top | Only My Kind</title>
 
 <style>
 :root{
@@ -68,36 +68,14 @@ a{text-decoration:none;color:inherit}
 footer{text-align:center;padding:40px 0 80px;color:var(--muted);font-weight:600}
 
 /* WHATSAPP BUTTON */
-.wa{position:fixed;right:16px;bottom:90px;z-index:300;background:#fff;
+.wa{
+  position:fixed;right:16px;bottom:90px;z-index:300;background:#fff;
   border:1px solid var(--border);border-radius:999px;padding:10px 14px;
   display:flex;align-items:center;gap:8px;box-shadow:var(--shadow);
-  font-weight:900;}
+  font-weight:900;
+}
 .wa img{width:18px;height:18px}
 .dot{width:8px;height:8px;background:#ff2d55;border-radius:50%}
-
-/* CART DRAWER */
-.cart-drawer-bg{
-  position:fixed;top:0;left:0;width:100%;height:100%;
-  background:rgba(0,0,0,.3);display:none;z-index:9000;
-}
-.cart-drawer{
-  position:fixed;right:0;top:0;width:300px;height:100%;
-  background:#fff;box-shadow:-4px 0 20px rgba(0,0,0,.15);
-  transform:translateX(100%);transition:.35s;z-index:9999;
-  padding:20px;display:flex;flex-direction:column;
-}
-.cart-drawer.open{transform:translateX(0)}
-.cart-title{font-weight:900;font-size:18px;margin-bottom:16px}
-.cart-items{flex:1;overflow-y:auto;padding-right:6px}
-.cart-item{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:10px 0;border-bottom:1px solid #eee;
-}
-.remove-btn{cursor:pointer;font-size:20px;font-weight:900;color:#333}
-.checkout-btn{
-  padding:12px 16px;background:#111;color:#fff;border-radius:10px;
-  text-align:center;font-weight:900;margin-top:14px;display:block;
-}
 </style>
 </head>
 
@@ -120,27 +98,24 @@ footer{text-align:center;padding:40px 0 80px;color:var(--muted);font-weight:600}
 <main class="wrap">
   <section class="grid">
     
-    <!-- IMAGE GALLERY -->
+    <!-- IMAGES -->
     <div class="card">
       <div class="gallery">
 
-        <!-- FRONT -->
         <img src="https://raw.githubusercontent.com/omk-store/omk-website/7ec11b6c53c12bc248e3ec9308e26c25605d1d88/7A644193-F63C-44F1-8862-9C47E5F5A56E.png">
 
-        <!-- BACK -->
         <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/F2748C95-048D-4A42-AD8A-34C5320389C4.png">
 
       </div>
     </div>
 
-    <!-- PRODUCT DETAILS -->
+    <!-- DETAILS -->
     <div class="card">
 
-      <div class="title">OMK Wolfline Tank Top 💪🐺</div>
+      <div class="title">OMK Wolfline Tank Top</div>
 
       <div class="desc">
-        Clean Wolfline tank built with OMK Blue-Line energy and wolf spirit.  
-        Perfect for gym, summer drip, lifestyle content and performance moves.
+        Sleek athletic tank top infused with OMK Wolfline energy.
       </div>
 
       <div class="price">₦55,000</div>
@@ -159,7 +134,7 @@ footer{text-align:center;padding:40px 0 80px;color:var(--muted);font-weight:600}
       </div>
 
       <p class="subtle" style="margin-top:14px">
-        Wolfline • OMK Energy • Loyalty
+        Wolfline • OMK Drip
       </p>
 
     </div>
@@ -167,8 +142,8 @@ footer{text-align:center;padding:40px 0 80px;color:var(--muted);font-weight:600}
 </main>
 
 <footer>
-  © 2025 <strong>OMK – Only My Kind</strong> · All Rights Reserved<br>
-  <span>Contact: omkdrip@gmail.com</span>
+  © 2025 <strong>OMK – Only My Kind</strong>  
+  <br>Contact: omkdrip@gmail.com
 </footer>
 
 <!-- WhatsApp -->
@@ -179,17 +154,7 @@ href="https://wa.me/2348118618722?text=Hi%20OMK%2C%20I%20want%20to%20order%20the
   <span>Chat with us</span>
 </a>
 
-<!-- CART DRAWER -->
-<div class="cart-drawer-bg" id="drawerBg"></div>
-
-<div class="cart-drawer" id="drawer">
-  <div class="cart-title">Your Cart</div>
-  <div class="cart-items" id="cartItems"></div>
-  <a href="checkout.html" class="checkout-btn">Checkout</a>
-</div>
-
 <script>
-// SIZE SELECTOR
 const sizes=document.querySelectorAll('.size');
 sizes.forEach(btn=>{
   btn.addEventListener('click',()=>{
@@ -198,55 +163,22 @@ sizes.forEach(btn=>{
   });
 });
 
-// CART SYSTEM
 let cart=JSON.parse(localStorage.getItem('omkCart')||'[]');
 updateCart();
 
 document.getElementById('cartBtn').onclick=openDrawer;
-document.getElementById('drawerBg').onclick=closeDrawer;
-
-function openDrawer(){
-  document.getElementById('drawer').classList.add('open');
-  document.getElementById('drawerBg').style.display='block';
-  renderCart();
-}
-function closeDrawer(){
-  document.getElementById('drawer').classList.remove('open');
-  document.getElementById('drawerBg').style.display='none';
-}
 
 function addToCart(){
   const size=document.querySelector('.size.active')?.textContent||'M';
   cart.push({name:`Wolfline Tank Top (${size})`,price:55000});
   localStorage.setItem('omkCart',JSON.stringify(cart));
   updateCart();
-  openDrawer();
 }
 
 function updateCart(){
   const count=document.getElementById('cartCount');
   count.textContent=cart.length;
   count.style.display=cart.length?'flex':'none';
-}
-
-function renderCart(){
-  const box=document.getElementById('cartItems');
-  box.innerHTML='';
-  cart.forEach((item,i)=>{
-    box.innerHTML+=`
-      <div class="cart-item">
-        <span>${item.name}</span>
-        <span class="remove-btn" onclick="removeItem(${i})">&times;</span>
-      </div>
-    `;
-  });
-}
-
-function removeItem(i){
-  cart.splice(i,1);
-  localStorage.setItem('omkCart',JSON.stringify(cart));
-  updateCart();
-  renderCart();
 }
 
 document.getElementById('addToCart').onclick=addToCart;
