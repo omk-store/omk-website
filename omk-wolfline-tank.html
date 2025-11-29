@@ -123,8 +123,13 @@ footer{margin:60px 0 90px;text-align:center;color:var(--muted);font-weight:600}
     <!-- IMAGES -->
     <div class="card">
       <div class="gallery">
-        <img src="https://raw.githubusercontent.com/omk-store/omk-website/7ec11b6c53c12bc248e3ec9308e26c25605d1d88/7A644193-F63C-44F1-8862-9C47E5F5A56E.png">
+
+        <!-- ✅ NEW FRONT IMAGE -->
+        <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/C0DCC802-519A-482E-A86D-93CA99AB8638.png">
+
+        <!-- BACK IMAGE -->
         <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/F2748C95-048D-4A42-AD8A-34C5320389C4.png">
+
       </div>
     </div>
 
@@ -181,7 +186,7 @@ const sizes=document.querySelectorAll('.size');
 sizes.forEach(btn=>{
   btn.addEventListener('click',()=>{
     sizes.forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active'); // FIXED
+    btn.classList.add('active');
   });
 });
 
