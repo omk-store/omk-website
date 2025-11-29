@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>OMK Blue-Line Trackset ⚡ | Only My Kind</title>
+
+<style>
+/* SAME BASE STYLES */
+:root{
+  --bg:#ffffff;
+  --text:#101010;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+  --accent:#111111;
+  --shadow:0 10px 30px rgba(0,0,0,.06);
+  --omk:#ff2d55;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+
+/* HEADER */
+.header{
+  position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;padding:12px 16px;
+  backdrop-filter:blur(8px);
+}
+.brand{font-weight:900;font-size:20px;letter-spacing:.5px}
+.h-icons{display:flex;gap:14px;align-items:center}
+.h-icons img{width:24px;height:24px;cursor:pointer;transition:.3s}
+.h-icons img:hover{opacity:.7}
+
+/* CART */
+.cart-btn{position:relative;cursor:pointer}
+.cart-count{
+  position:absolute;top:-4px;right:-6px;background:var(--omk);color:#fff;
+  font-size:11px;font-weight:700;border-radius:50%;width:16px;height:16px;
+  display:flex;align-items:center;justify-content:center;
+}
+
+/* MENU DRAWER */
+.menu-drawer{
+  position:fixed;top:0;right:-100%;width:100%;max-width:300px;height:100%;
+  background:#fff;z-index:200;transition:.4s ease;box-shadow:-5px 0 20px rgba(0,0,0,.08);
+  padding:30px 24px;
+}
+.menu-drawer.open{right:0}
+.menu-drawer h3{font-size:18px;margin-bottom:20px;font-weight:800}
+.menu-drawer a{display:block;padding:10px 0;font-weight:700;color:#000;font-size:15px}
+.menu-drawer a:hover{color:var(--omk)}
+.menu-close{
+  position:absolute;top:16px;right:18px;font-size:24px;font-weight:900;cursor:pointer;
+}
+
+/* PAGE */
+.wrap{max-width:1100px;margin:32px auto;padding:0 16px}
+.grid{
+  display:grid;gap:34px;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  align-items:start;
+}
+.card{
+  background:#fff;border:1px solid var(--border);border-radius:18px;
+  box-shadow:var(--shadow);padding:14px;
+}
+.gallery{display:flex;flex-direction:column;gap:16px}
+.gallery img{
+  width:100%;border-radius:14px;border:1px solid var(--border);object-fit:contain;
+}
+
+/* TEXT */
+.title{font-size:28px;font-weight:900;margin:6px 0 10px}
+.desc{color:var(--muted);line-height:1.7;margin-bottom:14px}
+.price{font-weight:900;font-size:20px;margin:6px 0 18px}
+.subtle{font-size:13px;color:var(--muted)}
+
+/* SIZES */
+.sizes{display:flex;gap:10px;margin:10px 0 4px;flex-wrap:wrap}
+.size{
+  padding:10px 16px;border:1px solid var(--border);border-radius:10px;
+  font-weight:800;cursor:pointer;background:#fff;
+}
+.size.active{background:#111;color:#fff;border-color:#111}
+
+/* BUTTONS */
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:14px 18px;border-radius:12px;border:1px solid var(--border);
+  font-weight:900;cursor:pointer;background:#fff;
+}
+.btn.primary{background:#111;color:#fff;border-color:#111}
+
+/* CART PANEL */
+.cart-panel{
+  position:fixed;left:0;right:0;bottom:-100%;background:#fff;
+  border-top:2px solid var(--border);box-shadow:0 -8px 20px rgba(0,0,0,.1);
+  transition:bottom .4s ease;z-index:150;padding:20px 18px;
+  border-radius:18px 18px 0 0;
+}
+.cart-panel.open{bottom:0}
+.cart-header{
+  display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;
+}
+.cart-item{
+  display:flex;justify-content:space-between;align-items:center;
+  margin:8px 0;padding-bottom:8px;border-bottom:1px solid #eee;
+}
+.cart-item span{font-size:14px;font-weight:600}
+.cart-item button{
+  background:none;border:none;color:var(--omk);font-size:18px;font-weight:900;cursor:pointer;
+}
+.cart-total{text-align:right;margin-top:10px;font-weight:800}
+.cart-actions{text-align:right;margin-top:16px}
+.cart-actions a{
+  background:var(--omk);color:#fff;padding:10px 16px;border-radius:10px;
+  font-weight:800;text-decoration:none;
+}
+
+/* FOOTER */
+footer{margin:60px 0 90px;text-align:center;color:var(--muted);font-weight:600}
+
+.wa{
+  position:fixed;right:16px;bottom:90px;background:#fff;border:1px solid var(--border);
+  border-radius:999px;padding:10px 14px;display:flex;align-items:center;gap:8px;
+  box-shadow:var(--shadow);font-weight:900;z-index:300;
+}
+.wa img{width:18px;height:18px}
+.dot{width:8px;height:8px;background:var(--omk);border-radius:50%}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="brand"><a href="index.html">OMK</a></div>
+  <div class="h-icons">
+    <div class="cart-btn" id="cartBtn">
+      <img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png">
+      <div id="cartCount" class="cart-count" style="display:none">0</div>
+    </div>
+    <img id="menuBtn" src="https://cdn-icons-png.flaticon.com/512/56/56763.png">
+  </div>
+</header>
+
+<!-- MENU -->
+<div id="menuDrawer" class="menu-drawer">
+  <span class="menu-close" id="menuClose">✕</span>
+  <h3>Menu</h3>
+  <a href="index.html">Shop</a>
+  <a href="products.html">All Products</a>
+  <a href="collections.html">Collections</a>
+  <a href="about.html">About</a>
+</div>
+
+<main class="wrap">
+  <section class="grid">
+
+    <!-- IMAGES -->
+    <div class="card">
+      <div class="gallery">
+
+        <!-- TODO: REPLACE THESE 2 IMAGE LINKS WITH THE REAL TRACKSET FRONT/BACK -->
+        <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9BBC37D7-695C-4650-AEE9-C04910FBDF28.png" alt="Blue-Line Trackset Front">
+        <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/840CD11E-D82D-4E70-AA60-546B098D1D96.png" alt="Blue-Line Trackset Back">
+
+      </div>
+    </div>
+
+    <!-- DETAILS -->
+    <div class="card">
+      <div class="title">OMK Blue-Line Trackset ⚡</div>
+      <div class="desc">Full OMK Blue-Line tracksuit — jacket + pants set with clean lines and wolf energy, built for airport drip, videos & stage performance.</div>
+      <div class="price">₦130,000</div>
+
+      <div class="subtle">Size</div>
+      <div class="sizes" id="sizes">
+        <button class="size active">S</button>
+        <button class="size">M</button>
+        <button class="size">L</button>
+        <button class="size">XL</button>
+      </div>
+
+      <div class="btns">
+        <button class="btn" id="addToCart">Add to Cart</button>
+        <a class="btn primary" href="checkout.html">Buy Now</a>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<!-- CART -->
+<div id="cartPanel" class="cart-panel">
+  <div class="cart-header">
+    <h3>Your Cart</h3>
+    <button onclick="toggleCart()">✕</button>
+  </div>
+  <div id="cartItems"></div>
+  <div class="cart-total" id="cartTotal">Total: ₦0</div>
+  <div class="cart-actions">
+    <a href="checkout.html">Checkout</a>
+  </div>
+</div>
+
+<footer>
+  © 2025 <strong>OMK – Only My Kind</strong>
+</footer>
+
+<a class="wa" target="_blank" href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20the%20Blue-Line%20Trackset">
+  <span class="dot"></span>
+  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+  <span>Chat with us</span>
+</a>
+
+<script>
+const sizes=document.querySelectorAll('.size');
+sizes.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    sizes.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+
+let cart=JSON.parse(localStorage.getItem('omkCart')||'[]');
+updateCart();
+
+function addToCart(){
+  const size=document.querySelector('.size.active')?.textContent||'M';
+  const item={name:`OMK Blue-Line Trackset (${size})`,price:130000};
+  cart.push(item);
+  localStorage.setItem('omkCart',JSON.stringify(cart));
+  updateCart(); toggleCart();
+}
+
+function removeItem(i){
+  cart.splice(i,1);
+  localStorage.setItem('omkCart',JSON.stringify(cart));
+  updateCart();
+}
+
+function updateCart(){
+  const items=document.getElementById('cartItems');
+  const totalBox=document.getElementById('cartTotal');
+  const count=document.getElementById('cartCount');
+  let total=0;
+  items.innerHTML='';
+  cart.forEach((it,i)=>{
+    total+=it.price;
+    items.innerHTML+=`
+      <div class="cart-item">
+        <span>${it.name}</span>
+        <span>₦${it.price.toLocaleString()}</span>
+        <button onclick="removeItem(${i})">❌</button>
+      </div>`;
+  });
+  totalBox.textContent='Total: ₦'+total.toLocaleString();
+  count.textContent=cart.length;
+  count.style.display=cart.length?'flex':'none';
+}
+
+function toggleCart(){ document.getElementById('cartPanel').classList.toggle('open'); }
+
+document.getElementById('addToCart').addEventListener('click',addToCart);
+document.getElementById('cartBtn').addEventListener('click',toggleCart);
+
+document.getElementById('menuBtn').onclick=()=>menuDrawer.classList.add('open');
+document.getElementById('menuClose').onclick=()=>menuDrawer.classList.remove('open');
+</script>
+
+</body>
+</html>
