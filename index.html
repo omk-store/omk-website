@@ -24,6 +24,14 @@ header{
 .header-icons{display:flex;align-items:center;gap:14px}
 .header-icons img{width:26px;height:26px;cursor:pointer}
 
+/* NEW — CART BADGE */
+.cart-btn{position:relative;cursor:pointer}
+.cart-count{
+  position:absolute;top:-6px;right:-6px;background:#ff2d55;color:#fff;
+  font-size:11px;font-weight:700;border-radius:50%;width:17px;height:17px;
+  display:none;align-items:center;justify-content:center;
+}
+
 /* HERO */
 .hero{text-align:center;padding:36px 16px 0}
 .hero img{
@@ -110,6 +118,30 @@ footer{text-align:center;padding:20px;color:#666}
   box-shadow:0 5px 12px rgba(0,0,0,.12);
 }
 .chat-dot{width:10px;height:10px;background:var(--accent);border-radius:50%}
+
+/* ---------------- CART DRAWER (A) ---------------- */
+.cart-drawer-bg{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,.25);display:none;z-index:9000;
+}
+.cart-drawer{
+  position:fixed;right:0;top:0;width:300px;height:100%;
+  background:#fff;box-shadow:-4px 0 20px rgba(0,0,0,.15);
+  transform:translateX(100%);transition:.35s;z-index:9999;
+  padding:20px;display:flex;flex-direction:column;
+}
+.cart-drawer.open{transform:translateX(0)}
+.cart-title{font-weight:900;font-size:18px;margin-bottom:16px}
+.cart-items{flex:1;overflow-y:auto;padding-right:6px}
+.cart-item{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 0;border-bottom:1px solid #eee;
+}
+.remove-btn{cursor:pointer;font-size:20px;font-weight:900;color:#333}
+.checkout-btn{
+  padding:12px 16px;background:#000;color:#fff;border-radius:10px;
+  text-align:center;font-weight:900;margin-top:14px;display:block;
+}
 </style>
 </head>
 
@@ -117,8 +149,15 @@ footer{text-align:center;padding:20px;color:#666}
 
 <header>
   <a class="logo">OMK</a>
+
   <div class="header-icons">
-    <img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png">
+
+    <!-- 🔥 UPDATED PROPER CART BUTTON -->
+    <div class="cart-btn" id="cartBtn">
+      <img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png">
+      <div id="cartCount" class="cart-count">0</div>
+    </div>
+
     <img src="https://cdn-icons-png.flaticon.com/512/56/56763.png">
   </div>
 </header>
@@ -169,26 +208,63 @@ footer{text-align:center;padding:20px;color:#666}
   <span class="chat-dot"></span> Chat with OMK
 </a>
 
+<!-- 🔥 CART DRAWER HTML -->
+<div class="cart-drawer-bg" id="drawerBg"></div>
+
+<div class="cart-drawer" id="drawer">
+  <div class="cart-title">Your Cart</div>
+  <div class="cart-items" id="cartItems"></div>
+  <a href="checkout.html" class="checkout-btn">Checkout</a>
+</div>
+
 <script>
-/* PRODUCTS */
+/* ---------------- CART SYSTEM ---------------- */
+let cart = JSON.parse(localStorage.getItem('omkCart') || '[]');
+updateCart();
+
+document.getElementById('cartBtn').onclick = () => openDrawer();
+document.getElementById('drawerBg').onclick = () => closeDrawer();
+
+function openDrawer(){
+  document.getElementById('drawer').classList.add('open');
+  document.getElementById('drawerBg').style.display = 'block';
+  renderCart();
+}
+function closeDrawer(){
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('drawerBg').style.display = 'none';
+}
+
+function updateCart(){
+  const count = document.getElementById('cartCount');
+  count.textContent = cart.length;
+  count.style.display = cart.length ? 'flex' : 'none';
+}
+
+function renderCart(){
+  const box = document.getElementById('cartItems');
+  box.innerHTML = '';
+  cart.forEach((item,i)=>{
+    box.innerHTML += `
+      <div class="cart-item">
+        <span>${item.name}</span>
+        <span class="remove-btn" onclick="removeItem(${i})">&times;</span>
+      </div>
+    `;
+  });
+}
+
+function removeItem(i){
+  cart.splice(i,1);
+  localStorage.setItem('omkCart', JSON.stringify(cart));
+  updateCart();
+  renderCart();
+}
+
+/* PRODUCTS RENDER (unchanged) */
 const products = [
-
-  {
-    name:'OMK Wolf Bag Hoodie',
-    price:95000,
-    img:'',
-    link:'wolf-bag-hoodie.html',
-    badge:'NEW 🐺🎒'
-  },
-
-  {
-    name:'OMK Wolf Bag Pants',
-    price:95000,
-    img:'',
-    link:'wolf-bag-pants.html',
-    badge:'NEW 🐺👖'
-  },
-
+  {name:'OMK Wolf Bag Hoodie',price:95000,img:'',link:'wolf-bag-hoodie.html',badge:'NEW 🐺🎒'},
+  {name:'OMK Wolf Bag Pants',price:95000,img:'',link:'wolf-bag-pants.html',badge:'NEW 🐺👖'},
   {
     name:'OMK Blue-Line Trackset',
     price:130000,
@@ -201,7 +277,7 @@ const products = [
     name:'OMK Wolfline Tank Top',
     price:55000,
     img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/C0DCC802-519A-482E-A86D-93CA99AB8638.png',
-    link:'omk-wolfline-tank.html',  // ✅ UPDATED LINK
+    link:'omk-wolfline-tank.html',
     badge:'NEW 🐺💪'
   },
 
@@ -284,10 +360,8 @@ const products = [
     link:'omk-og-cap.html',
     badge:'NEW 🧢'
   }
-
 ];
 
-/* RENDER */
 const grid=document.getElementById('productGrid');
 products.forEach(p=>{
   grid.innerHTML+=`
