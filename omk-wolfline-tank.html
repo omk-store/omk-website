@@ -102,8 +102,10 @@ footer{text-align:center;padding:40px 0 80px;color:var(--muted);font-weight:600}
     <div class="card">
       <div class="gallery">
 
+        <!-- FRONT -->
         <img src="https://raw.githubusercontent.com/omk-store/omk-website/7ec11b6c53c12bc248e3ec9308e26c25605d1d88/7A644193-F63C-44F1-8862-9C47E5F5A56E.png">
 
+        <!-- BACK -->
         <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/F2748C95-048D-4A42-AD8A-34C5320389C4.png">
 
       </div>
@@ -165,8 +167,6 @@ sizes.forEach(btn=>{
 
 let cart=JSON.parse(localStorage.getItem('omkCart')||'[]');
 updateCart();
-
-document.getElementById('cartBtn').onclick=openDrawer;
 
 function addToCart(){
   const size=document.querySelector('.size.active')?.textContent||'M';
