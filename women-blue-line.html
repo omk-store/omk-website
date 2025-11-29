@@ -12,7 +12,9 @@
   --muted:#6b7280;
   --border:#e5e7eb;
   --shadow:0 10px 30px rgba(0,0,0,.06);
+  --accent:#111111;
 }
+
 *{box-sizing:border-box;margin:0;padding:0}
 body{
   background:var(--bg);color:var(--text);
@@ -24,28 +26,61 @@ a{text-decoration:none;color:inherit}
 header{
   position:sticky;top:0;z-index:50;background:#fff;
   border-bottom:1px solid var(--border);
-  padding:14px 20px;display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px;display:flex;
+  align-items:center;justify-content:space-between;
 }
 .logo{font-weight:900;font-size:22px}
 
-/* PAGE */
+/* WRAPPER */
 .wrapper{
-  width:min(900px,92%);margin:25px auto;
+  width:min(900px,92%);margin:22px auto;
+}
+
+/* PRODUCT CARD */
+.card{
+  background:#fff;padding:22px;border-radius:18px;
+  box-shadow:var(--shadow);margin-bottom:40px;
 }
 
 .product-img{
-  width:100%;border-radius:14px;box-shadow:var(--shadow);
-  margin-bottom:14px;object-fit:cover;
+  width:100%;border-radius:14px;margin-bottom:18px;
 }
 
-h1{font-size:28px;margin:12px 0;font-weight:900}
+/* TITLE */
+h1{font-size:28px;margin-bottom:10px;font-weight:900}
+.description{
+  font-size:15px;color:var(--muted);line-height:1.6;
+  margin-bottom:18px;
+}
+
+/* PRICE */
 .price{
-  font-size:22px;font-weight:800;margin-bottom:18px;
+  font-size:24px;font-weight:900;margin:12px 0;
 }
 
-/* SIZE BUTTONS */
+/* COLOR SELECTOR */
+.color-row{display:flex;align-items:center;gap:14px;margin:18px 0;}
+.color-dot{
+  width:22px;height:22px;border-radius:50%;
+  border:2px solid #ddd;cursor:pointer;
+}
+.black{background:#000}
+.white{background:#fff;border-color:#999}
+.blue{background:#005cff}
+
+/* PREORDER BADGE */
+.badge{
+  display:inline-block;background:#0066ff;color:#fff;
+  padding:6px 14px;border-radius:8px;font-size:14px;
+  font-weight:700;margin:10px 0;
+}
+
+/* SIZE */
+.section-title{
+  margin-top:22px;font-size:19px;font-weight:800;margin-bottom:10px;
+}
 .size-group{
-  display:flex;gap:10px;margin:12px 0 16px;
+  display:flex;gap:10px;margin-bottom:16px;
 }
 .size-btn{
   padding:10px 16px;border:1px solid var(--border);
@@ -56,6 +91,13 @@ h1{font-size:28px;margin:12px 0;font-weight:900}
   background:#000;color:#fff;border-color:#000;
 }
 
+/* BUTTONS */
+.add-btn{
+  display:block;width:100%;background:#fff;
+  color:#000;border:2px solid #000;
+  text-align:center;padding:16px;border-radius:12px;
+  font-weight:800;font-size:17px;margin-top:10px;
+}
 .buy{
   display:block;width:100%;background:#000;color:#fff;
   text-align:center;padding:16px;border-radius:12px;
@@ -63,27 +105,33 @@ h1{font-size:28px;margin:12px 0;font-weight:900}
   box-shadow:0 6px 20px rgba(0,0,0,.25);
 }
 
-.add-btn{
-  display:block;width:100%;background:#fff;
-  color:#000;border:2px solid #000;
-  text-align:center;padding:16px;border-radius:12px;
-  font-weight:800;font-size:17px;margin-top:10px;
+/* TAGS */
+.tags{font-size:15px;color:#555;margin-top:10px}
+
+/* SLIDE CART */
+.cart-panel{
+  position:fixed;top:0;right:-100%;width:320px;height:100%;
+  background:#fff;box-shadow:-4px 0 20px rgba(0,0,0,.1);
+  padding:20px;transition:.3s;z-index:2000;overflow-y:auto;
+}
+.cart-panel.open{right:0}
+
+.cart-item{
+  border-bottom:1px solid #eee;padding:10px 0;
+  font-weight:600;
 }
 
-/* DETAILS */
-.section-title{
-  margin-top:30px;font-size:20px;font-weight:800;margin-bottom:10px;
-}
-.details{
-  font-size:15px;line-height:1.6;color:#444;
+.close-cart{
+  font-size:18px;font-weight:900;cursor:pointer;margin-bottom:20px;
 }
 
-/* FOOTER */
-footer{
-  margin:50px 0 90px;text-align:center;font-size:14px;color:#555;
+.checkout{
+  margin-top:20px;background:#000;color:#fff;
+  padding:14px;width:100%;border-radius:10px;
+  font-weight:800;text-align:center;display:block;
 }
 
-/* FLOATING CHAT */
+/* CHAT */
 .chat-btn{
   position:fixed;right:18px;bottom:20px;z-index:2000;
   background:#fff;border:1px solid var(--border);
@@ -92,6 +140,11 @@ footer{
   box-shadow:0 8px 20px rgba(0,0,0,.15);
 }
 .chat-btn img{width:20px;height:20px}
+
+/* FOOTER */
+footer{
+  margin:50px 0 90px;text-align:center;font-size:14px;color:#555;
+}
 </style>
 </head>
 
@@ -99,50 +152,69 @@ footer{
 
 <header>
   <div class="logo"><a href="index.html">OMK</a></div>
+  <div class="cart-icon" onclick="openCart()">🛒</div>
 </header>
 
 <div class="wrapper">
 
-  <!-- PRODUCT IMAGES -->
-  <img class="product-img" 
-    src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/89DBDFB2-8C6A-4C34-82EC-ED691C0C9A18.png">
+  <div class="card">
 
-  <img class="product-img"
-    src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/95C388D3-89A5-4CA8-BD5E-F7E5EB1F7204.png">
+    <!-- PRODUCT IMAGES -->
+    <img class="product-img" src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/89DBDFB2-8C6A-4C34-82EC-ED691C0C9A18.png">
+    <img class="product-img" src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/95C388D3-89A5-4CA8-BD5E-F7E5EB1F7204.png">
 
-  <!-- TITLE -->
-  <h1>OMK Blue-Line Baddies 💙</h1>
+    <!-- TITLE -->
+    <h1>OMK Blue-Line Baddies 💙</h1>
 
-  <!-- PRICE -->
-  <div class="price">₦99,000</div>
+    <div class="description">
+      Premium OMK Blue-Line Baddies Edition with electric energy,
+      clean feminine silhouette, and powerful wolf-inspired confidence.
+    </div>
 
-  <!-- SIZES -->
-  <div class="section-title">Select Size</div>
-  <div class="size-group">
-    <button class="size-btn active">S</button>
-    <button class="size-btn">M</button>
-    <button class="size-btn">L</button>
-    <button class="size-btn">XL</button>
+    <!-- PREORDER BADGE -->
+    <div class="badge">PRE-ORDER • Ready in 6 Days</div>
+
+    <!-- PRICE -->
+    <div class="price">₦99,000</div>
+
+    <!-- COLORS -->
+    <div class="section-title">Color</div>
+    <div class="color-row">
+      <div class="color-dot black"></div>
+      <div class="color-dot white"></div>
+      <div class="color-dot blue"></div>
+    </div>
+
+    <!-- SIZE -->
+    <div class="section-title">Size</div>
+    <div class="size-group">
+      <button class="size-btn active">S</button>
+      <button class="size-btn">M</button>
+      <button class="size-btn">L</button>
+      <button class="size-btn">XL</button>
+    </div>
+
+    <!-- BUTTONS -->
+    <a class="add-btn" href="#" onclick="addToCart()">Add to Cart</a>
+    <a class="buy" href="checkout.html">Buy Now →</a>
+
+    <!-- TAGS -->
+    <div class="section-title">Tags</div>
+    <div class="tags">Only My Kind • Wolf Baddie • Premium Wear</div>
+
   </div>
-
-  <!-- BUTTONS -->
-  <a class="add-btn" href="#">Add to Cart</a>
-  <a class="buy" href="checkout.html">Buy Now →</a>
-
-  <!-- DETAILS -->
-  <div class="section-title">Details</div>
-  <div class="details">
-    Exclusive OMK Baddies Edition for queens who move with power,
-    confidence and elegance. Clean blue-line detailing, premium fabric,
-    and the iconic OMK silhouette.
-  </div>
-
-  <div class="section-title">Tags</div>
-  <div class="details">Only My Kind • Wolf Baddie • Premium Wear</div>
 
 </div>
 
-<!-- FLOATING CHAT BUTTON -->
+<!-- CART PANEL -->
+<div id="cartPanel" class="cart-panel">
+  <div class="close-cart" onclick="closeCart()">✕ Close</div>
+  <div id="cartItems"></div>
+
+  <a class="checkout" href="checkout.html">Checkout</a>
+</div>
+
+<!-- CHAT -->
 <a class="chat-btn" target="_blank"
 href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20the%20Blue-Line%20Baddies">
   <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
@@ -153,6 +225,20 @@ href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20the
   © 2025 <strong>OMK – Only My Kind</strong> • All Rights Reserved  
   <br>Contact: omkdrip@gmail.com
 </footer>
+
+<script>
+function openCart(){document.getElementById("cartPanel").classList.add("open")}
+function closeCart(){document.getElementById("cartPanel").classList.remove("open")}
+
+function addToCart(){
+  openCart();
+  let cart = document.getElementById("cartItems");
+  let item = document.createElement("div");
+  item.className = "cart-item";
+  item.innerText = "OMK Blue-Line Baddies (S)";
+  cart.appendChild(item);
+}
+</script>
 
 </body>
 </html>
