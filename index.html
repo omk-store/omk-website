@@ -201,7 +201,7 @@ const products = [
     name:'OMK Wolfline Tank Top',
     price:55000,
     img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/C0DCC802-519A-482E-A86D-93CA99AB8638.png',
-    link:'omk-wolfline-tank.html',  // ✅ UPDATED LINK
+    link:'omk-wolfline-tank.html',
     badge:'NEW 🐺💪'
   },
 
@@ -240,7 +240,8 @@ const products = [
   {
     name:'OMK Wolf Hoodie (Blue-Line)',
     price:90000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/56A58A00-78C3-4799-8220-18254057C8BD.png',
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/
+refs/heads/main/56A58A00-78C3-4799-8220-18254057C8BD.png',
     link:'omk-wolf-hoodie-blue-line.html',
     badge:'NEW 🐺🔥'
   },
@@ -264,7 +265,8 @@ const products = [
   {
     name:'OMK Blue-Line Tee',
     price:60000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/42CB264F-3EDC-4B58-A10E-556BDEE31F93.png',
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/
+42CB264F-3EDC-4B58-A10E-556BDEE31F93.png',
     link:'blue-line-tee.html',
     badge:'BLUE-LINE'
   },
@@ -272,7 +274,8 @@ const products = [
   {
     name:'OMK Blue-Line Shorts',
     price:70000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/0FDEF34E-CFDA-4A0B-92E2-2C68BA19645A.png',
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/
+heads/main/0FDEF34E-CFDA-4A0B-92E2-2C68BA19645A.png',
     link:'omk-blue-line-short.html',
     badge:'BLUE-LINE'
   },
@@ -280,14 +283,14 @@ const products = [
   {
     name:'OMK OG Cap (Blue-Line)',
     price:55000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/C074D825-2E7B-46D8-8C27-3B7D27E6B8B3.png',
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/
+refs/heads/main/C074D825-2E7B-46D8-8C27-3B7D27E6B8B3.png',
     link:'omk-og-cap.html',
     badge:'NEW 🧢'
   }
 
 ];
 
-/* RENDER */
 const grid=document.getElementById('productGrid');
 products.forEach(p=>{
   grid.innerHTML+=`
@@ -305,7 +308,6 @@ products.forEach(p=>{
     </a>`;
 });
 
-/* JOIN PACK */
 function joinPack(){
  let email=document.getElementById('joinEmail').value;
  if(!email){alert("Enter email");return;}
