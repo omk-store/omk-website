@@ -161,7 +161,7 @@ footer a{font-weight:800}
       </span>
 
       <div class="price">
-        ₦150,000 
+        ₦130,000 
         <span style="color:#ff2d55;font-size:14px;font-weight:700;">
           · Pre-Order (6 Days)
         </span>
@@ -235,7 +235,7 @@ function closeDrawer(){
 
 function addToCart(){
   const size=document.querySelector('.size.active')?.textContent||'M';
-  cart.push({name:`PulseLine Set (${size})`,price:150000});
+  cart.push({name:`PulseLine Set (${size})`,price:130000});
   localStorage.setItem('omkCart',JSON.stringify(cart));
   updateCart();
   openDrawer();
