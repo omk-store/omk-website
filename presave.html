@@ -115,29 +115,9 @@ h1{
   color:#fff;
 }
 
-/* EMAIL */
-.email-box{
-  margin:18px 0;
-}
-
-.email-box input{
-  width:100%;
-  padding:14px;
-  border-radius:999px;
-  border:none;
-  outline:none;
-  font-size:14px;
-  margin-bottom:10px;
-}
-
-.email-box button{
-  width:100%;
-  padding:14px;
-  border-radius:999px;
-  border:none;
+.shop{
   background:#000;
   color:#fff;
-  font-weight:900;
 }
 
 /* FOOTER */
@@ -188,11 +168,10 @@ h1{
     📲 SHARE TO WHATSAPP
   </button>
 
-  <!-- EMAIL CAPTURE -->
-  <div class="email-box">
-    <input type="email" id="email" placeholder="Enter your email for early access">
-    <button onclick="joinList()">JOIN MY VIP LIST 🐺</button>
-  </div>
+  <!-- VIP SHOP BUTTON -->
+  <button class="btn shop" onclick="window.open('https://omkdrip.com','_blank')">
+    🐺 JOIN MY VIP LIST – SHOP OMK
+  </button>
 
   <div class="footer">
     © 2025 Omo Taker • OMK Records
@@ -218,13 +197,6 @@ setInterval(()=>{
   document.getElementById("mins").innerText=m;
   document.getElementById("secs").innerText=s;
 },1000);
-
-// ✅ EMAIL CAPTURE (SENDS TO YOUR WHATSAPP)
-function joinList(){
-  const email=document.getElementById("email").value;
-  if(!email){alert("Enter email");return;}
-  window.open(`https://wa.me/2348118618722?text=VIP%20PRE-SAVE%20EMAIL:%20${email}`);
-}
 
 // ✅ WHATSAPP SHARE
 function shareWhatsApp(){
