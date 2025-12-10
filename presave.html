@@ -148,17 +148,17 @@ h1{
     <div class="time-box"><span id="secs">0</span><small>SECS</small></div>
   </div>
 
-  <!-- ✅ PRE-SAVE ONLY (SAFE) -->
+  <!-- PRE-SAVE -->
   <button class="btn presave" onclick="window.open('https://dvpper.lnk.to/mytruth','_blank')">
     🔥 PRE-SAVE ON STREAMING
   </button>
 
-  <!-- ✅ WHATSAPP SHARE -->
+  <!-- ✅ WHATSAPP SHARE (UNCHANGED) -->
   <button class="btn share" onclick="shareWhatsApp()">
     📲 SHARE TO WHATSAPP
   </button>
 
-  <!-- ✅ VIP SHOP BUTTON -->
+  <!-- ✅ VIP SHOP BUTTON (UNCHANGED) -->
   <button class="btn shop" onclick="window.open('https://omkdrip.com','_blank')">
     🐺 JOIN MY VIP LIST – SHOP OMK
   </button>
@@ -188,7 +188,7 @@ setInterval(()=>{
   document.getElementById("secs").innerText=s;
 },1000);
 
-// ✅ WHATSAPP SHARE
+// ✅ WHATSAPP SHARE (TEXT UPDATED, NO AUDIOMACK)
 function shareWhatsApp(){
   const msg="🔥 MY TRUTH EP is coming 12•12•2025! Pre-save here: https://omkdrip.com/presave.html";
   window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`);
