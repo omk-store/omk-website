@@ -138,7 +138,7 @@ footer{text-align:center;padding:20px;color:#666}
   <div class="grid" id="productGrid"></div>
 </section>
 
-<!-- ✅ UPDATED EP SECTION WITH PRE-SAVE LINK -->
+<!-- ✅ EP SECTION WITH LINK TO YOUR OWN PAGE -->
 <section class="section" id="music" style="text-align:center; padding:50px 16px;">
   <h2 style="font-size:28px; margin-bottom:20px;">New Music 🎵🔥</h2>
 
@@ -156,10 +156,9 @@ footer{text-align:center;padding:20px;color:#666}
     Drops • 12•12•2025 🌍🐺
   </p>
 
-  <!-- 🔗 PRE-SAVE BUTTON -->
+  <!-- ✅ FINAL PRE-SAVE LINK TO YOUR PAGE -->
   <a 
-    href="https://dvpper.lnk.to/mytruth" 
-    target="_blank"
+    href="mytruth.html"
     style="
       margin-top:20px;
       padding:14px 26px;
@@ -213,9 +212,7 @@ footer{text-align:center;padding:20px;color:#666}
 </a>
 
 <script>
-/* PRODUCTS */
 const products = [
-
   {
     name:'OMK PulseLine Set',
     price:130000,
@@ -223,7 +220,6 @@ const products = [
     link:'pulseline-set.html',
     badge:'NEW ⚡🐺'
   },
-
   {
     name:'OMK BlueNova Track Set',
     price:130000,
@@ -231,7 +227,6 @@ const products = [
     link:'bluenova-trackset.html',
     badge:'NEW 🌌🐺'
   },
-
   {
     name:'OMK Blue-Line Trackset',
     price:130000,
@@ -239,7 +234,6 @@ const products = [
     link:'omk-blue-line-trackset.html',
     badge:'NEW ⚡🔥'
   },
-
   {
     name:'OMK Wolfline Tank Top',
     price:55000,
@@ -247,7 +241,6 @@ const products = [
     link:'omk-wolfline-tank.html',
     badge:'NEW 🐺💪'
   },
-
   {
     name:'OMK Voltage Track Set',
     price:150000,
@@ -255,7 +248,6 @@ const products = [
     link:'voltage-track-set.html',
     badge:'NEW 🐺⚡'
   },
-
   {
     name:'OMK Blue-Line Baddies',
     price:99000,
@@ -263,7 +255,6 @@ const products = [
     link:'women-blue-line.html',
     badge:'NEW 🐺🔥'
   },
-
   {
     name:'OMK Voltage Jacket',
     price:90000,
@@ -271,7 +262,6 @@ const products = [
     link:'omk-voltage-jacket.html',
     badge:'NEW ⚡'
   },
-
   {
     name:'OMK Voltage Jean',
     price:90000,
@@ -279,7 +269,6 @@ const products = [
     link:'omk-voltage-jean.html',
     badge:'NEW ⚡'
   },
-
   {
     name:'OMK Wolf Hoodie (Blue-Line)',
     price:90000,
@@ -287,7 +276,6 @@ const products = [
     link:'omk-wolf-hoodie-blue-line.html',
     badge:'NEW 🐺🔥'
   },
-
   {
     name:'OMK Wolf Pants (Blue-Line)',
     price:90000,
@@ -295,7 +283,6 @@ const products = [
     link:'omk-wolf-pants-blue-line.html',
     badge:'NEW 🐺🔥'
   },
-
   {
     name:'OMK Chrome Tee',
     price:60000,
@@ -303,7 +290,6 @@ const products = [
     link:'tshirt.html',
     badge:'NEW 🐺⚡'
   },
-
   {
     name:'OMK Blue-Line Tee',
     price:60000,
@@ -311,7 +297,6 @@ const products = [
     link:'blue-line-tee.html',
     badge:'BLUE-LINE'
   },
-
   {
     name:'OMK Blue-Line Shorts',
     price:70000,
@@ -319,7 +304,6 @@ const products = [
     link:'omk-blue-line-short.html',
     badge:'BLUE-LINE'
   },
-
   {
     name:'OMK OG Cap (Blue-Line)',
     price:55000,
@@ -327,10 +311,8 @@ const products = [
     link:'omk-og-cap.html',
     badge:'NEW 🧢'
   }
-
 ];
 
-/* RENDER */
 const grid=document.getElementById('productGrid');
 products.forEach(p=>{
   grid.innerHTML+=`
@@ -348,7 +330,6 @@ products.forEach(p=>{
     </a>`;
 });
 
-/* JOIN PACK */
 function joinPack(){
  let email=document.getElementById('joinEmail').value;
  if(!email){alert("Enter email");return;}
