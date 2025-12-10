@@ -105,11 +105,6 @@ h1{
   box-shadow:0 10px 25px rgba(255,45,85,.5);
 }
 
-.listen{
-  background:#ffb703;
-  color:#000;
-}
-
 .share{
   background:#25D366;
   color:#fff;
@@ -153,22 +148,17 @@ h1{
     <div class="time-box"><span id="secs">0</span><small>SECS</small></div>
   </div>
 
-  <!-- PRE-SAVE -->
+  <!-- ✅ PRE-SAVE ONLY (SAFE) -->
   <button class="btn presave" onclick="window.open('https://dvpper.lnk.to/mytruth','_blank')">
     🔥 PRE-SAVE ON STREAMING
   </button>
 
-  <!-- AUDIOMACK -->
-  <button class="btn listen" onclick="window.open('https://audiomack.com/iam_omotaker/album/my-truth-9046956?key=mytruth','_blank')">
-    🎧 LISTEN ON AUDIOMACK
-  </button>
-
-  <!-- WHATSAPP SHARE -->
+  <!-- ✅ WHATSAPP SHARE -->
   <button class="btn share" onclick="shareWhatsApp()">
     📲 SHARE TO WHATSAPP
   </button>
 
-  <!-- VIP SHOP BUTTON -->
+  <!-- ✅ VIP SHOP BUTTON -->
   <button class="btn shop" onclick="window.open('https://omkdrip.com','_blank')">
     🐺 JOIN MY VIP LIST – SHOP OMK
   </button>
@@ -200,7 +190,7 @@ setInterval(()=>{
 
 // ✅ WHATSAPP SHARE
 function shareWhatsApp(){
-  const msg="🔥 MY TRUTH EP is coming 12•12•2025! Pre-save & listen here: https://omkdrip.com/presave.html";
+  const msg="🔥 MY TRUTH EP is coming 12•12•2025! Pre-save here: https://omkdrip.com/presave.html";
   window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`);
 }
 </script>
