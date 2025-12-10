@@ -15,20 +15,21 @@
 
 body{
   min-height:100vh;
-  background:linear-gradient(180deg,#e6e6e6,#bdbdbd);
+  background:radial-gradient(circle at top, #111, #000);
   display:flex;
   align-items:center;
   justify-content:center;
   padding:20px;
+  color:#fff;
 }
 
 .wrap{
   width:100%;
   max-width:420px;
-  background:#fff;
+  background:linear-gradient(180deg,#1a1a1a,#0f0f0f);
   border-radius:22px;
-  padding:18px;
-  box-shadow:0 10px 30px rgba(0,0,0,.25);
+  padding:20px;
+  box-shadow:0 20px 60px rgba(0,0,0,.8);
   text-align:center;
 }
 
@@ -36,33 +37,61 @@ body{
 .cover{
   width:100%;
   border-radius:16px;
-  margin-bottom:14px;
+  margin-bottom:16px;
+  box-shadow:0 10px 30px rgba(0,0,0,.6);
 }
 
-/* TITLE */
+/* TEXT */
 h1{
-  font-size:22px;
+  font-size:24px;
   font-weight:900;
   margin-bottom:4px;
 }
 
 .artist{
   font-size:14px;
-  color:#666;
-  margin-bottom:8px;
+  color:#bbb;
+  margin-bottom:6px;
 }
 
 .date{
-  font-size:13px;
-  color:#888;
+  font-size:14px;
+  color:#ffb703;
+  margin-bottom:18px;
+}
+
+/* COUNTDOWN */
+#countdown{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
   margin-bottom:20px;
+}
+
+.time-box{
+  flex:1;
+  background:#000;
+  border-radius:12px;
+  padding:10px 0;
+  box-shadow:inset 0 0 10px rgba(255,255,255,.05);
+}
+
+.time-box span{
+  display:block;
+  font-size:22px;
+  font-weight:900;
+}
+
+.time-box small{
+  font-size:11px;
+  color:#aaa;
 }
 
 /* BUTTONS */
 .btn{
   width:100%;
   padding:16px;
-  border-radius:14px;
+  border-radius:999px;
   font-size:16px;
   font-weight:900;
   border:none;
@@ -71,8 +100,9 @@ h1{
 }
 
 .presave{
-  background:#000;
+  background:#ff2d55;
   color:#fff;
+  box-shadow:0 10px 25px rgba(255,45,85,.5);
 }
 
 .listen{
@@ -80,9 +110,39 @@ h1{
   color:#000;
 }
 
+.share{
+  background:#25D366;
+  color:#fff;
+}
+
+/* EMAIL */
+.email-box{
+  margin:18px 0;
+}
+
+.email-box input{
+  width:100%;
+  padding:14px;
+  border-radius:999px;
+  border:none;
+  outline:none;
+  font-size:14px;
+  margin-bottom:10px;
+}
+
+.email-box button{
+  width:100%;
+  padding:14px;
+  border-radius:999px;
+  border:none;
+  background:#000;
+  color:#fff;
+  font-weight:900;
+}
+
 /* FOOTER */
 .footer{
-  margin-top:12px;
+  margin-top:14px;
   font-size:12px;
   color:#777;
 }
@@ -101,25 +161,77 @@ h1{
   >
 
   <!-- TITLE -->
-  <h1>My Truth – Omo Taker</h1>
-  <div class="artist">OMK • Only My Kind</div>
-  <div class="date">Out December 12th, 2025 • Pre-add now</div>
+  <h1>MY TRUTH – EP</h1>
+  <div class="artist">Omo Taker • OMK Records</div>
+  <div class="date">Drops • 12 • 12 • 2025 🌍🐺</div>
 
-  <!-- PRE-SAVE (DAPPER) -->
+  <!-- COUNTDOWN -->
+  <div id="countdown">
+    <div class="time-box"><span id="days">0</span><small>DAYS</small></div>
+    <div class="time-box"><span id="hours">0</span><small>HOURS</small></div>
+    <div class="time-box"><span id="mins">0</span><small>MINS</small></div>
+    <div class="time-box"><span id="secs">0</span><small>SECS</small></div>
+  </div>
+
+  <!-- PRE-SAVE -->
   <button class="btn presave" onclick="window.open('https://dvpper.lnk.to/mytruth','_blank')">
-    PRE-SAVE ON STREAMING 🔥
+    🔥 PRE-SAVE ON STREAMING
   </button>
 
   <!-- AUDIOMACK -->
   <button class="btn listen" onclick="window.open('https://audiomack.com/iam_omotaker/album/my-truth-9046956?key=mytruth','_blank')">
-    LISTEN ON AUDIOMACK 🎧
+    🎧 LISTEN ON AUDIOMACK
   </button>
+
+  <!-- WHATSAPP SHARE -->
+  <button class="btn share" onclick="shareWhatsApp()">
+    📲 SHARE TO WHATSAPP
+  </button>
+
+  <!-- EMAIL CAPTURE -->
+  <div class="email-box">
+    <input type="email" id="email" placeholder="Enter your email for early access">
+    <button onclick="joinList()">JOIN MY VIP LIST 🐺</button>
+  </div>
 
   <div class="footer">
     © 2025 Omo Taker • OMK Records
   </div>
 
 </div>
+
+<script>
+// ✅ COUNTDOWN TO 12-12-2025
+const target = new Date("December 12, 2025 00:00:00").getTime();
+
+setInterval(()=>{
+  const now = new Date().getTime();
+  const diff = target - now;
+
+  const d = Math.floor(diff/(1000*60*60*24));
+  const h = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+  const m = Math.floor((diff%(1000*60*60))/(1000*60));
+  const s = Math.floor((diff%(1000*60))/1000);
+
+  document.getElementById("days").innerText=d;
+  document.getElementById("hours").innerText=h;
+  document.getElementById("mins").innerText=m;
+  document.getElementById("secs").innerText=s;
+},1000);
+
+// ✅ EMAIL CAPTURE (SENDS TO YOUR WHATSAPP)
+function joinList(){
+  const email=document.getElementById("email").value;
+  if(!email){alert("Enter email");return;}
+  window.open(`https://wa.me/2348118618722?text=VIP%20PRE-SAVE%20EMAIL:%20${email}`);
+}
+
+// ✅ WHATSAPP SHARE
+function shareWhatsApp(){
+  const msg="🔥 MY TRUTH EP is coming 12•12•2025! Pre-save & listen here: https://omkdrip.com/presave.html";
+  window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`);
+}
+</script>
 
 </body>
 </html>
