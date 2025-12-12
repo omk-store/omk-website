@@ -49,8 +49,10 @@ h1{font-size:24px;font-weight:900}
   align-items:center;
   justify-content:center;
   cursor:pointer;
+  transition:transform .2s ease;
 }
-svg{width:40px;height:40px}
+.platform:hover{transform:translateY(-3px)}
+svg{width:42px;height:42px}
 
 /* BUTTONS */
 .btn{
@@ -83,29 +85,33 @@ svg{width:40px;height:40px}
 <!-- SPOTIFY -->
 <div class="platform" onclick="openLink('https://open.spotify.com/album/6rrjJygYglkhT0ZNloxEym')">
 <svg viewBox="0 0 168 168" fill="#1DB954">
-<path d="M84 0C37.7 0 0 37.7 0 84s37.7 84 84 84 84-37.7 84-84S130.3 0 84 0zm38.4 121.3c-1.7 2.8-5.4 3.7-8.2 2-22.5-13.8-50.8-16.9-84.2-9.2-3.2.7-6.3-1.3-7-4.5-.7-3.2 1.3-6.3 4.5-7 36.3-8.3 67.4-4.8 92.4 10.6 2.8 1.7 3.7 5.4 2 8.1zm11.7-26.2c-2.1 3.4-6.6 4.4-10 2.3-25.8-15.9-65.2-20.5-95.9-11.2-3.9 1.2-8-1-9.2-4.9-1.2-3.9 1-8 4.9-9.2 35.1-10.6 78.7-5.5 108.2 13.1 3.4 2.1 4.4 6.6 2.3 10zm1-27.3c-31-18.4-82.1-20.1-111.7-11.1-4.6 1.4-9.5-1.2-10.9-5.8-1.4-4.6 1.2-9.5 5.8-10.9 34.1-10.4 90.8-8.4 126.7 12.8 4.1 2.4 5.4 7.7 3 11.8-2.4 4.1-7.7 5.4-11.8 3z"/>
+<path d="M84 0C37.7 0 0 37.7 0 84s37.7 84 84 84 84-37.7 84-84S130.3 0 84 0zm38.4 121.3c-1.7 2.8-5.4 3.7-8.2 2-22.5-13.8-50.8-16.9-84.2-9.2-3.2.7-6.3-1.3-7-4.5-.7-3.2 1.3-6.3 4.5-7 36.3-8.3 67.4-4.8 92.4 10.6 2.8 1.7 3.7 5.4 2 8.1z"/>
 </svg>
 </div>
 
-<!-- APPLE MUSIC -->
+<!-- APPLE MUSIC (REAL NOTE LOGO) -->
 <div class="platform" onclick="openLink('https://music.apple.com/ng/album/my-truth/1859702027')">
-<svg viewBox="0 0 512 512" fill="#FA243C">
-<path d="M349.13 136.36c-40.37-2.42-80.66 9.5-112.86 34.03V81.17c0-5.52-4.48-10-10-10s-10 4.48-10 10v285.38c-7.95-4.48-17.13-7.05-27.01-7.05-30.16 0-54.62 24.46-54.62 54.62s24.46 54.62 54.62 54.62 54.62-24.46 54.62-54.62V231.43c0-25.63 68.36-56.24 112.86-54.6 5.51.21 10.14-4.11 10.35-9.62.21-5.52-4.11-10.15-9.63-10.35z"/>
+<svg viewBox="0 0 512 512">
+<rect x="0" y="0" width="512" height="512" rx="110" fill="#FA243C"/>
+<path fill="#fff" d="M346 146c-38-3-78 8-110 30V120c0-6-4-10-10-10s-10 4-10 10v226c-7-4-15-6-24-6-28 0-50 22-50 50s22 50 50 50 50-22 50-50V222c0-21 62-46 104-44 6 0 10-4 10-9s-4-10-10-11z"/>
 </svg>
 </div>
 
-<!-- BOOMPLAY -->
+<!-- BOOMPLAY (REAL LOOK) -->
 <div class="platform" onclick="openLink('https://www.boomplay.com/share/album/121150961')">
 <svg viewBox="0 0 100 100">
-<circle cx="50" cy="50" r="50" fill="#00E5FF"/>
-<text x="50%" y="62%" text-anchor="middle" font-size="48" fill="#000" font-weight="900">B</text>
+<circle cx="50" cy="50" r="48" fill="#00E5FF"/>
+<text x="50%" y="63%" text-anchor="middle"
+      font-size="48" font-weight="900" fill="#000">B</text>
 </svg>
 </div>
 
 </div>
 
 <button class="btn share" onclick="shareWhatsApp()">📲 SHARE TO WHATSAPP</button>
-<button class="btn shop" onclick="openLink('https://omkdrip.com')">🐺 JOIN MY VIP LIST – SHOP OMK</button>
+<button class="btn shop" onclick="openLink('https://omkdrip.com')">
+🐺 JOIN MY VIP LIST – SHOP OMK
+</button>
 
 <div class="footer">© 2025 Omo Taker • OMK Records</div>
 
