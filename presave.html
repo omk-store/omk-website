@@ -60,31 +60,27 @@ h1{
   margin-bottom:18px;
 }
 
-/* COUNTDOWN */
-#countdown{
+/* LOGOS */
+.logos{
   display:flex;
   justify-content:space-between;
-  gap:10px;
-  margin-bottom:20px;
+  align-items:center;
+  gap:14px;
+  margin-bottom:22px;
 }
 
-.time-box{
-  flex:1;
+.logos img{
+  width:100%;
+  max-width:110px;
   background:#000;
-  border-radius:12px;
-  padding:10px 0;
-  box-shadow:inset 0 0 10px rgba(255,255,255,.05);
+  padding:14px;
+  border-radius:14px;
+  box-shadow:0 10px 25px rgba(0,0,0,.6);
+  transition:.2s ease;
 }
 
-.time-box span{
-  display:block;
-  font-size:22px;
-  font-weight:900;
-}
-
-.time-box small{
-  font-size:11px;
-  color:#aaa;
+.logos img:hover{
+  transform:scale(1.05);
 }
 
 /* BUTTONS */
@@ -99,26 +95,6 @@ h1{
   cursor:pointer;
 }
 
-/* STREAMING */
-.spotify{
-  background:#1DB954;
-  color:#000;
-  box-shadow:0 10px 25px rgba(29,185,84,.5);
-}
-
-.apple{
-  background:#000;
-  color:#fff;
-  box-shadow:0 10px 25px rgba(0,0,0,.6);
-}
-
-.boomplay{
-  background:#2fd3ff;
-  color:#000;
-  box-shadow:0 10px 25px rgba(47,211,255,.5);
-}
-
-/* OTHER */
 .share{
   background:#25D366;
   color:#fff;
@@ -154,26 +130,22 @@ h1{
   <div class="artist">Omo Taker • OMK Records</div>
   <div class="date">Out Now 🌍🐺</div>
 
-  <!-- COUNTDOWN (kept for style, harmless) -->
-  <div id="countdown">
-    <div class="time-box"><span id="days">0</span><small>DAYS</small></div>
-    <div class="time-box"><span id="hours">0</span><small>HOURS</small></div>
-    <div class="time-box"><span id="mins">0</span><small>MINS</small></div>
-    <div class="time-box"><span id="secs">0</span><small>SECS</small></div>
+  <!-- STREAMING LOGOS -->
+  <div class="logos">
+
+    <a href="https://open.spotify.com/album/6rrjJygYglkhT0ZNloxEym?si=AAbW9sTWQr_iWNfnl4KzhQ" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Spotify">
+    </a>
+
+    <a href="https://music.apple.com/ng/album/my-truth/1859702027" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_Music_logo.svg" alt="Apple Music">
+    </a>
+
+    <a href="https://www.boomplay.com/share/album/121150961?srModel=COPYLINK&srList=IOS" target="_blank">
+      <img src="https://static.boomplaymusic.com/buzz/img/logo.png" alt="Boomplay">
+    </a>
+
   </div>
-
-  <!-- STREAMING LINKS -->
-  <button class="btn spotify" onclick="window.open('https://open.spotify.com/album/6rrjJygYglkhT0ZNloxEym?si=AAbW9sTWQr_iWNfnl4KzhQ','_blank')">
-    🎧 LISTEN ON SPOTIFY
-  </button>
-
-  <button class="btn apple" onclick="window.open('https://music.apple.com/ng/album/my-truth/1859702027','_blank')">
-    🍎 LISTEN ON APPLE MUSIC
-  </button>
-
-  <button class="btn boomplay" onclick="window.open('https://www.boomplay.com/share/album/121150961?srModel=COPYLINK&srList=IOS','_blank')">
-    ▶️ LISTEN ON BOOMPLAY
-  </button>
 
   <!-- WHATSAPP -->
   <button class="btn share" onclick="shareWhatsApp()">
@@ -192,19 +164,6 @@ h1{
 </div>
 
 <script>
-// Countdown kept (safe even after release)
-const target = new Date("December 12, 2025 00:00:00").getTime();
-
-setInterval(()=>{
-  const now = new Date().getTime();
-  const diff = target - now;
-
-  document.getElementById("days").innerText = Math.max(0,Math.floor(diff/(1000*60*60*24)));
-  document.getElementById("hours").innerText = Math.max(0,Math.floor((diff%(1000*60*60*24))/(1000*60*60)));
-  document.getElementById("mins").innerText = Math.max(0,Math.floor((diff%(1000*60*60))/(1000*60)));
-  document.getElementById("secs").innerText = Math.max(0,Math.floor((diff%(1000*60))/1000));
-},1000);
-
 // WhatsApp share
 function shareWhatsApp(){
   const msg="🔥 MY TRUTH EP by Omo Taker is OUT NOW! 🎧 Listen here 👉 https://omkdrip.com";
