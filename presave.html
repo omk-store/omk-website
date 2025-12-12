@@ -6,23 +6,16 @@
 <title>My Truth – EP | Omo Taker</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-}
-
+*{box-sizing:border-box;margin:0;padding:0;font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
 body{
   min-height:100vh;
-  background:radial-gradient(circle at top, #111, #000);
+  background:radial-gradient(circle at top,#111,#000);
   display:flex;
   align-items:center;
   justify-content:center;
   padding:20px;
   color:#fff;
 }
-
 .wrap{
   width:100%;
   max-width:420px;
@@ -32,41 +25,21 @@ body{
   box-shadow:0 20px 60px rgba(0,0,0,.8);
   text-align:center;
 }
-
-/* COVER */
 .cover{
   width:100%;
   border-radius:16px;
   margin-bottom:16px;
-  box-shadow:0 10px 30px rgba(0,0,0,.6);
 }
+h1{font-size:24px;font-weight:900}
+.artist{font-size:14px;color:#bbb;margin:6px 0}
+.status{color:#00e676;margin-bottom:20px}
 
-/* TEXT */
-h1{
-  font-size:24px;
-  font-weight:900;
-  margin-bottom:4px;
-}
-
-.artist{
-  font-size:14px;
-  color:#bbb;
-  margin-bottom:6px;
-}
-
-.status{
-  font-size:14px;
-  color:#00e676;
-  margin-bottom:20px;
-}
-
-/* PLATFORMS */
+/* PLATFORM ICONS */
 .platforms{
   display:flex;
   gap:14px;
   margin-bottom:22px;
 }
-
 .platform{
   flex:1;
   background:#000;
@@ -77,12 +50,7 @@ h1{
   justify-content:center;
   cursor:pointer;
 }
-
-.platform img{
-  width:42px;
-  height:42px;
-  display:block;
-}
+svg{width:40px;height:40px}
 
 /* BUTTONS */
 .btn{
@@ -93,86 +61,62 @@ h1{
   font-weight:900;
   border:none;
   margin-bottom:14px;
-  cursor:pointer;
 }
-
-.share{
-  background:#25D366;
-  color:#fff;
-}
-
-.shop{
-  background:#000;
-  color:#fff;
-}
-
-/* FOOTER */
-.footer{
-  margin-top:14px;
-  font-size:12px;
-  color:#777;
-}
+.share{background:#25D366;color:#fff}
+.shop{background:#000;color:#fff}
+.footer{margin-top:14px;font-size:12px;color:#777}
 </style>
 </head>
 
 <body>
-
 <div class="wrap">
 
-  <!-- COVER -->
-  <img 
-    src="https://raw.githubusercontent.com/omk-store/omk-website/main/IMG_3999.jpeg"
-    class="cover"
-    alt="My Truth EP Cover"
-  >
+<img src="https://raw.githubusercontent.com/omk-store/omk-website/main/IMG_3999.jpeg"
+     class="cover" alt="My Truth EP">
 
-  <!-- TITLE -->
-  <h1>MY TRUTH – EP</h1>
-  <div class="artist">Omo Taker • OMK Records</div>
-  <div class="status">Out Now 🌍🐺</div>
+<h1>MY TRUTH – EP</h1>
+<div class="artist">Omo Taker • OMK Records</div>
+<div class="status">Out Now 🌍🐺</div>
 
-  <!-- PLATFORM LINKS -->
-  <div class="platforms">
+<div class="platforms">
 
-    <!-- SPOTIFY -->
-    <div class="platform" onclick="window.open('https://open.spotify.com/album/6rrjJygYglkhT0ZNloxEym','_blank')">
-      <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Icon_RGB_Green.png" alt="Spotify">
-    </div>
+<!-- SPOTIFY -->
+<div class="platform" onclick="openLink('https://open.spotify.com/album/6rrjJygYglkhT0ZNloxEym')">
+<svg viewBox="0 0 168 168" fill="#1DB954">
+<path d="M84 0C37.7 0 0 37.7 0 84s37.7 84 84 84 84-37.7 84-84S130.3 0 84 0zm38.4 121.3c-1.7 2.8-5.4 3.7-8.2 2-22.5-13.8-50.8-16.9-84.2-9.2-3.2.7-6.3-1.3-7-4.5-.7-3.2 1.3-6.3 4.5-7 36.3-8.3 67.4-4.8 92.4 10.6 2.8 1.7 3.7 5.4 2 8.1zm11.7-26.2c-2.1 3.4-6.6 4.4-10 2.3-25.8-15.9-65.2-20.5-95.9-11.2-3.9 1.2-8-1-9.2-4.9-1.2-3.9 1-8 4.9-9.2 35.1-10.6 78.7-5.5 108.2 13.1 3.4 2.1 4.4 6.6 2.3 10zm1-27.3c-31-18.4-82.1-20.1-111.7-11.1-4.6 1.4-9.5-1.2-10.9-5.8-1.4-4.6 1.2-9.5 5.8-10.9 34.1-10.4 90.8-8.4 126.7 12.8 4.1 2.4 5.4 7.7 3 11.8-2.4 4.1-7.7 5.4-11.8 3z"/>
+</svg>
+</div>
 
-    <!-- APPLE MUSIC (LOCKED PNG) -->
-    <div class="platform" onclick="window.open('https://music.apple.com/ng/album/my-truth/1859702027','_blank')">
-      <img src="https://developer.apple.com/assets/elements/icons/apple-music/apple-music-128x128_2x.png" alt="Apple Music">
-    </div>
+<!-- APPLE MUSIC -->
+<div class="platform" onclick="openLink('https://music.apple.com/ng/album/my-truth/1859702027')">
+<svg viewBox="0 0 512 512" fill="#FA243C">
+<path d="M349.13 136.36c-40.37-2.42-80.66 9.5-112.86 34.03V81.17c0-5.52-4.48-10-10-10s-10 4.48-10 10v285.38c-7.95-4.48-17.13-7.05-27.01-7.05-30.16 0-54.62 24.46-54.62 54.62s24.46 54.62 54.62 54.62 54.62-24.46 54.62-54.62V231.43c0-25.63 68.36-56.24 112.86-54.6 5.51.21 10.14-4.11 10.35-9.62.21-5.52-4.11-10.15-9.63-10.35z"/>
+</svg>
+</div>
 
-    <!-- BOOMPLAY (LOCKED PNG) -->
-    <div class="platform" onclick="window.open('https://www.boomplay.com/share/album/121150961','_blank')">
-      <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple126/v4/0f/65/7b/0f657b63-35a8-1d76-2b92-36b7cbda1c44/AppIcon-0-1x_U007emarketing-0-7-0-0-85-220.png/512x512bb.jpg" alt="Boomplay">
-    </div>
+<!-- BOOMPLAY -->
+<div class="platform" onclick="openLink('https://www.boomplay.com/share/album/121150961')">
+<svg viewBox="0 0 100 100">
+<circle cx="50" cy="50" r="50" fill="#00E5FF"/>
+<text x="50%" y="62%" text-anchor="middle" font-size="48" fill="#000" font-weight="900">B</text>
+</svg>
+</div>
 
-  </div>
+</div>
 
-  <!-- WHATSAPP -->
-  <button class="btn share" onclick="shareWhatsApp()">
-    📲 SHARE TO WHATSAPP
-  </button>
+<button class="btn share" onclick="shareWhatsApp()">📲 SHARE TO WHATSAPP</button>
+<button class="btn shop" onclick="openLink('https://omkdrip.com')">🐺 JOIN MY VIP LIST – SHOP OMK</button>
 
-  <!-- SHOP -->
-  <button class="btn shop" onclick="window.open('https://omkdrip.com','_blank')">
-    🐺 JOIN MY VIP LIST – SHOP OMK
-  </button>
-
-  <div class="footer">
-    © 2025 Omo Taker • OMK Records
-  </div>
+<div class="footer">© 2025 Omo Taker • OMK Records</div>
 
 </div>
 
 <script>
+function openLink(url){ window.open(url,'_blank'); }
 function shareWhatsApp(){
   const msg="🔥 MY TRUTH EP by Omo Taker is OUT NOW!\nListen here: https://omkdrip.com";
-  window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`);
+  window.open("https://wa.me/?text="+encodeURIComponent(msg));
 }
 </script>
-
 </body>
 </html>
