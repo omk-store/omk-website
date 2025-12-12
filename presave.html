@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My Truth – Omo Taker | Pre-Save</title>
+<title>My Truth – Omo Taker | Listen</title>
 
 <style>
 *{
@@ -99,12 +99,26 @@ h1{
   cursor:pointer;
 }
 
-.presave{
-  background:#ff2d55;
-  color:#fff;
-  box-shadow:0 10px 25px rgba(255,45,85,.5);
+/* STREAMING */
+.spotify{
+  background:#1DB954;
+  color:#000;
+  box-shadow:0 10px 25px rgba(29,185,84,.5);
 }
 
+.apple{
+  background:#000;
+  color:#fff;
+  box-shadow:0 10px 25px rgba(0,0,0,.6);
+}
+
+.boomplay{
+  background:#2fd3ff;
+  color:#000;
+  box-shadow:0 10px 25px rgba(47,211,255,.5);
+}
+
+/* OTHER */
 .share{
   background:#25D366;
   color:#fff;
@@ -138,9 +152,9 @@ h1{
   <!-- TITLE -->
   <h1>MY TRUTH – EP</h1>
   <div class="artist">Omo Taker • OMK Records</div>
-  <div class="date">Drops • 12 • 12 • 2025 🌍🐺</div>
+  <div class="date">Out Now 🌍🐺</div>
 
-  <!-- COUNTDOWN -->
+  <!-- COUNTDOWN (kept for style, harmless) -->
   <div id="countdown">
     <div class="time-box"><span id="days">0</span><small>DAYS</small></div>
     <div class="time-box"><span id="hours">0</span><small>HOURS</small></div>
@@ -148,17 +162,25 @@ h1{
     <div class="time-box"><span id="secs">0</span><small>SECS</small></div>
   </div>
 
-  <!-- PRE-SAVE -->
-  <button class="btn presave" onclick="window.open('https://dvpper.lnk.to/mytruth','_blank')">
-    🔥 PRE-SAVE ON STREAMING
+  <!-- STREAMING LINKS -->
+  <button class="btn spotify" onclick="window.open('https://open.spotify.com/album/6rrjJygYglkhT0ZNloxEym?si=AAbW9sTWQr_iWNfnl4KzhQ','_blank')">
+    🎧 LISTEN ON SPOTIFY
   </button>
 
-  <!-- ✅ WHATSAPP SHARE (UNCHANGED) -->
+  <button class="btn apple" onclick="window.open('https://music.apple.com/ng/album/my-truth/1859702027','_blank')">
+    🍎 LISTEN ON APPLE MUSIC
+  </button>
+
+  <button class="btn boomplay" onclick="window.open('https://www.boomplay.com/share/album/121150961?srModel=COPYLINK&srList=IOS','_blank')">
+    ▶️ LISTEN ON BOOMPLAY
+  </button>
+
+  <!-- WHATSAPP -->
   <button class="btn share" onclick="shareWhatsApp()">
     📲 SHARE TO WHATSAPP
   </button>
 
-  <!-- ✅ VIP SHOP BUTTON (UNCHANGED) -->
+  <!-- SHOP -->
   <button class="btn shop" onclick="window.open('https://omkdrip.com','_blank')">
     🐺 JOIN MY VIP LIST – SHOP OMK
   </button>
@@ -170,27 +192,22 @@ h1{
 </div>
 
 <script>
-// ✅ COUNTDOWN TO 12-12-2025
+// Countdown kept (safe even after release)
 const target = new Date("December 12, 2025 00:00:00").getTime();
 
 setInterval(()=>{
   const now = new Date().getTime();
   const diff = target - now;
 
-  const d = Math.floor(diff/(1000*60*60*24));
-  const h = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-  const m = Math.floor((diff%(1000*60*60))/(1000*60));
-  const s = Math.floor((diff%(1000*60))/1000);
-
-  document.getElementById("days").innerText=d;
-  document.getElementById("hours").innerText=h;
-  document.getElementById("mins").innerText=m;
-  document.getElementById("secs").innerText=s;
+  document.getElementById("days").innerText = Math.max(0,Math.floor(diff/(1000*60*60*24)));
+  document.getElementById("hours").innerText = Math.max(0,Math.floor((diff%(1000*60*60*24))/(1000*60*60)));
+  document.getElementById("mins").innerText = Math.max(0,Math.floor((diff%(1000*60*60))/(1000*60)));
+  document.getElementById("secs").innerText = Math.max(0,Math.floor((diff%(1000*60))/1000));
 },1000);
 
-// ✅ WHATSAPP SHARE (TEXT UPDATED, NO AUDIOMACK)
+// WhatsApp share
 function shareWhatsApp(){
-  const msg="🔥 MY TRUTH EP is coming 12•12•2025! Pre-save here: https://omkdrip.com/presave.html";
+  const msg="🔥 MY TRUTH EP by Omo Taker is OUT NOW! 🎧 Listen here 👉 https://omkdrip.com";
   window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`);
 }
 </script>
