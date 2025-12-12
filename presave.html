@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My Truth – Omo Taker</title>
+<title>My Truth – EP | Omo Taker</title>
 
 <style>
 *{
@@ -29,7 +29,7 @@ body{
   background:linear-gradient(180deg,#1a1a1a,#0f0f0f);
   border-radius:22px;
   padding:20px;
-  box-shadow:0 20px 60px rgba(0,0,0,.85);
+  box-shadow:0 20px 60px rgba(0,0,0,.8);
   text-align:center;
 }
 
@@ -54,9 +54,9 @@ h1{
   margin-bottom:6px;
 }
 
-.date{
+.status{
   font-size:14px;
-  color:#25d366;
+  color:#00e676;
   margin-bottom:20px;
 }
 
@@ -71,23 +71,23 @@ h1{
 .platform{
   flex:1;
   background:#000;
-  border-radius:14px;
-  padding:14px;
+  border-radius:16px;
+  padding:16px;
   display:flex;
   align-items:center;
   justify-content:center;
   cursor:pointer;
-  transition:.2s ease;
-  box-shadow:inset 0 0 10px rgba(255,255,255,.05);
+  transition:transform .2s ease, box-shadow .2s ease;
 }
 
 .platform:hover{
-  transform:scale(1.05);
+  transform:translateY(-3px);
+  box-shadow:0 10px 25px rgba(0,0,0,.7);
 }
 
 .platform img{
-  width:42px;
-  height:42px;
+  width:44px;
+  height:44px;
 }
 
 /* BUTTONS */
@@ -135,29 +135,29 @@ h1{
   <!-- TITLE -->
   <h1>MY TRUTH – EP</h1>
   <div class="artist">Omo Taker • OMK Records</div>
-  <div class="date">Out Now 🌍🐺</div>
+  <div class="status">Out Now 🌍🐺</div>
 
-  <!-- STREAMING PLATFORMS -->
+  <!-- PLATFORM LINKS -->
   <div class="platforms">
 
-    <!-- Spotify -->
+    <!-- SPOTIFY -->
     <div class="platform" onclick="window.open('https://open.spotify.com/album/6rrjJygYglkhT0ZNloxEym','_blank')">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Spotify">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg" alt="Spotify">
     </div>
 
-    <!-- Apple Music -->
+    <!-- APPLE MUSIC -->
     <div class="platform" onclick="window.open('https://music.apple.com/ng/album/my-truth/1859702027','_blank')">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Apple_Music_Icon.svg" alt="Apple Music">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Apple_Music_icon.svg" alt="Apple Music">
     </div>
 
-    <!-- Boomplay (FIXED) -->
+    <!-- BOOMPLAY -->
     <div class="platform" onclick="window.open('https://www.boomplay.com/share/album/121150961','_blank')">
-      <img src="https://play-lh.googleusercontent.com/3H4mHc9cZ6VxYg8WkC1X0N5xI3z4P2v0U9f1s4VnU5qk8P4pT1xY7kA=w240-h240-rw" alt="Boomplay">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/25/Boomplay_logo.png" alt="Boomplay">
     </div>
 
   </div>
 
-  <!-- SHARE -->
+  <!-- WHATSAPP -->
   <button class="btn share" onclick="shareWhatsApp()">
     📲 SHARE TO WHATSAPP
   </button>
