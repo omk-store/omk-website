@@ -57,12 +57,13 @@ h1{
 .status{
   font-size:14px;
   color:#00e676;
-  margin-bottom:22px;
+  margin-bottom:20px;
 }
 
 /* PLATFORMS */
 .platforms{
   display:flex;
+  justify-content:space-between;
   gap:14px;
   margin-bottom:22px;
 }
@@ -71,7 +72,7 @@ h1{
   flex:1;
   background:#000;
   border-radius:16px;
-  padding:18px;
+  padding:16px;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -126,7 +127,7 @@ h1{
 
   <!-- COVER -->
   <img 
-    src="https://raw.githubusercontent.com/omk-store/omk-website/main/IMG_3999.jpeg"
+    src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_3999.jpeg"
     class="cover"
     alt="My Truth EP Cover"
   >
@@ -136,25 +137,22 @@ h1{
   <div class="artist">Omo Taker • OMK Records</div>
   <div class="status">Out Now 🌍🐺</div>
 
-  <!-- PLATFORMS -->
+  <!-- PLATFORM LINKS -->
   <div class="platforms">
 
     <!-- SPOTIFY -->
     <div class="platform" onclick="window.open('https://open.spotify.com/album/6rrjJygYglkhT0ZNloxEym','_blank')">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg" alt="Spotify">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111624.png" alt="Spotify">
     </div>
 
     <!-- APPLE MUSIC -->
     <div class="platform" onclick="window.open('https://music.apple.com/ng/album/my-truth/1859702027','_blank')">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Apple_Music_icon.svg" alt="Apple Music">
+      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111703.png" alt="Apple Music">
     </div>
 
-    <!-- BOOMPLAY (FIXED – YOUR IMAGE) -->
+    <!-- BOOMPLAY (FIXED – HOSTED LOGO) -->
     <div class="platform" onclick="window.open('https://www.boomplay.com/share/album/121150961','_blank')">
-      <img 
-        src="https://raw.githubusercontent.com/omk-store/omk-website/main/assets/boomplay.png"
-        alt="Boomplay"
-      >
+      <img src="https://play-lh.googleusercontent.com/2nZJ9iZkJZpZp6C5nYt1qg7pJqYcY6yM8g5y0A1G0U8sVtX9b3Qq3l9s0R6n0A=w240-h240-rw" alt="Boomplay">
     </div>
 
   </div>
@@ -177,7 +175,7 @@ h1{
 
 <script>
 function shareWhatsApp(){
-  const msg="🔥 MY TRUTH EP by Omo Taker is OUT NOW! Listen here: https://omkdrip.com";
+  const msg="🔥 MY TRUTH EP by Omo Taker is OUT NOW!\nListen here: https://omkdrip.com";
   window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`);
 }
 </script>
