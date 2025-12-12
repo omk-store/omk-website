@@ -24,7 +24,7 @@ body{
   overflow:hidden;
 }
 
-/* CINEMATIC ANIME GLOW */
+/* CINEMATIC BACK GLOW */
 body::before{
   content:"";
   position:fixed;
@@ -41,7 +41,7 @@ body::before{
   to{transform:translateY(20px)}
 }
 
-/* MAIN WHITE CARD */
+/* MAIN CARD */
 .wrap{
   width:100%;
   max-width:420px;
@@ -88,10 +88,9 @@ h1{
   margin-bottom:22px;
 }
 
-/* WHITE APPLE-STYLE BOXES */
 .platform{
   flex:1;
-  background:#ffffff;
+  background:#000; /* default black */
   border-radius:18px;
   padding:16px;
   display:flex;
@@ -99,17 +98,22 @@ h1{
   justify-content:center;
   cursor:pointer;
   transition:.25s ease;
-  border:1px solid #e6e6e6;
 }
 
 .platform:hover{
   transform:translateY(-4px);
-  box-shadow:0 12px 25px rgba(0,0,0,.25);
+  box-shadow:0 12px 25px rgba(0,0,0,.6);
 }
 
 .platform img{
   width:46px;
   height:46px;
+}
+
+/* APPLE MUSIC – WHITE ONLY */
+.platform.apple{
+  background:#ffffff;
+  border:1px solid #e6e6e6;
 }
 
 /* BUTTONS */
@@ -159,7 +163,7 @@ h1{
   <div class="artist">Omo Taker • OMK Records</div>
   <div class="status">Out Now 🌍🐺</div>
 
-  <!-- PLATFORM LINKS -->
+  <!-- PLATFORMS -->
   <div class="platforms">
 
     <!-- SPOTIFY -->
@@ -167,8 +171,8 @@ h1{
       <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_4666.png" alt="Spotify">
     </div>
 
-    <!-- APPLE MUSIC -->
-    <div class="platform" onclick="window.open('https://music.apple.com/ng/album/my-truth/1859702027','_blank')">
+    <!-- APPLE MUSIC (WHITE) -->
+    <div class="platform apple" onclick="window.open('https://music.apple.com/ng/album/my-truth/1859702027','_blank')">
       <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_4654.jpeg" alt="Apple Music">
     </div>
 
