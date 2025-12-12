@@ -83,14 +83,14 @@ h1{
 
 /* PLATFORM ICONS */
 .platforms{
-  display:flex;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
   gap:14px;
   margin-bottom:22px;
 }
 
 .platform{
-  flex:1;
-  background:#000; /* default black */
+  background:#000;
   border-radius:18px;
   padding:16px;
   display:flex;
@@ -171,7 +171,7 @@ h1{
       <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_4666.png" alt="Spotify">
     </div>
 
-    <!-- APPLE MUSIC (WHITE) -->
+    <!-- APPLE MUSIC -->
     <div class="platform apple" onclick="window.open('https://music.apple.com/ng/album/my-truth/1859702027','_blank')">
       <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_4654.jpeg" alt="Apple Music">
     </div>
@@ -179,6 +179,11 @@ h1{
     <!-- BOOMPLAY -->
     <div class="platform" onclick="window.open('https://www.boomplay.com/share/album/121150961','_blank')">
       <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_9928.jpeg" alt="Boomplay">
+    </div>
+
+    <!-- AUDIOMACK (NEW – MATCHED) -->
+    <div class="platform" onclick="window.open('https://audiomack.com/iam_omotaker/album/my-truth-9046956','_blank')">
+      <img src="https://raw.githubusercontent.com/omk-store/omk-website/main/audiomack-logo.png" alt="Audiomack">
     </div>
 
   </div>
@@ -201,7 +206,7 @@ h1{
 
 <script>
 function shareWhatsApp(){
-  const msg="🔥 MY TRUTH EP by Omo Taker is OUT NOW! Listen on Spotify, Apple Music & Boomplay: https://omkdrip.com";
+  const msg="🔥 MY TRUTH EP by Omo Taker is OUT NOW! Listen on Spotify, Apple Music, Boomplay & Audiomack: https://omkdrip.com";
   window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`);
 }
 </script>
