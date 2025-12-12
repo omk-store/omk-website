@@ -16,12 +16,8 @@
 body{
   min-height:100vh;
   background:#000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
+  padding:30px 20px;
   color:#000;
-  overflow:hidden;
 }
 
 /* CINEMATIC BACK GLOW */
@@ -45,6 +41,7 @@ body::before{
 .wrap{
   width:100%;
   max-width:420px;
+  margin:0 auto;
   background:#fff;
   border-radius:26px;
   padding:22px;
@@ -81,7 +78,7 @@ h1{
   margin-bottom:22px;
 }
 
-/* PLATFORM ICONS */
+/* PLATFORMS */
 .platforms{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -92,32 +89,28 @@ h1{
 .platform{
   background:#000;
   border-radius:18px;
-  padding:16px;
+  padding:18px;
   display:flex;
   align-items:center;
   justify-content:center;
   cursor:pointer;
   transition:.25s ease;
-  overflow:hidden;
 }
 
 .platform:hover{
-  transform:translateY(-4px);
-  box-shadow:0 12px 25px rgba(0,0,0,.6);
+  transform:translateY(-3px);
 }
 
 .platform img{
-  width:100%;
-  height:100%;
-  max-width:70px;
-  max-height:70px;
+  width:60px;
+  height:60px;
   object-fit:cover;
-  border-radius:10px;
+  border-radius:12px;
 }
 
-/* APPLE MUSIC – WHITE ONLY */
+/* APPLE */
 .platform.apple{
-  background:#ffffff;
+  background:#fff;
   border:1px solid #e6e6e6;
 }
 
@@ -133,21 +126,75 @@ h1{
   cursor:pointer;
 }
 
-.share{
-  background:#25D366;
-  color:#fff;
-}
-
-.shop{
-  background:#000;
-  color:#fff;
-}
+.share{background:#25D366;color:#fff}
+.shop{background:#000;color:#fff}
 
 /* FOOTER */
 .footer{
   margin-top:14px;
   font-size:12px;
   color:#777;
+}
+
+/* WOLF POPUP */
+#wolfPopup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  opacity:0;
+  pointer-events:none;
+  transition:.4s ease;
+}
+
+#wolfPopup.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.wolfBox{
+  background:#0b0b0b;
+  color:#fff;
+  width:90%;
+  max-width:340px;
+  border-radius:22px;
+  padding:26px;
+  text-align:center;
+}
+
+.wolfBox h2{
+  font-size:22px;
+  font-weight:900;
+  margin-bottom:10px;
+}
+
+.wolfBox p{
+  font-size:14px;
+  color:#bbb;
+  margin-bottom:22px;
+}
+
+.wolfBox button{
+  width:100%;
+  padding:14px;
+  border-radius:999px;
+  border:none;
+  font-weight:900;
+  margin-bottom:12px;
+  cursor:pointer;
+}
+
+.wolfListen{background:#00c853;color:#000}
+.wolfShop{background:#fff;color:#000}
+.wolfShare{background:#111;color:#fff;border:1px solid #333}
+
+.closeWolf{
+  font-size:12px;
+  color:#777;
+  cursor:pointer;
 }
 </style>
 </head>
@@ -156,63 +203,63 @@ h1{
 
 <div class="wrap">
 
-  <!-- COVER -->
-  <img 
-    src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_3999.jpeg"
-    class="cover"
-    alt="My Truth EP Cover"
-  >
+<img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_3999.jpeg" class="cover">
 
-  <!-- TITLE -->
-  <h1>MY TRUTH – EP</h1>
-  <div class="artist">Omo Taker • OMK Records</div>
-  <div class="status">Out Now 🌍🐺</div>
+<h1>MY TRUTH – EP</h1>
+<div class="artist">Omo Taker • OMK Records</div>
+<div class="status">Out Now 🌍🐺</div>
 
-  <!-- PLATFORMS -->
-  <div class="platforms">
-
-    <!-- SPOTIFY -->
-    <div class="platform" onclick="window.open('https://open.spotify.com/album/6rrjJygYglkhT0ZNloxEym','_blank')">
-      <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_4666.png" alt="Spotify">
-    </div>
-
-    <!-- APPLE MUSIC -->
-    <div class="platform apple" onclick="window.open('https://music.apple.com/ng/album/my-truth/1859702027','_blank')">
-      <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_4654.jpeg" alt="Apple Music">
-    </div>
-
-    <!-- BOOMPLAY -->
-    <div class="platform" onclick="window.open('https://www.boomplay.com/share/album/121150961','_blank')">
-      <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_9928.jpeg" alt="Boomplay">
-    </div>
-
-    <!-- AUDIOMACK (IMAGE FIXED) -->
-    <div class="platform" onclick="window.open('https://audiomack.com/iam_omotaker/album/my-truth-9046956','_blank')">
-      <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_4698.jpeg" alt="Audiomack">
-    </div>
-
+<div class="platforms">
+  <div class="platform" onclick="openLink('https://open.spotify.com/album/6rrjJygYglkhT0ZNloxEym')">
+    <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_4666.png">
   </div>
 
-  <!-- WHATSAPP -->
-  <button class="btn share" onclick="shareWhatsApp()">
-    📲 SHARE TO WHATSAPP
-  </button>
-
-  <!-- SHOP -->
-  <button class="btn shop" onclick="window.open('https://omkdrip.com','_blank')">
-    🐺 JOIN MY VIP LIST – SHOP OMK
-  </button>
-
-  <div class="footer">
-    © 2025 Omo Taker • OMK Records
+  <div class="platform apple" onclick="openLink('https://music.apple.com/ng/album/my-truth/1859702027')">
+    <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_4654.jpeg">
   </div>
 
+  <div class="platform" onclick="openLink('https://www.boomplay.com/share/album/121150961')">
+    <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_9928.jpeg">
+  </div>
+
+  <div class="platform" onclick="openLink('https://audiomack.com/iam_omotaker/album/my-truth-9046956')">
+    <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_4698.jpeg">
+  </div>
+</div>
+
+<button class="btn share" onclick="shareWhatsApp()">📲 SHARE TO WHATSAPP</button>
+<button class="btn shop" onclick="openLink('https://omkdrip.com')">🐺 JOIN MY VIP LIST – SHOP OMK</button>
+
+<div class="footer">© 2025 Omo Taker • OMK Records</div>
+</div>
+
+<!-- WOLF POPUP -->
+<div id="wolfPopup">
+  <div class="wolfBox">
+    <h2>🐺 ONLY MY KIND</h2>
+    <p>You’ve been here for a while… Ready to move like a Wolf?</p>
+    <button class="wolfListen" onclick="openLink('https://open.spotify.com/album/6rrjJygYglkhT0ZNloxEym')">🎧 LISTEN AGAIN</button>
+    <button class="wolfShop" onclick="openLink('https://omkdrip.com')">🔥 SHOP OMK</button>
+    <button class="wolfShare" onclick="shareWhatsApp()">📲 SHARE</button>
+    <div class="closeWolf" onclick="closeWolf()">Not now</div>
+  </div>
 </div>
 
 <script>
+function openLink(url){ window.open(url,'_blank'); }
+
 function shareWhatsApp(){
-  const msg="🔥 MY TRUTH EP by Omo Taker is OUT NOW! Listen on Spotify, Apple Music, Boomplay & Audiomack: https://omkdrip.com";
+  const msg="🔥 MY TRUTH EP by Omo Taker is OUT NOW! https://omkdrip.com";
   window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`);
+}
+
+// 5-minute Wolf popup
+setTimeout(()=>{
+  document.getElementById('wolfPopup').classList.add('active');
+},300000);
+
+function closeWolf(){
+  document.getElementById('wolfPopup').classList.remove('active');
 }
 </script>
 
