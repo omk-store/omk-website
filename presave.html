@@ -15,30 +15,51 @@
 
 body{
   min-height:100vh;
-  background:radial-gradient(circle at top, #111, #000);
+  background:#000;
   display:flex;
   align-items:center;
   justify-content:center;
   padding:20px;
-  color:#fff;
+  color:#000;
+  overflow:hidden;
 }
 
+/* CINEMATIC ANIME GLOW */
+body::before{
+  content:"";
+  position:fixed;
+  inset:-50%;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(0,255,255,.15), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255,0,120,.18), transparent 40%);
+  animation: floatGlow 12s ease-in-out infinite alternate;
+  z-index:-1;
+}
+
+@keyframes floatGlow{
+  from{transform:translateY(-20px)}
+  to{transform:translateY(20px)}
+}
+
+/* MAIN WHITE CARD */
 .wrap{
   width:100%;
   max-width:420px;
-  background:linear-gradient(180deg,#1a1a1a,#0f0f0f);
-  border-radius:22px;
-  padding:20px;
-  box-shadow:0 20px 60px rgba(0,0,0,.8);
+  background:#fff;
+  border-radius:26px;
+  padding:22px;
+  box-shadow:
+    0 0 0 6px rgba(255,255,255,.05),
+    0 30px 80px rgba(0,0,0,.9);
   text-align:center;
 }
 
 /* COVER */
 .cover{
   width:100%;
-  border-radius:16px;
-  margin-bottom:16px;
-  box-shadow:0 10px 30px rgba(0,0,0,.6);
+  border-radius:18px;
+  margin-bottom:18px;
+  box-shadow:0 12px 30px rgba(0,0,0,.6);
 }
 
 /* TEXT */
@@ -50,20 +71,19 @@ h1{
 
 .artist{
   font-size:14px;
-  color:#bbb;
+  color:#444;
   margin-bottom:6px;
 }
 
 .status{
   font-size:14px;
-  color:#00e676;
+  color:#00c853;
   margin-bottom:22px;
 }
 
 /* PLATFORM ICONS */
 .platforms{
   display:flex;
-  justify-content:space-between;
   gap:14px;
   margin-bottom:22px;
 }
@@ -71,24 +91,23 @@ h1{
 .platform{
   flex:1;
   background:#000;
-  border-radius:16px;
-  padding:14px;
+  border-radius:18px;
+  padding:16px;
   display:flex;
   align-items:center;
   justify-content:center;
   cursor:pointer;
-  transition:transform .2s ease, box-shadow .2s ease;
+  transition:.25s ease;
 }
 
 .platform:hover{
-  transform:translateY(-3px);
-  box-shadow:0 10px 25px rgba(0,0,0,.7);
+  transform:translateY(-4px);
+  box-shadow:0 12px 25px rgba(0,0,0,.7);
 }
 
 .platform img{
   width:46px;
   height:46px;
-  object-fit:contain;
 }
 
 /* BUTTONS */
@@ -176,7 +195,7 @@ h1{
 
 <script>
 function shareWhatsApp(){
-  const msg="🔥 MY TRUTH EP by Omo Taker is OUT NOW! Listen here: https://omkdrip.com";
+  const msg="🔥 MY TRUTH EP by Omo Taker is OUT NOW! Listen on Spotify, Apple Music & Boomplay: https://omkdrip.com";
   window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`);
 }
 </script>
