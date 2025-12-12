@@ -60,27 +60,38 @@ h1{
   margin-bottom:18px;
 }
 
-/* LOGOS */
-.logos{
+/* ICON ROW */
+.platforms{
   display:flex;
   justify-content:space-between;
-  align-items:center;
   gap:14px;
   margin-bottom:22px;
 }
 
-.logos img{
-  width:100%;
-  max-width:110px;
+.platform{
+  flex:1;
   background:#000;
-  padding:14px;
   border-radius:14px;
+  padding:18px;
   box-shadow:0 10px 25px rgba(0,0,0,.6);
+  display:flex;
+  align-items:center;
+  justify-content:center;
   transition:.2s ease;
 }
 
-.logos img:hover{
-  transform:scale(1.05);
+.platform:hover{
+  transform:scale(1.06);
+}
+
+.spotify{background:#1DB954;}
+.apple{background:#000;}
+.boomplay{background:#2fd3ff;}
+
+svg{
+  width:42px;
+  height:42px;
+  fill:#fff;
 }
 
 /* BUTTONS */
@@ -118,53 +129,47 @@ h1{
 
 <div class="wrap">
 
-  <!-- COVER -->
   <img 
     src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_3999.jpeg"
     class="cover"
     alt="My Truth EP Cover"
   >
 
-  <!-- TITLE -->
   <h1>MY TRUTH – EP</h1>
   <div class="artist">Omo Taker • OMK Records</div>
   <div class="date">Out Now 🌍🐺</div>
 
-  <!-- STREAMING LOGOS -->
-  <div class="logos">
+  <!-- STREAMING ICONS -->
+  <div class="platforms">
 
-    <a href="https://open.spotify.com/album/6rrjJygYglkhT0ZNloxEym?si=AAbW9sTWQr_iWNfnl4KzhQ" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Spotify">
+    <a class="platform spotify" href="https://open.spotify.com/album/6rrjJygYglkhT0ZNloxEym?si=AAbW9sTWQr_iWNfnl4KzhQ" target="_blank">
+      <!-- Spotify -->
+      <svg viewBox="0 0 496 512"><path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm114.9 365.1c-4.7 7.5-14.6 9.8-22.1 5.1-60.7-37.1-137.2-45.5-227.5-25-8.5 2-17-3.3-19-11.8s3.3-17 11.8-19c98.2-22.3 182.4-12.6 250.1 28.3 7.5 4.6 9.8 14.5 5.1 22zm31.6-70.2c-5.9 9.6-18.4 12.5-28 6.6-69.5-42.7-175.4-55.1-257.6-30.1-10.8 3.3-22.2-2.8-25.5-13.5-3.3-10.8 2.8-22.2 13.5-25.5 94.2-28.6 211.1-14.7 292.7 35.5 9.6 5.9 12.5 18.4 6.6 28zm2.7-73.1c-83.4-49.5-221.7-54-301.3-29.7-13 4-26.8-3.3-30.8-16.3-4-13 3.3-26.8 16.3-30.8 91.4-27.7 244.2-22.4 340.8 34.9 11.9 7.1 15.8 22.4 8.7 34.3-7.2 11.9-22.5 15.8-34.4 8.7z"/></svg>
     </a>
 
-    <a href="https://music.apple.com/ng/album/my-truth/1859702027" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_Music_logo.svg" alt="Apple Music">
+    <a class="platform apple" href="https://music.apple.com/ng/album/my-truth/1859702027" target="_blank">
+      <!-- Apple -->
+      <svg viewBox="0 0 384 512"><path d="M318.7 268.6c-.3-34.5 15.4-60.6 48.2-79.6-18.3-26.3-45.9-40.8-82.3-43.6-34.6-2.7-72.4 20.2-86.2 20.2-14.5 0-47.4-19.4-73.4-19.4C70.4 146.9 0 184.8 0 261.7c0 22.7 4.1 46.2 12.4 70.5 11 32.4 50.7 111.9 92.2 110.6 24.3-.6 41.4-17.3 73.1-17.3 30.8 0 46.6 17.3 73.7 17.3 41.9-.6 78-82.9 88.5-115.4-49.4-23.3-50.6-69.8-50.6-74.3zM230.6 112.3c26.6-31.5 24.2-60.2 23.4-70.5-23.5 1.4-50.6 15.9-66.1 34.1-17.1 19.7-27.1 44.2-25 70.8 25.4 2 49.5-11.6 67.7-34.4z"/></svg>
     </a>
 
-    <a href="https://www.boomplay.com/share/album/121150961?srModel=COPYLINK&srList=IOS" target="_blank">
-      <img src="https://static.boomplaymusic.com/buzz/img/logo.png" alt="Boomplay">
+    <a class="platform boomplay" href="https://www.boomplay.com/share/album/121150961?srModel=COPYLINK&srList=IOS" target="_blank">
+      <!-- Boomplay (play icon) -->
+      <svg viewBox="0 0 448 512"><path d="M424.4 214.7L72.4 6.6C43.8-10.4 0 6.7 0 48v416c0 41.3 43.8 58.4 72.4 41.4l352-208c28.7-16.9 28.7-59.8 0-76.7z"/></svg>
     </a>
 
   </div>
 
-  <!-- WHATSAPP -->
-  <button class="btn share" onclick="shareWhatsApp()">
-    📲 SHARE TO WHATSAPP
-  </button>
+  <button class="btn share" onclick="shareWhatsApp()">📲 SHARE TO WHATSAPP</button>
 
-  <!-- SHOP -->
   <button class="btn shop" onclick="window.open('https://omkdrip.com','_blank')">
     🐺 JOIN MY VIP LIST – SHOP OMK
   </button>
 
-  <div class="footer">
-    © 2025 Omo Taker • OMK Records
-  </div>
+  <div class="footer">© 2025 Omo Taker • OMK Records</div>
 
 </div>
 
 <script>
-// WhatsApp share
 function shareWhatsApp(){
   const msg="🔥 MY TRUTH EP by Omo Taker is OUT NOW! 🎧 Listen here 👉 https://omkdrip.com";
   window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`);
