@@ -3,149 +3,244 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>MY TRUTH – EP | Omo Taker</title>
-
-<!-- EP SHARE META -->
-<meta property="og:title" content="MY TRUTH – EP | Omo Taker">
-<meta property="og:description" content="🔥 My Truth EP by Omo Taker is OUT NOW. Stream on all platforms 🌍🐺">
-<meta property="og:image" content="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_3999.jpeg">
-<meta property="og:url" content="https://omkdrip.com/presave.html">
-<meta property="og:type" content="music.album">
+<title>OMK | Only My Kind</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+:root { --border:#eaeaea; --accent:#ff2d55; --dark:#000; }
+*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
 body{
   font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-  background:#0b0b0b;color:#111;
+  color:#111;background:#fff;
 }
-.container{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:20px;
-}
-.card{
-  width:100%;
-  max-width:420px;
-  background:#fff;
-  border-radius:22px;
-  padding:18px;
-  text-align:center;
-}
-.cover{
-  width:100%;
-  border-radius:16px;
-}
-h2{
-  margin-top:14px;
-  font-size:22px;
-  font-weight:900;
-}
-.artist{
-  color:#555;
-  font-size:14px;
-}
-.out{
-  margin-top:4px;
-  color:#1db954;
-  font-weight:700;
-}
+a{text-decoration:none;color:inherit;cursor:pointer}
 
-/* PLATFORMS — ORIGINAL STYLE */
-.platforms{
+/* HEADER */
+header{
+  position:sticky;top:0;z-index:30;background:rgba(255,255,255,.95);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;padding:12px 20px;
+}
+.logo{font-weight:900;font-size:22px}
+.header-icons{display:flex;align-items:center;gap:14px}
+.header-icons img{width:26px;height:26px;cursor:pointer}
+
+/* HERO */
+.hero{text-align:center;padding:36px 16px 0}
+.hero img{
+  width:min(420px,92%);
+  border-radius:12px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.25);
+}
+.hero p{font-size:15px;color:#444;margin-top:10px}
+
+/* SECTION */
+.section{padding:56px 0}
+.section h2{text-align:center;font-size:28px;margin-bottom:26px}
+.grid{
+  width:min(1100px,92%);
+  margin:0 auto;
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-  margin-top:18px;
-}
-.platform{
-  background:#000;
-  border-radius:14px;
-  padding:18px;
-}
-.platform img{
-  width:44px;
-  height:44px;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:22px;
 }
 
-/* BUTTONS */
-.whatsapp{
-  margin-top:18px;
-  display:block;
-  padding:16px;
-  background:#25D366;
-  color:#fff;
-  font-weight:900;
-  border-radius:14px;
-  text-decoration:none;
+/* PRODUCT CARD */
+.card{
+  border:1px solid var(--border);border-radius:12px;overflow:hidden;
+  background:#fff;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,.05);
+  transition:.25s;cursor:pointer;position:relative;
 }
-.shop{
-  margin-top:10px;
-  display:block;
-  padding:14px;
-  background:#000;
-  color:#fff;
-  font-weight:900;
-  border-radius:14px;
-  text-decoration:none;
+.card:hover{transform:translateY(-4px)}
+.card-img img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+  background:#fff;
+}
+.card-body{padding:14px}
+.price{color:#444;font-weight:700}
+
+/* BADGE */
+.badge{
+  position:absolute;top:10px;left:10px;background:var(--accent);color:#fff;
+  font-size:12px;font-weight:800;padding:6px 10px;border-radius:20px;
 }
 
-.footer{
-  margin-top:16px;
-  font-size:12px;
-  color:#777;
+/* JOIN EMAIL */
+.join{
+  width:min(900px,92%);
+  margin:40px auto;
+  background:#f9f9f9;border:1px solid var(--border);
+  border-radius:14px;padding:26px;text-align:center;
 }
+.join input{
+  width:75%;padding:12px;border-radius:10px;border:1px solid var(--border);
+}
+.join button{
+  margin-left:8px;padding:12px 20px;background:#000;color:#fff;
+  font-weight:800;border-radius:10px;
+}
+
+/* SOCIAL ICONS */
+.social-icons{text-align:center;margin:40px auto 20px;}
+.social-icons img{
+  width:42px;height:42px;margin:0 12px;
+  transition:0.25s ease-in-out;
+}
+
+/* ABOUT */
+#about{
+  background:#111;color:#fff;text-align:center;
+  padding:70px 20px;margin-top:40px;
+}
+#about p{max-width:700px;margin:auto;color:#ddd}
+
+/* FOOTER */
+footer{text-align:center;padding:20px;color:#666}
+
+/* WHATSAPP FLOAT */
+.chat-btn{
+  position:fixed;
+  right:14px;
+  bottom:10px;
+  z-index:50;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:40px;
+  padding:8px 14px;
+  font-weight:900;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  box-shadow:0 5px 12px rgba(0,0,0,.12);
+}
+.chat-dot{width:10px;height:10px;background:var(--accent);border-radius:50%}
 </style>
 </head>
 
 <body>
 
-<div class="container">
-  <div class="card">
-
-    <img class="cover"
-      src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_3999.jpeg">
-
-    <h2>MY TRUTH – EP</h2>
-    <div class="artist">Omo Taker • OMK Records</div>
-    <div class="out">Out Now 🌍🐺</div>
-
-    <!-- ✅ PLATFORMS (FIXED & CLEAN) -->
-    <div class="platforms">
-      <a class="platform" href="https://open.spotify.com" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/174/174872.png">
-      </a>
-      <a class="platform" href="https://music.apple.com" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/179/179309.png">
-      </a>
-      <a class="platform" href="https://audiomack.com" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111624.png">
-      </a>
-      <a class="platform" href="https://boomplay.com" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png">
-      </a>
-    </div>
-
-    <!-- ✅ WHATSAPP SHARE (EP LINK ONLY) -->
-    <a
-      class="whatsapp"
-      target="_blank"
-      href="https://wa.me/?text=%F0%9F%94%A5%20MY%20TRUTH%20%E2%80%93%20EP%20by%20Omo%20Taker%20is%20OUT%20NOW!%20%F0%9F%8C%8D%F0%9F%90%BA%0AStream%20here%20%E2%91%A0%20https://omkdrip.com/presave.html"
-    >
-      📲 SHARE TO WHATSAPP
-    </a>
-
-    <a class="shop" href="https://omkdrip.com" target="_blank">
-      🐺 JOIN MY VIP LIST — SHOP OMK
-    </a>
-
-    <div class="footer">
-      © 2025 Omo Taker • OMK Records
-    </div>
-
+<header>
+  <a class="logo">OMK</a>
+  <div class="header-icons">
+    <img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png">
+    <img src="https://cdn-icons-png.flaticon.com/512/56/56763.png">
   </div>
+</header>
+
+<section class="hero" id="top">
+  <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/5CB390F1-C296-439F-A95B-32679E9FE8BA.png">
+  <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
+</section>
+
+<section class="section" id="shop">
+  <h2>Latest Drop 🐺⚡</h2>
+  <div class="grid" id="productGrid"></div>
+</section>
+
+<section class="section" id="music" style="text-align:center; padding:50px 16px;">
+  <h2 style="font-size:28px; margin-bottom:20px;">New Music 🎵🔥</h2>
+
+  <img 
+    src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_3999.jpeg"
+    style="width:min(350px,90%); border-radius:14px; box-shadow:0 8px 20px rgba(0,0,0,.20);"
+  >
+
+  <h3 style="margin-top:20px; font-size:24px; font-weight:900;">
+    MY TRUTH – EP
+  </h3>
+
+  <p style="margin-top:6px; font-size:16px; color:#444; font-weight:700;">
+    Drops • 12•12•2025 🌍🐺
+  </p>
+
+  <a 
+    href="https://omkdrip.com/presave.html"
+    style="
+      margin-top:20px;
+      padding:14px 26px;
+      background:#000;
+      color:#fff;
+      font-size:16px;
+      font-weight:800;
+      border-radius:999px;
+      display:inline-block;
+      letter-spacing:0.5px;
+    ">
+    ▶️ LISTEN NOW
+  </a>
+</section>
+
+<section class="join">
+  <h3>Join the OMK Pack 🐺</h3>
+  <p>Get first access to OMK drops.</p>
+  <input id="joinEmail" type="email" placeholder="Enter your email">
+  <button onclick="joinPack()">Join →</button>
+</section>
+
+<div class="social-icons">
+  <a href="https://www.instagram.com/iam_omotaker" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png">
+  </a>
+  <a href="https://www.instagram.com/whosomotaker" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png">
+  </a>
+  <a href="https://www.tiktok.com/@omkdrip" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/3116/3116491.png">
+  </a>
+  <a href="https://www.tiktok.com/@iam.omotaker" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/3116/3116491.png">
+  </a>
 </div>
+
+<section id="about">
+  <h2>About OMK 🐺</h2>
+  <p>OMK – Only My Kind represents truth, loyalty & the wolf spirit.</p>
+</section>
+
+<footer>
+  © 2025 OMK — Only My Kind  
+  <br>Contact: omkdrip@gmail.com
+</footer>
+
+<a class="chat-btn" href="https://wa.me/2348118618722">
+  <span class="chat-dot"></span> Chat with OMK
+</a>
+
+<script>
+const products = [
+  {
+    name:'OMK PulseLine Set',
+    price:130000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/57B8E79F-4B51-4E33-99D6-92F01457DEE7.png',
+    link:'pulseline-set.html',
+    badge:'NEW ⚡🐺'
+  }
+];
+
+const grid=document.getElementById('productGrid');
+products.forEach(p=>{
+  grid.innerHTML+=`
+    <a href="${p.link}">
+      <div class="card">
+        <span class="badge">${p.badge}</span>
+        <div class="card-img">
+          <img src="${p.img}">
+        </div>
+        <div class="card-body">
+          <h3>${p.name}</h3>
+          <p class="price">₦${p.price.toLocaleString()}</p>
+        </div>
+      </div>
+    </a>`;
+});
+
+function joinPack(){
+ let email=document.getElementById('joinEmail').value;
+ if(!email){alert("Enter email");return;}
+ window.open(`https://wa.me/2348118618722?text=I%20joined%20OMK%20Pack:%20${email}`);
+}
+</script>
 
 </body>
 </html>
