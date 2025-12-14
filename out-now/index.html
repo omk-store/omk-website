@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>My Truth – EP | Omo Taker</title>
+<title>Out Now | My Truth – EP | Omo Taker</title>
 
 <style>
 *{
@@ -232,8 +232,15 @@ function openLink(url){
 }
 
 function shareWhatsApp(){
-  const msg="🔥 MY TRUTH EP by Omo Taker is OUT NOW 🌍🐺 Listen here 👉 https://omkdrip.com/my-truth";
-  window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`);
+  const msg = "🔥 MY TRUTH EP by Omo Taker is OUT NOW 🌍🐺 Listen here 👉 https://omkdrip.com/my-truth";
+
+  const appURL = "whatsapp://send?text=" + encodeURIComponent(msg);
+  const webURL = "https://wa.me/?text=" + encodeURIComponent(msg);
+
+  window.location.href = appURL;
+  setTimeout(() => {
+    window.location.href = webURL;
+  }, 600);
 }
 
 /* WOLF POPUP – 30 SECONDS */
