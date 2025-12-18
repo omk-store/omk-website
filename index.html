@@ -33,7 +33,7 @@ header{
 }
 .hero p{font-size:15px;color:#444;margin-top:10px}
 
-/* NEW VIDEO BOX */
+/* VIDEO HERO (ONLY ADDITION) */
 .video-hero{
   text-align:center;
   padding:26px 16px 0;
@@ -139,16 +139,15 @@ footer{text-align:center;padding:20px;color:#666}
   </div>
 </header>
 
-<!-- FRONT IMAGE -->
 <section class="hero" id="top">
   <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/5CB390F1-C296-439F-A95B-32679E9FE8BA.png">
   <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
 </section>
 
-<!-- ✅ NEW VIDEO BOX (ONLY ADDITION) -->
+<!-- 🔥 VIDEO AUTO-PLAY (ONLY ADDITION) -->
 <section class="video-hero">
-  <video autoplay muted loop playsinline>
-    <source src="omk-my-door-hero.mp4" type="video/mp4">
+  <video autoplay muted loop playsinline preload="auto">
+    <source src="f74c9107-ac9b-40c9-9454-5b368c75af1c.mov" type="video/quicktime">
   </video>
 </section>
 
@@ -337,7 +336,7 @@ products.forEach(p=>{
       <div class="card">
         <span class="badge">${p.badge}</span>
         <div class="card-img">
-          <img src="${p.img}">
+          ${p.img ? `<img src="${p.img}">` : ``}
         </div>
         <div class="card-body">
           <h3>${p.name}</h3>
