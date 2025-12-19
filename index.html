@@ -146,14 +146,21 @@ footer{text-align:center;padding:20px;color:#666}
 
 <section class="section" id="shop">
   <h2>Latest Drop 🐺⚡</h2>
-  <div class="grid" id="productGrid"></div>
+
+  <!-- ✅ TOP: MAIN FIRST PRODUCT ONLY -->
+  <div class="grid" id="productGridTop"></div>
 </section>
 
-<!-- ✅ VIDEO MOVED TO CENTER (AFTER TOP PRODUCTS, BEFORE REMAINING) -->
+<!-- ✅ VIDEO IS NEXT (RIGHT AFTER MAIN PRODUCT) -->
 <section class="video-hero" id="videoBreak">
   <video autoplay muted loop playsinline preload="auto">
     <source src="f74c9107-ac9b-40c9-9454-5b368c75af1c.mov" type="video/quicktime">
   </video>
+</section>
+
+<!-- ✅ AFTER VIDEO: VIDEO PRODUCT FIRST, THEN ALL OTHERS -->
+<section class="section" style="padding-top:26px;">
+  <div class="grid" id="productGridBottom"></div>
 </section>
 
 <!-- 🎵 MUSIC SECTION -->
@@ -329,21 +336,12 @@ const products = [
   }
 ];
 
-const featuredNames = [
-  // ✅ Legacy first (top)
-  'OMK Blue-Line Trackset',
+// ✅ YOUR REQUIRED ORDER
+const mainFirstProduct = 'OMK Blue-Line Trackset'; // Top (alone)
+const videoProductFirst = 'OMK PulseLine Set';     // First after video
 
-  // ✅ Outfit pairing (2-column screens):
-  // Row 1: Voltage Jacket (left) | Wolf Hoodie (right)
-  // Row 2: Voltage Jean  (left) | Wolf Pants  (right)
-  'OMK Voltage Jacket',
-  'OMK Wolf Hoodie (Blue-Line)',
-  'OMK Voltage Jean',
-  'OMK Wolf Pants (Blue-Line)'
-];
-
-const grid = document.getElementById('productGrid');
-const videoBreak = document.getElementById('videoBreak');
+const topGrid = document.getElementById('productGridTop');
+const bottomGrid = document.getElementById('productGridBottom');
 
 function renderCard(p){
   return `
@@ -361,22 +359,18 @@ function renderCard(p){
     </a>`;
 }
 
-// 1) Render TOP products (featured) first
-featuredNames.forEach(name=>{
-  const p = products.find(x => x.name === name);
-  if(p) grid.innerHTML += renderCard(p);
-});
+// 1) TOP: Main first product only
+const mainP = products.find(x => x.name === mainFirstProduct);
+if(mainP) topGrid.innerHTML += renderCard(mainP);
 
-// 2) Move the VIDEO to sit right after top products (center break)
-videoBreak.style.paddingTop = "18px"; // keeps it tight
-grid.insertAdjacentElement('afterend', videoBreak);
+// 2) AFTER VIDEO: Video product first
+const vidP = products.find(x => x.name === videoProductFirst);
+if(vidP) bottomGrid.innerHTML += renderCard(vidP);
 
-// 3) Render remaining products after the video
+// 3) Then render all remaining products in original order (no missing)
 products
-  .filter(p => !featuredNames.includes(p.name))
-  .forEach(p => {
-    grid.insertAdjacentHTML('beforeend', renderCard(p));
-  });
+  .filter(p => p.name !== mainFirstProduct && p.name !== videoProductFirst)
+  .forEach(p => bottomGrid.innerHTML += renderCard(p));
 
 function joinPack(){
   let email=document.getElementById('joinEmail').value;
