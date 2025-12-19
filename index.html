@@ -146,54 +146,30 @@ footer{text-align:center;padding:20px;color:#666}
 
 <section class="section" id="shop">
   <h2>Latest Drop 🐺⚡</h2>
-
-  <!-- ✅ TOP: MAIN FIRST PRODUCT ONLY -->
-  <div class="grid" id="productGridTop"></div>
+  <div class="grid" id="gridTop"></div>
 </section>
 
-<!-- ✅ VIDEO IS NEXT (RIGHT AFTER MAIN PRODUCT) -->
 <section class="video-hero" id="videoBreak">
   <video autoplay muted loop playsinline preload="auto">
     <source src="f74c9107-ac9b-40c9-9454-5b368c75af1c.mov" type="video/quicktime">
   </video>
 </section>
 
-<!-- ✅ AFTER VIDEO: VIDEO PRODUCT FIRST, THEN ALL OTHERS -->
 <section class="section" style="padding-top:26px;">
-  <div class="grid" id="productGridBottom"></div>
+  <div class="grid" id="gridBottom"></div>
 </section>
 
-<!-- 🎵 MUSIC SECTION -->
 <section class="section" id="music" style="text-align:center; padding:50px 16px;">
   <h2 style="font-size:28px; margin-bottom:20px;">New Music 🎵🔥</h2>
-
   <img 
     src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_3999.jpeg"
     alt="My Truth EP Cover"
     style="width:min(350px,90%); border-radius:14px; box-shadow:0 8px 20px rgba(0,0,0,.20);"
   >
-
-  <h3 style="margin-top:20px; font-size:24px; font-weight:900;">
-    MY TRUTH – EP
-  </h3>
-
-  <p style="margin-top:6px; font-size:16px; color:#444; font-weight:700;">
-    Drops • 12•12•2025 🌍🐺
-  </p>
-
-  <a 
-    href="https://omkdrip.com/presave.html"
-    style="
-      margin-top:20px;
-      padding:14px 26px;
-      background:#000;
-      color:#fff;
-      font-size:16px;
-      font-weight:800;
-      border-radius:999px;
-      display:inline-block;
-      letter-spacing:0.5px;
-    ">
+  <h3 style="margin-top:20px; font-size:24px; font-weight:900;">MY TRUTH – EP</h3>
+  <p style="margin-top:6px; font-size:16px; color:#444; font-weight:700;">Drops • 12•12•2025 🌍🐺</p>
+  <a href="https://omkdrip.com/presave.html"
+     style="margin-top:20px;padding:14px 26px;background:#000;color:#fff;font-size:16px;font-weight:800;border-radius:999px;display:inline-block;">
     ▶️ LISTEN NOW
   </a>
 </section>
@@ -236,146 +212,57 @@ footer{text-align:center;padding:20px;color:#666}
 
 <script>
 const products = [
-  {
-    name:'OMK PulseLine Set',
-    price:130000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/57B8E79F-4B51-4E33-99D6-92F01457DEE7.png',
-    link:'pulseline-set.html',
-    badge:'NEW ⚡🐺'
-  },
-  {
-    name:'OMK BlueNova Track Set',
-    price:130000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/0546A761-DCBC-4909-AD0E-DD511A6D2FC8.png',
-    link:'bluenova-trackset.html',
-    badge:'NEW 🌌🐺'
-  },
-  {
-    name:'OMK Blue-Line Trackset',
-    price:130000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B5E6F8A-2C94-47EF-A8CF-BAE93AA23563.png',
-    link:'omk-blue-line-trackset.html',
-    badge:'NEW ⚡🔥'
-  },
-  {
-    name:'OMK Wolfline Tank Top',
-    price:55000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/C0DCC802-519A-482E-A86D-93CA99AB8638.png',
-    link:'omk-wolfline-tank.html',
-    badge:'NEW 🐺💪'
-  },
-  {
-    name:'OMK Voltage Track Set',
-    price:150000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/2016C02C-C98B-44E9-B718-E9BED4EAEDCB.png',
-    link:'voltage-track-set.html',
-    badge:'NEW 🐺⚡'
-  },
-  {
-    name:'OMK Blue-Line Baddies',
-    price:99000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/95C388D3-89A5-4CA8-BD5E-F7E5EB1F7204.png',
-    link:'women-blue-line.html',
-    badge:'NEW 🐺🔥'
-  },
-  {
-    name:'OMK Voltage Jacket',
-    price:90000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/4F6463CE-AC93-46AC-9E46-24CFC46DEE4C.png',
-    link:'omk-voltage-jacket.html',
-    badge:'NEW ⚡'
-  },
-  {
-    name:'OMK Voltage Jean',
-    price:90000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9BBC37D7-695C-4650-AEE9-C04910FBDF28.png',
-    link:'omk-voltage-jean.html',
-    badge:'NEW ⚡'
-  },
-  {
-    name:'OMK Wolf Hoodie (Blue-Line)',
-    price:90000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/56A58A00-78C3-4799-8220-18254057C8BD.png',
-    link:'omk-wolf-hoodie-blue-line.html',
-    badge:'NEW 🐺🔥'
-  },
-  {
-    name:'OMK Wolf Pants (Blue-Line)',
-    price:90000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/06762C45-D3E7-49F7-B60A-684330FE167C.png',
-    link:'omk-wolf-pants-blue-line.html',
-    badge:'NEW 🐺🔥'
-  },
-  {
-    name:'OMK Chrome Tee',
-    price:60000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B95C37E-46F1-457A-9548-CF4E5B2A9227.png',
-    link:'tshirt.html',
-    badge:'NEW 🐺⚡'
-  },
-  {
-    name:'OMK Blue-Line Tee',
-    price:60000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/42CB264F-3EDC-4B58-A10E-556BDEE31F93.png',
-    link:'blue-line-tee.html',
-    badge:'BLUE-LINE'
-  },
-  {
-    name:'OMK Blue-Line Shorts',
-    price:70000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/0FDEF34E-CFDA-4A0B-92E2-2C68BA19645A.png',
-    link:'omk-blue-line-short.html',
-    badge:'BLUE-LINE'
-  },
-  {
-    name:'OMK OG Cap (Blue-Line)',
-    price:55000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/C074D825-2E7B-46D8-8C27-3B7D27E6B8B3.png',
-    link:'omk-og-cap.html',
-    badge:'NEW 🧢'
-  }
+  {name:'OMK PulseLine Set',price:130000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/57B8E79F-4B51-4E33-99D6-92F01457DEE7.png',link:'pulseline-set.html',badge:'NEW ⚡🐺'},
+  {name:'OMK BlueNova Track Set',price:130000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/0546A761-DCBC-4909-AD0E-DD511A6D2FC8.png',link:'bluenova-trackset.html',badge:'NEW 🌌🐺'},
+  {name:'OMK Blue-Line Trackset',price:130000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B5E6F8A-2C94-47EF-A8CF-BAE93AA23563.png',link:'omk-blue-line-trackset.html',badge:'NEW ⚡🔥'},
+  {name:'OMK Wolfline Tank Top',price:55000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/C0DCC802-519A-482E-A86D-93CA99AB8638.png',link:'omk-wolfline-tank.html',badge:'NEW 🐺💪'},
+  {name:'OMK Voltage Track Set',price:150000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/2016C02C-C98B-44E9-B718-E9BED4EAEDCB.png',link:'voltage-track-set.html',badge:'NEW 🐺⚡'},
+  {name:'OMK Blue-Line Baddies',price:99000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/95C388D3-89A5-4CA8-BD5E-F7E5EB1F7204.png',link:'women-blue-line.html',badge:'NEW 🐺🔥'},
+  {name:'OMK Voltage Jacket',price:90000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/4F6463CE-AC93-46AC-9E46-24CFC46DEE4C.png',link:'omk-voltage-jacket.html',badge:'NEW ⚡'},
+  {name:'OMK Voltage Jean',price:90000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9BBC37D7-695C-4650-AEE9-C04910FBDF28.png',link:'omk-voltage-jean.html',badge:'NEW ⚡'},
+  {name:'OMK Wolf Hoodie (Blue-Line)',price:90000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/56A58A00-78C3-4799-8220-18254057C8BD.png',link:'omk-wolf-hoodie-blue-line.html',badge:'NEW 🐺🔥'},
+  {name:'OMK Wolf Pants (Blue-Line)',price:90000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/06762C45-D3E7-49F7-B60A-684330FE167C.png',link:'omk-wolf-pants-blue-line.html',badge:'NEW 🐺🔥'},
+  {name:'OMK Chrome Tee',price:60000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B95C37E-46F1-457A-9548-CF4E5B2A9227.png',link:'tshirt.html',badge:'NEW 🐺⚡'},
+  {name:'OMK Blue-Line Tee',price:60000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/42CB264F-3EDC-4B58-A10E-556BDEE31F93.png',link:'blue-line-tee.html',badge:'BLUE-LINE'},
+  {name:'OMK Blue-Line Shorts',price:70000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/0FDEF34E-CFDA-4A0B-92E2-2C68BA19645A.png',link:'omk-blue-line-short.html',badge:'BLUE-LINE'}
 ];
 
-// ✅ YOUR REQUIRED ORDER
-const mainFirstProduct = 'OMK Blue-Line Trackset'; // Top (alone)
-const videoProductFirst = 'OMK PulseLine Set';     // First after video
+const beforeVideo = [
+  'OMK Voltage Jacket',
+  'OMK Voltage Jean',
+  'OMK Voltage Track Set',
+  'OMK Wolf Hoodie (Blue-Line)',
+  'OMK Wolf Pants (Blue-Line)',
+  'OMK Blue-Line Trackset'
+];
 
-const topGrid = document.getElementById('productGridTop');
-const bottomGrid = document.getElementById('productGridBottom');
+const top=document.getElementById('gridTop');
+const bottom=document.getElementById('gridBottom');
 
-function renderCard(p){
-  return `
-    <a href="${p.link}">
-      <div class="card">
-        <span class="badge">${p.badge}</span>
-        <div class="card-img">
-          ${p.img ? `<img src="${p.img}">` : ``}
-        </div>
-        <div class="card-body">
-          <h3>${p.name}</h3>
-          <p class="price">₦${p.price.toLocaleString()}</p>
-        </div>
-      </div>
-    </a>`;
-}
+const card=p=>`
+<a href="${p.link}">
+  <div class="card">
+    <span class="badge">${p.badge}</span>
+    <div class="card-img"><img src="${p.img}"></div>
+    <div class="card-body">
+      <h3>${p.name}</h3>
+      <p class="price">₦${p.price.toLocaleString()}</p>
+    </div>
+  </div>
+</a>`;
 
-// 1) TOP: Main first product only
-const mainP = products.find(x => x.name === mainFirstProduct);
-if(mainP) topGrid.innerHTML += renderCard(mainP);
+beforeVideo.forEach(n=>{
+  const p=products.find(x=>x.name===n);
+  if(p) top.innerHTML+=card(p);
+});
 
-// 2) AFTER VIDEO: Video product first
-const vidP = products.find(x => x.name === videoProductFirst);
-if(vidP) bottomGrid.innerHTML += renderCard(vidP);
-
-// 3) Then render all remaining products in original order (no missing)
-products
-  .filter(p => p.name !== mainFirstProduct && p.name !== videoProductFirst)
-  .forEach(p => bottomGrid.innerHTML += renderCard(p));
+products.filter(p=>!beforeVideo.includes(p.name))
+.forEach(p=>bottom.innerHTML+=card(p));
 
 function joinPack(){
-  let email=document.getElementById('joinEmail').value;
-  if(!email){alert("Enter email");return;}
-  window.open(`https://wa.me/2348118618722?text=I%20joined%20OMK%20Pack:%20${email}`);
+ let email=document.getElementById('joinEmail').value;
+ if(!email){alert("Enter email");return;}
+ window.open(`https://wa.me/2348118618722?text=I%20joined%20OMK%20Pack:%20${email}`);
 }
 </script>
 
