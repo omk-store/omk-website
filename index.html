@@ -33,7 +33,7 @@ header{
 }
 .hero p{font-size:15px;color:#444;margin-top:10px}
 
-/* VIDEO HERO (ONLY ADDITION) */
+/* VIDEO HERO */
 .video-hero{
   text-align:center;
   padding:26px 16px 0;
@@ -144,16 +144,16 @@ footer{text-align:center;padding:20px;color:#666}
   <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
 </section>
 
-<!-- 🔥 VIDEO AUTO-PLAY (ONLY ADDITION) -->
-<section class="video-hero">
-  <video autoplay muted loop playsinline preload="auto">
-    <source src="f74c9107-ac9b-40c9-9454-5b368c75af1c.mov" type="video/quicktime">
-  </video>
-</section>
-
 <section class="section" id="shop">
   <h2>Latest Drop 🐺⚡</h2>
   <div class="grid" id="productGrid"></div>
+</section>
+
+<!-- ✅ VIDEO MOVED TO CENTER (AFTER TOP PRODUCTS, BEFORE REMAINING) -->
+<section class="video-hero" id="videoBreak">
+  <video autoplay muted loop playsinline preload="auto">
+    <source src="f74c9107-ac9b-40c9-9454-5b368c75af1c.mov" type="video/quicktime">
+  </video>
 </section>
 
 <!-- 🎵 MUSIC SECTION -->
@@ -329,9 +329,24 @@ const products = [
   }
 ];
 
-const grid=document.getElementById('productGrid');
-products.forEach(p=>{
-  grid.innerHTML+=`
+const featuredNames = [
+  // ✅ Legacy first (top)
+  'OMK Blue-Line Trackset',
+
+  // ✅ Outfit pairing (2-column screens):
+  // Row 1: Voltage Jacket (left) | Wolf Hoodie (right)
+  // Row 2: Voltage Jean  (left) | Wolf Pants  (right)
+  'OMK Voltage Jacket',
+  'OMK Wolf Hoodie (Blue-Line)',
+  'OMK Voltage Jean',
+  'OMK Wolf Pants (Blue-Line)'
+];
+
+const grid = document.getElementById('productGrid');
+const videoBreak = document.getElementById('videoBreak');
+
+function renderCard(p){
+  return `
     <a href="${p.link}">
       <div class="card">
         <span class="badge">${p.badge}</span>
@@ -344,12 +359,29 @@ products.forEach(p=>{
         </div>
       </div>
     </a>`;
+}
+
+// 1) Render TOP products (featured) first
+featuredNames.forEach(name=>{
+  const p = products.find(x => x.name === name);
+  if(p) grid.innerHTML += renderCard(p);
 });
 
+// 2) Move the VIDEO to sit right after top products (center break)
+videoBreak.style.paddingTop = "18px"; // keeps it tight
+grid.insertAdjacentElement('afterend', videoBreak);
+
+// 3) Render remaining products after the video
+products
+  .filter(p => !featuredNames.includes(p.name))
+  .forEach(p => {
+    grid.insertAdjacentHTML('beforeend', renderCard(p));
+  });
+
 function joinPack(){
- let email=document.getElementById('joinEmail').value;
- if(!email){alert("Enter email");return;}
- window.open(`https://wa.me/2348118618722?text=I%20joined%20OMK%20Pack:%20${email}`);
+  let email=document.getElementById('joinEmail').value;
+  if(!email){alert("Enter email");return;}
+  window.open(`https://wa.me/2348118618722?text=I%20joined%20OMK%20Pack:%20${email}`);
 }
 </script>
 
