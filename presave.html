@@ -12,57 +12,31 @@
   padding:0;
   font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
 }
-
 body{
   min-height:100vh;
   background:#000;
   padding:30px 20px;
-  color:#000;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
-
-/* CINEMATIC BACK GLOW */
-body::before{
-  content:"";
-  position:fixed;
-  inset:-50%;
-  background:
-    radial-gradient(circle at 20% 30%, rgba(0,255,255,.15), transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(255,0,120,.18), transparent 40%);
-  animation: floatGlow 12s ease-in-out infinite alternate;
-  z-index:-1;
-}
-@keyframes floatGlow{
-  from{transform:translateY(-20px)}
-  to{transform:translateY(20px)}
-}
-
-/* MAIN CARD */
 .wrap{
   width:100%;
   max-width:420px;
-  margin:0 auto;
   background:#fff;
   border-radius:26px;
   padding:22px;
-  box-shadow:
-    0 0 0 6px rgba(255,255,255,.05),
-    0 30px 80px rgba(0,0,0,.9);
+  box-shadow:0 30px 80px rgba(0,0,0,.9);
   text-align:center;
 }
-
-/* COVER */
 .cover{
   width:100%;
   border-radius:18px;
   margin-bottom:18px;
-  box-shadow:0 12px 30px rgba(0,0,0,.6);
 }
-
-/* TEXT */
 h1{
   font-size:24px;
   font-weight:900;
-  margin-bottom:4px;
 }
 .artist{
   font-size:14px;
@@ -74,8 +48,6 @@ h1{
   color:#00c853;
   margin-bottom:22px;
 }
-
-/* PLATFORMS */
 .platforms{
   display:grid;
   grid-template-columns:repeat(2,1fr);
@@ -90,28 +62,26 @@ h1{
   align-items:center;
   justify-content:center;
   cursor:pointer;
-  transition:.25s ease;
+  transition:.25s;
 }
 .platform:hover{transform:translateY(-3px)}
 .platform img{
-  width:60px;
-  height:60px;
-  object-fit:cover;
+  width:56px;
+  height:56px;
   border-radius:12px;
 }
-
-/* APPLE */
 .platform.apple{
   background:#fff;
   border:1px solid #e6e6e6;
 }
-
-/* YOUTUBE SPECIAL */
-.platform.youtube{
+.youtube{
+  grid-column:1/3;
   background:#ff0000;
 }
-
-/* BUTTONS */
+.instagram{
+  grid-column:1/3;
+  background:#e1306c;
+}
 .btn{
   width:100%;
   padding:16px;
@@ -124,8 +94,6 @@ h1{
 }
 .share{background:#25D366;color:#fff}
 .shop{background:#000;color:#fff}
-
-/* FOOTER */
 .footer{
   margin-top:14px;
   font-size:12px;
@@ -137,39 +105,42 @@ h1{
 <body>
 
 <div class="wrap">
-  <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_3999.jpeg" class="cover" alt="My Truth EP">
+  <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_3999.jpeg" class="cover">
 
   <h1>MY TRUTH – EP</h1>
   <div class="artist">Omo Taker • OMK Records</div>
   <div class="status">Out Now 🌍🐺</div>
 
   <div class="platforms">
-
-    <!-- SPOTIFY -->
+    <!-- Spotify -->
     <div class="platform" onclick="openLink('https://open.spotify.com/album/6rrjJygYglkhT0ZNloxEym')">
-      <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_4666.png" alt="Spotify">
+      <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_4666.png">
     </div>
 
-    <!-- APPLE MUSIC -->
+    <!-- Apple -->
     <div class="platform apple" onclick="openLink('https://music.apple.com/ng/album/my-truth/1859702027')">
-      <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_4654.jpeg" alt="Apple Music">
+      <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_4654.jpeg">
     </div>
 
-    <!-- BOOMPLAY -->
+    <!-- Boomplay -->
     <div class="platform" onclick="openLink('https://www.boomplay.com/share/album/121150961')">
-      <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_9928.jpeg" alt="Boomplay">
+      <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_9928.jpeg">
     </div>
 
-    <!-- AUDIOMACK -->
+    <!-- Audiomack -->
     <div class="platform" onclick="openLink('https://audiomack.com/iam_omotaker/album/my-truth-9046956')">
-      <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_4698.jpeg" alt="Audiomack">
+      <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_4698.jpeg">
     </div>
 
-    <!-- YOUTUBE VIDEO (PLACED BELOW MUSIC PLATFORMS) -->
+    <!-- YouTube -->
     <div class="platform youtube" onclick="openLink('https://youtu.be/7qlRs1gDnMI')">
-      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
+      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png">
     </div>
 
+    <!-- Instagram -->
+    <div class="platform instagram" onclick="openLink('https://www.instagram.com/iam_omotaker')">
+      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png">
+    </div>
   </div>
 
   <button class="btn share" onclick="shareWhatsApp()">📲 SHARE TO WHATSAPP</button>
@@ -180,9 +151,8 @@ h1{
 
 <script>
 function openLink(url){ window.open(url,'_blank'); }
-
 function shareWhatsApp(){
-  const msg="🔥 MY TRUTH EP by Omo Taker is OUT NOW!\n🎥 Bend Down Select (Official Video): https://youtu.be/7qlRs1gDnMI\n🎧 Listen here: https://omkdrip.com";
+  const msg="🔥 MY TRUTH EP by Omo Taker is OUT NOW!\n🎥 Watch the official video:\nhttps://youtu.be/7qlRs1gDnMI\n🌍 OMK Movement";
   window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`);
 }
 </script>
