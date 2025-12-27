@@ -66,19 +66,20 @@ header{
   font-size:12px;font-weight:800;padding:6px 10px;border-radius:20px;
 }
 
-/* NEXT DROP */
+/* NEXT DROP BOX */
 .next-drop{
+  width:100%;
   height:300px;
   background:#000;
+  color:#fff;
   display:flex;
   align-items:center;
   justify-content:center;
-  color:#fff;
   font-weight:900;
   letter-spacing:3px;
 }
 
-/* JOIN */
+/* JOIN EMAIL */
 .join{
   width:min(900px,92%);
   margin:40px auto;
@@ -93,9 +94,12 @@ header{
   font-weight:800;border-radius:10px;
 }
 
-/* SOCIAL */
+/* SOCIAL ICONS */
 .social-icons{text-align:center;margin:40px auto 20px;}
-.social-icons img{width:42px;height:42px;margin:0 12px}
+.social-icons img{
+  width:42px;height:42px;margin:0 12px;
+  transition:0.25s ease-in-out;
+}
 
 /* ABOUT */
 #about{
@@ -107,12 +111,20 @@ header{
 /* FOOTER */
 footer{text-align:center;padding:20px;color:#666}
 
-/* WHATSAPP */
+/* WHATSAPP FLOAT */
 .chat-btn{
-  position:fixed;right:14px;bottom:10px;z-index:50;
-  background:#fff;border:1px solid var(--border);
-  border-radius:40px;padding:8px 14px;
-  font-weight:900;display:flex;align-items:center;gap:8px;
+  position:fixed;
+  right:14px;
+  bottom:10px;
+  z-index:50;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:40px;
+  padding:8px 14px;
+  font-weight:900;
+  display:flex;
+  align-items:center;
+  gap:8px;
   box-shadow:0 5px 12px rgba(0,0,0,.12);
 }
 .chat-dot{width:10px;height:10px;background:var(--accent);border-radius:50%}
@@ -129,28 +141,50 @@ footer{text-align:center;padding:20px;color:#666}
   </div>
 </header>
 
-<section class="hero">
+<section class="hero" id="top">
   <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/5CB390F1-C296-439F-A95B-32679E9FE8BA.png">
   <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
 </section>
 
-<section class="section">
+<section class="section" id="shop">
   <h2>Latest Drop 🐺⚡</h2>
   <div class="grid" id="productGrid"></div>
 </section>
 
-<!-- MUSIC -->
-<section class="section" style="text-align:center;">
-  <h2>New Music 🎵🔥</h2>
-  <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_3999.jpeg"
-       style="width:min(350px,90%);border-radius:14px;">
-  <h3 style="margin-top:18px;font-size:24px;">MY TRUTH – EP</h3>
-  <p style="font-weight:700;">Drops • 12•12•2025 🌍🐺</p>
-  <a href="https://omkdrip.com/presave.html"
-     style="display:inline-block;margin-top:18px;padding:14px 26px;
-     background:#000;color:#fff;border-radius:999px;font-weight:800;">
-     ▶️ LISTEN NOW
+<!-- 🎵 MUSIC SECTION WITH YOUR OWN PRE-SAVE PAGE -->
+<section class="section" id="music" style="text-align:center; padding:50px 16px;">
+  <h2 style="font-size:28px; margin-bottom:20px;">New Music 🎵🔥</h2>
+
+  <img 
+    src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_3999.jpeg"
+    alt="My Truth EP Cover"
+    style="width:min(350px,90%); border-radius:14px; box-shadow:0 8px 20px rgba(0,0,0,.20);"
+  >
+
+  <h3 style="margin-top:20px; font-size:24px; font-weight:900;">
+    MY TRUTH – EP
+  </h3>
+
+  <p style="margin-top:6px; font-size:16px; color:#444; font-weight:700;">
+    Drops • 12•12•2025 🌍🐺
+  </p>
+
+  <a 
+    href="https://omkdrip.com/presave.html"
+    style="
+      margin-top:20px;
+      padding:14px 26px;
+      background:#000;
+      color:#fff;
+      font-size:16px;
+      font-weight:800;
+      border-radius:999px;
+      display:inline-block;
+      letter-spacing:0.5px;
+    ">
+    ▶️ LISTEN NOW
   </a>
+
 </section>
 
 <section class="join">
@@ -161,8 +195,18 @@ footer{text-align:center;padding:20px;color:#666}
 </section>
 
 <div class="social-icons">
-  <a href="https://www.instagram.com/iam_omotaker"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png"></a>
-  <a href="https://www.tiktok.com/@omkdrip"><img src="https://cdn-icons-png.flaticon.com/512/3116/3116491.png"></a>
+  <a href="https://www.instagram.com/iam_omotaker" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png">
+  </a>
+  <a href="https://www.instagram.com/whosomotaker" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png">
+  </a>
+  <a href="https://www.tiktok.com/@omkdrip" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/3116/3116491.png">
+  </a>
+  <a href="https://www.tiktok.com/@iam.omotaker" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/3116/3116491.png">
+  </a>
 </div>
 
 <section id="about">
@@ -171,7 +215,8 @@ footer{text-align:center;padding:20px;color:#666}
 </section>
 
 <footer>
-  © 2025 OMK — Only My Kind<br>Contact: omkdrip@gmail.com
+  © 2025 OMK — Only My Kind  
+  <br>Contact: omkdrip@gmail.com
 </footer>
 
 <a class="chat-btn" href="https://wa.me/2348118618722">
@@ -180,36 +225,131 @@ footer{text-align:center;padding:20px;color:#666}
 
 <script>
 const products = [
-  {name:'OMK PulseLine Set',price:130000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/57B8E79F-4B51-4E33-99D6-92F01457DEE7.png',link:'pulseline-set.html',badge:'NEW ⚡🐺'},
-  {name:'OMK BlueNova Track Set',price:130000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/0546A761-DCBC-4909-AD0E-DD511A6D2FC8.png',link:'bluenova-trackset.html',badge:'NEW 🌌🐺'},
-  {name:'OMK Blue-Line Trackset',price:130000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B5E6F8A-2C94-47EF-A8CF-BAE93AA23563.png',link:'omk-blue-line-trackset.html',badge:'NEW ⚡🔥'},
-  {name:'OMK Wolfline Tank Top',price:55000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/C0DCC802-519A-482E-A86D-93CA99AB8638.png',link:'omk-wolfline-tank.html',badge:'NEW 🐺💪'},
-  {name:'OMK Voltage Track Set',price:150000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/2016C02C-C98B-44E9-B718-E9BED4EAEDCB.png',link:'voltage-track-set.html',badge:'NEW 🐺⚡'},
-  {name:'OMK Blue-Line Baddies',price:99000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/95C388D3-89A5-4CA8-BD5E-F7E5EB1F7204.png',link:'women-blue-line.html',badge:'NEW 🐺🔥'},
-  {name:'OMK Voltage Jacket',price:90000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/4F6463CE-AC93-46AC-9E46-24CFC46DEE4C.png',link:'omk-voltage-jacket.html',badge:'NEW ⚡'},
-  {name:'OMK Voltage Jean',price:90000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9BBC37D7-695C-4650-AEE9-C04910FBDF28.png',link:'omk-voltage-jean.html',badge:'NEW ⚡'},
-  {name:'OMK Wolf Hoodie (Blue-Line)',price:90000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/56A58A00-78C3-4799-8220-18254057C8BD.png',link:'omk-wolf-hoodie-blue-line.html',badge:'NEW 🐺🔥'},
-  {name:'OMK Wolf Pants (Blue-Line)',price:90000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/06762C45-D3E7-49F7-B60A-684330FE167C.png',link:'omk-wolf-pants-blue-line.html',badge:'NEW 🐺🔥'},
-  {name:'OMK Chrome Tee',price:60000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B95C37E-46F1-457A-9548-CF4E5B2A9227.png',link:'tshirt.html',badge:'NEW 🐺⚡'},
-  {name:'OMK Blue-Line Tee',price:60000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/42CB264F-3EDC-4B58-A10E-556BDEE31F93.png',link:'blue-line-tee.html',badge:'BLUE-LINE'},
-  {name:'OMK Blue-Line Shorts',price:70000,img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/0FDEF34E-CFDA-4A0B-92E2-2C68BA19645A.png',link:'omk-blue-line-short.html',badge:'BLUE-LINE'},
-  {type:'next'}
+  {
+    name:'OMK PulseLine Set',
+    price:130000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/57B8E79F-4B51-4E33-99D6-92F01457DEE7.png',
+    link:'pulseline-set.html',
+    badge:'NEW ⚡🐺'
+  },
+  {
+    name:'OMK BlueNova Track Set',
+    price:130000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/0546A761-DCBC-4909-AD0E-DD511A6D2FC8.png',
+    link:'bluenova-trackset.html',
+    badge:'NEW 🌌🐺'
+  },
+  {
+    name:'OMK Blue-Line Trackset',
+    price:130000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B5E6F8A-2C94-47EF-A8CF-BAE93AA23563.png',
+    link:'omk-blue-line-trackset.html',
+    badge:'NEW ⚡🔥'
+  },
+  {
+    name:'OMK Wolfline Tank Top',
+    price:55000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/C0DCC802-519A-482E-A86D-93CA99AB8638.png',
+    link:'omk-wolfline-tank.html',
+    badge:'NEW 🐺💪'
+  },
+  {
+    name:'OMK Voltage Track Set',
+    price:150000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/2016C02C-C98B-44E9-B718-E9BED4EAEDCB.png',
+    link:'voltage-track-set.html',
+    badge:'NEW 🐺⚡'
+  },
+  {
+    name:'OMK Blue-Line Baddies',
+    price:99000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/95C388D3-89A5-4CA8-BD5E-F7E5EB1F7204.png',
+    link:'women-blue-line.html',
+    badge:'NEW 🐺🔥'
+  },
+  {
+    name:'OMK Voltage Jacket',
+    price:90000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/4F6463CE-AC93-46AC-9E46-24CFC46DEE4C.png',
+    link:'omk-voltage-jacket.html',
+    badge:'NEW ⚡'
+  },
+  {
+    name:'OMK Voltage Jean',
+    price:90000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9BBC37D7-695C-4650-AEE9-C04910FBDF28.png',
+    link:'omk-voltage-jean.html',
+    badge:'NEW ⚡'
+  },
+  {
+    name:'OMK Wolf Hoodie (Blue-Line)',
+    price:90000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/56A58A00-78C3-4799-8220-18254057C8BD.png',
+    link:'omk-wolf-hoodie-blue-line.html',
+    badge:'NEW 🐺🔥'
+  },
+  {
+    name:'OMK Wolf Pants (Blue-Line)',
+    price:90000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/06762C45-D3E7-49F7-B60A-684330FE167C.png',
+    link:'omk-wolf-pants-blue-line.html',
+    badge:'NEW 🐺🔥'
+  },
+  {
+    name:'OMK Chrome Tee',
+    price:60000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B95C37E-46F1-457A-9548-CF4E5B2A9227.png',
+    link:'tshirt.html',
+    badge:'NEW 🐺⚡'
+  },
+  {
+    name:'OMK Blue-Line Tee',
+    price:60000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/42CB264F-3EDC-4B58-A10E-556BDEE31F93.png',
+    link:'blue-line-tee.html',
+    badge:'BLUE-LINE'
+  },
+  {
+    name:'OMK Blue-Line Shorts',
+    price:70000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/0FDEF34E-CFDA-4A0B-92E2-2C68BA19645A.png',
+    link:'omk-blue-line-short.html',
+    badge:'BLUE-LINE'
+  },
+
+  /* ✅ CAP REMOVED — NEXT DROP REPLACED IN SAME POSITION */
+  {
+    name:'NEXT DROP',
+    price:null,
+    img:null,
+    link:'#',
+    badge:'COMING SOON 🔥',
+    isNext:true
+  }
 ];
 
 const grid=document.getElementById('productGrid');
 products.forEach(p=>{
-  if(p.type==='next'){
+  if(p.isNext){
     grid.innerHTML+=`
       <div class="card">
-        <span class="badge">COMING SOON 🔥</span>
-        <div class="next-drop">NEXT DROP</div>
+        <span class="badge">${p.badge}</span>
+        <div class="card-img">
+          <div class="next-drop">NEXT DROP</div>
+        </div>
+        <div class="card-body">
+          <h3>${p.name}</h3>
+          <p class="price"> </p>
+        </div>
       </div>`;
   }else{
     grid.innerHTML+=`
       <a href="${p.link}">
         <div class="card">
           <span class="badge">${p.badge}</span>
-          <div class="card-img"><img src="${p.img}"></div>
+          <div class="card-img">
+            ${p.img ? `<img src="${p.img}">` : ``}
+          </div>
           <div class="card-body">
             <h3>${p.name}</h3>
             <p class="price">₦${p.price.toLocaleString()}</p>
