@@ -213,7 +213,7 @@ footer{text-align:center;padding:20px;color:#666}
 <script>
 const products = [
 
-  /* ===== FEATURED OUTFITS (TOP) ===== */
+  /* ===== FIRST 3 LINES (PERFECT — UNCHANGED) ===== */
 
   {
     name:'OMK Voltage Jacket',
@@ -244,8 +244,6 @@ const products = [
     badge:'FEATURED 🐺'
   },
 
-  /* ===== OTHER PRODUCTS (DOWN) ===== */
-
   {
     name:'OMK Voltage Track Set',
     price:150000,
@@ -260,41 +258,26 @@ const products = [
     link:'women-blue-line.html',
     badge:'NEW 🐺🔥'
   },
-  {
-    name:'OMK PulseLine Set',
-    price:130000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/57B8E79F-4B51-4E33-99D6-92F01457DEE7.png',
-    link:'pulseline-set.html',
-    badge:'NEW ⚡🐺'
-  },
-  {
-    name:'OMK BlueNova Track Set',
-    price:130000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/0546A761-DCBC-4909-AD0E-DD511A6D2FC8.png',
-    link:'bluenova-trackset.html',
-    badge:'NEW 🌌🐺'
-  },
+
+  /* ===== FROM LINE 4 DOWN (YOUR NEW ARRANGEMENT) ===== */
+
+  /* LINE 4 */
   {
     name:'OMK Blue-Line Trackset',
-    price:130000,
+    price:150000,
     img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B5E6F8A-2C94-47EF-A8CF-BAE93AA23563.png',
     link:'omk-blue-line-trackset.html',
     badge:'NEW ⚡🔥'
   },
   {
-    name:'OMK Wolfline Tank Top',
-    price:55000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/C0DCC802-519A-482E-A86D-93CA99AB8638.png',
-    link:'omk-wolfline-tank.html',
-    badge:'NEW 🐺💪'
+    name:'OMK BlueNova Track Set',
+    price:150000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/0546A761-DCBC-4909-AD0E-DD511A6D2FC8.png',
+    link:'bluenova-trackset.html',
+    badge:'NEW 🌌🐺'
   },
-  {
-    name:'OMK Chrome Tee',
-    price:60000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B95C37E-46F1-457A-9548-CF4E5B2A9227.png',
-    link:'tshirt.html',
-    badge:'NEW 🐺⚡'
-  },
+
+  /* LINE 5 */
   {
     name:'OMK Blue-Line Tee',
     price:60000,
@@ -309,13 +292,48 @@ const products = [
     link:'omk-blue-line-short.html',
     badge:'BLUE-LINE'
   },
+
+  /* LINE 6 */
+  {
+    name:'OMK PulseLine Set',
+    price:130000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/57B8E79F-4B51-4E33-99D6-92F01457DEE7.png',
+    link:'pulseline-set.html',
+    badge:'NEW ⚡🐺'
+  },
+  {
+    name:'OMK Wolfline Tank Top',
+    price:55000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/C0DCC802-519A-482E-A86D-93CA99AB8638.png',
+    link:'omk-wolfline-tank.html',
+    badge:'NEW 🐺💪'
+  },
+
+  /* LINE 7 */
+  {
+    name:'OMK Chrome Tee',
+    price:60000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B95C37E-46F1-457A-9548-CF4E5B2A9227.png',
+    link:'tshirt.html',
+    badge:'NEW 🐺⚡'
+  },
   {
     name:'OMK OG Cap (Blue-Line)',
     price:55000,
     img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/C074D825-2E7B-46D8-8C27-3B7D27E6B8B3.png',
     link:'omk-og-cap.html',
     badge:'NEW 🧢'
+  },
+
+  /* NEXT DROP (ADDED AFTER CAP — NOTHING REMOVED) */
+  {
+    name:'NEXT DROP',
+    price:null,
+    img:null,
+    link:'#',
+    badge:'COMING SOON 🔥'
   }
+
 ];
 
 const grid=document.getElementById('productGrid');
@@ -325,11 +343,12 @@ products.forEach(p=>{
       <div class="card">
         <span class="badge">${p.badge}</span>
         <div class="card-img">
-          ${p.img ? `<img src="${p.img}" alt="${p.name}">` : ``}
+          ${p.img ? `<img src="${p.img}" alt="${p.name}">`
+                 : `<div style="height:300px;background:#111;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;letter-spacing:2px;">NEXT DROP</div>`}
         </div>
         <div class="card-body">
           <h3>${p.name}</h3>
-          <p class="price">₦${p.price.toLocaleString()}</p>
+          ${p.price ? `<p class="price">₦${p.price.toLocaleString()}</p>` : ``}
         </div>
       </div>
     </a>`;
