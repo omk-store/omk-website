@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Benin To Lagos – Omo Taker</title>
+
+<style>
+  *{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  }
+  body{
+    min-height:100vh;
+    background:linear-gradient(180deg,#e6e6e6,#bfbfbf);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+  }
+  .wrap{
+    width:100%;
+    max-width:420px;
+    background:#fff;
+    border-radius:20px;
+    padding:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+  }
+  .cover{
+    width:100%;
+    border-radius:14px;
+    margin-bottom:14px;
+  }
+  h1{
+    font-size:22px;
+    font-weight:900;
+    text-align:center;
+    margin-bottom:4px;
+  }
+  .sub{
+    text-align:center;
+    font-size:14px;
+    color:#555;
+    margin-bottom:6px;
+  }
+  .date{
+    text-align:center;
+    font-size:13px;
+    color:#777;
+    margin-bottom:18px;
+  }
+  .platform{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 14px;
+    border-radius:14px;
+    background:#f6f6f6;
+    margin-bottom:12px;
+    text-decoration:none;
+    color:#000;
+    font-weight:700;
+    transition:.2s;
+  }
+  .platform:hover{
+    background:#000;
+    color:#fff;
+  }
+  .left{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .icon{
+    width:34px;
+    height:34px;
+    border-radius:8px;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:900;
+    color:#000;
+  }
+  .btn{
+    padding:10px 16px;
+    background:#000;
+    color:#fff;
+    border-radius:999px;
+    font-size:12px;
+  }
+  .play{
+    background:#ff2a2a;
+  }
+  footer{
+    text-align:center;
+    font-size:11px;
+    color:#888;
+    margin-top:16px;
+  }
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <!-- COVER -->
+  <img class="cover" src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/914C5ED9-2BF8-4515-9320-9169F7E32FBB.png">
+
+  <!-- TEXT -->
+  <h1>Benin To Lagos – Omo Taker</h1>
+  <div class="sub">OMK • Only My Kind</div>
+  <div class="date">Out Now 🌍🐺</div>
+
+  <!-- PLATFORMS -->
+
+  <a class="platform" href="https://open.spotify.com/track/0SooNM8i9p1UiE7HTTp5C4" target="_blank">
+    <div class="left">
+      <div class="icon">🎧</div> Spotify
+    </div>
+    <div class="btn play">Play</div>
+  </a>
+
+  <a class="platform" href="https://music.apple.com/ng/album/benin-to-lagos/1866424075?i=1866424076" target="_blank">
+    <div class="left">
+      <div class="icon">🍎</div> Apple Music
+    </div>
+    <div class="btn">Play</div>
+  </a>
+
+  <a class="platform" href="https://audiomack.com/iam_omotaker/song/benin-to-lagos" target="_blank">
+    <div class="left">
+      <div class="icon">📀</div> Audiomack
+    </div>
+    <div class="btn">Play</div>
+  </a>
+
+  <a class="platform" href="https://www.boomplay.com/songs/231357454" target="_blank">
+    <div class="left">
+      <div class="icon">🔊</div> Boomplay
+    </div>
+    <div class="btn">Play</div>
+  </a>
+
+  <a class="platform" href="https://www.instagram.com/iam_omotaker" target="_blank">
+    <div class="left">
+      <div class="icon">📸</div> Instagram
+    </div>
+    <div class="btn">Follow</div>
+  </a>
+
+  <a class="platform" href="https://omkdrip.com" target="_blank">
+    <div class="left">
+      <div class="icon">🐺</div> Shop OMK
+    </div>
+    <div class="btn">Visit</div>
+  </a>
+
+  <footer>
+    © 2026 Omo Taker • OMK Records
+  </footer>
+
+</div>
+</body>
+</html>
