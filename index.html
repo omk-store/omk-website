@@ -130,7 +130,11 @@ footer{text-align:center;padding:20px;color:#666}
 </header>
 
 <section class="hero" id="top">
-  <img src="https://raw.githubusercontent.com/omk-store/omk-website/main/5CB390F1-C296-439F-A95B-32679E9FE8BA.png?v=1" alt="OMK hero">
+  <img
+    src="https://cdn.jsdelivr.net/gh/omk-store/omk-website@main/5CB390F1-C296-439F-A95B-32679E9FE8BA.png"
+    alt="OMK hero"
+    onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/omk-store/omk-website/main/5CB390F1-C296-439F-A95B-32679E9FE8BA.png';"
+  >
   <p>Streetwear born from truth, loyalty & the wolf spirit 🐺</p>
 </section>
 
@@ -139,14 +143,15 @@ footer{text-align:center;padding:20px;color:#666}
   <div class="grid" id="productGrid"></div>
 </section>
 
-<!-- 🎵 MUSIC SECTION (UPDATED + FIXED IMAGE CACHE) -->
+<!-- 🎵 MUSIC SECTION (FIXED: jsDelivr + fallback) -->
 <section class="section" id="music" style="text-align:center; padding:50px 16px;">
   <h2 style="font-size:28px; margin-bottom:20px;">New Single 🔥🐺</h2>
 
   <img
-    src="https://raw.githubusercontent.com/omk-store/omk-website/main/22F73A73-5B85-4E6A-B48D-614B16828501.png?v=1"
+    src="https://cdn.jsdelivr.net/gh/omk-store/omk-website@main/22F73A73-5B85-4E6A-B48D-614B16828501.png"
     alt="Benin to Lagos: Rise of the Wolf"
     style="width:min(350px,90%); border-radius:14px; box-shadow:0 8px 20px rgba(0,0,0,.20);"
+    onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/omk-store/omk-website/main/22F73A73-5B85-4E6A-B48D-614B16828501.png';"
   >
 
   <h3 style="margin-top:20px; font-size:24px; font-weight:900;">
@@ -218,91 +223,91 @@ const products = [
   {
     name:'OMK Voltage Jacket',
     price:90000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/main/4F6463CE-AC93-46AC-9E46-24CFC46DEE4C.png?v=1',
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/main/4F6463CE-AC93-46AC-9E46-24CFC46DEE4C.png',
     link:'omk-voltage-jacket.html',
     badge:'FEATURED ⚡'
   },
   {
     name:'OMK Voltage Jean',
     price:90000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/main/9BBC37D7-695C-4650-AEE9-C04910FBDF28.png?v=1',
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/main/9BBC37D7-695C-4650-AEE9-C04910FBDF28.png',
     link:'omk-voltage-jean.html',
     badge:'FEATURED ⚡'
   },
   {
     name:'OMK Wolf Hoodie (Blue-Line)',
     price:90000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/main/56A58A00-78C3-4799-8220-18254057C8BD.png?v=1',
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/main/56A58A00-78C3-4799-8220-18254057C8BD.png',
     link:'omk-wolf-hoodie-blue-line.html',
     badge:'FEATURED 🐺'
   },
   {
     name:'OMK Wolf Pants (Blue-Line)',
     price:90000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/main/06762C45-D3E7-49F7-B60A-684330FE167C.png?v=1',
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/main/06762C45-D3E7-49F7-B60A-684330FE167C.png',
     link:'omk-wolf-pants-blue-line.html',
     badge:'FEATURED 🐺'
   },
   {
     name:'OMK Voltage Track Set',
     price:150000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/main/2016C02C-C98B-44E9-B718-E9BED4EAEDCB.png?v=1',
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/main/2016C02C-C98B-44E9-B718-E9BED4EAEDCB.png',
     link:'voltage-track-set.html',
     badge:'NEW 🐺⚡'
   },
   {
     name:'OMK Blue-Line Baddies',
     price:99000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/main/95C388D3-89A5-4CA8-BD5E-F7E5EB1F7204.png?v=1',
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/main/95C388D3-89A5-4CA8-BD5E-F7E5EB1F7204.png',
     link:'women-blue-line.html',
     badge:'NEW 🐺🔥'
   },
   {
     name:'OMK Blue-Line Trackset',
     price:150000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/main/9B5E6F8A-2C94-47EF-A8CF-BAE93AA23563.png?v=1',
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/main/9B5E6F8A-2C94-47EF-A8CF-BAE93AA23563.png',
     link:'omk-blue-line-trackset.html',
     badge:'NEW ⚡🔥'
   },
   {
     name:'OMK BlueNova Track Set',
     price:150000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/main/0546A761-DCBC-4909-AD0E-DD511A6D2FC8.png?v=1',
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/main/0546A761-DCBC-4909-AD0E-DD511A6D2FC8.png',
     link:'bluenova-trackset.html',
     badge:'NEW 🌌🐺'
   },
   {
     name:'OMK Blue-Line Tee',
     price:60000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/main/42CB264F-3EDC-4B58-A10E-556BDEE31F93.png?v=1',
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/main/42CB264F-3EDC-4B58-A10E-556BDEE31F93.png',
     link:'blue-line-tee.html',
     badge:'BLUE-LINE'
   },
   {
     name:'OMK Blue-Line Shorts',
     price:70000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/main/0FDEF34E-CFDA-4A0B-92E2-2C68BA19645A.png?v=1',
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/main/0FDEF34E-CFDA-4A0B-92E2-2C68BA19645A.png',
     link:'omk-blue-line-short.html',
     badge:'BLUE-LINE'
   },
   {
     name:'OMK PulseLine Set',
     price:130000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/main/57B8E79F-4B51-4E33-99D6-92F01457DEE7.png?v=1',
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/main/57B8E79F-4B51-4E33-99D6-92F01457DEE7.png',
     link:'pulseline-set.html',
     badge:'NEW ⚡🐺'
   },
   {
     name:'OMK Wolfline Tank Top',
     price:55000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/main/C0DCC802-519A-482E-A86D-93CA99AB8638.png?v=1',
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/main/C0DCC802-519A-482E-A86D-93CA99AB8638.png',
     link:'omk-wolfline-tank.html',
     badge:'NEW 🐺💪'
   },
   {
     name:'OMK Chrome Tee',
     price:60000,
-    img:'https://raw.githubusercontent.com/omk-store/omk-website/main/9B95C37E-46F1-457A-9548-CF4E5B2A9227.png?v=1',
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/main/9B95C37E-46F1-457A-9548-CF4E5B2A9227.png',
     link:'tshirt.html',
     badge:'NEW 🐺⚡'
   },
