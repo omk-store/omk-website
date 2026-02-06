@@ -1,182 +1,167 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>RMK Playlist | Listen & Submit</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OMK Playlist | Everyday Vibe</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-body{min-height:100vh;background:#000;padding:28px 16px;display:flex;align-items:center;justify-content:center}
+*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,Arial,sans-serif;}
+
+body{
+  background:#0b0b0f;
+  color:#fff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  padding:20px;
+}
+
 .wrap{
-  width:100%;max-width:440px;background:#fff;border-radius:26px;padding:22px;
-  box-shadow:0 30px 90px rgba(0,0,0,.85);text-align:center
+  width:100%;
+  max-width:460px;
+  background:#121218;
+  border-radius:26px;
+  padding:22px;
+  border:1px solid #1e1f29;
+  box-shadow:0 25px 80px rgba(0,0,0,.6);
 }
-.badge{
-  display:inline-block;
-  padding:8px 12px;
-  border-radius:999px;
-  background:#111;color:#fff;
-  font-weight:900;
-  letter-spacing:1px;
-  font-size:12px;
-}
-h1{margin-top:12px;font-size:24px;font-weight:950;letter-spacing:.3px}
-.sub{margin-top:6px;font-size:14px;color:#444;line-height:1.45}
 
 .hero{
-  margin:16px 0 18px;
-  border-radius:18px;
-  height:220px;
   width:100%;
-  background:
-    linear-gradient(135deg, rgba(0,0,0,.25), rgba(0,0,0,.55)),
-    url('https://raw.githubusercontent.com/omk-store/omk-website/main/914C5ED9-2BF8-4515-9320-9169F7E32FBB.png') center/cover no-repeat;
-  display:flex;align-items:flex-end;justify-content:flex-start;
-  padding:14px;color:#fff;position:relative;overflow:hidden;
-}
-.hero b{font-size:16px}
-.hero span{display:block;margin-top:4px;font-size:12px;opacity:.9}
-
-.sectionTitle{
-  margin-top:10px;
-  font-size:12px;
-  font-weight:900;
-  letter-spacing:1px;
-  color:#111;
-  text-transform:uppercase;
-  text-align:left;
-}
-.grid{margin-top:10px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.btn{
-  padding:18px 12px;
   border-radius:18px;
-  background:#000;
-  color:#fff;
-  font-weight:900;
-  letter-spacing:1px;
-  border:none;
-  cursor:pointer;
-  transition:.18s;
-  display:flex;align-items:center;justify-content:center;
-  text-decoration:none;
+  margin-bottom:16px;
 }
-.btn:hover{transform:translateY(-2px);background:#111}
-.btn.apple{background:#f2f2f2;color:#000}
-.btn.apple:hover{background:#e8e8e8}
-.btn.full{grid-column:1/3}
 
-.card{
-  margin-top:14px;
-  text-align:left;
-  border:1px solid #eee;
-  border-radius:18px;
-  padding:14px;
-  background:#fafafa;
+h1{
+  font-size:24px;
+  font-weight:900;
+  margin-bottom:6px;
 }
-.input,textarea{
-  width:100%;
-  padding:12px;
-  border-radius:14px;
-  border:1px solid #e6e6e6;
-  outline:none;
+
+.sub{
+  color:#9aa0b2;
   font-size:14px;
-  background:#fff;
+  margin-bottom:20px;
 }
-textarea{min-height:90px;resize:vertical}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.small{margin-top:10px;font-size:12px;color:#666;line-height:1.45}
 
-.whatsapp{
-  background:#25D366;color:#04130b;border:none;
+.platforms{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-bottom:22px;
 }
-.whatsapp:hover{filter:brightness(.95)}
-.footer{margin-top:16px;font-size:12px;color:#777}
+
+.platform{
+  border-radius:14px;
+  padding:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  font-weight:900;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.platform:hover{transform:translateY(-3px);}
+
+.spotify{background:#1db954;}
+.apple{background:#ff2d55;}
+
+.platform img{width:22px;}
+
+.submit{
+  margin-top:18px;
+  border-top:1px solid #1e1f29;
+  padding-top:18px;
+}
+
+input,textarea{
+  width:100%;
+  background:#0b0b0f;
+  border:1px solid #1e1f29;
+  border-radius:10px;
+  padding:12px;
+  margin-bottom:12px;
+  color:#fff;
+}
+
+button{
+  width:100%;
+  padding:14px;
+  border-radius:999px;
+  border:none;
+  font-weight:900;
+  background:#5ef1ff;
+  color:#000;
+  cursor:pointer;
+}
+
+footer{
+  text-align:center;
+  margin-top:14px;
+  font-size:12px;
+  color:#777;
+}
 </style>
 </head>
 
 <body>
+
 <div class="wrap">
-  <div class="badge">RMK PLAYLIST</div>
-  <h1>Welcome to RMK Playlist</h1>
-  <div class="sub">Choose where to listen. Then submit your song for playlist consideration.</div>
 
-  <div class="hero">
-    <div>
-      <b>RMK Playlist</b>
-      <span>Listen • Discover • Submit</span>
-    </div>
+<img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/e8276376-add6-461f-90a3-7da501d2a6c7.jpeg" class="hero">
+
+<h1>EVERYDAY VIBE PLAYLIST</h1>
+<div class="sub">Listen first. Then submit your song.</div>
+
+<div class="platforms">
+  <div class="platform spotify" onclick="openLink('https://open.spotify.com')">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg">
+    Spotify
   </div>
 
-  <div class="sectionTitle">Pick a platform</div>
-  <div class="grid">
-    <!-- Replace these with your real playlist links -->
-    <a class="btn" href="https://open.spotify.com/" target="_blank" rel="noopener">SPOTIFY</a>
-    <a class="btn apple" href="https://music.apple.com/" target="_blank" rel="noopener">APPLE</a>
-    <a class="btn" href="https://audiomack.com/" target="_blank" rel="noopener">AUDIOMACK</a>
-    <a class="btn" href="https://www.boomplay.com/" target="_blank" rel="noopener">BOOMPLAY</a>
-
-    <a class="btn full" href="#submit">SUBMIT YOUR SONG</a>
+  <div class="platform apple" onclick="openLink('https://music.apple.com')">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Apple_Music_logo.svg">
+    Apple Music
   </div>
+</div>
 
-  <div class="card" id="submit">
-    <div class="sectionTitle" style="margin-top:0">Submit your song</div>
-    <div class="small">Fill this and it will open WhatsApp with your details already written.</div>
+<div class="submit">
+<h3 style="margin-bottom:10px;">Submit your song</h3>
 
-    <form onsubmit="sendSubmit(event)">
-      <div class="row" style="margin-top:10px">
-        <input class="input" id="artistName" placeholder="Artist name" required>
-        <input class="input" id="songTitle" placeholder="Song title" required>
-      </div>
+<input id="artist" placeholder="Artist name" required>
+<input id="title" placeholder="Song title" required>
+<input id="link" placeholder="Song link" required>
+<textarea id="msg" placeholder="Message (optional)"></textarea>
 
-      <input class="input" id="songLink" placeholder="Song link (Spotify/Apple/Audiomack etc)" required style="margin-top:10px">
+<button onclick="submitSong()">Submit</button>
+</div>
 
-      <div class="row" style="margin-top:10px">
-        <input class="input" id="country" placeholder="Country (optional)">
-        <input class="input" id="email" placeholder="Email (optional)">
-      </div>
+<footer>
+© 2026 OMK Playlist
+</footer>
 
-      <textarea id="message" placeholder="Short message (optional) — genre, vibe, promo plan, etc" style="margin-top:10px"></textarea>
-
-      <button class="btn whatsapp full" type="submit" style="margin-top:12px">SUBMIT VIA WHATSAPP ✅</button>
-    </form>
-  </div>
-
-  <div class="grid" style="margin-top:12px">
-    <a class="btn full whatsapp" href="https://wa.me/2348118618722?text=Hi%20RMK%20Playlist%20team%20%E2%80%94%20I%20want%20to%20submit%20my%20song." target="_blank" rel="noopener">CHAT DIRECT</a>
-    <a class="btn full" href="mailto:omkdrip@gmail.com">EMAIL</a>
-  </div>
-
-  <div class="footer">© 2026 RMK Playlist</div>
 </div>
 
 <script>
-function sendSubmit(e){
-  e.preventDefault();
+function openLink(url){
+  window.open(url,'_blank');
+}
 
-  const artist = document.getElementById('artistName').value.trim();
-  const title  = document.getElementById('songTitle').value.trim();
-  const link   = document.getElementById('songLink').value.trim();
-  const country= document.getElementById('country').value.trim();
-  const email  = document.getElementById('email').value.trim();
-  const msg    = document.getElementById('message').value.trim();
+function submitSong(){
+  const artist=document.getElementById('artist').value;
+  const title=document.getElementById('title').value;
+  const link=document.getElementById('link').value;
+  const msg=document.getElementById('msg').value;
 
-  const lines = [
-    "RMK PLAYLIST SUBMISSION",
-    "",
-    `Artist: ${artist}`,
-    `Song: ${title}`,
-    `Link: ${link}`,
-    country ? `Country: ${country}` : "",
-    email ? `Email: ${email}` : "",
-    msg ? `Message: ${msg}` : "",
-    "",
-    "Please review for playlist placement."
-  ].filter(Boolean);
+  const email="activevibe65@gmail.com";
 
-  const text = encodeURIComponent(lines.join("\n"));
-  window.open(`https://wa.me/2348118618722?text=${text}`, "_blank");
+  window.location.href=`mailto:${email}?subject=Playlist Submission&body=Artist:%20${artist}%0ASong:%20${title}%0ALink:%20${link}%0AMessage:%20${msg}`;
 }
 </script>
+
 </body>
 </html>
