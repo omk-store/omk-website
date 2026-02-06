@@ -26,6 +26,7 @@ body{
   padding:22px;
   border:1px solid #1e1f29;
   box-shadow:0 25px 80px rgba(0,0,0,.6);
+  position:relative;
 }
 
 .hero{
@@ -43,14 +44,14 @@ h1{
 .sub{
   color:#9aa0b2;
   font-size:14px;
-  margin-bottom:20px;
+  margin-bottom:18px;
 }
 
 .platforms{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:14px;
-  margin-bottom:22px;
+  margin-bottom:18px;
 }
 
 .platform{
@@ -63,6 +64,7 @@ h1{
   font-weight:900;
   cursor:pointer;
   transition:.2s;
+  user-select:none;
 }
 
 .platform:hover{transform:translateY(-3px);}
@@ -70,8 +72,84 @@ h1{
 .spotify{background:#1db954;}
 .apple{background:#ff2d55;}
 
-.platform img{width:22px;}
+.platform img{width:22px}
 
+.hr{
+  height:1px;
+  background:#1e1f29;
+  margin:18px 0;
+}
+
+/* SERVICES */
+.sectionTitle{
+  font-weight:900;
+  font-size:16px;
+  margin-bottom:10px;
+}
+
+.services{
+  display:grid;
+  gap:12px;
+  margin-bottom:14px;
+}
+
+.card{
+  background:#0b0b0f;
+  border:1px solid #1e1f29;
+  border-radius:16px;
+  padding:14px;
+}
+
+.tag{
+  display:inline-block;
+  font-size:12px;
+  font-weight:900;
+  color:#000;
+  background:#5ef1ff;
+  padding:6px 10px;
+  border-radius:999px;
+  margin-bottom:10px;
+}
+
+.card h3{
+  font-size:16px;
+  font-weight:900;
+  margin-bottom:6px;
+}
+
+.card p{
+  font-size:13px;
+  color:#9aa0b2;
+  line-height:1.35;
+  margin-bottom:10px;
+}
+
+.price{
+  font-weight:900;
+  font-size:16px;
+  margin-bottom:10px;
+}
+
+.btn{
+  width:100%;
+  padding:13px 14px;
+  border-radius:999px;
+  border:none;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.btnPrimary{background:#5ef1ff;color:#000;}
+.btnDark{background:#000;color:#fff;border:1px solid #1e1f29;}
+.btnWhats{background:#25D366;color:#000;font-weight:900;}
+
+.smallNote{
+  font-size:12px;
+  color:#777;
+  margin-top:8px;
+}
+
+/* SUBMIT FORM (KEEPING YOUR EXISTING ONE) */
 .submit{
   margin-top:18px;
   border-top:1px solid #1e1f29;
@@ -88,16 +166,7 @@ input,textarea{
   color:#fff;
 }
 
-button{
-  width:100%;
-  padding:14px;
-  border-radius:999px;
-  border:none;
-  font-weight:900;
-  background:#5ef1ff;
-  color:#000;
-  cursor:pointer;
-}
+textarea{min-height:90px;resize:none;}
 
 footer{
   text-align:center;
@@ -105,6 +174,23 @@ footer{
   font-size:12px;
   color:#777;
 }
+
+/* FLOAT WHATSAPP */
+.floatWhats{
+  margin-top:14px;
+  display:flex;
+  gap:10px;
+}
+.floatWhats a{
+  flex:1;
+  text-align:center;
+  padding:12px 10px;
+  border-radius:999px;
+  font-weight:900;
+  text-decoration:none;
+}
+.floatWhats .w{background:#25D366;color:#000;}
+.floatWhats .e{background:#000;color:#fff;border:1px solid #1e1f29;}
 </style>
 </head>
 
@@ -112,37 +198,78 @@ footer{
 
 <div class="wrap">
 
-<img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/e8276376-add6-461f-90a3-7da501d2a6c7.jpeg" class="hero">
+  <!-- HERO IMAGE -->
+  <img
+    src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/e8276376-add6-461f-90a3-7da501d2a6c7.jpeg"
+    class="hero"
+    alt="Everyday Vibe"
+  >
 
-<h1>EVERYDAY VIBE PLAYLIST</h1>
-<div class="sub">Listen first. Then submit your song.</div>
+  <h1>EVERYDAY VIBE PLAYLIST</h1>
+  <div class="sub">Listen first. Then request a campaign.</div>
 
-<div class="platforms">
-  <div class="platform spotify" onclick="openLink('https://open.spotify.com')">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg">
-    Spotify
+  <!-- LISTEN -->
+  <div class="platforms">
+    <div class="platform spotify" onclick="openLink('https://open.spotify.com')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Spotify_icon.svg" alt="Spotify">
+      Spotify
+    </div>
+
+    <div class="platform apple" onclick="openLink('https://music.apple.com')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Apple_Music_logo.svg" alt="Apple Music">
+      Apple Music
+    </div>
   </div>
 
-  <div class="platform apple" onclick="openLink('https://music.apple.com')">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Apple_Music_logo.svg">
-    Apple Music
+  <div class="hr"></div>
+
+  <!-- SERVICES (NEW) -->
+  <div class="sectionTitle">Choose a service</div>
+
+  <div class="services">
+
+    <!-- PLAYLIST -->
+    <div class="card">
+      <div class="tag">PLAYLIST</div>
+      <h3>Submit for Playlist Placement</h3>
+      <p>Your song will be reviewed for placement on Everyday Vibe Playlist.</p>
+      <div class="price">₦80,000</div>
+      <button class="btn btnDark" onclick="waPlaylist()">REQUEST ON WHATSAPP</button>
+      <div class="smallNote">Payment details will be sent after you request.</div>
+    </div>
+
+    <!-- 7-DAY TRACKING -->
+    <div class="card">
+      <div class="tag">7 DAYS</div>
+      <h3>7-Day Streams + Listeners Tracking</h3>
+      <p>7 days campaign with tracking focus on streams + monthly listeners growth.</p>
+      <div class="price">₦80,000</div>
+      <button class="btn btnPrimary" onclick="waTracking()">START CAMPAIGN ON WHATSAPP</button>
+      <div class="smallNote">Payment details will be sent after you request.</div>
+    </div>
+
   </div>
-</div>
 
-<div class="submit">
-<h3 style="margin-bottom:10px;">Submit your song</h3>
+  <!-- CONTACT QUICK -->
+  <div class="floatWhats">
+    <a class="w" href="https://wa.me/2348118618722" target="_blank" rel="noopener">WHATSAPP</a>
+    <a class="e" href="mailto:activevibe65@gmail.com" target="_blank" rel="noopener">EMAIL</a>
+  </div>
 
-<input id="artist" placeholder="Artist name" required>
-<input id="title" placeholder="Song title" required>
-<input id="link" placeholder="Song link" required>
-<textarea id="msg" placeholder="Message (optional)"></textarea>
+  <!-- KEEPING YOUR FORM (EMAIL SUBMISSION) -->
+  <div class="submit">
+    <div class="sectionTitle">Submit your song (details)</div>
 
-<button onclick="submitSong()">Submit</button>
-</div>
+    <input id="artist" placeholder="Artist name" required>
+    <input id="title" placeholder="Song title" required>
+    <input id="link" placeholder="Song link" required>
+    <textarea id="msg" placeholder="Message (optional)"></textarea>
 
-<footer>
-© 2026 OMK Playlist
-</footer>
+    <button class="btn btnPrimary" onclick="submitSong()">Submit</button>
+    <div class="smallNote">This opens your email app to send your details.</div>
+  </div>
+
+  <footer>© 2026 OMK Playlist</footer>
 
 </div>
 
@@ -158,8 +285,36 @@ function submitSong(){
   const msg=document.getElementById('msg').value;
 
   const email="activevibe65@gmail.com";
+  window.location.href=`mailto:${email}?subject=Everyday%20Vibe%20Submission&body=Artist:%20${encodeURIComponent(artist)}%0ASong:%20${encodeURIComponent(title)}%0ALink:%20${encodeURIComponent(link)}%0AMessage:%20${encodeURIComponent(msg)}`;
+}
 
-  window.location.href=`mailto:${email}?subject=Playlist Submission&body=Artist:%20${artist}%0ASong:%20${title}%0ALink:%20${link}%0AMessage:%20${msg}`;
+function waPlaylist(){
+  const text =
+`Hello Everyday Vibe,
+
+I want PLAYLIST PLACEMENT (₦80,000).
+
+Artist:
+Song title:
+Song link:
+Country:
+`;
+  window.open("https://wa.me/2348118618722?text=" + encodeURIComponent(text), "_blank");
+}
+
+function waTracking(){
+  const text =
+`Hello Everyday Vibe,
+
+I want 7-DAY STREAMS + LISTENERS TRACKING (₦80,000).
+
+Artist:
+Song title:
+Song link:
+Platform:
+Start date:
+`;
+  window.open("https://wa.me/2348118618722?text=" + encodeURIComponent(text), "_blank");
 }
 </script>
 
