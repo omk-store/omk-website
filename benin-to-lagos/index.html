@@ -6,30 +6,12 @@
 <title>Benin To Lagos | Omo Taker</title>
 
 <style>
-:root{
-  --bg:#000;
-  --card:#ffffff;
-  --text:#0a0a0a;
-  --muted:#5c5c5c;
-  --line:#ececec;
-  --shadow:0 30px 80px rgba(0,0,0,.9);
+*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,Arial,sans-serif;}
 
-  --radius:26px;
-  --radius2:18px;
-
-  --spotify:#1DB954;
-  --apple:#f2f2f2;
-  --boom:#111;
-  --audiomack:#111;
-  --ig:#e1306c;
-  --tiktok:#0b0b0b;
-}
-
-*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
 body{
   min-height:100vh;
-  background:var(--bg);
-  padding:30px 18px;
+  background:linear-gradient(180deg,#000,#050505);
+  padding:30px 20px;
   display:flex;
   justify-content:center;
   align-items:center;
@@ -38,15 +20,14 @@ body{
 .wrap{
   width:100%;
   max-width:420px;
-  background:var(--card);
-  border-radius:var(--radius);
-  padding:18px;
-  box-shadow:var(--shadow);
+  background:#fff;
+  border-radius:26px;
+  padding:22px;
+  box-shadow:0 30px 80px rgba(0,0,0,.9);
   text-align:center;
-  border:1px solid rgba(255,255,255,.06);
 }
 
-/* Top brand */
+/* BRAND */
 .brand{
   display:flex;
   align-items:center;
@@ -54,22 +35,19 @@ body{
   gap:10px;
   margin-bottom:14px;
 }
-.brand .logo{
-  width:44px;height:44px;border-radius:12px;
+.logo{
+  width:52px;
+  height:52px;
+  border-radius:14px;
   background:#000;
-  display:flex;align-items:center;justify-content:center;
-  color:#fff;font-weight:900;letter-spacing:.5px;
-  overflow:hidden;
+  color:#fff;
+  font-weight:900;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
-.brand .logo img{width:100%;height:100%;object-fit:cover;}
-.brand .brandtext{
-  text-align:left;
-  line-height:1.05;
-}
-.brand .brandtext b{display:block;font-size:14px;}
-.brand .brandtext span{display:block;font-size:12px;color:var(--muted);}
 
-/* Cover */
+/* COVER */
 .cover{
   width:100%;
   max-height:360px;
@@ -78,184 +56,133 @@ body{
   margin-bottom:14px;
 }
 
-/* Title area */
-h1{font-size:22px;font-weight:1000;letter-spacing:.5px;color:var(--text);}
-.artist{font-size:13px;color:#444;margin-top:6px;}
-.status{
-  font-size:13px;
-  color:#0aa84f;
-  margin:10px 0 18px;
-  font-weight:700;
-}
+h1{font-size:22px;font-weight:900;}
+.artist{font-size:14px;color:#444;margin-top:4px;}
+.status{font-size:14px;color:#00c853;margin:8px 0 6px;}
+.smallnote{font-size:12px;color:#777;margin-bottom:18px;}
 
-/* Sections */
 .section{
   text-align:left;
-  margin:10px 4px 10px;
-  color:#111;
   font-size:12px;
   font-weight:900;
   letter-spacing:1px;
-  opacity:.75;
+  margin:10px 0;
+  opacity:.7;
 }
 
-/* Buttons grid */
+/* BUTTONS */
 .platforms{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:12px;
-  margin-bottom:14px;
+  margin-bottom:18px;
 }
 
 .btn{
   text-decoration:none;
-  border-radius:16px;
-  padding:14px 14px;
-  font-weight:900;
-  font-size:14px;
-  letter-spacing:.6px;
-  display:flex;
-  align-items:center;
-  justify-content:flex-start;
-  gap:10px;
-  border:1px solid var(--line);
-  transition:.15s;
-  min-height:54px;
-  user-select:none;
-}
-
-.btn:active{transform:scale(.98);}
-.icon{
-  width:34px;height:34px;border-radius:12px;
-  display:flex;align-items:center;justify-content:center;
-  background:#111;
+  background:#000;
   color:#fff;
-  flex:0 0 34px;
+  border-radius:18px;
+  padding:16px;
+  font-weight:900;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  transition:.2s;
 }
-.icon img{width:18px;height:18px;display:block}
+.btn:hover{transform:translateY(-2px);background:#111;}
 
-/* Color styles */
-.spotify{background:#0b0b0b;color:#fff;border-color:#0b0b0b;}
-.spotify .icon{background:rgba(255,255,255,.12);}
+.spotify{
+  grid-column:1/3;
+  background:#0b0b0b;
+}
 
-.apple{background:var(--apple);color:#000;border-color:#e7e7e7;}
-.apple .icon{background:#000;color:#fff;}
+.apple{
+  background:#f2f2f2;
+  color:#000;
+}
 
-.dark{background:#0b0b0b;color:#fff;border-color:#0b0b0b;}
-.dark .icon{background:rgba(255,255,255,.12);}
+.instagram{
+  grid-column:1/3;
+  background:#e1306c;
+}
 
-.wide{grid-column:1 / 3; justify-content:center; font-size:15px;}
-.instagram{background:var(--ig);color:#fff;border-color:var(--ig);}
-.instagram .icon{background:rgba(255,255,255,.18);}
+.tiktok{
+  grid-column:1/3;
+  background:#000;
+}
 
-.tiktok{background:var(--tiktok);color:#fff;border-color:var(--tiktok);}
-.tiktok .icon{background:rgba(255,255,255,.12);}
-
-/* Shop */
 .shop{
   width:100%;
-  padding:15px;
+  padding:16px;
   border-radius:999px;
-  font-size:15px;
-  font-weight:1000;
+  font-size:16px;
+  font-weight:900;
   border:none;
   background:#000;
   color:#fff;
   cursor:pointer;
-  margin-top:10px;
 }
-.shop:active{transform:scale(.99);}
 
 .footer{margin-top:14px;font-size:12px;color:#777;}
-.smallnote{font-size:12px;color:#777;margin-top:6px}
-
-/* Mobile tap comfort */
-@media (max-width:360px){
-  .btn{font-size:13px}
-  .wrap{padding:16px}
-}
 </style>
 </head>
 
 <body>
 <div class="wrap">
 
-  <!-- BRAND / LOGO -->
-  <div class="brand">
-    <div class="logo">
-      <!-- Replace this with your real OMK logo PNG URL -->
-      <img src="https://raw.githubusercontent.com/omk-store/omk-website/main/omk-logo.png" alt="OMK Logo"
-           onerror="this.style.display='none'; this.parentElement.textContent='OMK';">
-    </div>
-    <div class="brandtext">
-      <b>OMK Records</b>
-      <span>Official links</span>
-    </div>
+<div class="brand">
+  <div class="logo">OMK</div>
+  <div>
+    <b>OMK Records</b>
+    <div style="font-size:12px;color:#777;">Official links</div>
   </div>
+</div>
 
-  <!-- COVER -->
-  <img
-    src="https://raw.githubusercontent.com/omk-store/omk-website/main/914C5ED9-2BF8-4515-9320-9169F7E32FBB.png"
-    class="cover"
-    alt="Benin To Lagos Cover"
-  >
+<img src="https://raw.githubusercontent.com/omk-store/omk-website/main/914C5ED9-2BF8-4515-9320-9169F7E32FBB.png" class="cover">
 
-  <h1>BENIN TO LAGOS</h1>
-  <div class="artist">Omo Taker • OMK Records</div>
-  <div class="status">Out Now 🌍🐺</div>
+<h1>BENIN TO LAGOS</h1>
+<div class="artist">Omo Taker • OMK Records</div>
+<div class="status">Out Now 🌍🐺</div>
+<div class="smallnote">Tap your platform to play</div>
 
-  <div class="section">LISTEN NOW</div>
-  <div class="platforms">
-    <a class="btn spotify" href="https://open.spotify.com/track/0SooNM8i9p1UiE7HTTp5C4?si=Pb43khCKS6insicDQFM8YA" target="_blank" rel="noopener">
-      <span class="icon">
-        <img alt="Spotify" src="https://cdn.simpleicons.org/spotify/ffffff">
-      </span>
-      <span>SPOTIFY</span>
-    </a>
+<div class="section">LISTEN NOW</div>
+<div class="platforms">
 
-    <a class="btn apple" href="https://music.apple.com/ng/album/benin-to-lagos/1866424075?i=1866424076" target="_blank" rel="noopener">
-      <span class="icon">
-        <img alt="Apple Music" src="https://cdn.simpleicons.org/applemusic/ffffff">
-      </span>
-      <span>APPLE MUSIC</span>
-    </a>
-  </div>
+<a class="btn spotify" href="https://open.spotify.com/track/0SooNM8i9p1UiE7HTTp5C4?si=Pb43khCKS6insicDQFM8YA" target="_blank">
+SPOTIFY
+</a>
 
-  <div class="section">STREAM MORE</div>
-  <div class="platforms">
-    <a class="btn dark" href="https://www.boomplay.com/songs/231357454?srModel=COPYLINK&srList=WEB&share_content=music&share_channel=copylink&share_platform=web" target="_blank" rel="noopener">
-      <span class="icon">
-        <img alt="Boomplay" src="https://cdn.simpleicons.org/musicbrainz/ffffff">
-      </span>
-      <span>BOOMPLAY</span>
-    </a>
+<a class="btn apple" href="https://music.apple.com/ng/album/benin-to-lagos/1866424075?i=1866424076" target="_blank">
+APPLE MUSIC
+</a>
 
-    <a class="btn dark" href="https://audiomack.com/iam_omotaker/song/benin-to-lagos?share-user-id=111838460" target="_blank" rel="noopener">
-      <span class="icon">
-        <img alt="Audiomack" src="https://cdn.simpleicons.org/audiomack/ffffff">
-      </span>
-      <span>AUDIOMACK</span>
-    </a>
+<a class="btn" href="https://www.boomplay.com/songs/231357454?srModel=COPYLINK&srList=WEB&share_content=music&share_channel=copylink&share_platform=web" target="_blank">
+BOOMPLAY
+</a>
 
-    <a class="btn instagram wide" href="https://www.instagram.com/iam_omotaker?igsh=NXhvNXdyb2JvcnQx&utm_source=qr" target="_blank" rel="noopener">
-      <span class="icon">
-        <img alt="Instagram" src="https://cdn.simpleicons.org/instagram/ffffff">
-      </span>
-      <span>FOLLOW ON INSTAGRAM</span>
-    </a>
+<a class="btn" href="https://audiomack.com/iam_omotaker/song/benin-to-lagos?share-user-id=111838460" target="_blank">
+AUDIOMACK
+</a>
 
-    <a class="btn tiktok wide" href="https://www.tiktok.com/@iam.omotaker?_r=1&_t=ZS-936WgFc6Oil" target="_blank" rel="noopener">
-      <span class="icon">
-        <img alt="TikTok" src="https://cdn.simpleicons.org/tiktok/ffffff">
-      </span>
-      <span>FOLLOW ON TIKTOK</span>
-    </a>
-  </div>
+</div>
 
-  <button class="shop" onclick="location.href='https://omkdrip.com'">SHOP OMK</button>
-  <div class="smallnote">Tip: Tap “Spotify” or “Apple Music” first 👆</div>
+<button class="shop" onclick="location.href='https://omkdrip.com'">SHOP OMK</button>
 
-  <div class="footer">© 2026 Omo Taker • OMK Records</div>
+<div class="section">FOLLOW</div>
+
+<div class="platforms">
+<a class="btn instagram" href="https://www.instagram.com/iam_omotaker" target="_blank">
+FOLLOW ON INSTAGRAM
+</a>
+
+<a class="btn tiktok" href="https://www.tiktok.com/@iam.omotaker" target="_blank">
+FOLLOW ON TIKTOK
+</a>
+</div>
+
+<div class="footer">© 2026 Omo Taker • OMK Records</div>
+
 </div>
 </body>
 </html>
