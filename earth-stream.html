@@ -14,12 +14,14 @@
   --line:#ececec;
   --shadow:0 30px 80px rgba(0,0,0,.9);
   --radius:26px;
+  --radius2:18px;
 
   --cta:#0b0b0b;
   --good:#0aa84f;
 }
 
 *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
+
 body{
   min-height:100vh;
   background:var(--bg);
@@ -79,7 +81,7 @@ h1{font-size:22px;font-weight:1000;letter-spacing:.5px;color:var(--text);}
   font-weight:800;
 }
 
-/* STRONG HOOK CARD */
+/* HOOK (SHORT) */
 .hook{
   margin:12px 0 14px;
   padding:14px;
@@ -100,61 +102,10 @@ h1{font-size:22px;font-weight:1000;letter-spacing:.5px;color:var(--text);}
   color:#333;
   line-height:1.35;
 }
-.badges{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top:10px;
-}
-.badge{
-  font-size:12px;
-  font-weight:900;
-  padding:8px 10px;
-  border-radius:999px;
-  border:1px solid var(--line);
-  background:#fff;
-  color:#111;
-}
-
-/* MINI “TEST” */
-.test{
-  margin-top:12px;
-  padding-top:12px;
-  border-top:1px dashed #e7e7e7;
-}
-.q{
-  font-size:12px;
-  font-weight:1000;
-  color:#111;
-  letter-spacing:.6px;
-  margin-bottom:8px;
-}
-.choices{
-  display:grid;
-  gap:8px;
-}
-.choice{
-  border:1px solid var(--line);
-  border-radius:14px;
-  padding:10px 12px;
-  background:#fff;
-  text-align:left;
-  font-size:13px;
-  font-weight:800;
-  color:#111;
-  cursor:pointer;
-  transition:.15s;
-}
-.choice:active{transform:scale(.99);}
-.choice small{display:block;font-size:12px;color:#555;font-weight:700;margin-top:3px;line-height:1.25;}
-.choice.selected{
-  border-color:#111;
-  box-shadow:0 10px 24px rgba(0,0,0,.08);
-}
 
 /* CTA */
 .cta{
-  margin-top:12px;
+  margin-top:10px;
   display:grid;
   gap:10px;
 }
@@ -224,42 +175,18 @@ h1{font-size:22px;font-weight:1000;letter-spacing:.5px;color:var(--text);}
   <div class="artist">Omo Taker • OMK Records</div>
   <div class="status">Out Now 🌍</div>
 
-  <!-- STRONG MESSAGE -->
+  <!-- SHORT HOOK (NO TEST, NO EXTRA SECTIONS) -->
   <div class="hook">
     <h2>⚠️ Quick question…</h2>
     <p>
       If the Earth could talk, what would it say to us right now?<br>
-      This song is a message — play it once and tell me if you felt it.
+      Play it once — if you don’t feel it in 30 seconds, skip.
     </p>
-
-    <div class="badges">
-      <div class="badge">🌍 Deep</div>
-      <div class="badge">🖤 Emotional</div>
-      <div class="badge">🐺 OMK Vibe</div>
-      <div class="badge">🎧 Headphones recommended</div>
-    </div>
-
-    <!-- mini test -->
-    <div class="test">
-      <div class="q">BEFORE YOU CLICK: what mood are you in?</div>
-      <div class="choices" id="choices">
-        <div class="choice" data-v="A">A) Calm & Reflective
-          <small>This song will hit you softly… then deep.</small>
-        </div>
-        <div class="choice" data-v="B">B) Broken but still standing
-          <small>Play it. Let it speak for you.</small>
-        </div>
-        <div class="choice" data-v="C">C) I just want something different
-          <small>Give me 30 seconds. If you don’t feel it, skip.</small>
-        </div>
-      </div>
-    </div>
   </div>
 
   <!-- ONLY ONE ACTION -->
   <div class="cta">
     <a class="btn spotify"
-       id="spotifyBtn"
        href="https://open.spotify.com/track/7mifEtIK9OPGWD9EyOOLnq?si=0sQivtDWRvm6Oytb57phdg"
        target="_blank" rel="noopener">
       <span class="icon">
@@ -276,20 +203,5 @@ h1{font-size:22px;font-weight:1000;letter-spacing:.5px;color:var(--text);}
   <div class="footer">© 2026 Omo Taker • OMK Records</div>
 
 </div>
-
-<script>
-/* tiny interaction = makes page feel “alive”, improves intent */
-(function(){
-  const wrap = document.getElementById("choices");
-  if(!wrap) return;
-  wrap.addEventListener("click", (e)=>{
-    const c = e.target.closest(".choice");
-    if(!c) return;
-    document.querySelectorAll(".choice").forEach(x=>x.classList.remove("selected"));
-    c.classList.add("selected");
-  });
-})();
-</script>
-
 </body>
 </html>
