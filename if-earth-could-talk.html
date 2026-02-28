@@ -13,7 +13,15 @@
   --muted:#5c5c5c;
   --line:#ececec;
   --shadow:0 30px 80px rgba(0,0,0,.9);
+
   --radius:26px;
+  --radius2:18px;
+
+  --spotify:#0b0b0b;
+  --apple:#f2f2f2;
+  --dark:#0b0b0b;
+  --ig:#e1306c;
+  --tiktok:#0b0b0b;
 }
 
 *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
@@ -35,27 +43,41 @@ body{
   padding:18px;
   box-shadow:var(--shadow);
   text-align:center;
+  border:1px solid rgba(255,255,255,.06);
 }
+
+/* BRAND */
+.brand{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin-bottom:14px;
+}
+.logo{
+  width:44px;height:44px;border-radius:12px;
+  background:#000;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-weight:900;
+  overflow:hidden;
+}
+.logo img{width:100%;height:100%;object-fit:cover;}
+.brandtext{text-align:left;line-height:1.05;}
+.brandtext b{display:block;font-size:14px;}
+.brandtext span{display:block;font-size:12px;color:var(--muted);}
 
 /* COVER */
 .cover{
   width:100%;
+  max-height:360px;
+  object-fit:cover;
   border-radius:18px;
   margin-bottom:14px;
 }
 
-h1{
-  font-size:22px;
-  font-weight:1000;
-  letter-spacing:.5px;
-}
-
-.artist{
-  font-size:13px;
-  color:#444;
-  margin-top:6px;
-}
-
+/* TITLE */
+h1{font-size:22px;font-weight:1000;letter-spacing:.5px;color:var(--text);}
+.artist{font-size:13px;color:#444;margin-top:6px;}
 .status{
   font-size:13px;
   color:#0aa84f;
@@ -63,32 +85,93 @@ h1{
   font-weight:700;
 }
 
+/* SECTION */
+.section{
+  text-align:left;
+  margin:10px 4px 10px;
+  color:#111;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:1px;
+  opacity:.75;
+}
+
+/* BUTTONS */
+.platforms{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+  margin-bottom:14px;
+}
+
 .btn{
-  display:block;
   text-decoration:none;
-  margin:10px 0;
-  padding:14px;
   border-radius:16px;
+  padding:14px;
   font-weight:900;
   font-size:14px;
-  background:#111;
-  color:#fff;
+  letter-spacing:.6px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border:1px solid var(--line);
+  transition:.15s;
+  min-height:54px;
 }
 
 .btn:active{transform:scale(.98);}
 
-.footer{
-  margin-top:16px;
-  font-size:12px;
-  color:#777;
+.icon{
+  width:34px;height:34px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.12);
+  flex:0 0 34px;
 }
+.icon img{width:18px;height:18px;}
+
+/* COLORS */
+.spotify{background:var(--spotify);color:#fff;border-color:var(--spotify);}
+.apple{background:var(--apple);color:#000;border-color:#e7e7e7;}
+.dark{background:var(--dark);color:#fff;border-color:var(--dark);}
+.instagram{background:var(--ig);color:#fff;border-color:var(--ig);}
+.tiktok{background:var(--tiktok);color:#fff;border-color:var(--tiktok);}
+
+/* SHOP */
+.shop{
+  width:100%;
+  padding:15px;
+  border-radius:999px;
+  font-size:15px;
+  font-weight:1000;
+  border:none;
+  background:#000;
+  color:#fff;
+  cursor:pointer;
+  margin-top:10px;
+}
+.shop:active{transform:scale(.99);}
+
+.footer{margin-top:14px;font-size:12px;color:#777;}
+.smallnote{font-size:12px;color:#777;margin-top:6px;}
 </style>
 </head>
 
 <body>
-
 <div class="wrap">
 
+  <!-- BRAND -->
+  <div class="brand">
+    <div class="logo">
+      <img src="https://raw.githubusercontent.com/omk-store/omk-website/main/omk-logo.png"
+           onerror="this.style.display='none'; this.parentElement.textContent='OMK';">
+    </div>
+    <div class="brandtext">
+      <b>OMK Records</b>
+      <span>Official links</span>
+    </div>
+  </div>
+
+  <!-- COVER -->
   <img
     src="https://raw.githubusercontent.com/omk-store/omk-website/main/27475981-5AEA-4007-BC96-AA39B96FCC87.png"
     class="cover"
@@ -99,21 +182,59 @@ h1{
   <div class="artist">Omo Taker • OMK Records</div>
   <div class="status">Out Now 🌍</div>
 
-  <a class="btn" href="https://open.spotify.com/track/7mifEtIK9OPGWD9EyOOLnq" target="_blank">
-    PLAY ON SPOTIFY
-  </a>
+  <div class="section">LISTEN NOW</div>
+  <div class="platforms">
+    <a class="btn spotify" href="https://open.spotify.com/track/7mifEtIK9OPGWD9EyOOLnq?si=0sQivtDWRvm6Oytb57phdg" target="_blank">
+      <span class="icon">
+        <img src="https://cdn.simpleicons.org/spotify/ffffff">
+      </span>
+      SPOTIFY
+    </a>
 
-  <a class="btn" href="https://www.boomplay.com/share/music/240458081" target="_blank">
-    STREAM ON BOOMPLAY
-  </a>
+    <a class="btn apple" href="#" style="opacity:.6;pointer-events:none;">
+      <span class="icon">
+        <img src="https://cdn.simpleicons.org/applemusic/ffffff">
+      </span>
+      APPLE MUSIC (COMING SOON)
+    </a>
+  </div>
 
-  <a class="btn" href="https://audiomack.com/iam_omotaker/song/if-earth-could-talk" target="_blank">
-    STREAM ON AUDIOMACK
-  </a>
+  <div class="section">STREAM MORE</div>
+  <div class="platforms">
+    <a class="btn dark" href="https://www.boomplay.com/share/music/240458081?srModel=COPYLINK&share_content=music&share_channel=copylink&share_platform=ios&srList=IOS" target="_blank">
+      <span class="icon">
+        <img src="https://cdn.simpleicons.org/musicbrainz/ffffff">
+      </span>
+      BOOMPLAY
+    </a>
+
+    <a class="btn dark" href="https://audiomack.com/iam_omotaker/song/if-earth-could-talk?share-user-id=111838460" target="_blank">
+      <span class="icon">
+        <img src="https://cdn.simpleicons.org/audiomack/ffffff">
+      </span>
+      AUDIOMACK
+    </a>
+
+    <a class="btn instagram" href="https://www.instagram.com/iam__omotaker" target="_blank">
+      <span class="icon">
+        <img src="https://cdn.simpleicons.org/instagram/ffffff">
+      </span>
+      FOLLOW ON INSTAGRAM
+    </a>
+
+    <a class="btn tiktok" href="https://www.tiktok.com/@iam.omotaker?_r=1&_t=ZS-936WgFc6Oil" target="_blank">
+      <span class="icon">
+        <img src="https://cdn.simpleicons.org/tiktok/ffffff">
+      </span>
+      FOLLOW ON TIKTOK
+    </a>
+  </div>
+
+  <button class="shop" onclick="location.href='https://omkdrip.com'">SHOP OMK</button>
+  <div class="smallnote">Tip: Tap “Spotify” first 👆</div>
 
   <div class="footer">© 2026 Omo Taker • OMK Records</div>
 
 </div>
-
 </body>
 </html>
