@@ -3,205 +3,110 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>If Earth Could Talk — Stream on Spotify | Omo Taker</title>
+<title>If Earth Could Talk — Stream on Spotify</title>
 
 <style>
-:root{
-  --bg:#000;
-  --card:#ffffff;
-  --text:#0a0a0a;
-  --muted:#5c5c5c;
-  --line:#ececec;
-  --shadow:0 30px 80px rgba(0,0,0,.9);
-  --radius:26px;
-  --radius2:18px;
-
-  --cta:#0b0b0b;
-  --good:#0aa84f;
-}
-
-*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
-
 body{
-  min-height:100vh;
-  background:var(--bg);
-  padding:30px 18px;
+  margin:0;
+  background:#000;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
   display:flex;
   justify-content:center;
   align-items:center;
+  min-height:100vh;
+  padding:20px;
 }
 
-.wrap{
+.card{
   width:100%;
   max-width:420px;
-  background:var(--card);
-  border-radius:var(--radius);
+  background:#fff;
+  border-radius:26px;
   padding:18px;
-  box-shadow:var(--shadow);
   text-align:center;
-  border:1px solid rgba(255,255,255,.06);
+  box-shadow:0 30px 80px rgba(0,0,0,.9);
 }
 
-/* BRAND */
-.brand{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  margin-bottom:14px;
-}
-.logo{
-  width:44px;height:44px;border-radius:12px;
-  background:#000;
-  display:flex;align-items:center;justify-content:center;
-  color:#fff;font-weight:900;
-  overflow:hidden;
-}
-.logo img{width:100%;height:100%;object-fit:cover;}
-.brandtext{text-align:left;line-height:1.05;}
-.brandtext b{display:block;font-size:14px;}
-.brandtext span{display:block;font-size:12px;color:var(--muted);}
-
-/* COVER */
 .cover{
   width:100%;
-  max-height:360px;
-  object-fit:cover;
   border-radius:18px;
   margin-bottom:14px;
 }
 
-/* TITLE */
-h1{font-size:22px;font-weight:1000;letter-spacing:.5px;color:var(--text);}
-.artist{font-size:13px;color:#444;margin-top:6px;}
-.status{
-  font-size:13px;
-  color:var(--good);
-  margin:10px 0 12px;
-  font-weight:800;
+h1{
+  font-size:20px;
+  font-weight:900;
+  margin-bottom:4px;
 }
 
-/* HOOK (SHORT) */
-.hook{
-  margin:12px 0 14px;
-  padding:14px;
-  border:1px solid var(--line);
-  border-radius:18px;
-  text-align:left;
-  background:linear-gradient(180deg,#ffffff 0%, #fafafa 100%);
+.artist{
+  font-size:13px;
+  color:#555;
 }
-.hook h2{
+
+.message{
+  margin:14px 0 16px;
   font-size:14px;
-  font-weight:1000;
-  letter-spacing:.2px;
-  color:#111;
-  margin-bottom:6px;
-}
-.hook p{
-  font-size:13px;
-  color:#333;
-  line-height:1.35;
+  line-height:1.4;
+  color:#222;
 }
 
-/* CTA */
-.cta{
-  margin-top:10px;
-  display:grid;
-  gap:10px;
-}
 .btn{
+  display:block;
   text-decoration:none;
-  border-radius:18px;
-  padding:16px 14px;
-  font-weight:1000;
-  font-size:15px;
-  letter-spacing:.6px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  border:1px solid var(--line);
-  transition:.15s;
-  min-height:58px;
-}
-.btn:active{transform:scale(.98);}
-.spotify{
-  background:var(--cta);
+  background:#000;
   color:#fff;
-  border-color:var(--cta);
+  padding:16px;
+  border-radius:18px;
+  font-weight:900;
+  font-size:15px;
+  letter-spacing:.5px;
 }
-.icon{
-  width:36px;height:36px;border-radius:14px;
-  display:flex;align-items:center;justify-content:center;
-  background:rgba(255,255,255,.12);
-  flex:0 0 36px;
-}
-.icon img{width:18px;height:18px;}
 
 .note{
+  margin-top:10px;
   font-size:12px;
   color:#666;
-  line-height:1.4;
-  margin-top:2px;
 }
 
-.footer{margin-top:14px;font-size:12px;color:#777;}
+.footer{
+  margin-top:12px;
+  font-size:12px;
+  color:#777;
+}
 </style>
 </head>
 
 <body>
-<div class="wrap">
 
-  <!-- BRAND -->
-  <div class="brand">
-    <div class="logo">
-      <img src="https://raw.githubusercontent.com/omk-store/omk-website/main/omk-logo.png"
-           onerror="this.style.display='none'; this.parentElement.textContent='OMK';">
-    </div>
-    <div class="brandtext">
-      <b>OMK Records</b>
-      <span>Official Spotify stream</span>
-    </div>
-  </div>
+<div class="card">
 
-  <!-- COVER -->
-  <img
-    src="https://raw.githubusercontent.com/omk-store/omk-website/main/27475981-5AEA-4007-BC96-AA39B96FCC87.png"
-    class="cover"
-    alt="If Earth Could Talk Cover"
-  >
+  <img src="https://raw.githubusercontent.com/omk-store/omk-website/main/27475981-5AEA-4007-BC96-AA39B96FCC87.png"
+       class="cover">
 
   <h1>IF EARTH COULD TALK</h1>
   <div class="artist">Omo Taker • OMK Records</div>
-  <div class="status">Out Now 🌍</div>
 
-  <!-- SHORT HOOK (NO TEST, NO EXTRA SECTIONS) -->
-  <div class="hook">
-    <h2>⚠️ Quick question…</h2>
-    <p>
-      If the Earth could talk, what would it say to us right now?<br>
-      Play it once — if you don’t feel it in 30 seconds, skip.
-    </p>
+  <div class="message">
+    If the Earth could talk… what would it say to us right now?<br>
+    Play it once. If you don’t feel it in 30 seconds, skip.
   </div>
 
-  <!-- ONLY ONE ACTION -->
-  <div class="cta">
-    <a class="btn spotify"
-       href="https://open.spotify.com/track/7mifEtIK9OPGWD9EyOOLnq?si=0sQivtDWRvm6Oytb57phdg"
-       target="_blank" rel="noopener">
-      <span class="icon">
-        <img src="https://cdn.simpleicons.org/spotify/ffffff" alt="Spotify">
-      </span>
-      STREAM ON SPOTIFY
-    </a>
+  <a class="btn"
+     href="https://open.spotify.com/track/7mifEtIK9OPGWD9EyOOLnq"
+     target="_blank">
+     STREAM ON SPOTIFY
+  </a>
 
-    <div class="note">
-      Tip: Let it play for 30+ seconds so it counts. 🙏🏾
-    </div>
+  <div class="note">
+    Let it play for 30+ seconds so it counts.
   </div>
 
-  <div class="footer">© 2026 Omo Taker • OMK Records</div>
+  <div class="footer">
+    © 2026 Omo Taker
+  </div>
 
 </div>
+
 </body>
 </html>
