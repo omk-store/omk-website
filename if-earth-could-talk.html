@@ -7,43 +7,95 @@
 
 <style>
 :root{
-  --bg:#000;
-  --card:#ffffff;
-  --text:#0a0a0a;
-  --muted:#5c5c5c;
-  --line:#ececec;
-  --shadow:0 30px 80px rgba(0,0,0,.9);
+  --bg:#05060a;
+  --card:rgba(255,255,255,.08);
+  --card2:rgba(255,255,255,.06);
+  --text:#f5f7ff;
+  --muted:rgba(245,247,255,.72);
+  --line:rgba(255,255,255,.16);
+  --shadow:0 40px 120px rgba(0,0,0,.65);
 
-  --radius:26px;
+  --radius:28px;
   --radius2:18px;
 
-  --spotify:#0b0b0b;
-  --apple:#f2f2f2;
-  --dark:#0b0b0b;
-  --ig:#e1306c;
-  --tiktok:#0b0b0b;
+  /* Futuristic accent gradient */
+  --g1: rgba(120, 140, 255, .55);
+  --g2: rgba(255, 100, 220, .45);
+  --g3: rgba(80, 255, 210, .35);
 }
 
 *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
+a{text-decoration:none;color:inherit}
 
 body{
   min-height:100vh;
-  background:var(--bg);
   padding:30px 18px;
   display:flex;
   justify-content:center;
   align-items:center;
+  background:
+    radial-gradient(900px 550px at 12% 10%, rgba(120,140,255,.22), transparent 55%),
+    radial-gradient(700px 500px at 88% 20%, rgba(255,100,220,.18), transparent 60%),
+    radial-gradient(800px 600px at 50% 90%, rgba(80,255,210,.14), transparent 55%),
+    linear-gradient(180deg, #04050a 0%, #070914 60%, #04050a 100%);
+  overflow-x:hidden;
 }
 
+/* subtle animated aurora */
+.bg-aurora{
+  position:fixed; inset:-40%;
+  background:
+    conic-gradient(from 180deg at 50% 50%,
+      rgba(120,140,255,.20),
+      rgba(255,100,220,.16),
+      rgba(80,255,210,.14),
+      rgba(120,140,255,.20));
+  filter: blur(70px);
+  opacity:.55;
+  animation: drift 16s linear infinite;
+  z-index:-2;
+}
+@keyframes drift{
+  0%{transform:translate3d(-2%, -1%, 0) rotate(0deg);}
+  50%{transform:translate3d(2%, 1.5%, 0) rotate(180deg);}
+  100%{transform:translate3d(-2%, -1%, 0) rotate(360deg);}
+}
+
+/* CARD with animated neon border */
 .wrap{
   width:100%;
   max-width:420px;
-  background:var(--card);
   border-radius:var(--radius);
   padding:18px;
+  position:relative;
   box-shadow:var(--shadow);
-  text-align:center;
-  border:1px solid rgba(255,255,255,.06);
+  background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+  border:1px solid rgba(255,255,255,.14);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+}
+
+.wrap::before{
+  content:"";
+  position:absolute; inset:-1px;
+  border-radius:calc(var(--radius) + 1px);
+  padding:1px;
+  background: linear-gradient(120deg, var(--g1), var(--g2), var(--g3), var(--g1));
+  background-size: 220% 220%;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: borderFlow 6s linear infinite;
+  opacity:.9;
+  pointer-events:none;
+}
+
+@keyframes borderFlow{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
 
 /* BRAND */
@@ -55,15 +107,17 @@ body{
   margin-bottom:14px;
 }
 .logo{
-  width:44px;height:44px;border-radius:12px;
-  background:#000;
+  width:46px;height:46px;border-radius:14px;
+  background:rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.14);
   display:flex;align-items:center;justify-content:center;
   color:#fff;font-weight:900;
   overflow:hidden;
+  box-shadow: 0 12px 26px rgba(0,0,0,.35);
 }
 .logo img{width:100%;height:100%;object-fit:cover;}
 .brandtext{text-align:left;line-height:1.05;}
-.brandtext b{display:block;font-size:14px;}
+.brandtext b{display:block;font-size:14px;letter-spacing:.4px;color:var(--text);}
 .brandtext span{display:block;font-size:12px;color:var(--muted);}
 
 /* COVER */
@@ -71,29 +125,43 @@ body{
   width:100%;
   max-height:360px;
   object-fit:cover;
-  border-radius:18px;
-  margin:bottom:14px;
+  border-radius:20px;
+  margin-bottom:14px;
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow: 0 24px 60px rgba(0,0,0,.5);
 }
 
 /* TITLE */
-h1{font-size:22px;font-weight:1000;letter-spacing:.5px;color:var(--text);}
-.artist{font-size:13px;color:#444;margin-top:6px;}
+h1{
+  font-size:22px;
+  font-weight:1000;
+  letter-spacing:1px;
+  color:var(--text);
+  text-transform:uppercase;
+}
+.artist{font-size:13px;color:var(--muted);margin-top:6px;}
 .status{
   font-size:13px;
-  color:#0aa84f;
   margin:10px 0 18px;
-  font-weight:700;
+  font-weight:800;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(80,255,210,.12);
+  border:1px solid rgba(80,255,210,.22);
+  color:rgba(245,247,255,.9);
 }
 
 /* SECTION */
 .section{
   text-align:left;
   margin:10px 4px 10px;
-  color:#111;
+  color:rgba(245,247,255,.75);
   font-size:12px;
   font-weight:900;
-  letter-spacing:1px;
-  opacity:.75;
+  letter-spacing:1.3px;
 }
 
 /* BUTTONS */
@@ -105,36 +173,46 @@ h1{font-size:22px;font-weight:1000;letter-spacing:.5px;color:var(--text);}
 }
 
 .btn{
-  text-decoration:none;
-  border-radius:16px;
-  padding:14px;
-  font-weight:900;
+  border-radius:18px;
+  padding:14px 14px;
+  font-weight:950;
   font-size:14px;
-  letter-spacing:.6px;
+  letter-spacing:.8px;
   display:flex;
   align-items:center;
   gap:10px;
-  border:1px solid var(--line);
-  transition:.15s;
-  min-height:54px;
+  min-height:56px;
+
+  background:rgba(0,0,0,.35);
+  color:var(--text);
+  border:1px solid rgba(255,255,255,.14);
+  backdrop-filter: blur(10px) saturate(140%);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  box-shadow: 0 14px 34px rgba(0,0,0,.38);
+  transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease;
 }
 
-.btn:active{transform:scale(.98);}
+.btn:hover{
+  border-color: rgba(255,255,255,.22);
+  box-shadow: 0 18px 44px rgba(0,0,0,.46);
+}
+.btn:active{transform:scale(.985);}
 
 .icon{
-  width:34px;height:34px;border-radius:12px;
+  width:36px;height:36px;border-radius:14px;
   display:flex;align-items:center;justify-content:center;
-  background:rgba(255,255,255,.12);
-  flex:0 0 34px;
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.14);
+  flex:0 0 36px;
 }
 .icon img{width:18px;height:18px;}
 
-/* COLORS */
-.spotify{background:var(--spotify);color:#fff;border-color:var(--spotify);}
-.apple{background:var(--apple);color:#000;border-color:#e7e7e7;}
-.dark{background:var(--dark);color:#fff;border-color:var(--dark);}
-.instagram{background:var(--ig);color:#fff;border-color:var(--ig);}
-.tiktok{background:var(--tiktok);color:#fff;border-color:var(--tiktok);}
+/* FUTURE ACCENT (same for all, but slightly different glow per platform) */
+.spotify{ box-shadow: 0 14px 34px rgba(0,0,0,.38), 0 0 0 1px rgba(120,140,255,.08) inset; }
+.apple  { box-shadow: 0 14px 34px rgba(0,0,0,.38), 0 0 0 1px rgba(255,100,220,.08) inset; }
+.dark   { box-shadow: 0 14px 34px rgba(0,0,0,.38), 0 0 0 1px rgba(80,255,210,.08) inset; }
+.instagram{ box-shadow: 0 14px 34px rgba(0,0,0,.38), 0 0 0 1px rgba(255,100,220,.08) inset; }
+.tiktok{ box-shadow: 0 14px 34px rgba(0,0,0,.38), 0 0 0 1px rgba(120,140,255,.08) inset; }
 
 /* SHOP */
 .shop{
@@ -143,20 +221,25 @@ h1{font-size:22px;font-weight:1000;letter-spacing:.5px;color:var(--text);}
   border-radius:999px;
   font-size:15px;
   font-weight:1000;
-  border:none;
-  background:#000;
-  color:#fff;
+  border:1px solid rgba(255,255,255,.16);
+  background:linear-gradient(120deg, rgba(120,140,255,.22), rgba(255,100,220,.18), rgba(80,255,210,.14));
+  color:var(--text);
   cursor:pointer;
   margin-top:10px;
+  box-shadow: 0 18px 48px rgba(0,0,0,.45);
+  backdrop-filter: blur(10px) saturate(140%);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
 }
 .shop:active{transform:scale(.99);}
 
-.footer{margin-top:14px;font-size:12px;color:#777;}
-.smallnote{font-size:12px;color:#777;margin-top:6px;}
+.footer{margin-top:14px;font-size:12px;color:rgba(245,247,255,.55);}
+.smallnote{font-size:12px;color:rgba(245,247,255,.55);margin-top:8px;}
 </style>
 </head>
 
 <body>
+<div class="bg-aurora" aria-hidden="true"></div>
+
 <div class="wrap">
 
   <!-- BRAND -->
@@ -184,16 +267,16 @@ h1{font-size:22px;font-weight:1000;letter-spacing:.5px;color:var(--text);}
 
   <div class="section">LISTEN NOW</div>
   <div class="platforms">
-    <a class="btn spotify" href="https://open.spotify.com/track/7mifEtIK9OPGWD9EyOOLnq?si=0sQivtDWRvm6Oytb57phdg" target="_blank">
+    <a class="btn spotify" href="https://open.spotify.com/track/7mifEtIK9OPGWD9EyOOLnq?si=0sQivtDWRvm6Oytbb57phdg" target="_blank" rel="noopener">
       <span class="icon">
-        <img src="https://cdn.simpleicons.org/spotify/ffffff">
+        <img src="https://cdn.simpleicons.org/spotify/ffffff" alt="">
       </span>
       SPOTIFY
     </a>
 
-    <a class="btn apple" href="https://music.apple.com/ng/album/if-earth-could-talk/1881338853?i=1881338854" target="_blank">
+    <a class="btn apple" href="https://music.apple.com/ng/album/if-earth-could-talk/1881338853?i=1881338854" target="_blank" rel="noopener">
       <span class="icon">
-        <img src="https://cdn.simpleicons.org/applemusic/000000">
+        <img src="https://cdn.simpleicons.org/applemusic/ffffff" alt="">
       </span>
       APPLE MUSIC
     </a>
@@ -201,30 +284,30 @@ h1{font-size:22px;font-weight:1000;letter-spacing:.5px;color:var(--text);}
 
   <div class="section">STREAM MORE</div>
   <div class="platforms">
-    <a class="btn dark" href="https://www.boomplay.com/share/music/240458081?srModel=COPYLINK&share_content=music&share_channel=copylink&share_platform=ios&srList=IOS" target="_blank">
+    <a class="btn dark" href="https://www.boomplay.com/share/music/240458081?srModel=COPYLINK&share_content=music&share_channel=copylink&share_platform=ios&srList=IOS" target="_blank" rel="noopener">
       <span class="icon">
-        <img src="https://cdn.simpleicons.org/musicbrainz/ffffff">
+        <img src="https://cdn.simpleicons.org/musicbrainz/ffffff" alt="">
       </span>
       BOOMPLAY
     </a>
 
-    <a class="btn dark" href="https://audiomack.com/iam_omotaker/song/if-earth-could-talk?share-user-id=111838460" target="_blank">
+    <a class="btn dark" href="https://audiomack.com/iam_omotaker/song/if-earth-could-talk?share-user-id=111838460" target="_blank" rel="noopener">
       <span class="icon">
-        <img src="https://cdn.simpleicons.org/audiomack/ffffff">
+        <img src="https://cdn.simpleicons.org/audiomack/ffffff" alt="">
       </span>
       AUDIOMACK
     </a>
 
-    <a class="btn instagram" href="https://www.instagram.com/iam__omotaker" target="_blank">
+    <a class="btn instagram" href="https://www.instagram.com/iam__omotaker" target="_blank" rel="noopener">
       <span class="icon">
-        <img src="https://cdn.simpleicons.org/instagram/ffffff">
+        <img src="https://cdn.simpleicons.org/instagram/ffffff" alt="">
       </span>
       FOLLOW ON INSTAGRAM
     </a>
 
-    <a class="btn tiktok" href="https://www.tiktok.com/@iam.omotaker?_r=1&_t=ZS-936WgFc6Oil" target="_blank">
+    <a class="btn tiktok" href="https://www.tiktok.com/@iam.omotaker?_r=1&_t=ZS-936WgFc6Oil" target="_blank" rel="noopener">
       <span class="icon">
-        <img src="https://cdn.simpleicons.org/tiktok/ffffff">
+        <img src="https://cdn.simpleicons.org/tiktok/ffffff" alt="">
       </span>
       FOLLOW ON TIKTOK
     </a>
