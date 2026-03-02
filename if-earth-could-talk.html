@@ -7,317 +7,226 @@
 
 <style>
 :root{
-  --bg:#05060a;
-  --card:rgba(255,255,255,.08);
-  --card2:rgba(255,255,255,.06);
-  --text:#f5f7ff;
-  --muted:rgba(245,247,255,.72);
-  --line:rgba(255,255,255,.16);
-  --shadow:0 40px 120px rgba(0,0,0,.65);
-
+  --bg:#06070d;
+  --card:rgba(255,255,255,.06);
+  --text:#ffffff;
+  --muted:rgba(255,255,255,.65);
+  --border:rgba(255,255,255,.18);
   --radius:28px;
-  --radius2:18px;
-
-  /* Futuristic accent gradient */
-  --g1: rgba(120, 140, 255, .55);
-  --g2: rgba(255, 100, 220, .45);
-  --g3: rgba(80, 255, 210, .35);
 }
 
-*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
-a{text-decoration:none;color:inherit}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+}
 
 body{
   min-height:100vh;
-  padding:30px 18px;
   display:flex;
   justify-content:center;
   align-items:center;
+  padding:30px 16px;
   background:
-    radial-gradient(900px 550px at 12% 10%, rgba(120,140,255,.22), transparent 55%),
-    radial-gradient(700px 500px at 88% 20%, rgba(255,100,220,.18), transparent 60%),
-    radial-gradient(800px 600px at 50% 90%, rgba(80,255,210,.14), transparent 55%),
-    linear-gradient(180deg, #04050a 0%, #070914 60%, #04050a 100%);
-  overflow-x:hidden;
+  radial-gradient(circle at 20% 20%, #5b6cff33, transparent 40%),
+  radial-gradient(circle at 80% 80%, #ff5bc233, transparent 40%),
+  linear-gradient(180deg,#04050a,#0a0d1a);
 }
 
-/* subtle animated aurora */
-.bg-aurora{
-  position:fixed; inset:-40%;
-  background:
-    conic-gradient(from 180deg at 50% 50%,
-      rgba(120,140,255,.20),
-      rgba(255,100,220,.16),
-      rgba(80,255,210,.14),
-      rgba(120,140,255,.20));
-  filter: blur(70px);
-  opacity:.55;
-  animation: drift 16s linear infinite;
-  z-index:-2;
-}
-@keyframes drift{
-  0%{transform:translate3d(-2%, -1%, 0) rotate(0deg);}
-  50%{transform:translate3d(2%, 1.5%, 0) rotate(180deg);}
-  100%{transform:translate3d(-2%, -1%, 0) rotate(360deg);}
-}
-
-/* CARD with animated neon border */
+/* CARD */
 .wrap{
   width:100%;
   max-width:420px;
   border-radius:var(--radius);
-  padding:18px;
-  position:relative;
-  box-shadow:var(--shadow);
-  background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
-  border:1px solid rgba(255,255,255,.14);
-  backdrop-filter: blur(14px) saturate(140%);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  padding:20px;
+  background:var(--card);
+  backdrop-filter:blur(16px);
+  border:1px solid var(--border);
+  text-align:center;
 }
 
-.wrap::before{
-  content:"";
-  position:absolute; inset:-1px;
-  border-radius:calc(var(--radius) + 1px);
-  padding:1px;
-  background: linear-gradient(120deg, var(--g1), var(--g2), var(--g3), var(--g1));
-  background-size: 220% 220%;
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  animation: borderFlow 6s linear infinite;
-  opacity:.9;
-  pointer-events:none;
-}
-
-@keyframes borderFlow{
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
-}
-
-/* BRAND */
+/* TOP BRAND */
 .brand{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  margin-bottom:14px;
+  margin-bottom:18px;
 }
-.logo{
-  width:46px;height:46px;border-radius:14px;
-  background:rgba(0,0,0,.35);
-  border:1px solid rgba(255,255,255,.14);
-  display:flex;align-items:center;justify-content:center;
-  color:#fff;font-weight:900;
-  overflow:hidden;
-  box-shadow: 0 12px 26px rgba(0,0,0,.35);
+
+.brand b{
+  display:block;
+  font-size:15px;
+  letter-spacing:.5px;
 }
-.logo img{width:100%;height:100%;object-fit:cover;}
-.brandtext{text-align:left;line-height:1.05;}
-.brandtext b{display:block;font-size:14px;letter-spacing:.4px;color:var(--text);}
-.brandtext span{display:block;font-size:12px;color:var(--muted);}
+
+.brand span{
+  font-size:12px;
+  color:var(--muted);
+}
 
 /* COVER */
 .cover{
   width:100%;
-  max-height:360px;
-  object-fit:cover;
   border-radius:20px;
-  margin-bottom:14px;
-  border:1px solid rgba(255,255,255,.14);
-  box-shadow: 0 24px 60px rgba(0,0,0,.5);
+  margin-bottom:16px;
+  border:1px solid var(--border);
 }
 
 /* TITLE */
 h1{
   font-size:22px;
-  font-weight:1000;
+  font-weight:900;
   letter-spacing:1px;
-  color:var(--text);
-  text-transform:uppercase;
-}
-.artist{font-size:13px;color:var(--muted);margin-top:6px;}
-.status{
-  font-size:13px;
-  margin:10px 0 18px;
-  font-weight:800;
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:8px 12px;
-  border-radius:999px;
-  background:rgba(80,255,210,.12);
-  border:1px solid rgba(80,255,210,.22);
-  color:rgba(245,247,255,.9);
 }
 
-/* SECTION */
+.artist{
+  font-size:13px;
+  color:var(--muted);
+  margin-top:6px;
+}
+
+/* OUT NOW CENTERED BADGE */
+.status{
+  display:inline-block;
+  margin:14px auto 20px auto;
+  padding:8px 16px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:700;
+  background:linear-gradient(90deg,#6a7bff,#ff5bc2);
+  color:#fff;
+}
+
+/* SECTION TITLE */
 .section{
-  text-align:left;
-  margin:10px 4px 10px;
-  color:rgba(245,247,255,.75);
+  margin:16px 0 10px;
   font-size:12px;
-  font-weight:900;
-  letter-spacing:1.3px;
+  letter-spacing:1.4px;
+  font-weight:800;
+  color:var(--muted);
 }
 
 /* BUTTONS */
 .platforms{
-  display:grid;
-  grid-template-columns:1fr;
+  display:flex;
+  flex-direction:column;
   gap:12px;
-  margin-bottom:14px;
 }
 
 .btn{
+  text-decoration:none;
+  padding:15px;
   border-radius:18px;
-  padding:14px 14px;
-  font-weight:950;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.05);
+  color:#fff;
+  font-weight:800;
   font-size:14px;
-  letter-spacing:.8px;
   display:flex;
   align-items:center;
+  justify-content:center;
   gap:10px;
-  min-height:56px;
-
-  background:rgba(0,0,0,.35);
-  color:var(--text);
-  border:1px solid rgba(255,255,255,.14);
-  backdrop-filter: blur(10px) saturate(140%);
-  -webkit-backdrop-filter: blur(10px) saturate(140%);
-  box-shadow: 0 14px 34px rgba(0,0,0,.38);
-  transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease;
+  transition:.2s ease;
 }
 
-.btn:hover{
-  border-color: rgba(255,255,255,.22);
-  box-shadow: 0 18px 44px rgba(0,0,0,.46);
+.btn:active{
+  transform:scale(.97);
 }
-.btn:active{transform:scale(.985);}
 
-.icon{
-  width:36px;height:36px;border-radius:14px;
-  display:flex;align-items:center;justify-content:center;
-  background:rgba(255,255,255,.10);
-  border:1px solid rgba(255,255,255,.14);
-  flex:0 0 36px;
+.icon img{
+  width:18px;
+  height:18px;
 }
-.icon img{width:18px;height:18px;}
-
-/* FUTURE ACCENT (same for all, but slightly different glow per platform) */
-.spotify{ box-shadow: 0 14px 34px rgba(0,0,0,.38), 0 0 0 1px rgba(120,140,255,.08) inset; }
-.apple  { box-shadow: 0 14px 34px rgba(0,0,0,.38), 0 0 0 1px rgba(255,100,220,.08) inset; }
-.dark   { box-shadow: 0 14px 34px rgba(0,0,0,.38), 0 0 0 1px rgba(80,255,210,.08) inset; }
-.instagram{ box-shadow: 0 14px 34px rgba(0,0,0,.38), 0 0 0 1px rgba(255,100,220,.08) inset; }
-.tiktok{ box-shadow: 0 14px 34px rgba(0,0,0,.38), 0 0 0 1px rgba(120,140,255,.08) inset; }
 
 /* SHOP */
 .shop{
   width:100%;
+  margin-top:16px;
   padding:15px;
   border-radius:999px;
-  font-size:15px;
-  font-weight:1000;
-  border:1px solid rgba(255,255,255,.16);
-  background:linear-gradient(120deg, rgba(120,140,255,.22), rgba(255,100,220,.18), rgba(80,255,210,.14));
-  color:var(--text);
+  border:none;
+  font-weight:900;
+  background:linear-gradient(90deg,#6a7bff,#ff5bc2,#33ffd5);
+  color:#fff;
   cursor:pointer;
-  margin-top:10px;
-  box-shadow: 0 18px 48px rgba(0,0,0,.45);
-  backdrop-filter: blur(10px) saturate(140%);
-  -webkit-backdrop-filter: blur(10px) saturate(140%);
 }
-.shop:active{transform:scale(.99);}
 
-.footer{margin-top:14px;font-size:12px;color:rgba(245,247,255,.55);}
-.smallnote{font-size:12px;color:rgba(245,247,255,.55);margin-top:8px;}
+.footer{
+  margin-top:18px;
+  font-size:12px;
+  color:var(--muted);
+}
 </style>
 </head>
 
 <body>
-<div class="bg-aurora" aria-hidden="true"></div>
 
 <div class="wrap">
 
-  <!-- BRAND -->
+  <!-- TOP CENTER BRAND -->
   <div class="brand">
-    <div class="logo">
-      <img src="https://raw.githubusercontent.com/omk-store/omk-website/main/omk-logo.png"
-           onerror="this.style.display='none'; this.parentElement.textContent='OMK';">
-    </div>
-    <div class="brandtext">
-      <b>OMK Records</b>
-      <span>Official links</span>
-    </div>
+    <b>OMK Records</b>
+    <span>Official links</span>
   </div>
 
   <!-- COVER -->
   <img
     src="https://raw.githubusercontent.com/omk-store/omk-website/main/27475981-5AEA-4007-BC96-AA39B96FCC87.png"
     class="cover"
-    alt="If Earth Could Talk Cover"
-  >
+    alt="If Earth Could Talk Cover">
 
   <h1>IF EARTH COULD TALK</h1>
   <div class="artist">Omo Taker • OMK Records</div>
+
+  <!-- CENTERED OUT NOW -->
   <div class="status">Out Now 🌍</div>
 
   <div class="section">LISTEN NOW</div>
   <div class="platforms">
-    <a class="btn spotify" href="https://open.spotify.com/track/7mifEtIK9OPGWD9EyOOLnq?si=0sQivtDWRvm6Oytbb57phdg" target="_blank" rel="noopener">
+
+    <a class="btn" href="https://open.spotify.com/track/7mifEtIK9OPGWD9EyOOLnq?si=0sQivtDWRvm6Oytb57phdg" target="_blank">
       <span class="icon">
-        <img src="https://cdn.simpleicons.org/spotify/ffffff" alt="">
+        <img src="https://cdn.simpleicons.org/spotify/ffffff">
       </span>
       SPOTIFY
     </a>
 
-    <a class="btn apple" href="https://music.apple.com/ng/album/if-earth-could-talk/1881338853?i=1881338854" target="_blank" rel="noopener">
+    <a class="btn" href="https://music.apple.com/ng/album/if-earth-could-talk/1881338853?i=1881338854" target="_blank">
       <span class="icon">
-        <img src="https://cdn.simpleicons.org/applemusic/ffffff" alt="">
+        <img src="https://cdn.simpleicons.org/applemusic/ffffff">
       </span>
       APPLE MUSIC
     </a>
+
   </div>
 
   <div class="section">STREAM MORE</div>
   <div class="platforms">
-    <a class="btn dark" href="https://www.boomplay.com/share/music/240458081?srModel=COPYLINK&share_content=music&share_channel=copylink&share_platform=ios&srList=IOS" target="_blank" rel="noopener">
-      <span class="icon">
-        <img src="https://cdn.simpleicons.org/musicbrainz/ffffff" alt="">
-      </span>
+
+    <a class="btn" href="https://www.boomplay.com/share/music/240458081" target="_blank">
       BOOMPLAY
     </a>
 
-    <a class="btn dark" href="https://audiomack.com/iam_omotaker/song/if-earth-could-talk?share-user-id=111838460" target="_blank" rel="noopener">
-      <span class="icon">
-        <img src="https://cdn.simpleicons.org/audiomack/ffffff" alt="">
-      </span>
+    <a class="btn" href="https://audiomack.com/iam_omotaker/song/if-earth-could-talk" target="_blank">
       AUDIOMACK
     </a>
 
-    <a class="btn instagram" href="https://www.instagram.com/iam__omotaker" target="_blank" rel="noopener">
-      <span class="icon">
-        <img src="https://cdn.simpleicons.org/instagram/ffffff" alt="">
-      </span>
+    <a class="btn" href="https://www.instagram.com/iam__omotaker" target="_blank">
       FOLLOW ON INSTAGRAM
     </a>
 
-    <a class="btn tiktok" href="https://www.tiktok.com/@iam.omotaker?_r=1&_t=ZS-936WgFc6Oil" target="_blank" rel="noopener">
-      <span class="icon">
-        <img src="https://cdn.simpleicons.org/tiktok/ffffff" alt="">
-      </span>
+    <a class="btn" href="https://www.tiktok.com/@iam.omotaker" target="_blank">
       FOLLOW ON TIKTOK
     </a>
+
   </div>
 
   <button class="shop" onclick="location.href='https://omkdrip.com'">SHOP OMK</button>
-  <div class="smallnote">Tip: Tap “Spotify” first 👆</div>
 
-  <div class="footer">© 2026 Omo Taker • OMK Records</div>
+  <!-- CENTERED FOOTER -->
+  <div class="footer">
+    © 2026 Omo Taker • OMK Records
+  </div>
 
 </div>
+
 </body>
 </html>
