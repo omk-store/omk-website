@@ -16,129 +16,169 @@
   --omk:#ff2d55;
 }
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--text);
-  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+html,body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif
+}
 a{text-decoration:none;color:inherit}
 
 /* HEADER */
 .header{
   position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--border);
   display:flex;align-items:center;justify-content:space-between;padding:12px 16px;
-  backdrop-filter:blur(8px);
 }
-.brand{font-weight:900;font-size:20px;letter-spacing:.5px}
-.h-icons{display:flex;gap:14px;align-items:center}
-.h-icons img{width:24px;height:24px;cursor:pointer}
-
-/* CART ICON */
-.cart-btn{position:relative;cursor:pointer}
-.cart-count{
-  position:absolute;top:-4px;right:-6px;background:var(--omk);color:#fff;
-  font-size:11px;font-weight:700;border-radius:50%;width:16px;height:16px;
-  display:flex;align-items:center;justify-content:center;
-}
+.brand{font-weight:900;font-size:20px}
 
 /* PAGE */
 .wrap{max-width:1100px;margin:32px auto;padding:0 16px}
 .grid{
-  display:grid;gap:34px;
+  display:grid;
+  gap:30px;
   grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  align-items:start;
 }
 
-/* PRODUCT CARD */
+/* CARD */
 .card{
-  background:#fff;border:1px solid var(--border);
-  border-radius:18px;box-shadow:var(--shadow);padding:14px
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:16px;
 }
-.gallery{display:flex;flex-direction:column;gap:16px}
+
+/* IMAGES */
+.gallery{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
 .gallery img{
-  width:100%;border-radius:14px;border:1px solid var(--border);object-fit:contain;
+  width:100%;
+  height:420px;
+  object-fit:cover;
+  border-radius:14px;
+  border:1px solid var(--border);
 }
 
 /* TEXT */
-.title{font-size:28px;font-weight:900;margin:6px 0 10px}
-.desc{color:var(--muted);line-height:1.7;margin-bottom:14px}
-.price{font-weight:900;font-size:20px;margin:6px 0 18px}
-.subtle{font-size:13px;color:var(--muted)}
+.title{
+  font-size:28px;
+  font-weight:900;
+  margin:6px 0 10px;
+}
+.desc{
+  color:var(--muted);
+  line-height:1.6;
+  margin-bottom:14px;
+}
+.price{
+  font-weight:900;
+  font-size:22px;
+  margin-bottom:14px;
+}
 
 /* SIZE */
-.sizes{display:flex;gap:10px;margin:10px 0 4px}
+.sizes{display:flex;gap:10px}
 .size{
-  padding:10px 16px;border:1px solid var(--border);border-radius:10px;
-  font-weight:800;cursor:pointer;background:#fff
+  padding:10px 14px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  font-weight:800;
+  cursor:pointer;
 }
-.size.active{background:#111;color:#fff;border-color:#111}
+.size.active{
+  background:#111;
+  color:#fff;
+}
 
 /* BUTTONS */
-.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+.btns{display:flex;gap:10px;margin-top:16px}
 .btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  padding:14px 18px;border-radius:12px;border:1px solid var(--border);
-  font-weight:900;cursor:pointer;background:#fff;
+  flex:1;
+  padding:14px;
+  border-radius:12px;
+  font-weight:900;
+  text-align:center;
+  border:1px solid var(--border);
 }
-.btn.primary{background:#111;color:#fff;border-color:#111}
-
-/* CART DRAWER */
-.cart-drawer-bg{
-  position:fixed;top:0;left:0;width:100%;height:100%;
-  background:rgba(0,0,0,.3);display:none;z-index:9000;
-}
-.cart-drawer{
-  position:fixed;right:0;top:0;width:300px;height:100%;
-  background:#fff;box-shadow:-4px 0 20px rgba(0,0,0,.15);
-  transform:translateX(100%);transition:.35s;z-index:9999;
-  padding:20px;display:flex;flex-direction:column;
-}
-.cart-drawer.open{transform:translateX(0)}
-.cart-title{font-weight:900;font-size:18px;margin-bottom:16px}
-.cart-items{flex:1;overflow-y:auto;padding-right:6px}
-.cart-item{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:10px 0;border-bottom:1px solid #eee;
-}
-.remove-btn{cursor:pointer;font-size:20px;font-weight:900;color:#333}
-.checkout-btn{
-  padding:12px 16px;background:#111;color:#fff;border-radius:10px;
-  text-align:center;font-weight:900;margin-top:14px;display:block;
+.btn.primary{
+  background:#111;
+  color:#fff;
 }
 
 /* CHAT */
 .chat-btn{
-  position:fixed;right:18px;bottom:20px;z-index:2000;
-  background:#fff;border:1px solid var(--border);
-  padding:10px 16px;border-radius:40px;display:flex;
-  align-items:center;gap:8px;font-weight:800;
+  position:fixed;
+  right:18px;
+  bottom:20px;
+  background:#fff;
+  border:1px solid var(--border);
+  padding:10px 16px;
+  border-radius:40px;
+  display:flex;
+  gap:8px;
+  font-weight:800;
   box-shadow:0 8px 20px rgba(0,0,0,.15);
 }
-.chat-btn img{width:20px;height:20px}
-
-/* FOOTER */
-footer{
-  margin:60px 0 90px;text-align:center;color:var(--muted);font-weight:600
-}
+.chat-btn img{width:20px}
 </style>
 </head>
 
 <body>
 
 <header class="header">
-  <div class="brand"><a href="index.html">OMK</a></div>
-
-  <div class="h-icons">
-    <div class="cart-btn" id="cartBtn">
-      <img src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png">
-      <div id="cartCount" class="cart-count" style="display:none">0</div>
-    </div>
-    <img id="menuBtn" src="https://cdn-icons-png.flaticon.com/512/56/56763.png">
-  </div>
+  <div class="brand">OMK</div>
 </header>
 
 <main class="wrap">
   <section class="grid">
 
-    <!-- IMAGE GALLERY -->
+    <!-- IMAGES -->
     <div class="card">
       <div class="gallery">
+
+        <!-- FRONT -->
         <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B95C37E-46F1-457A-9548-CF4E5B2A9227.png">
-        <img src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/742321CF-26
+
+        <!-- BACK -->
+        <img src="https://raw.githubusercontent.com/omk-store/omk-website/e2ac4e3fb062700d2c65c70072428af331f79c34/A06AFAB2-F860-4CC4-935F-7549589FC48D.png">
+
+      </div>
+    </div>
+
+    <!-- DETAILS -->
+    <div class="card">
+
+      <div class="title">OMK Chrome Tee 👕</div>
+
+      <div class="desc">
+        Premium chrome-styled OMK tee. Clean, bold and made for everyday drip.
+      </div>
+
+      <div class="price">₦80,000</div>
+
+      <div class="sizes">
+        <button class="size">S</button>
+        <button class="size active">M</button>
+        <button class="size">L</button>
+        <button class="size">XL</button>
+      </div>
+
+      <div class="btns">
+        <div class="btn">Add to Cart</div>
+        <div class="btn primary">Buy Now</div>
+      </div>
+
+    </div>
+
+  </section>
+</main>
+
+<!-- WHATSAPP -->
+<a class="chat-btn" target="_blank"
+href="https://wa.me/2347038112817?text=Hi%20OMK%2C%20I%20want%20to%20order%20the%20Chrome%20Tee">
+  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+  Chat
+</a>
+
+</body>
+</html>
