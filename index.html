@@ -163,7 +163,7 @@ header{
   width:min(1100px,92%);
   margin:25px auto 0;
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:1fr;
   gap:20px;
 }
 
@@ -180,7 +180,14 @@ header{
   transform:translateY(-5px);
 }
 
-.featured-card img{
+.featured-images{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2px;
+  background:#fff;
+}
+
+.featured-images img{
   width:100%;
   height:430px;
   object-fit:cover;
@@ -580,12 +587,12 @@ footer{
   }
 
   .featured-wrap{
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:1fr;
     gap:10px;
   }
 
-  .featured-card img{
-    height:260px;
+  .featured-images img{
+    height:300px;
   }
 
   .featured-body{
@@ -593,11 +600,11 @@ footer{
   }
 
   .featured-body h3{
-    font-size:14px;
+    font-size:16px;
   }
 
   .featured-price{
-    font-size:13px;
+    font-size:14px;
   }
 
   .new-drop{
@@ -724,34 +731,17 @@ footer{
       target="_blank"
       rel="noopener noreferrer">
 
-      <img
-        src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/877D5B7F-EE00-410D-822D-D7DA1A988BD2.jpeg"
-        alt="OMK Shadow Wolf Track Set Front">
+      <div class="featured-images">
 
-      <div class="featured-body">
+        <img
+          src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/877D5B7F-EE00-410D-822D-D7DA1A988BD2.jpeg"
+          alt="OMK Shadow Wolf Track Set Front">
 
-        <h3>
-          OMK Shadow Wolf Track Set
-        </h3>
-
-        <p class="featured-price">
-          ₦160,000
-        </p>
+        <img
+          src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/3105DCBB-36B9-4085-B711-283831402CCA.jpeg"
+          alt="OMK Shadow Wolf Track Set Back">
 
       </div>
-
-    </a>
-
-
-    <a
-      class="featured-card"
-      href="https://wa.me/2347038112817"
-      target="_blank"
-      rel="noopener noreferrer">
-
-      <img
-        src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/3105DCBB-36B9-4085-B711-283831402CCA.jpeg"
-        alt="OMK Shadow Wolf Track Set Back">
 
       <div class="featured-body">
 
