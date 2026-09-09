@@ -1,15 +1,16 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>OMK | Only My Kind</title>
 
 <style>
 :root{
-  --border:#e5e5e5;
+  --border:#eaeaea;
   --accent:#ff2d55;
   --dark:#000;
+  --soft:#f7f7f7;
 }
 
 *{
@@ -31,13 +32,7 @@ a{
   cursor:pointer;
 }
 
-img{
-  width:100%;
-  display:block;
-}
-
 /* HEADER */
-
 header{
   position:sticky;
   top:0;
@@ -48,13 +43,13 @@ header{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:13px 20px;
+  padding:12px 20px;
 }
 
 .logo{
-  font-weight:1000;
+  font-weight:900;
   font-size:22px;
-  letter-spacing:-.5px;
+  letter-spacing:-1px;
 }
 
 .header-icons{
@@ -64,177 +59,161 @@ header{
 }
 
 .header-icons img{
-  width:25px;
-  height:25px;
-  object-fit:contain;
+  width:26px;
+  height:26px;
+  cursor:pointer;
 }
 
 /* HERO */
-
 .hero{
   text-align:center;
-  padding:36px 16px 20px;
+  padding:36px 16px 0;
 }
 
 .hero img{
   width:min(420px,92%);
-  margin:auto;
-  border-radius:14px;
-  box-shadow:0 8px 25px rgba(0,0,0,.18);
+  border-radius:12px;
+  box-shadow:0 6px 20px rgba(0,0,0,.25);
 }
 
 .hero p{
   font-size:15px;
   color:#444;
-  margin-top:14px;
-  line-height:1.6;
+  margin-top:10px;
 }
 
-/* SECTIONS */
-
+/* GENERAL SECTION */
 .section{
-  padding:58px 16px;
+  padding:56px 0;
 }
 
 .section h2{
   text-align:center;
-  font-size:32px;
-  font-weight:1000;
-  margin-bottom:10px;
+  font-size:30px;
+  margin-bottom:26px;
+  font-weight:900;
   letter-spacing:-1px;
 }
 
-.section-sub{
-  text-align:center;
-  color:#777;
-  margin-bottom:32px;
-}
-
-/* =================================================
-FEATURED DROP
-================================================= */
-
-.featured-drop{
-  width:min(1100px,94%);
-  margin:auto;
-}
-
-.featured-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:22px;
-}
-
-.featured-card{
-  background:#080808;
-  color:#fff;
-  border-radius:22px;
-  overflow:hidden;
-  position:relative;
-  box-shadow:0 12px 35px rgba(0,0,0,.18);
-  transition:.3s ease;
-}
-
-.featured-card:hover{
-  transform:translateY(-6px);
-}
-
-.featured-image{
-  position:relative;
-  overflow:hidden;
-}
-
-.featured-image img{
-  height:460px;
-  object-fit:cover;
-  transition:.4s ease;
-}
-
-.featured-card:hover .featured-image img{
-  transform:scale(1.04);
-}
-
-.featured-badge{
-  position:absolute;
-  top:15px;
-  left:15px;
-  background:#ff2d55;
-  color:#fff;
-  padding:8px 13px;
-  border-radius:999px;
-  font-size:11px;
-  font-weight:1000;
-  letter-spacing:1px;
-  z-index:2;
-}
-
-.featured-info{
-  padding:22px;
-  text-align:center;
-}
-
-.featured-info h3{
-  font-size:24px;
-  font-weight:1000;
-  margin-bottom:8px;
-}
-
-.featured-price{
-  font-size:18px;
-  font-weight:900;
-  color:#ddd;
-  margin-bottom:18px;
-}
-
-.shop-button{
-  display:block;
-  width:100%;
-  padding:15px;
-  border-radius:999px;
-  background:#fff;
-  color:#000;
-  font-weight:1000;
-  font-size:13px;
-  letter-spacing:1px;
-  transition:.25s;
-}
-
-.shop-button:hover{
-  background:#ff2d55;
-  color:#fff;
-}
-
-/* =================================================
-ALL PRODUCTS
-================================================= */
-
-.all-products{
-  padding-top:30px;
-}
-
 .grid{
-  width:min(1100px,94%);
+  width:min(1100px,92%);
   margin:0 auto;
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
   gap:22px;
 }
 
+/* NEW DROP */
+.new-drop{
+  width:min(1100px,92%);
+  margin:55px auto 10px;
+  background:#000;
+  color:#fff;
+  border-radius:20px;
+  padding:32px 22px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.new-drop::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,45,85,.14),
+    transparent
+  );
+  pointer-events:none;
+}
+
+.new-drop-label{
+  display:inline-block;
+  background:var(--accent);
+  color:#fff;
+  padding:8px 16px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:1px;
+  margin-bottom:15px;
+}
+
+.new-drop h2{
+  margin-bottom:8px;
+  font-size:34px;
+  position:relative;
+}
+
+.new-drop p{
+  color:#ccc;
+  font-size:14px;
+  position:relative;
+}
+
+/* FEATURED PRODUCTS */
+.featured-wrap{
+  width:min(1100px,92%);
+  margin:25px auto 0;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+}
+
+.featured-card{
+  border-radius:18px;
+  overflow:hidden;
+  background:#fff;
+  border:1px solid var(--border);
+  box-shadow:0 8px 22px rgba(0,0,0,.08);
+  transition:.25s ease;
+}
+
+.featured-card:hover{
+  transform:translateY(-5px);
+}
+
+.featured-card img{
+  width:100%;
+  height:430px;
+  object-fit:cover;
+  display:block;
+  background:#f5f5f5;
+}
+
+.featured-body{
+  padding:18px;
+  text-align:center;
+}
+
+.featured-body h3{
+  font-size:20px;
+  font-weight:900;
+}
+
+.featured-price{
+  margin-top:7px;
+  color:#555;
+  font-weight:800;
+}
+
+/* PRODUCT CARD */
 .card{
   border:1px solid var(--border);
-  border-radius:16px;
+  border-radius:12px;
   overflow:hidden;
   background:#fff;
   text-align:center;
-  box-shadow:0 4px 12px rgba(0,0,0,.05);
+  box-shadow:0 4px 10px rgba(0,0,0,.05);
   transition:.25s;
   cursor:pointer;
   position:relative;
 }
 
 .card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 12px 25px rgba(0,0,0,.10);
+  transform:translateY(-4px);
 }
 
 .card-img img{
@@ -245,7 +224,7 @@ ALL PRODUCTS
 }
 
 .card-body{
-  padding:16px;
+  padding:14px;
 }
 
 .card-body h3{
@@ -255,125 +234,193 @@ ALL PRODUCTS
 
 .price{
   color:#444;
-  font-weight:800;
-  margin-top:8px;
+  font-weight:700;
+  margin-top:5px;
 }
 
+/* BADGE */
 .badge{
   position:absolute;
   top:10px;
   left:10px;
   background:var(--accent);
   color:#fff;
-  font-size:11px;
-  font-weight:900;
-  padding:7px 10px;
-  border-radius:999px;
+  font-size:12px;
+  font-weight:800;
+  padding:6px 10px;
+  border-radius:20px;
   z-index:2;
 }
 
-/* =================================================
-MUSIC
-================================================= */
-
+/* MUSIC */
 .music-section{
+  background:#f7f7f7;
+  padding:70px 16px;
   text-align:center;
-  padding:60px 16px;
-  background:#fafafa;
 }
 
-.music-section img{
+.music-section h2{
+  font-size:32px;
+  font-weight:900;
+  margin-bottom:25px;
+}
+
+.music-cover{
   width:min(350px,90%);
-  margin:auto;
-  border-radius:14px;
-  box-shadow:0 8px 20px rgba(0,0,0,.20);
+  border-radius:16px;
+  box-shadow:0 10px 25px rgba(0,0,0,.20);
 }
 
-.music-section h3{
+.music-title{
   margin-top:20px;
-  font-size:25px;
-  font-weight:1000;
+  font-size:28px;
+  font-weight:900;
 }
 
-.music-section p{
-  margin-top:8px;
-  font-weight:700;
+.music-subtitle{
+  margin-top:6px;
   color:#555;
+  font-weight:700;
 }
 
-.music-button{
-  margin-top:20px;
-  padding:14px 28px;
+.music-controls{
+  margin:25px auto 0;
+  width:min(430px,92%);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.music-btn{
+  display:block;
+  width:100%;
+  padding:15px 20px;
+  border-radius:999px;
+  font-weight:900;
+  font-size:15px;
+  border:none;
+  cursor:pointer;
+  text-align:center;
+}
+
+.play-btn{
   background:#000;
   color:#fff;
-  font-weight:900;
-  border-radius:999px;
-  display:inline-block;
 }
 
-/* =================================================
-ABOUT
-================================================= */
-
-#about{
-  background:#111;
+.shazam-btn{
+  background:#168cff;
   color:#fff;
-  text-align:center;
-  padding:75px 20px;
 }
 
-#about h2{
-  font-size:32px;
+.stream-btn{
+  background:#fff;
+  color:#111;
+  border:1px solid #ddd;
+}
+
+.music-status{
+  margin-top:13px;
+  font-size:12px;
+  color:#777;
+}
+
+/* JOIN EMAIL */
+.join{
+  width:min(900px,92%);
+  margin:40px auto;
+  background:#f9f9f9;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:26px;
+  text-align:center;
+}
+
+.join h2{
+  margin-bottom:8px;
+}
+
+.join p{
+  color:#666;
   margin-bottom:18px;
 }
 
-#about p{
-  max-width:700px;
-  margin:auto;
-  color:#ddd;
-  line-height:1.8;
+.join input{
+  width:70%;
+  padding:12px;
+  border-radius:10px;
+  border:1px solid var(--border);
 }
 
-/* =================================================
-SOCIAL
-================================================= */
+.join button{
+  margin-left:8px;
+  padding:12px 20px;
+  background:#000;
+  color:#fff;
+  font-weight:800;
+  border-radius:10px;
+  border:none;
+  cursor:pointer;
+}
 
+/* SOCIAL ICONS */
 .social-icons{
   text-align:center;
-  margin:45px auto 25px;
+  margin:40px auto 20px;
 }
 
 .social-icons img{
   width:42px;
   height:42px;
   margin:0 12px;
+  transition:.25s ease-in-out;
+}
+
+/* ABOUT */
+#about{
+  background:#111;
+  color:#fff;
+  text-align:center;
+  padding:70px 20px;
+  margin-top:40px;
+}
+
+#about h2{
+  font-size:30px;
+  margin-bottom:20px;
+  font-weight:900;
+}
+
+#about p{
+  max-width:700px;
+  margin:auto;
+  color:#ddd;
+  line-height:1.7;
 }
 
 /* FOOTER */
-
 footer{
   text-align:center;
-  padding:25px;
+  padding:20px;
   color:#666;
   font-size:13px;
 }
 
 /* WHATSAPP */
-
 .chat-btn{
   position:fixed;
   right:14px;
-  bottom:14px;
+  bottom:10px;
   z-index:50;
   background:#fff;
   border:1px solid var(--border);
   border-radius:40px;
-  padding:9px 15px;
+  padding:8px 14px;
   font-weight:900;
   display:flex;
   align-items:center;
   gap:8px;
-  box-shadow:0 5px 15px rgba(0,0,0,.12);
+  box-shadow:0 5px 12px rgba(0,0,0,.12);
 }
 
 .chat-dot{
@@ -384,75 +431,57 @@ footer{
 }
 
 /* MOBILE */
-
 @media(max-width:700px){
 
-  .featured-grid{
-    grid-template-columns:repeat(2,1fr);
+  .section{
+    padding:45px 0;
+  }
+
+  .section h2{
+    font-size:26px;
+  }
+
+  .featured-wrap{
+    grid-template-columns:1fr 1fr;
     gap:10px;
   }
 
-  .featured-card{
-    border-radius:15px;
+  .featured-card img{
+    height:260px;
   }
 
-  .featured-image img{
-    height:245px;
-  }
-
-  .featured-info{
-    padding:15px 10px;
-  }
-
-  .featured-info h3{
-    font-size:16px;
-    line-height:1.2;
-  }
-
-  .featured-price{
-    font-size:14px;
-    margin-bottom:12px;
-  }
-
-  .shop-button{
-    padding:12px 5px;
-    font-size:10px;
-  }
-
-  .grid{
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
-  }
-
-  .card-img img{
-    height:220px;
-  }
-
-  .card-body{
+  .featured-body{
     padding:12px 7px;
   }
 
-  .card-body h3{
+  .featured-body h3{
+    font-size:14px;
+  }
+
+  .featured-price{
     font-size:13px;
   }
 
-  .price{
-    font-size:13px;
-  }
-}
-
-@media(max-width:390px){
-
-  .featured-image img{
-    height:220px;
+  .new-drop{
+    padding:28px 16px;
   }
 
-  .grid{
-    gap:9px;
+  .new-drop h2{
+    font-size:28px;
   }
 
-  .card-img img{
-    height:195px;
+  .join input{
+    width:100%;
+    margin-bottom:10px;
+  }
+
+  .join button{
+    margin-left:0;
+    width:100%;
+  }
+
+  .music-title{
+    font-size:24px;
   }
 }
 </style>
@@ -460,243 +489,286 @@ footer{
 
 <body>
 
+<!-- HEADER -->
 <header>
-
-  <a class="logo">OMK</a>
+  <a class="logo" href="#top">OMK</a>
 
   <div class="header-icons">
     <img
       src="https://cdn-icons-png.flaticon.com/512/3737/3737151.png"
-      alt="cart"
-    >
+      alt="cart">
 
     <img
       src="https://cdn-icons-png.flaticon.com/512/56/56763.png"
-      alt="menu"
-    >
+      alt="menu">
   </div>
-
 </header>
 
 
 <!-- HERO -->
-
 <section class="hero" id="top">
 
   <img
     src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/5CB390F1-C296-439F-A95B-32679E9FE8BA.png"
-    alt="OMK hero"
-  >
+    alt="OMK hero">
 
   <p>
-    Streetwear born from truth, loyalty & the wolf spirit
+    Streetwear born from truth, loyalty & the wolf spirit 🐺
   </p>
 
 </section>
 
 
-<!-- =================================================
-FEATURED NEW DROP
-================================================= -->
+<!-- NEW DROP -->
+<section id="new-drop">
 
-<section class="section">
+  <div class="new-drop">
 
-  <h2>
-    NEW DROP
-  </h2>
+    <span class="new-drop-label">
+      NEW DROP
+    </span>
 
-  <p class="section-sub">
-    Only My Kind. Made to stand out.
-  </p>
+    <h2>
+      OMK NEW DROP
+    </h2>
 
+    <p>
+      Only My Kind. New energy. New pieces.
+    </p>
 
-  <div class="featured-drop">
-
-    <div class="featured-grid">
-
-      <!-- FEATURED PRODUCT 1 -->
-
-      <a
-        href="omk-voltage-jacket.html"
-        class="featured-card"
-      >
-
-        <div class="featured-image">
-
-          <div class="featured-badge">
-            FEATURED
-          </div>
-
-          <img
-            src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/4F6463CE-AC93-46AC-9E46-24CFC46DEE4C.png"
-            alt="OMK Voltage Jacket"
-          >
-
-        </div>
-
-        <div class="featured-info">
-
-          <h3>
-            OMK Voltage Jacket
-          </h3>
-
-          <div class="featured-price">
-            ₦90,000
-          </div>
-
-          <div class="shop-button">
-            SHOP NOW
-          </div>
-
-        </div>
-
-      </a>
+  </div>
 
 
-      <!-- FEATURED PRODUCT 2 -->
+  <!-- FEATURED SIDE BY SIDE -->
+  <div class="featured-wrap">
 
-      <a
-        href="omk-voltage-jean.html"
-        class="featured-card"
-      >
+    <a
+      class="featured-card"
+      href="omk-voltage-jacket.html">
 
-        <div class="featured-image">
+      <img
+        src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/4F6463CE-AC93-46AC-9E46-24CFC46DEE4C.png"
+        alt="OMK Voltage Jacket">
 
-          <div class="featured-badge">
-            FEATURED
-          </div>
+      <div class="featured-body">
 
-          <img
-            src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9BBC37D7-695C-4650-AEE9-C04910FBDF28.png"
-            alt="OMK Voltage Jean"
-          >
+        <h3>
+          OMK Voltage Jacket
+        </h3>
 
-        </div>
+        <p class="featured-price">
+          ₦90,000
+        </p>
 
-        <div class="featured-info">
+      </div>
 
-          <h3>
-            OMK Voltage Jean
-          </h3>
+    </a>
 
-          <div class="featured-price">
-            ₦90,000
-          </div>
 
-          <div class="shop-button">
-            SHOP NOW
-          </div>
+    <a
+      class="featured-card"
+      href="omk-voltage-jean.html">
 
-        </div>
+      <img
+        src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9BBC37D7-695C-4650-AEE9-C04910FBDF28.png"
+        alt="OMK Voltage Jean">
 
-      </a>
+      <div class="featured-body">
 
-    </div>
+        <h3>
+          OMK Voltage Jean
+        </h3>
+
+        <p class="featured-price">
+          ₦90,000
+        </p>
+
+      </div>
+
+    </a>
 
   </div>
 
 </section>
 
 
-<!-- =================================================
-ALL PRODUCTS
-================================================= -->
-
-<section class="section all-products" id="shop">
+<!-- SHOP -->
+<section class="section" id="shop">
 
   <h2>
     SHOP OMK
   </h2>
-
-  <p class="section-sub">
-    Explore the Only My Kind collection.
-  </p>
 
   <div class="grid" id="productGrid"></div>
 
 </section>
 
 
-<!-- =================================================
-MUSIC
-================================================= -->
-
-<section
-  class="music-section"
-  id="music"
->
+<!-- WORK HARD MUSIC -->
+<section class="music-section" id="music">
 
   <h2>
-    New Music
+    WORK HARD 🎶
   </h2>
 
   <img
-    src="https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/IMG_3999.jpeg"
-    alt="My Truth EP"
-  >
+    class="music-cover"
+    src="https://raw.githubusercontent.com/omk-store/omotaker/refs/heads/main/CFC9C620-39B2-4308-83EA-DA63B4B2B665.png"
+    alt="WORK HARD">
 
-  <h3>
-    MY TRUTH – EP
+  <h3 class="music-title">
+    WORK HARD
   </h3>
 
-  <p>
-    Drops • 12•12•2025
+  <p class="music-subtitle">
+    OMO TAKER
   </p>
 
-  <a
-    href="https://omkdrip.com/presave.html"
-    class="music-button"
-  >
-    LISTEN NOW
-  </a>
+
+  <!-- BACKGROUND MUSIC -->
+  <audio
+    id="workHardAudio"
+    loop
+    preload="auto">
+
+    <source
+      src="YOUR_WORK_HARD_AUDIO_FILE.mp3"
+      type="audio/mpeg">
+
+  </audio>
+
+
+  <div class="music-controls">
+
+    <button
+      class="music-btn play-btn"
+      id="playMusic">
+      PLAY WORK HARD
+    </button>
+
+
+    <a
+      class="music-btn shazam-btn"
+      href="https://www.shazam.com/"
+      target="_blank"
+      rel="noopener">
+      SHAZAM THIS SONG
+    </a>
+
+
+    <a
+      class="music-btn stream-btn"
+      href="https://open.spotify.com/album/3Fl2WM9a0tOKUdzcbsiK2E?si=2ZxViGZmTiKfdDA8FF_1hA&utm_source=copy-link"
+      target="_blank"
+      rel="noopener">
+      STREAM WORK HARD
+    </a>
+
+  </div>
+
+
+  <p
+    class="music-status"
+    id="musicStatus">
+    WORK HARD
+  </p>
 
 </section>
 
 
-<!-- =================================================
-ABOUT
-================================================= -->
-
-<section id="about">
+<!-- EMAIL -->
+<section class="join">
 
   <h2>
-    About OMK
+    JOIN OMK
   </h2>
 
   <p>
-    Only My Kind is more than clothing.
-    It is a mindset built around truth, loyalty,
-    individuality and the wolf spirit.
+    Get first access to new drops and updates.
+  </p>
+
+  <form
+    onsubmit="event.preventDefault(); alert('Welcome to OMK.');">
+
+    <input
+      type="email"
+      placeholder="Enter your email"
+      required>
+
+    <button type="submit">
+      JOIN
+    </button>
+
+  </form>
+
+</section>
+
+
+<!-- ABOUT -->
+<section id="about">
+
+  <h2>
+    ONLY MY KIND
+  </h2>
+
+  <p>
+    OMK is more than clothing. It represents individuality,
+    ambition, loyalty and the confidence to create your own lane.
+    Built for those who move different.
   </p>
 
 </section>
 
 
 <!-- SOCIAL -->
-
 <div class="social-icons">
 
-  <!-- Keep your existing social icons here -->
+  <a
+    href="https://www.instagram.com/iam_omotaker?igsh=NXhvNXdyb2JvcnQx&utm_source=qr"
+    target="_blank">
+
+    <img
+      src="https://cdn-icons-png.flaticon.com/512/174/174855.png"
+      alt="Instagram">
+
+  </a>
+
+
+  <a
+    href="https://www.tiktok.com/@omotaker?_r=1&_t=ZS-98HCauPhJZ3"
+    target="_blank">
+
+    <img
+      src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png"
+      alt="TikTok">
+
+  </a>
+
+
+  <a
+    href="https://m.youtube.com/@Iam_omotaker/shorts?ra=m"
+    target="_blank">
+
+    <img
+      src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"
+      alt="YouTube">
+
+  </a>
 
 </div>
 
 
 <!-- FOOTER -->
-
 <footer>
-
-  © 2026 OMK — Only My Kind
-
+  © OMK — Only My Kind
 </footer>
 
 
 <!-- WHATSAPP -->
-
 <a
   class="chat-btn"
   href="https://wa.me/2348118618722"
-  target="_blank"
->
+  target="_blank">
 
   <span class="chat-dot"></span>
 
@@ -707,14 +779,32 @@ ABOUT
 
 <script>
 
+/* PRODUCTS */
+
 const products = [
+
+  {
+    name:'OMK Voltage Jacket',
+    price:90000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/4F6463CE-AC93-46AC-9E46-24CFC46DEE4C.png',
+    link:'omk-voltage-jacket.html',
+    badge:'FEATURED'
+  },
+
+  {
+    name:'OMK Voltage Jean',
+    price:90000,
+    img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9BBC37D7-695C-4650-AEE9-C04910FBDF28.png',
+    link:'omk-voltage-jean.html',
+    badge:'FEATURED'
+  },
 
   {
     name:'OMK Wolf Hoodie (Blue-Line)',
     price:90000,
     img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/56A58A00-78C3-4799-8220-18254057C8BD.png',
     link:'omk-wolf-hoodie-blue-line.html',
-    badge:'FEATURED'
+    badge:'BLUE-LINE'
   },
 
   {
@@ -722,7 +812,7 @@ const products = [
     price:90000,
     img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/06762C45-D3E7-49F7-B60A-684330FE167C.png',
     link:'omk-wolf-pants-blue-line.html',
-    badge:'FEATURED'
+    badge:'BLUE-LINE'
   },
 
   {
@@ -795,13 +885,24 @@ const products = [
     img:'https://raw.githubusercontent.com/omk-store/omk-website/refs/heads/main/9B95C37E-46F1-457A-9548-CF4E5B2A9227.png',
     link:'tshirt.html',
     badge:'NEW'
+  },
+
+  {
+    name:'NEXT DROP',
+    price:null,
+    img:null,
+    link:'#new-drop',
+    badge:'COMING SOON'
   }
 
 ];
 
-const grid=document.getElementById('productGrid');
 
-products.forEach(p=>{
+/* BUILD PRODUCT GRID */
+
+const grid = document.getElementById('productGrid');
+
+products.forEach(p => {
 
   grid.innerHTML += `
 
@@ -815,10 +916,27 @@ products.forEach(p=>{
 
         <div class="card-img">
 
-          <img
-            src="${p.img}"
-            alt="${p.name}"
-          >
+          ${
+            p.img
+
+            ? `<img
+                 src="${p.img}"
+                 alt="${p.name}">`
+
+            : `<div
+                 style="
+                 height:300px;
+                 background:#111;
+                 color:#fff;
+                 display:flex;
+                 align-items:center;
+                 justify-content:center;
+                 font-weight:900;
+                 letter-spacing:2px;
+                 ">
+                 NEXT DROP
+               </div>`
+          }
 
         </div>
 
@@ -828,9 +946,13 @@ products.forEach(p=>{
             ${p.name}
           </h3>
 
-          <p class="price">
-            ₦${p.price.toLocaleString()}
-          </p>
+          ${
+            p.price
+            ? `<p class="price">
+                 ₦${p.price.toLocaleString()}
+               </p>`
+            : ``
+          }
 
         </div>
 
@@ -841,6 +963,125 @@ products.forEach(p=>{
   `;
 
 });
+
+
+/* WORK HARD MUSIC */
+
+const audio = document.getElementById('workHardAudio');
+const playButton = document.getElementById('playMusic');
+const status = document.getElementById('musicStatus');
+
+
+function playWorkHard(){
+
+  audio.play()
+    .then(() => {
+
+      playButton.textContent = 'PAUSE WORK HARD';
+      status.textContent = 'WORK HARD IS PLAYING';
+
+    })
+    .catch(() => {
+
+      status.textContent =
+        'Tap PLAY WORK HARD to start the music.';
+
+    });
+
+}
+
+
+function pauseWorkHard(){
+
+  audio.pause();
+
+  playButton.textContent = 'PLAY WORK HARD';
+  status.textContent = 'WORK HARD';
+
+}
+
+
+playButton.addEventListener('click', () => {
+
+  if(audio.paused){
+
+    playWorkHard();
+
+  }else{
+
+    pauseWorkHard();
+
+  }
+
+});
+
+
+/*
+  Try to start the music immediately.
+  Some browsers block autoplay with sound.
+*/
+
+window.addEventListener('load', () => {
+
+  audio.volume = 0.65;
+
+  audio.play()
+    .then(() => {
+
+      playButton.textContent = 'PAUSE WORK HARD';
+      status.textContent = 'WORK HARD IS PLAYING';
+
+    })
+    .catch(() => {
+
+      status.textContent =
+        'Tap PLAY WORK HARD to start the music.';
+
+    });
+
+});
+
+
+/*
+  If autoplay was blocked,
+  start the music on the visitor's first interaction.
+*/
+
+let firstInteraction = false;
+
+function startOnFirstInteraction(){
+
+  if(firstInteraction) return;
+
+  firstInteraction = true;
+
+  if(audio.paused){
+
+    audio.play()
+      .then(() => {
+
+        playButton.textContent = 'PAUSE WORK HARD';
+        status.textContent = 'WORK HARD IS PLAYING';
+
+      })
+      .catch(() => {});
+
+  }
+
+}
+
+
+document.addEventListener(
+  'click',
+  startOnFirstInteraction,
+  {once:false}
+);
+
+document.addEventListener(
+  'touchstart',
+  startOnFirstInteraction,
+  {once:false}
+);
 
 </script>
 
